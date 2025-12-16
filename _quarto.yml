@@ -1,5 +1,10 @@
 project:
   type: website
+  output-dir: _site
+
+  website:
+  title: "Estadística IV"
+  site-url: https://enjambbao22.github.io/NOMBRE-REPO/  # AJUSTA NOMBRE-REPO
 
 website:
   title: "Estadística IV"
