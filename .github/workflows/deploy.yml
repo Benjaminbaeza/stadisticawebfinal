@@ -25,22 +25,8 @@ jobs:
           r-version: '4.3.2'
 
       - name: Install R dependencies
-        uses: r-lib/actions/setup-r-dependencies@v2
-        with:
-          packages: |
-            any::tidyverse
-            any::pacman
-            any::psych
-            any::sjmisc
-            any::sjPlot
-            any::knitr
-            any::kableExtra
-            any::rmarkdown
-            any::car
-            any::lmtest
-            any::ggplot2
-            any::haven
-            any::readxl
+        run: |
+          Rscript -e "install.packages(c('rmarkdown', 'knitr', 'ggplot2', 'readxl', 'haven'))"
 
       - name: Render Quarto Project
         run: quarto render  # Usamos comando directo
