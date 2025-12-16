@@ -2,21 +2,16 @@ project:
   type: website
   output-dir: _site
 
-  website:
-  title: "Estadística IV"
-  site-url: https://benjaminbaeza.github.io/stadisticawebfinal/  
-
 website:
   title: "Estadística IV"
-
+  site-url: https://benjaminbaeza.github.io/stadisticawebfinal/
+  
   navbar:
     right:
       - href: index.qmd
         text: Inicio
-
       - href: programa.qmd
         text: Programación
-
       - text: Clases
         menu:
           - text: Clase 1 · Presentación del curso
@@ -25,7 +20,6 @@ website:
             href: clase2.qmd
           - text: Clase 3 · Regresión
             href: clase_03.qmd
-
       - href: Practicos.qmd
         text: Prácticos
 
