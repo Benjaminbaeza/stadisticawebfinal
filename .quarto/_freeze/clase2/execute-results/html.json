@@ -1,0 +1,15 @@
+{
+  "hash": "da885368ef52f0ead720ac69fe247986",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Clase 2\"\nformat: html\neditor: visual\n---\n\n\n\n\ntitle: \"Clase 2 · Análisis exploratorio\"\n\n---\n\n::: {.callout-note}\n**Fecha:** martes 20 de agosto\n:::\n\n## Objetivos de la sesión\n\n- Introducción al análisis exploratorio\n- Tipos de variables\n\n## Presentación\n\n📄 [Ver presentación (PDF)](clases/clase_20_agosto.pdf){target=\"_blank\"}\n\n\n\n```{=html}\n<div class=\"pdf-container\" style=\"border: 1px solid #ddd; border-radius: 5px; margin: 20px 0;\">\n<embed src=\"clases/clase_20_agosto.pdf\" \n       type=\"application/pdf\" \n       width=\"100%\" \n       height=\"650px\" />\n</div>\n\n---\n\n## Lecturas asociadas\n\n- Lectura 1: Clase 2\n- Lectura 2: Uso de R en investigación social.\n\n---\n\n## Actividades sugeridas\n\n- Revisión del programa del curso.\n- Instalación de R y RStudio.\n- Exploración inicial del entorno de trabajo.\n---\n\n## \n\n::: {.cell}\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 4\n```\n\n\n:::\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

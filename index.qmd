@@ -1,0 +1,66 @@
+---
+title: "Estadistica IV"
+subtitle: ""
+---
+
+
+## I. Presentación del curso
+
+Este curso introduce técnicas de análisis exploratorio de datos utilizadas en la
+investigación social, con énfasis en la interpretación sustantiva de resultados
+estadísticos y su aplicación empírica mediante software especializado.
+
+## II. Proposito de Aprendizaje:
+
+Al finalizar el curso, el estudiantado será capaz de:
+
+1. identificar las diferencias claves entre las técnicas de análisis exploratorio
+
+2. Interpretar la información derivada de software estadísticos de cada técnica. 
+
+3. Aplicar las diferentes técnicas de análisis exploratorio a problemas de investigación 
+social.  
+
+
+## III. Estructura general del curso
+
+El curso se organiza en tres unidades:
+
+- **Unidad I:** Análisis de Correspondencias.
+- **Unidad II:** Análisis Factorial y Componentes Principales.
+- **Unidad III:** Análisis de Conglomerados.
+
+El detalle de contenidos se encuentra en la sección **Programación**.
+
+
+## IV. Información del curso:
+
+::: {.callout-note}
+## Detalles
+
+- **Profesora:** Carolina Aguilera
+- **Ayudante:** 
+- **Horario de Ayudantía:**
+- **Modalidad:** 
+:::
+
+## V. Antes de comenzar:
+
+Para seguir este curso necesitarás:
+
+- Instalar [R](https://cran.r-project.org/) 
+- Instalar [RStudio](https://posit.co/download/rstudio-desktop/)
+- Conocimientos básicos de estadística
+
+Revisa la sección [Recursos](recursos.qmd) para guías de instalación y materiales complementarios.
+
+
+::: {.callout-tip}
+## Contacto
+
+Para consultas del curso, puedes contactarme por caguilera@uahurtado.cl 
+:::
+---
+
+```{}
+```

@@ -1,0 +1,112 @@
+---
+
+---
+title: "Programa Estadistica IV"
+
+---
+
+## I. Propósitos de aprendizaje
+
+Al término de esta actividad curricular, las y los estudiantes serán capaces de:
+
+- Identificar las diferencias claves entre las técnicas de análisis exploratorio.
+- Interpretar la información derivada de software estadísticos.
+- Aplicar técnicas de análisis exploratorio a problemas de investigación social.
+
+---
+
+## II. Contenidos
+
+### UNIDAD I. Análisis de variables observadas categóricas  
+**Análisis de Correspondencias simple y múltiple**
+
+- Aspectos previos al Análisis de Correspondencias: la prueba Chi-cuadrado.
+- Objetivos del Análisis de Correspondencias.
+- Construcción de mapas perceptuales: media ponderada, masa, perfiles, vértices,
+  distancias Chi-cuadrado e inercia.
+- Reducción de dimensionalidad y escalamiento óptimo.
+- Transformación de mapas simétricos en mapas asimétricos.
+- Implementación de la técnica y análisis de resultados en software estadísticos.
+
+---
+
+### UNIDAD II. Análisis exploratorio de variables latentes  
+**Análisis Factorial y Análisis de Componentes Principales**
+
+- Aspectos previos: correlación y regresión lineal (MCO).
+- Diferencias entre variables reflectivas y formativas.
+- Diferencias entre ACP y Análisis Factorial común.
+- Diferencias entre análisis exploratorio y confirmatorio.
+- Extracción de componentes y criterios de selección.
+- Rotación, interpretación y evaluación del modelo.
+- Aplicación práctica: construcción y validación de escalas (Alfa de Cronbach).
+
+---
+
+### UNIDAD III. Análisis exploratorio de variables observadas  
+**Análisis de conglomerados**
+
+- Clasificación en ciencias sociales.
+- Supuestos del análisis de conglomerados.
+- Elección de variables, medidas de similitud y método de conglomeración.
+- Definición, caracterización y validación de grupos.
+- Implementación y análisis de resultados en software estadísticos.
+
+---
+
+## III. Metodología
+
+El curso se desarrollará de manera presencial, combinando clases expositivas y prácticas.
+Se abordarán los fundamentos teóricos de cada técnica estadística y su aplicación en
+investigación empírica mediante el uso de software estadístico.
+
+El curso contempla sesiones de ayudantía orientadas al refuerzo de contenidos,
+aprendizaje de comandos en R y preparación de evaluaciones.
+
+---
+
+## IV. Evaluación de aprendizajes
+
+Las evaluaciones del curso incluyen:
+
+- **Control 1** (Unidades I y II): 35%  
+- **Control 2** (Unidades II y III): 35%  
+- **Trabajo final aplicado (en pareja):** 30%  
+- **Examen final:** 40%  
+
+::: {.callout-note}
+Para eximirse del examen se requiere una nota igual o superior a 4,0.
+:::
+
+---
+
+## V. Calendarización de actividades
+
+| Sesión | Fecha | Contenidos principales |
+|------:|:-----:|------------------------|
+| 1 | 13.08 | Introducción y repaso de conceptos |
+| 2 | 20.08 | Chi-cuadrado y AC simple |
+| 3 | 27.08 | AC múltiple |
+| 4 | 03.09 | ACP |
+| 6 | 24.09 | Control 1 |
+| 11 | 22.10 | Análisis de conglomerados |
+| 14 | 12.11 | Control 2 |
+| 15 | 21.11 | Entrega trabajo final |
+| — | 03.12 | Examen |
+
+---
+
+## VI. Recursos pedagógicos
+
+### Bibliografía básica
+
+- Cea D’Ancona, M. A. *Análisis multivariable*. Editorial Síntesis.
+- Greenacre, M. *La práctica del análisis de correspondencias*. Fundación BBVA.
+- Hair et al. *Análisis multivariante*. Pearson.
+
+### Bibliografía complementaria
+
+- Aldás & Uriel. *Análisis multivariante aplicado con R*.
+- Field, A. *Discovering Statistics Using R*.
+
+---

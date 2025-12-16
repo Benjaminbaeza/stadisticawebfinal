@@ -1,0 +1,17 @@
+{
+  "hash": "f44c88fcb0487cd542933cf198032957",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\nformat: html\neditor: visual\n---\n\n\n\n## Clase 1 · Presentación del curso\n\n::: {.callout-note}\n**Fecha:** martes 13 de agosto\n:::\n\n## Objetivos de la sesión\n\nEn esta clase se espera que el estudiantado sea capaz de:\n\n- Conocer la estructura general del curso.\n- Comprender los objetivos de aprendizaje.\n- Familiarizarse con la dinámica de trabajo y evaluaciones.\n\n---\n\n## Documento de presentación\n\n📄 [Ver presentación (PDF)](clases/clase_13_agosto.pdf){target=\"_blank\"}\n\n\n\n```{=html}\n<div class=\"pdf-container\" style=\"border: 1px solid #ddd; border-radius: 5px; margin: 20px 0;\">\n<embed src=\"clases/clase_13_agosto.pdf.pdf\" \n       type=\"application/pdf\" \n       width=\"100%\" \n       height=\"650px\" />\n</div>\n\n---\n\n## Lecturas asociadas\n\n- Lectura 1: Introducción al análisis exploratorio.\n- Lectura 2: Uso de R en investigación social.\n\n---\n\n## Actividades sugeridas\n\n- Revisión del programa del curso.\n- Instalación de R y RStudio.\n- Exploración inicial del entorno de trabajo.\n---\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n```\n\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 2\n```\n\n\n:::\n:::\n\n::: {.cell}\n::: {.cell-output .cell-output-stdout}\n\n```\n[1] 4\n```\n\n\n:::\n:::\n",
+    "supporting": [
+      "clase1_files"
+    ],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

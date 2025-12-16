@@ -1,0 +1,254 @@
+[
+  {
+    "objectID": "programa.html",
+    "href": "programa.html",
+    "title": "Estadística IV",
+    "section": "",
+    "text": "title: “Programa Estadistica IV”"
+  },
+  {
+    "objectID": "programa.html#i.-propósitos-de-aprendizaje",
+    "href": "programa.html#i.-propósitos-de-aprendizaje",
+    "title": "Estadística IV",
+    "section": "I. Propósitos de aprendizaje",
+    "text": "I. Propósitos de aprendizaje\nAl término de esta actividad curricular, las y los estudiantes serán capaces de:\n\nIdentificar las diferencias claves entre las técnicas de análisis exploratorio.\nInterpretar la información derivada de software estadísticos.\nAplicar técnicas de análisis exploratorio a problemas de investigación social."
+  },
+  {
+    "objectID": "programa.html#ii.-contenidos",
+    "href": "programa.html#ii.-contenidos",
+    "title": "Estadística IV",
+    "section": "II. Contenidos",
+    "text": "II. Contenidos\n\nUNIDAD I. Análisis de variables observadas categóricas\nAnálisis de Correspondencias simple y múltiple\n\nAspectos previos al Análisis de Correspondencias: la prueba Chi-cuadrado.\nObjetivos del Análisis de Correspondencias.\nConstrucción de mapas perceptuales: media ponderada, masa, perfiles, vértices, distancias Chi-cuadrado e inercia.\nReducción de dimensionalidad y escalamiento óptimo.\nTransformación de mapas simétricos en mapas asimétricos.\nImplementación de la técnica y análisis de resultados en software estadísticos.\n\n\n\n\nUNIDAD II. Análisis exploratorio de variables latentes\nAnálisis Factorial y Análisis de Componentes Principales\n\nAspectos previos: correlación y regresión lineal (MCO).\nDiferencias entre variables reflectivas y formativas.\nDiferencias entre ACP y Análisis Factorial común.\nDiferencias entre análisis exploratorio y confirmatorio.\nExtracción de componentes y criterios de selección.\nRotación, interpretación y evaluación del modelo.\nAplicación práctica: construcción y validación de escalas (Alfa de Cronbach).\n\n\n\n\nUNIDAD III. Análisis exploratorio de variables observadas\nAnálisis de conglomerados\n\nClasificación en ciencias sociales.\nSupuestos del análisis de conglomerados.\nElección de variables, medidas de similitud y método de conglomeración.\nDefinición, caracterización y validación de grupos.\nImplementación y análisis de resultados en software estadísticos."
+  },
+  {
+    "objectID": "programa.html#iii.-metodología",
+    "href": "programa.html#iii.-metodología",
+    "title": "Estadística IV",
+    "section": "III. Metodología",
+    "text": "III. Metodología\nEl curso se desarrollará de manera presencial, combinando clases expositivas y prácticas. Se abordarán los fundamentos teóricos de cada técnica estadística y su aplicación en investigación empírica mediante el uso de software estadístico.\nEl curso contempla sesiones de ayudantía orientadas al refuerzo de contenidos, aprendizaje de comandos en R y preparación de evaluaciones."
+  },
+  {
+    "objectID": "programa.html#iv.-evaluación-de-aprendizajes",
+    "href": "programa.html#iv.-evaluación-de-aprendizajes",
+    "title": "Estadística IV",
+    "section": "IV. Evaluación de aprendizajes",
+    "text": "IV. Evaluación de aprendizajes\nLas evaluaciones del curso incluyen:\n\nControl 1 (Unidades I y II): 35%\n\nControl 2 (Unidades II y III): 35%\n\nTrabajo final aplicado (en pareja): 30%\n\nExamen final: 40%\n\n\n\n\n\n\n\nNote\n\n\n\nPara eximirse del examen se requiere una nota igual o superior a 4,0."
+  },
+  {
+    "objectID": "programa.html#v.-calendarización-de-actividades",
+    "href": "programa.html#v.-calendarización-de-actividades",
+    "title": "Estadística IV",
+    "section": "V. Calendarización de actividades",
+    "text": "V. Calendarización de actividades\n\n\n\nSesión\nFecha\nContenidos principales\n\n\n\n\n1\n13.08\nIntroducción y repaso de conceptos\n\n\n2\n20.08\nChi-cuadrado y AC simple\n\n\n3\n27.08\nAC múltiple\n\n\n4\n03.09\nACP\n\n\n6\n24.09\nControl 1\n\n\n11\n22.10\nAnálisis de conglomerados\n\n\n14\n12.11\nControl 2\n\n\n15\n21.11\nEntrega trabajo final\n\n\n—\n03.12\nExamen"
+  },
+  {
+    "objectID": "programa.html#vi.-recursos-pedagógicos",
+    "href": "programa.html#vi.-recursos-pedagógicos",
+    "title": "Estadística IV",
+    "section": "VI. Recursos pedagógicos",
+    "text": "VI. Recursos pedagógicos\n\nBibliografía básica\n\nCea D’Ancona, M. A. Análisis multivariable. Editorial Síntesis.\nGreenacre, M. La práctica del análisis de correspondencias. Fundación BBVA.\nHair et al. Análisis multivariante. Pearson.\n\n\n\nBibliografía complementaria\n\nAldás & Uriel. Análisis multivariante aplicado con R.\nField, A. Discovering Statistics Using R."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Estadistica IV",
+    "section": "",
+    "text": "Este curso introduce técnicas de análisis exploratorio de datos utilizadas en la investigación social, con énfasis en la interpretación sustantiva de resultados estadísticos y su aplicación empírica mediante software especializado."
+  },
+  {
+    "objectID": "index.html#i.-presentación-del-curso",
+    "href": "index.html#i.-presentación-del-curso",
+    "title": "Estadistica IV",
+    "section": "",
+    "text": "Este curso introduce técnicas de análisis exploratorio de datos utilizadas en la investigación social, con énfasis en la interpretación sustantiva de resultados estadísticos y su aplicación empírica mediante software especializado."
+  },
+  {
+    "objectID": "index.html#ii.-proposito-de-aprendizaje",
+    "href": "index.html#ii.-proposito-de-aprendizaje",
+    "title": "Estadistica IV",
+    "section": "II. Proposito de Aprendizaje:",
+    "text": "II. Proposito de Aprendizaje:\nAl finalizar el curso, el estudiantado será capaz de:\n\nidentificar las diferencias claves entre las técnicas de análisis exploratorio\nInterpretar la información derivada de software estadísticos de cada técnica.\nAplicar las diferentes técnicas de análisis exploratorio a problemas de investigación social."
+  },
+  {
+    "objectID": "index.html#iii.-estructura-general-del-curso",
+    "href": "index.html#iii.-estructura-general-del-curso",
+    "title": "Estadistica IV",
+    "section": "III. Estructura general del curso",
+    "text": "III. Estructura general del curso\nEl curso se organiza en tres unidades:\n\nUnidad I: Análisis de Correspondencias.\nUnidad II: Análisis Factorial y Componentes Principales.\nUnidad III: Análisis de Conglomerados.\n\nEl detalle de contenidos se encuentra en la sección Programación."
+  },
+  {
+    "objectID": "index.html#iv.-información-del-curso",
+    "href": "index.html#iv.-información-del-curso",
+    "title": "Estadistica IV",
+    "section": "IV. Información del curso:",
+    "text": "IV. Información del curso:\n\n\n\n\n\n\nDetalles\n\n\n\n\nProfesora: Carolina Aguilera\nAyudante:\nHorario de Ayudantía:\nModalidad:"
+  },
+  {
+    "objectID": "index.html#v.-antes-de-comenzar",
+    "href": "index.html#v.-antes-de-comenzar",
+    "title": "Estadistica IV",
+    "section": "V. Antes de comenzar:",
+    "text": "V. Antes de comenzar:\nPara seguir este curso necesitarás:\n\nInstalar R\nInstalar RStudio\nConocimientos básicos de estadística\n\nRevisa la sección Recursos para guías de instalación y materiales complementarios.\n\n\n\n\n\n\nContacto\n\n\n\nPara consultas del curso, puedes contactarme por caguilera@uahurtado.cl"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "Clases.html",
+    "href": "Clases.html",
+    "title": "Clases",
+    "section": "",
+    "text": "En esta sección encontrarás el material correspondiente a cada sesión del curso. Las presentaciones pueden visualizarse directamente en el navegador."
+  },
+  {
+    "objectID": "Clases.html#clase-1-presentación-del-curso",
+    "href": "Clases.html#clase-1-presentación-del-curso",
+    "title": "Clases",
+    "section": "Clase 1 · Presentación del curso",
+    "text": "Clase 1 · Presentación del curso\n\n\n\n\n\n\nNote\n\n\n\nFecha: martes 13 de agosto"
+  },
+  {
+    "objectID": "Clases.html#objetivos-de-la-sesión",
+    "href": "Clases.html#objetivos-de-la-sesión",
+    "title": "Clases",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\nEn esta clase se espera que el estudiantado sea capaz de:\n\nConocer la estructura general del curso.\nComprender los objetivos de aprendizaje.\nFamiliarizarse con la dinámica de trabajo y evaluaciones."
+  },
+  {
+    "objectID": "Clases.html#documento-de-presentación",
+    "href": "Clases.html#documento-de-presentación",
+    "title": "Clases",
+    "section": "Documento de presentación",
+    "text": "Documento de presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Clases.html#lecturas-asociadas",
+    "href": "Clases.html#lecturas-asociadas",
+    "title": "Clases",
+    "section": "Lecturas asociadas",
+    "text": "Lecturas asociadas\n\nLectura 1: Introducción al análisis exploratorio.\nLectura 2: Uso de R en investigación social."
+  },
+  {
+    "objectID": "Clases.html#actividades-sugeridas",
+    "href": "Clases.html#actividades-sugeridas",
+    "title": "Clases",
+    "section": "Actividades sugeridas",
+    "text": "Actividades sugeridas\n\nRevisión del programa del curso.\nInstalación de R y RStudio.\nExploración inicial del entorno de trabajo."
+  },
+  {
+    "objectID": "Clase 1.html",
+    "href": "Clase 1.html",
+    "title": "Clase 1",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 13 de agosto"
+  },
+  {
+    "objectID": "Clase 1.html#clase-1-presentación-del-curso",
+    "href": "Clase 1.html#clase-1-presentación-del-curso",
+    "title": "Clase 1",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 13 de agosto"
+  },
+  {
+    "objectID": "Clase 1.html#objetivos-de-la-sesión",
+    "href": "Clase 1.html#objetivos-de-la-sesión",
+    "title": "Clase 1",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\nEn esta clase se espera que el estudiantado sea capaz de:\n\nConocer la estructura general del curso.\nComprender los objetivos de aprendizaje.\nFamiliarizarse con la dinámica de trabajo y evaluaciones."
+  },
+  {
+    "objectID": "Clase 1.html#documento-de-presentación",
+    "href": "Clase 1.html#documento-de-presentación",
+    "title": "Clase 1",
+    "section": "Documento de presentación",
+    "text": "Documento de presentación\n📄 Ver presentación (PDF)\n\n\n\n\n---\n\n## Lecturas asociadas\n\n- Lectura 1: Introducción al análisis exploratorio.\n- Lectura 2: Uso de R en investigación social.\n\n---\n\n## Actividades sugeridas\n\n- Revisión del programa del curso.\n- Instalación de R y RStudio.\n- Exploración inicial del entorno de trabajo.\n---\n\n::: {.cell}\n\n```{.r .cell-code}\n1 + 1\n\n[1] 2\n\n:::\n\n\n[1] 4"
+  },
+  {
+    "objectID": "Clase 2.html",
+    "href": "Clase 2.html",
+    "title": "Clase 2",
+    "section": "",
+    "text": "title: “Clase 2 · Análisis exploratorio”"
+  },
+  {
+    "objectID": "Clase 2.html#objetivos-de-la-sesión",
+    "href": "Clase 2.html#objetivos-de-la-sesión",
+    "title": "Clase 2",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nIntroducción al análisis exploratorio\nTipos de variables"
+  },
+  {
+    "objectID": "Clase 2.html#presentación",
+    "href": "Clase 2.html#presentación",
+    "title": "Clase 2",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)\n\n\n\n\n---\n\n## Lecturas asociadas\n\n- Lectura 1: Clase 2\n- Lectura 2: Uso de R en investigación social.\n\n---\n\n## Actividades sugeridas\n\n- Revisión del programa del curso.\n- Instalación de R y RStudio.\n- Exploración inicial del entorno de trabajo.\n---\n\n## \n\n::: {.cell}\n::: {.cell-output .cell-output-stdout}\n\n[1] 4 ```\n::: :::"
+  },
+  {
+    "objectID": "clase1.html",
+    "href": "clase1.html",
+    "title": "Estadística IV",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 13 de agosto"
+  },
+  {
+    "objectID": "clase1.html#clase-1-presentación-del-curso",
+    "href": "clase1.html#clase-1-presentación-del-curso",
+    "title": "Estadística IV",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 13 de agosto"
+  },
+  {
+    "objectID": "clase1.html#objetivos-de-la-sesión",
+    "href": "clase1.html#objetivos-de-la-sesión",
+    "title": "Estadística IV",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\nEn esta clase se espera que el estudiantado sea capaz de:\n\nConocer la estructura general del curso.\nComprender los objetivos de aprendizaje.\nFamiliarizarse con la dinámica de trabajo y evaluaciones."
+  },
+  {
+    "objectID": "clase1.html#documento-de-presentación",
+    "href": "clase1.html#documento-de-presentación",
+    "title": "Estadística IV",
+    "section": "Documento de presentación",
+    "text": "Documento de presentación\n📄 Ver presentación (PDF)\n\n\n\n\n---\n\n## Lecturas asociadas\n\n- Lectura 1: Introducción al análisis exploratorio.\n- Lectura 2: Uso de R en investigación social.\n\n---\n\n## Actividades sugeridas\n\n- Revisión del programa del curso.\n- Instalación de R y RStudio.\n- Exploración inicial del entorno de trabajo.\n---\n\n```{}"
+  },
+  {
+    "objectID": "clase2.html",
+    "href": "clase2.html",
+    "title": "Estadística IV",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 20 de agosto"
+  },
+  {
+    "objectID": "clase2.html#objetivos-de-la-sesión",
+    "href": "clase2.html#objetivos-de-la-sesión",
+    "title": "Estadística IV",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nIntroducción al análisis exploratorio\nTipos de variables"
+  },
+  {
+    "objectID": "clase2.html#presentación",
+    "href": "clase2.html#presentación",
+    "title": "Estadística IV",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)\n\n\n\n\n---\n\n## Lecturas asociadas\n\n- Lectura 1: Clase 2\n- Lectura 2: Uso de R en investigación social.\n\n---\n\n## Actividades sugeridas\n\n- Revisión del programa del curso.\n- Instalación de R y RStudio.\n- Exploración inicial del entorno de trabajo.\n---\n\n## \n\n```{}"
+  },
+  {
+    "objectID": "clases.html",
+    "href": "clases.html",
+    "title": "Clases",
+    "section": "",
+    "text": "En esta sección encontrarás el material correspondiente a cada sesión del curso. Las presentaciones pueden visualizarse directamente en el navegador."
+  },
+  {
+    "objectID": "clase2.html#title-clase-2-análisis-exploratorio",
+    "href": "clase2.html#title-clase-2-análisis-exploratorio",
+    "title": "Estadística IV",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 20 de agosto"
+  }
+]
