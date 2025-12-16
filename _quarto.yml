@@ -8,6 +8,7 @@ website:
   
   navbar:
     right:
+      
       - href: index.qmd
         text: Inicio
       - href: programa.qmd
@@ -18,8 +19,10 @@ website:
             href: clase1.qmd
           - text: Clase 2 · Estadística descriptiva
             href: clase2.qmd
-          - href: Practicos.qmd
-            text: Prácticos
+      - href: Practicos.qmd
+        text: Prácticos
+        
+      
 
 format:
   html:
