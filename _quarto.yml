@@ -18,10 +18,8 @@ website:
             href: clase1.qmd
           - text: Clase 2 · Estadística descriptiva
             href: clase2.qmd
-          - text: Clase 3 · Regresión
-            href: clase_03.qmd
-      - href: Practicos.qmd
-        text: Prácticos
+          - href: Practicos.qmd
+            text: Prácticos
 
 format:
   html:
