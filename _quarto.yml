@@ -21,6 +21,8 @@ website:
             href: clase2.qmd
       - href: Practicos.qmd
         text: Prácticos
+      - href: ayudantia.qmd
+        text: Ayudantias
         
       
 
