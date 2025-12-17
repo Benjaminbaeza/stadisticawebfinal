@@ -1,5 +1,14 @@
 /* ===== ESTILOS UAH - Estadística IV ===== */
 
+.navbar-brand {
+  font-size: 2.2rem !important;  /* MUCHO más grande */
+  font-weight: 800 !important;
+  color: white !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
 /* 1. BARRA SUPERIOR (como UAH) */
 .navbar {
   background: linear-gradient(135deg, #d35400 0%, #ff6600 100%) !important;
