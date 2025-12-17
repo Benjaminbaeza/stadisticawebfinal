@@ -1,97 +1,152 @@
-/* styles.css - Personalización para Estadística IV */
+/* ===== ESTILOS UAH - Estadística IV ===== */
 
-/* ===== BARRA DE NAVEGACIÓN (naranja) ===== */
+/* 1. BARRA SUPERIOR (como UAH) */
 .navbar {
-  background-color: #ff6600 !important; /* Naranja fuerte */
-  border-bottom: 3px solid #cc5200 !important;
+  background: linear-gradient(135deg, #d35400 0%, #ff6600 100%) !important;
+  border-bottom: 4px solid #a04000 !important;
+  padding: 0.8rem 0 !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
+/* 2. TÍTULO PRINCIPAL MÁS GRANDE */
+.navbar-brand {
+  font-size: 1.8rem !important;
+  font-weight: 700 !important;
+  color: white !important;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Si tu título está en otro lugar */
+h1.title {
+  font-size: 2.5rem !important;
+  color: #d35400 !important;
+  border-bottom: 3px solid #ff6600;
+  padding-bottom: 15px;
+  margin-bottom: 25px;
+}
+
+/* 3. MENÚ PRINCIPAL */
 .navbar .navbar-nav .nav-link {
   color: white !important;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 10px 20px !important;
+  margin: 0 5px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
 }
 
 .navbar .navbar-nav .nav-link:hover {
-  color: #ffe6cc !important;
-  background-color: #e65c00 !important;
+  background-color: rgba(255, 255, 255, 0.2) !important;
+  transform: translateY(-2px);
 }
 
-/* Menú desplegable */
+/* 4. MENÚ DESPLEGABLE (como UAH) */
 .dropdown-menu {
-  background-color: #ff8533 !important;
-  border: 1px solid #cc5200 !important;
+  background-color: #ffffff !important;
+  border: 2px solid #ff6600 !important;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  min-width: 250px;
 }
 
 .dropdown-item {
-  color: white !important;
+  color: #333333 !important;
+  font-weight: 500;
+  padding: 10px 20px;
+  border-bottom: 1px solid #f0f0f0;
 }
 
 .dropdown-item:hover {
-  background-color: #e65c00 !important;
-  color: white !important;
+  background-color: #fff5e6 !important;
+  color: #d35400 !important;
 }
 
-/* ===== FONDO GENERAL (blanco) ===== */
-body {
-  background-color: #ffffff !important;
-  color: #333333 !important; /* Texto principal gris oscuro */
+/* 5. ENCABEZADOS SECUNDARIOS */
+h2 {
+  color: #a04000 !important;
+  border-left: 5px solid #ff6600;
+  padding-left: 15px;
+  margin-top: 30px;
 }
 
-/* ===== TÍTULOS Y ENCABEZADOS (negro) ===== */
-h1, h2, h3, h4, h5, h6 {
-  color: #000000 !important;
+h3 {
+  color: #333333 !important;
   font-weight: 600;
 }
 
-/* Título principal */
-.quarto-title h1.title {
-  color: #000000 !important;
-  border-bottom: 2px solid #ff6600;
-  padding-bottom: 10px;
-}
-
-/* ===== ENLACES (naranja) ===== */
-a {
-  color: #ff6600 !important;
-}
-
-a:hover {
-  color: #cc5200 !important;
-  text-decoration: underline;
-}
-
-/* ===== CÓDIGO Y BLOQUES R ===== */
-pre, code {
-  background-color: #f8f9fa !important;
-  border: 1px solid #dee2e6 !important;
-  color: #333333 !important;
-}
-
-/* ===== TABLAS ===== */
-.table {
-  color: #000000 !important;
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: rgba(255, 102, 0, 0.05) !important;
-}
-
-/* ===== BOTONES ===== */
+/* 6. BOTONES UAH */
 .btn-primary {
-  background-color: #ff6600 !important;
-  border-color: #cc5200 !important;
-  color: white !important;
+  background: linear-gradient(to right, #d35400, #ff6600) !important;
+  border: none !important;
+  border-radius: 4px;
+  padding: 10px 25px;
+  font-weight: 600;
 }
 
 .btn-primary:hover {
-  background-color: #e65c00 !important;
-  border-color: #b34700 !important;
+  background: linear-gradient(to right, #a04000, #e65c00) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(210, 84, 0, 0.3);
 }
 
-/* ===== PIE DE PÁGINA ===== */
+/* 7. TABLAS ESTILO UAH */
+.table {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table thead {
+  background: linear-gradient(135deg, #ff6600 0%, #d35400 100%) !important;
+  color: white !important;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #fff9f0 !important;
+}
+
+/* 8. BLOQUES DE CÓDIGO */
+pre {
+  background-color: #2d3436 !important;
+  color: #dfe6e9 !important;
+  border-left: 4px solid #ff6600;
+  border-radius: 0 8px 8px 0;
+}
+
+code {
+  background-color: #fff5e6;
+  color: #d35400;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+/* 9. PIE DE PÁGINA */
 footer {
-  background-color: #f8f9fa !important;
-  border-top: 2px solid #ff6600 !important;
-  color: #666666 !important;
+  background-color: #2d3436 !important;
+  color: #b2bec3 !important;
+  padding: 30px 0;
+  margin-top: 50px;
+  border-top: 5px solid #ff6600;
 }
 
+/* 10. ENLACES */
+a {
+  color: #d35400 !important;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  color: #a04000 !important;
+  text-decoration: underline;
+}
+
+/* 11. CONTENEDOR PRINCIPAL */
+.container-fluid {
+  background-color: #ffffff !important;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.05);
+}
