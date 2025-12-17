@@ -15,9 +15,9 @@ website:
         text: Programación
       - text: Clases
         menu:
-          - text: Clase 1 · Presentación del curso
+          - text: Modulo 1 · Presentación del curso
             href: clase1.qmd
-          - text: Clase 2 · Estadística descriptiva
+          - text: Modulo 2 · Estadística descriptiva
             href: clase2.qmd
       - href: Practicos.qmd
         text: Prácticos
