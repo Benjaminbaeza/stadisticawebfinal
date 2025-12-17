@@ -30,4 +30,4 @@ format:
   html:
     theme: cosmo
     toc: false
-    css: style.css
+    css: styles.css
