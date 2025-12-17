@@ -1,140 +1,93 @@
-/* ===== ESTILOS UAH - Estadística IV ===== */
+/* ===== ESTILOS CORREGIDOS - Estadística IV ===== */
 
-/* 1. BARRA SUPERIOR (como UAH) */
+/* 1. BARRA DE NAVEGACIÓN PRINCIPAL */
 .navbar {
   background: linear-gradient(135deg, #d35400 0%, #ff6600 100%) !important;
   border-bottom: 4px solid #a04000 !important;
-  padding: 0.8rem 0 !important;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  padding: 0.5rem 0 !important;
+  min-height: 70px !important;
 }
 
-/* 2. TÍTULO PRINCIPAL MÁS GRANDE */
+/* 2. TÍTULO "ESTADÍSTICA IV" EN LA BARRA */
 .navbar-brand {
-  font-size: 1.8rem !important;
-  font-weight: 700 !important;
+  font-size: 2.0rem !important;
+  font-weight: 800 !important;
   color: white !important;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 1px;
+  padding: 10px 20px !important;
+  margin-right: 30px !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-radius: 6px;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* Si tu título está en otro lugar */
-h1.title {
-  font-size: 2.5rem !important;
-  color: #d35400 !important;
-  border-bottom: 3px solid #ff6600;
-  padding-bottom: 15px;
-  margin-bottom: 25px;
-}
-
-/* 3. MENÚ PRINCIPAL */
-.navbar .navbar-nav .nav-link {
+/* 3. ELEMENTOS DEL MENÚ (Inicio, Programación, etc.) */
+.navbar-nav .nav-link {
   color: white !important;
   font-weight: 600;
   font-size: 1.1rem;
-  padding: 10px 20px !important;
+  padding: 12px 20px !important;
   margin: 0 5px;
   border-radius: 4px;
   transition: all 0.3s ease;
 }
 
-.navbar .navbar-nav .nav-link:hover {
-  background-color: rgba(255, 255, 255, 0.2) !important;
+/* 4. ELEMENTOS DEL MENÚ AL PASAR MOUSE */
+.navbar-nav .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.25) !important;
   transform: translateY(-2px);
 }
 
-/* 4. MENÚ DESPLEGABLE (como UAH) */
-.dropdown-menu {
-  background-color: #ffffff !important;
+/* 5. MENÚ DESPLEGABLE "Clases" */
+.navbar-nav .dropdown-menu {
+  background-color: white !important;
   border: 2px solid #ff6600 !important;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-  min-width: 250px;
+  margin-top: 10px !important;
 }
 
-.dropdown-item {
-  color: #333333 !important;
+.navbar-nav .dropdown-item {
+  color: #333 !important;
   font-weight: 500;
   padding: 10px 20px;
-  border-bottom: 1px solid #f0f0f0;
 }
 
-.dropdown-item:hover {
+.navbar-nav .dropdown-item:hover {
   background-color: #fff5e6 !important;
   color: #d35400 !important;
 }
 
-/* 5. ENCABEZADOS SECUNDARIOS */
+/* 6. CONTENIDO PRINCIPAL (lo que SÍ se ve) */
+body {
+  background-color: #ffffff !important;
+  color: #333333 !important;
+  padding-top: 20px;
+}
+
+/* 7. TÍTULO PRINCIPAL EN index.qmd */
+h1:first-of-type {
+  font-size: 2.8rem !important;
+  color: #d35400 !important;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #ff6600;
+}
+
+/* 8. SUBTÍTULOS */
 h2 {
   color: #a04000 !important;
-  border-left: 5px solid #ff6600;
-  padding-left: 15px;
-  margin-top: 30px;
-}
-
-h3 {
-  color: #333333 !important;
-  font-weight: 600;
-}
-
-/* 6. BOTONES UAH */
-.btn-primary {
-  background: linear-gradient(to right, #d35400, #ff6600) !important;
-  border: none !important;
-  border-radius: 4px;
-  padding: 10px 25px;
-  font-weight: 600;
-}
-
-.btn-primary:hover {
-  background: linear-gradient(to right, #a04000, #e65c00) !important;
-  transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(210, 84, 0, 0.3);
-}
-
-/* 7. TABLAS ESTILO UAH */
-.table {
-  border: 1px solid #dee2e6;
-  border-radius: 8px;
-  overflow: hidden;
-}
-
-.table thead {
-  background: linear-gradient(135deg, #ff6600 0%, #d35400 100%) !important;
-  color: white !important;
-}
-
-.table-striped tbody tr:nth-of-type(odd) {
-  background-color: #fff9f0 !important;
-}
-
-/* 8. BLOQUES DE CÓDIGO */
-pre {
-  background-color: #2d3436 !important;
-  color: #dfe6e9 !important;
   border-left: 4px solid #ff6600;
-  border-radius: 0 8px 8px 0;
+  padding-left: 15px;
+  margin-top: 35px;
 }
 
-code {
-  background-color: #fff5e6;
-  color: #d35400;
-  padding: 2px 6px;
-  border-radius: 3px;
-}
-
-/* 9. PIE DE PÁGINA */
-footer {
-  background-color: #2d3436 !important;
-  color: #b2bec3 !important;
-  padding: 30px 0;
-  margin-top: 50px;
-  border-top: 5px solid #ff6600;
-}
-
-/* 10. ENLACES */
+/* 9. ENLACES EN EL CONTENIDO */
 a {
   color: #d35400 !important;
-  text-decoration: none;
   font-weight: 500;
 }
 
@@ -143,10 +96,15 @@ a:hover {
   text-decoration: underline;
 }
 
-/* 11. CONTENEDOR PRINCIPAL */
-.container-fluid {
-  background-color: #ffffff !important;
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.05);
+/* 10. RESPONSIVE (para móviles) */
+@media (max-width: 768px) {
+  .navbar-brand {
+    font-size: 1.6rem !important;
+    padding: 8px 15px !important;
+  }
+  
+  .navbar-nav .nav-link {
+    font-size: 1rem !important;
+    padding: 10px 15px !important;
+  }
 }
