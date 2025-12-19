@@ -20,6 +20,7 @@ editor: visual
 
 📄 [Ver presentación (PDF)](../clases/clase_1_octubre.pdf){target="_blank"}
 
+````{=html}
 <div class="pdf-container" style="border: 1px solid #ddd; border-radius: 5px; margin: 20px 0;">
 <embed src="../clases/clase_1_octubre.pdf" 
        type="application/pdf" 
