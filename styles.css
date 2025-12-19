@@ -10,9 +10,16 @@
 
 /* 2. TÍTULO "ESTADÍSTICA IV" EN LA BARRA */
 .navbar-brand {
-  font-size: 1.05rem;   /* valor actual suele ser ~1.25rem */
-  font-weight: 600;     /* mantiene presencia sin ser pesado */
-  letter-spacing: 0.04em;
+  font-size: 1.35rem !important;   /* más grande que Programación */
+  font-weight: 700 !important;
+  letter-spacing: 0.06em;
+  color: #ffffff !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.navbar-brand:hover {
+  color: #fff3e0 !important;
 }
 
 /* 3. ELEMENTOS DEL MENÚ (Inicio, Programación, etc.) */
@@ -73,17 +80,25 @@ h1.title {
 /* ---------------------------------------------------------
    7. SUBTÍTULO INSTITUCIONAL
    --------------------------------------------------------- */
+/* ---------------------------------------------------------
+   SUBTÍTULO INSTITUCIONAL
+--------------------------------------------------------- */
 .subtitle {
   display: block;
   text-align: center;
-  font-size: 1.05rem;
-  font-weight: 500;
-  color: #555555;
-  margin-top: 0.5rem;
-  margin-bottom: 2.5rem;
-  padding-bottom: 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #444444;
+  margin-top: 0.75rem;
+  margin-bottom: 2.8rem;
+  padding-bottom: 0.9rem;
   border-bottom: 2px solid #ff6600;
 }
+.subtitle {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
 
 /* 8. SUBTÍTULOS */
 h2 {
