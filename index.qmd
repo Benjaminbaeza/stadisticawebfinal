@@ -17,7 +17,7 @@ de resultados estadísticos y su aplicación empírica mediante **software espec
 
 ::: {.column width="45%"}
 
-![](images/portada.png){fig-alt="Visualización estadística" width=90%}
+![](Imagen_estadistica.png){fig-alt="Visualización estadística" width=90%}
 
 :::
 :::
