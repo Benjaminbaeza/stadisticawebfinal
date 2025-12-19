@@ -10,16 +10,6 @@ Este curso introduce técnicas de análisis exploratorio de datos utilizadas en 
 investigación social, con énfasis en la interpretación sustantiva de resultados
 estadísticos y su aplicación empírica mediante software especializado.
 
-## II. Proposito de Aprendizaje:
-
-Al finalizar el curso, el estudiantado será capaz de:
-
-1. identificar las diferencias claves entre las técnicas de análisis exploratorio
-
-2. Interpretar la información derivada de software estadísticos de cada técnica. 
-
-3. Aplicar las diferentes técnicas de análisis exploratorio a problemas de investigación 
-social.  
 
 
 ## III. Estructura general del curso
