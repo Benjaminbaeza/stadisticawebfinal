@@ -1,56 +1,75 @@
 ---
-title: "Estadistica IV"
-subtitle: ""
+title: "Estadística IV"
+subtitle: "Departamento de Sociología · Facultad de Ciencias Sociales  
+Universidad Alberto Hurtado"
+page-layout: full
 ---
 
+::: {.columns .v-center}
+::: {.column width="55%"}
 
-## I. Presentación del curso
+### CSSOCIAL 6601-SOC1 (1537)  
+**Segundo semestre 2026**
 
-Este curso introduce técnicas de análisis exploratorio de datos utilizadas en la
-investigación social, con énfasis en la interpretación sustantiva de resultados
-estadísticos y su aplicación empírica mediante software especializado.
+Curso orientado a la introducción de técnicas de **análisis exploratorio de datos**
+utilizadas en la investigación social, con énfasis en la **interpretación sustantiva**
+de resultados estadísticos y su aplicación empírica mediante **software especializado**.
 
-
-
-## III. Estructura general del curso
-
-El curso se organiza en tres unidades:
-
-- **Unidad I:** Análisis de Correspondencias.
-- **Unidad II:** Análisis Factorial y Componentes Principales.
-- **Unidad III:** Análisis de Conglomerados.
-
-El detalle de contenidos se encuentra en la sección **Programación**.
-
-
-## IV. Información del curso:
-
-::: {.callout-note}
-## Detalles
-
-- **Profesora:** Carolina Aguilera
-- **Ayudante:** 
-- **Horario de Ayudantía:**
-- **Modalidad:** 
 :::
 
-## V. Antes de comenzar:
+::: {.column width="45%"}
 
-Para seguir este curso necesitarás:
+![](images/portada.png){fig-alt="Visualización estadística" width=90%}
 
-- Instalar [R](https://cran.r-project.org/) 
+:::
+:::
+
+---
+
+## Información general del curso
+
+::: {.columns}
+::: {.column}
+
+### Equipo docente
+
+**Profesora**  
+Carolina Aguilera  
+📧 caguilera@uahurtado.cl  
+
+**Ayudante**  
+Benjamin Baeza
+📧 bebaeza@alumnos.uahurtado.cl  
+
+:::
+
+::: {.column}
+
+### Datos del curso
+
+- **Día:** Miércoles  
+- **Periodo:** Agosto – Diciembre 2026  
+- **Horario:**   
+- **Sala:**  
+- **Modalidad:** Presencial  
+
+:::
+:::
+
+---
+
+## Antes de comenzar
+
+Para seguir adecuadamente el curso necesitarás:
+
+- Instalar [R](https://cran.r-project.org/)
 - Instalar [RStudio](https://posit.co/download/rstudio-desktop/)
-- Conocimientos básicos de estadística
+- Conocimientos básicos de estadística descriptiva
 
-Revisa la sección [Recursos](recursos.qmd) para guías de instalación y materiales complementarios.
-
+Revisa la sección **Recursos** para guías de instalación y materiales complementarios.
 
 ::: {.callout-tip}
-## Contacto
-
-Para consultas del curso, puedes contactarme por caguilera@uahurtado.cl 
+### Contacto
+Para consultas académicas o administrativas, escribe a  
+**caguilera@uahurtado.cl**
 :::
----
-
-```{}
-```
