@@ -45,10 +45,7 @@ En esta clase se espera que el estudiantado sea capaz de:
 - Revisión del programa del curso.
 - Instalación de R y RStudio.
 - Exploración inicial del entorno de trabajo.
+
 ---
 
-```{}
-````
 
-```         
-```
