@@ -3,7 +3,7 @@ format: html
 editor: visual
 ---
 
-## title: "Clase 8 · Análisis Factorial Exploratorio (EFA)"
+## "Clase 8 · Análisis Factorial Exploratorio (EFA)"
 
 ::: callout-note
 **Fecha:** martes 1 de octubre
@@ -26,3 +26,12 @@ editor: visual
        width="100%" 
        height="650px" />
 </div>
+
+## Lecturas Asociadas
+- Aldás, Joaquín y Uriel, Ezequiel (2017). 
+Capítulo 12. ” - Cea D’ Ancona, M. A. Capítulo 5 
+- Field. Discovering statistics using R. 
+Capítulo 17 “Exploratory factor analysis 
+- Lloret-Segura, et al. “El análisis 
+factorial exploratorio de los ítems: una 
+guía práctica, revisada y actualizada.” 
