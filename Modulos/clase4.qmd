@@ -28,4 +28,6 @@ editor: visual
        height="650px" />
 </div>
 
-#
+## Lecturas Asociadas
+- Aldás, Joaquín y Uriel, Ezequiel (2017), 
+Capítulo 11
