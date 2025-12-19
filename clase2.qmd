@@ -40,9 +40,4 @@ editor: visual
 - Revisión del programa del curso.
 - Instalación de R y RStudio.
 - Exploración inicial del entorno de trabajo.
----
 
-## 
-
-```{}
-````
