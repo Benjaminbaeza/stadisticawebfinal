@@ -30,6 +30,6 @@ editor: visual
 
 ---
 
-# Lectura Asociada
+## Lectura Asociada
 -  Aldás, Joaquín y Uriel, Ezequiel (2017). 
 Capítulo 5 - “Correspondence Analysis” 
