@@ -8,9 +8,7 @@ page-layout: full
 ::: {.columns .v-center}
 ::: {.column width="55%"}
 
-### CSSOCIAL 6601-SOC1 (1537)  
-**Segundo semestre 2026**
-
+### Segundo semestre 2026
 Curso orientado a la introducción de técnicas de **análisis exploratorio de datos**
 utilizadas en la investigación social, con énfasis en la **interpretación sustantiva**
 de resultados estadísticos y su aplicación empírica mediante **software especializado**.
