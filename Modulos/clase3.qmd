@@ -6,7 +6,7 @@ editor: visual
 ## title: "Clase 2 · Prueba Chi-cuadrado (X²)"
 
 ::: callout-note
-**Fecha:** martes 13 de agosto
+**Fecha:** martes 20 de agosto
 :::
 
 ## Objetivos de la sesión
