@@ -3,7 +3,7 @@ format: html
 editor: visual
 ---
 
-## title: "Clase 3 · Análisis de Correspondencias Simple (AC) y Múltiple (ACM)"
+## "Clase 3 · Análisis de Correspondencias Simple (AC) y Múltiple (ACM)"
 
 ::: callout-note
 **Fecha:** martes 27 de agosto
