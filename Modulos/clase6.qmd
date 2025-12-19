@@ -3,7 +3,7 @@ format: html
 editor: visual
 ---
 
-## "Clase 8 · Análisis Factorial Exploratorio (EFA)"
+## "Modulo 6 · Análisis Factorial Exploratorio (EFA)"
 
 ::: callout-note
 **Fecha:** martes 1 de octubre
