@@ -60,14 +60,29 @@ body {
 }
 
 /* 7. TÍTULO PRINCIPAL EN index.qmd */
-h1:first-of-type {
-  font-size: 2.8rem !important;
-  color: #d35400 !important;
+h1.title {
+  font-size: 2.8rem;
+  color: #d35400;
   text-align: center;
   margin-top: 40px;
-  margin-bottom: 30px;
-  padding-bottom: 15px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
   border-bottom: 3px solid #ff6600;
+}
+
+/* ---------------------------------------------------------
+   7. SUBTÍTULO INSTITUCIONAL
+   --------------------------------------------------------- */
+.subtitle {
+  display: block;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #555555;
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid #ff6600;
 }
 
 /* 8. SUBTÍTULOS */
@@ -89,15 +104,30 @@ a:hover {
   text-decoration: underline;
 }
 
-/* 10. RESPONSIVE (para móviles) */
+/* ---------------------------------------------------------
+   10. RESPONSIVE · MÓVIL
+   --------------------------------------------------------- */
 @media (max-width: 768px) {
-  .navbar-brand {
-    font-size: 1.6rem !important;
-    padding: 8px 15px !important;
+
+  .navbar {
+    min-height: 58px !important;
   }
-  
-  .navbar-nav .nav-link {
+
+  .navbar-brand {
     font-size: 1rem !important;
-    padding: 10px 15px !important;
+    padding: 6px 12px !important;
+  }
+
+  .navbar-nav .nav-link {
+    font-size: 0.95rem !important;
+    padding: 8px 14px !important;
+  }
+
+  h1.title {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 0.95rem;
   }
 }
