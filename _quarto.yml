@@ -8,9 +8,6 @@ website:
   
   navbar:
     right:
-      
-      - href: index.qmd
-        text: Inicio
       - href: programa.qmd
         text: Programación
       - text: Clases
