@@ -3,7 +3,7 @@ format: html
 editor: visual
 ---
 
-## title: "Clase 5 · Análisis de Componentes Principales (PCA)"
+##  "Clase 5 · Análisis de Componentes Principales (PCA)"
 
 ::: callout-note
 **Fecha:** martes 10 de septiembre
@@ -26,3 +26,7 @@ editor: visual
        width="100%" 
        height="650px" />
 </div>
+
+## Lecturas Asociadas
+- Aldás, Joaquín y Uriel, Ezequiel (2017), 
+Capítulo 11
