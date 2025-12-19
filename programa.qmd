@@ -15,7 +15,17 @@ Al término de esta actividad curricular, las y los estudiantes serán capaces d
 
 ---
 
-## II. Contenidos
+## II. Estructura general del curso
+
+El curso se organiza en tres unidades:
+
+- **Unidad I:** Análisis de Correspondencias.
+- **Unidad II:** Análisis Factorial y Componentes Principales.
+- **Unidad III:** Análisis de Conglomerados.
+
+---
+
+## III. Contenidos
 
 ### UNIDAD I. Análisis de variables observadas categóricas  
 **Análisis de Correspondencias simple y múltiple**
