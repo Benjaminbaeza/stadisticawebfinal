@@ -1,28 +1,27 @@
-
 ---
 format: html
 editor: visual
 ---
 
-## title: "Clase 2 · Prueba Chi-cuadrado (X²)"
+## title: "Clase 5 · Análisis de Componentes Principales (PCA)"
 
 ::: callout-note
-**Fecha:** martes 20 de agosto
+**Fecha:** martes 10 de septiembre
 :::
 
 ## Objetivos de la sesión
 
--   Comprender la prueba Chi-cuadrado (X²) y su aplicación
--   Analizar la asociación entre variables nominales/ordinales
--   Calcular e interpretar X² manualmente y en R Studio
+-   Repasar los fundamentos del Análisis de Componentes Principales (PCA)
+-   Aprender a decidir cuántos componentes principales seleccionar
+-   Crear un índice a partir del primer componente principal
+-   Aplicar el PCA en R Studio con un caso práctico
 
 ## Presentación
 
-📄 [Ver presentación (PDF)](clases/clase_20_agosto.pdf){target="_blank"}
+📄 [Ver presentación (PDF)](clases/clase_10_septiembre.pdf){target="_blank"}
 
-````{=html}
 <div class="pdf-container" style="border: 1px solid #ddd; border-radius: 5px; margin: 20px 0;">
-<embed src="clases/clase_20_agosto.pdf" 
+<embed src="clases/clase_10_septiembre.pdf" 
        type="application/pdf" 
        width="100%" 
        height="650px" />
