@@ -1,1 +1,33 @@
+---
+format: html
+editor: visual
+---
 
+## Módulo 7 · Repaso PCA y EFA
+
+::: callout-note
+**Fecha:** martes 8 de octubre
+:::
+
+## Objetivos de la sesión
+
+- Repasar prueba Chi cuadrado
+- Repasar Análisis de Componentes Principales (PCA)
+- Comprender las diferencias entre PCA y EFA
+- Aplicar EFA con un ejemplo práctico de cohesión barrial
+
+## Presentación
+
+📄 [Ver presentación (PDF)](../clases/Clase_8_Oct_Est_IV.pdf){target="_blank"}
+
+````{=html}
+<div class="pdf-container" style="border: 1px solid #ddd; border-radius: 5px; margin: 20px 0;">
+<embed src="../clases/Clase_8_Oct_Est_IV.pdf" 
+       type="application/pdf" 
+       width="100%" 
+       height="650px" />
+</div>
+
+## Lecturas Asociadas
+- Aldás, Joaquín y Uriel, Ezequiel (2017). Capítulos 11 y 12.
+- Field. Discovering statistics using R. Capítulo 17 "Exploratory factor analysis".
