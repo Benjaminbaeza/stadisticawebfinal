@@ -26,7 +26,9 @@ website:
             href: Modulos/clase6.qmd
           - text: Modulo 7 . Repaso PCA y EFA
             href: Modulos/clase7.qmd
-            
+          - text: Modulo 8 . Aplicación EFA y Trabajo Final
+            href: Modulos/clase8.qmd
+          
 
       - href: Practicos.qmd
         text: Prácticos
