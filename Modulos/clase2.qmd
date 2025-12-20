@@ -3,7 +3,7 @@ format: html
 editor: visual
 ---
 
-## "Modulo 2 · Análisis exploratorio"
+## Módulo 2 · Análisis exploratorio
 
 ::: callout-note
 **Fecha:** martes 20 de agosto
