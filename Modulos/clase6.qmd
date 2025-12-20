@@ -3,7 +3,7 @@ format: html
 editor: visual
 ---
 
-## "Modulo 6 · Análisis Factorial Exploratorio (EFA)"
+## Módulo 6 · Análisis Factorial Exploratorio (EFA)
 
 ::: callout-note
 **Fecha:** martes 1 de octubre
@@ -11,10 +11,10 @@ editor: visual
 
 ## Objetivos de la sesión
 
--   Comprender los fundamentos del Análisis Factorial Exploratorio (EFA)
--   Diferenciar entre PCA y EFA
--   Aprender los pasos para realizar un EFA
--   Aplicar EFA en R Studio con un caso práctico de confianza institucional
+- Comprender los fundamentos del Análisis Factorial Exploratorio (EFA)
+- Diferenciar entre PCA y EFA
+- Aprender los pasos para realizar un EFA
+- Aplicar EFA en R Studio con un caso práctico de confianza institucional
 
 ## Presentación
 
@@ -29,10 +29,7 @@ editor: visual
 </div>
 
 ## Lecturas Asociadas
-- Aldás, Joaquín y Uriel, Ezequiel (2017). 
-Capítulo 12. ” - Cea D’ Ancona, M. A. Capítulo 5 
-- Field. Discovering statistics using R. 
-Capítulo 17 “Exploratory factor analysis 
-- Lloret-Segura, et al. “El análisis 
-factorial exploratorio de los ítems: una 
-guía práctica, revisada y actualizada.” 
+- Aldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 12.
+- Cea D'Ancona, M. A. Capítulo 5.
+- Field. Discovering statistics using R. Capítulo 17 "Exploratory factor analysis".
+- Lloret-Segura, et al. "El análisis factorial exploratorio de los ítems: una guía práctica, revisada y actualizada."
