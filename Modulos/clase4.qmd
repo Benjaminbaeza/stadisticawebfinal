@@ -3,7 +3,7 @@ format: html
 editor: visual
 ---
 
-## "Modulo 4 · Análisis de Componentes Principales (PCA)"
+## Módulo 4 · Análisis de Componentes Principales (PCA)
 
 ::: callout-note
 **Fecha:** martes 3 de septiembre
