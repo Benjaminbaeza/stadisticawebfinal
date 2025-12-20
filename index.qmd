@@ -8,10 +8,8 @@ page-layout: full
 ::: {.columns .v-center}
 ::: {.column width="55%"}
 
-# ID CSS1690 
-### Segundo Semestre 2026
-### Departamento de Sociologia
-### Universidad Alberto Hurtado
+# ID CSS1690 - Segundo Semestre
+### Descripción del curso
 Curso orientado a la introducción de técnicas de **análisis exploratorio de datos**
 utilizadas en la investigación social, con énfasis en la **interpretación sustantiva**
 de resultados estadísticos y su aplicación empírica mediante **software especializado**.
