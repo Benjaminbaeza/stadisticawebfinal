@@ -25,7 +25,7 @@ website:
           - text: Modulo 6 . Análisis Factorial Exploratorio (EFA)
             href: Modulos/clase6.qmd
           - text: Modulo 7 . Repaso PCA y EFA
-            href: Modulos/clase7.qm
+            href: Modulos/clase7.qmd
             
 
       - href: Practicos.qmd
