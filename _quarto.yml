@@ -29,7 +29,12 @@ website:
           - text: Modulo 8 . Aplicación EFA y Trabajo Final
             href: Modulos/clase8.qmd
           
-
+ navbar:
+    right:
+      - href: programa.qmd
+        text: Programación
+      - text: Clases
+        menu:
       - href: Practicos.qmd
         text: Prácticos
       - href: ayudantia.qmd
