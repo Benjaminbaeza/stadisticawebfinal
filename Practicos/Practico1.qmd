@@ -1,5 +1,6 @@
 ---
 title: "Práctico 1: Tablas de contingencia y Chi-cuadrado"
+css: styles.css
 ---
 
 ## Objetivo del práctico
