@@ -42,7 +42,7 @@ website:
 
 format:
   html:
-    theme: none
+    theme: cosmo
     toc: true
     toc-location: right
     toc-title: "En esta página"
