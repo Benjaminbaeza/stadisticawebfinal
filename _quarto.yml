@@ -29,14 +29,13 @@ website:
           - text: Modulo 8 . Aplicación EFA y Trabajo Final
             href: Modulos/clase8.qmd
           
- navbar:
-    right:
-      - href: programa.qmd
-        text: Programación
-      - text: Clases
-        menu:
-      - href: Practicos.qmd
-        text: Prácticos
+
+      - text: Prácticos
+        menu: 
+          - text: Practico 1: Creación de tablas de contingencia en R y
+cálculo e interpretación de X 
+          - href: Practicos.qmd
+        
       - href: ayudantia.qmd
         text: Ayudantias
         
