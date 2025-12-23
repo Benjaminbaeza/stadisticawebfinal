@@ -34,7 +34,7 @@ website:
         menu: 
           - text: Practico 1: Creación de tablas de contingencia en R y
 cálculo e interpretación de X 
-          - href: Practicos.qmd
+          - href: Practicos/Practico1.qmd
         
       - href: ayudantia.qmd
         text: Ayudantias
