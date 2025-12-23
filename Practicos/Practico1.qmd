@@ -143,9 +143,31 @@ porcentaje columna: % que cada frecuencia conjunta representa sobre la marginal 
 porcentaje total: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla
 Veamos cómo incorporar el porcentaje fila y columna en la tabla.
 
+```{r}
+sjPlot::sjt.xtab(var.row = proc_data$educacion, 
+                 var.col = proc_data$aut_demo, 
+                 show.summary = F, 
+                 emph.total = T, 
+                 show.row.prc = T, # porcentaje fila
+                 show.col.prc = T, # porcentaje columna
+                 encoding= "UTF-8")
+```
 
+[Ver tabla de contingencia](practicos/tabla_contingenciapor.html)
 
-## Prueba Chi-cuadrado (X²)
+Aquí, los porcentajes fila aparecen en azul y los porcentajes columna en verde.
+
+# Prueba Chi-cuadrado (X²)
+
+Calculo en R.
+
+```{r}
+chi_results <- chisq.test(table(proc_data$educacion, proc_data$aut_demo))
+
+stats.table <- tidy(chi_results, conf_int = T)
+nice_table(stats.table)
+```
+
 
 ### Cálculo manual de X²
 
