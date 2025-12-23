@@ -1,3 +1,21 @@
 ---
-title: "Practicos"
+title: "Práctico 1: Tablas de contingencia y Chi-cuadrado"
+date: 
 ---
+
+## Objetivo del práctico
+
+## Base de datos utilizada
+
+## Preparación de los datos
+
+## Tabla de contingencia
+
+## Prueba Chi-cuadrado (X²)
+
+### Cálculo manual de X²
+
+### Cálculo de X² en R
+
+## Interpretación del resultado
+
