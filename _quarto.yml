@@ -28,10 +28,11 @@ website:
             href: Modulos/clase7.qmd
           - text: Modulo 8 . Aplicación EFA y Trabajo Final
             href: Modulos/clase8.qmd
-       - text: Prácticos
-          menu:
-           - text: "Práctico 1: Creación de tablas de contingencia y Chi-cuadrado"
-             href: Practicos/Practico1.qmd
+
+      - text: Prácticos
+        menu:
+          - text: "Práctico 1: Creación de tablas de contingencia y Chi-cuadrado"
+            href: Practicos/Practico1.qmd
 
         
       - href: ayudantia.qmd
