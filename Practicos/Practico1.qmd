@@ -8,13 +8,11 @@ El objetivo de este práctico es construir tablas de contingencia a partir de va
 y aplicar la prueba de independencia Chi-cuadrado (X²), tanto de forma manual como mediante R,
 con el fin de interpretar la asociación entre variables.
 
-## Base de datos utilizada
-
-Para ello, utilizaremos la base de datos de la cuarta ola del Estudio Longitudinal Social de Chile 2019 con el objetivo de analizar agrupaciones de variables categóricas nominales.
+Para ello y de forma ilustrativa, utilizaremos la base de datos de la cuarta ola del Estudio Longitudinal Social de Chile 2019 con el objetivo de analizar agrupaciones de variables categóricas nominales.
 
 ## Preparación de los datos
 
-Antes de comenzar, prepararemos nuestros datos. Inicioamos cargando las librerias necesarias.
+Antes de comenzar, prepararemos nuestros datos. Iniciamos cargando las librerias necesarias.
 
 ```{r, eval=FALSE}
 pacman::p_load(tidyverse, # Manipulacion datos
