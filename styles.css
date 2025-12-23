@@ -141,28 +141,73 @@ a:hover {
 
 /* 1. El CUADRO/CAJA exterior (pre) - Fondo negro plomizo */
 pre.sourceCode {
-    background-color: #2c2c2c !important; /* Fondo negro plomizo */
+    background-color: #2c2c2c !important;
     border: 1px solid #444 !important;
     border-radius: 5px;
     padding: 1em;
+    margin: 1em 0;
 }
 
 /* 2. El código DENTRO del cuadro (code) - Texto base naranjoso */
 pre.sourceCode code {
     color: #f0a830 !important; /* Naranjoso base */
-    background-color: transparent !important; /* Mantiene el fondo del pre */
+    background-color: transparent !important;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+    font-size: 0.95em;
 }
 
-/* 3. Resaltado de SINTAXIS (si Quarto lo aplica automáticamente) */
-/* Comentarios - Verde lima */
-code span.co { color: #d4ff00 !important; } /* comment */
-/* Palabras clave, funciones - Amarillo */
-code span.kw { color: #ffcc00 !important; } /* keyword */
-code span.fu { color: #ffcc00 !important; } /* function */
-/* Cadenas de texto y números - Naranja (igual que el base o un tono diferente) */
-code span.st { color: #f0a830 !important; } /* string */
-code span.dv { color: #f0a830 !important; } /* number/value */
-/* Puntuación (paréntesis, comas) - Gris claro para contraste */
-code span.op { color: #cccccc !important; } /* operator */
+/* 3. RESALTADO DE SINTAXIS - Esquema de colores personalizado */
+
+/* COMENTARIOS - Verde lima brillante */
+code span.co { 
+    color: #d4ff00 !important; 
+    font-style: italic;
+}
+
+/* PALABRAS CLAVE (library, function, if, for) - BLANCO */
+code span.kw { 
+    color: #ffffff !important; 
+    font-weight: bold;
+}
+
+/* FUNCIONES (p_load, filter, select) - BLANCO */
+code span.fu { 
+    color: #ffffff !important; 
+}
+
+/* CADENAS DE TEXTO - Naranja (igual que el base) */
+code span.st { 
+    color: #f0a830 !important; 
+}
+
+/* NÚMEROS Y VALORES - Naranja */
+code span.dv { 
+    color: #f0a830 !important; 
+}
+
+/* PUNTUACIÓN (paréntesis, comas, corchetes) - Gris claro */
+code span.op { 
+    color: #cccccc !important; 
+}
+
+/* ARGUMENTOS/VARIABLES (dentro de funciones) - Gris claro */
+code span.va { 
+    color: #cccccc !important; 
+}
+
+/* CONSTANTES/NOMBRES ESPECIALES - Gris claro */
+code span.cn { 
+    color: #cccccc !important; 
+}
+
+/* OPERADORES (+, -, =, etc.) - Gris claro */
+code span.ot { 
+    color: #cccccc !important; 
+}
+
+/* ERRORES (sintaxis incorrecta) - Rojo suave para debugging */
+code span.er { 
+    color: #ff6b6b !important; 
+}
 
 
