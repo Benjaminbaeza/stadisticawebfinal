@@ -168,6 +168,14 @@ stats.table <- tidy(chi_results, conf_int = T)
 nice_table(stats.table)
 ```
 
+[Ver tabla de contingencia](practicos/chicuadrado.html)
+
+Visualizacion de esta prueba y su zona de rechazo.
+
+```{r}
+ggchisqtest(chi_results)
+```
+
 
 ### Cálculo manual de X²
 
