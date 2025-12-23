@@ -1,1 +1,41 @@
+---
+format: html
+editor: visual
+---
 
+## Módulo 2 · Análisis de Conglomerados (Cluster)
+
+::: callout-note
+**Fecha:** martes 22 de octubre
+:::
+
+## Objetivos de la sesión
+
+- Comprender la lógica y usos del análisis de conglomerados
+- Diferenciar métodos jerárquicos y no jerárquicos
+- Aplicar método del centroide en R con datos simulados
+- Realizar ejercicio práctico con datos ELSOC
+
+## Presentación
+
+📄 [Ver presentación (PDF)](../clases/Clase_22_octubre_Conglomerados_final.pdf){target="_blank"}
+
+<div class="pdf-container" style="border: 1px solid #ddd; border-radius: 5px; margin: 20px 0;">
+<embed src="../clases/Clase_22_octubre_Conglomerados_final.pdf" 
+       type="application/pdf" 
+       width="100%" 
+       height="650px" />
+</div>
+
+## Ejercicio para Control 2 (0,2 puntos)
+
+### Instrucciones:
+Elija algún grupo de variables continuas o de Likert de la encuesta ELSOC para las que usted considere adecuado hacer un análisis de conglomerado, **es decir, que usted considere generen grupos diferenciados de personas.**
+
+### Pasos a seguir:
+1. Estandarice las variables.
+2. Considere hacer un muestreo de pocos casos para facilitar el trabajo del computador y la interpretación (100 casos por ejemplo).
+3. Calcule la matriz de distancias euclidianas al cuadrado.
+4. Aplique el análisis de conglomerado con método del centroide.
+5. Interprete los resultados.
+6. Justifique cuántos conglomerados seleccionó y por qué.
