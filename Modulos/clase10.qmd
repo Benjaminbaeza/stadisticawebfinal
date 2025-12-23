@@ -1,1 +1,41 @@
+---
+format: html
+editor: visual
+---
 
+## Módulo 2 · Análisis de Conglomerados (Cluster) - Métodos Jerárquicos
+
+::: callout-note
+**Fecha:** martes 29 de octubre
+:::
+
+## Objetivos de la sesión
+
+- Comprender medidas de distancia y similitud en análisis de conglomerados
+- Diferenciar algoritmos jerárquicos: centroide, vecino más cercano/lejano, Ward, etc.
+- Aplicar método de Ward en R con datos simulados
+- Realizar ejercicio práctico con datos ELSOC
+
+## Presentación
+
+📄 [Ver presentación (PDF)](../clases/Clase_29_octubre.pdf){target="_blank"}
+
+<div class="pdf-container" style="border: 1px solid #ddd; border-radius: 5px; margin: 20px 0;">
+<embed src="../clases/Clase_29_octubre.pdf" 
+       type="application/pdf" 
+       width="100%" 
+       height="650px" />
+</div>
+
+## Ejercicio para Control 2 (0,2 puntos)
+
+### Instrucciones:
+Elija algún grupo de variables continuas o de Likert de la encuesta ELSOC para las que usted considere adecuado hacer un análisis de conglomerado, **es decir, que usted considere generen grupos diferenciados de personas.**
+
+### Pasos a seguir:
+1. Estandarice las variables.
+2. Considere hacer un muestreo de pocos casos para facilitar el trabajo del computador y la interpretación (100 casos por ejemplo).
+3. Calcule la matriz de distancias euclidianas al cuadrado.
+4. Aplique el análisis de conglomerado con **método de Ward**.
+5. Interprete los resultados.
+6. Justifique cuántos conglomerados seleccionó y por qué.
