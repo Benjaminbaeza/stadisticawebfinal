@@ -132,6 +132,19 @@ sjPlot::sjt.xtab(var.row = proc_data$educacion, var.col = proc_data$aut_demo,
 
 [Ver tabla de contingencia](practicos/tabla_contingencia.html)
 
+Sumado a esto, tenemos:
+
+Frecuencias absolutas: números que aparencen en la tabla (ya sean conjuntas o marginales)
+
+Frecuencias relativas:
+
+porcentaje fila: % que cada frecuencia conjunta representa sobre la marginal de su fila
+porcentaje columna: % que cada frecuencia conjunta representa sobre la marginal de su columna
+porcentaje total: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla
+Veamos cómo incorporar el porcentaje fila y columna en la tabla.
+
+
+
 ## Prueba Chi-cuadrado (X²)
 
 ### Cálculo manual de X²
