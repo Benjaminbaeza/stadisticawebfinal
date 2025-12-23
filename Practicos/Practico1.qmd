@@ -16,7 +16,7 @@ Para ello, utilizaremos la base de datos de la cuarta ola del Estudio Longitudin
 
 Antes de comenzar, prepararemos nuestros datos. Inicioamos cargando las librerias necesarias.
 
-```{r}
+```{r, echo=TRUE}
 pacman::p_load(tidyverse, # Manipulacion datos
                sjPlot, # Tablas
                psych, # Correlaciones
@@ -31,18 +31,18 @@ rm(list = ls()) # para limpiar el entorno de trabajo
 
 Luego vamos a cargar la base de datos directamente desde internet (En este caso la base de datos ELSOC esta alojada en Harvard Dataverse)
 
-```{r}
+```{r, echo=TRUE}
 #Cargamos la base de datos desde internet
 load(url("https://dataverse.harvard.edu/api/access/datafile/7245118")) 
 
 dim(elsoc_long_2016_2022.2)
 ```
-```{r}
+```{r, echo=TRUE}
 [1] 18035   750
 ```
 Contamos con 750 variables (columnas) y 18035 observaciones (filas).
 
-```{r}
+```{r, echo=TRUE}
 proc_data <- elsoc_long_2016_2022.2 %>% filter(ola=="4") %>% 
   select(c29, # Confianza generalizada
          m01# nivel educacional
@@ -70,7 +70,7 @@ c25 → aut_demo (preferencia entre autoritarismo o democracia).
 ### Con names(proc_data) vemos los nombres de las variables (columnas)
 
 
-```{r}
+```{r, echo=TRUE}
 proc_data$educacion <- car::recode(proc_data$educacion, "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
 
 proc_data$educacion <- sjlabelled::set_labels(proc_data$educacion,
@@ -96,7 +96,7 @@ proc_data$educacion <- sjlabelled::set_labels(proc_data$educacion, labels=c("Edu
 
 Lo que estamos haciendo en el fondo es poner etiquetas de valor para que los numeros (1,2,3) tengan nombres legibles.
 
-```{r}
+```{r, echo=TRUE}
 #sjmisc::frq(proc_data$educacion)
 
 Value |              Label |    N | Raw % | Valid % | Cum. %
@@ -124,7 +124,7 @@ Además, podemos presentar los totales de cada fila y columna al exterior de la 
 
 En este caso veremos un ejemplo con nivel educacional y autoritarismo o democracia.
 
-```{r}
+```{r, echo=TRUE}
 sjPlot::sjt.xtab(var.row = proc_data$educacion, var.col = proc_data$aut_demo, 
                  show.summary = F, emph.total = T, encoding = "UTF-8")
 ```
@@ -142,7 +142,7 @@ porcentaje columna: % que cada frecuencia conjunta representa sobre la marginal 
 porcentaje total: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla
 Veamos cómo incorporar el porcentaje fila y columna en la tabla.
 
-```{r}
+```{r, echo=TRUE}
 sjPlot::sjt.xtab(var.row = proc_data$educacion, 
                  var.col = proc_data$aut_demo, 
                  show.summary = F, 
@@ -160,7 +160,7 @@ Aquí, los porcentajes fila aparecen en azul y los porcentajes columna en verde.
 
 Calculo en R.
 
-```{r}
+```{r, echo=TRUE}
 chi_results <- chisq.test(table(proc_data$educacion, proc_data$aut_demo))
 
 stats.table <- tidy(chi_results, conf_int = T)
@@ -171,7 +171,7 @@ nice_table(stats.table)
 
 Visualizacion de esta prueba y su zona de rechazo.
 
-```{r}
+```{r, echo=TRUE}
 ggchisqtest(chi_results)
 ```
 
