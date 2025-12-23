@@ -134,3 +134,66 @@ a:hover {
     font-size: 0.95rem;
   }
 }
+
+/* ===== BLOQUES DE CÓDIGO ===== */
+
+/* Fondo del bloque */
+pre {
+  background-color: #0e0e0e; /* negro profundo */
+  border-radius: 8px;
+  padding: 1em;
+  border: 1px solid #2a2a2a;
+}
+
+/* Código interno */
+code {
+  color: #f5f5f5; /* blanco suave */
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 0.95rem;
+}
+
+/* Comentarios */
+.hljs-comment,
+.hljs-quote {
+  color: #7fbf7f; /* verde lima suave */
+  font-style: italic;
+}
+
+/* Funciones / keywords */
+.hljs-keyword,
+.hljs-built_in {
+  color: #ff9f1c; /* naranjo */
+  font-weight: 500;
+}
+
+/* Strings */
+.hljs-string {
+  color: #9be564; /* verde lima */
+}
+
+/* Números */
+.hljs-number {
+  color: #f1c40f; /* amarillo/naranjo */
+}
+
+/* Operadores */
+.hljs-operator {
+  color: #ffffff;
+}
+
+/* ===== TIPOGRAFÍA GLOBAL: APTOS ===== */
+
+body {
+  font-family: "Aptos", "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #eaeaea;
+  background-color: #121212;
+}
+
+/* Títulos */
+h1, h2, h3, h4, h5 {
+  font-family: "Aptos", "Segoe UI", "Inter", sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+}
