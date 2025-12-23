@@ -130,6 +130,7 @@ sjPlot::sjt.xtab(var.row = proc_data$educacion, var.col = proc_data$aut_demo,
                  show.summary = F, emph.total = T, encoding = "UTF-8")
 ```
 
+[Ver tabla de contingencia](practicos/tabla_contingencia.html)
 
 ## Prueba Chi-cuadrado (X²)
 
