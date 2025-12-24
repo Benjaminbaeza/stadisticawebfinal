@@ -30,6 +30,45 @@ editor: visual
 
 ---
 
+## Practico 3
+
+En este práctico deberá aplicar Análisis de Correspondencias (AC) o Análisis de Correspondencias Múltiple (ACM) utilizando la base de datos ELSOC. Puede trabajar con las mismas variables usadas en el práctico anterior o seleccionar variables nuevas. El trabajo puede realizarse de manera individual o grupal.
+
+Debe realizar UNO de los siguientes ejercicios:
+
+Análisis de Correspondencias Simple (AC)
+Replicar la segunda parte del ejercicio propuesto por el profesor Kevin Carrasco, utilizando una base de datos a elección, desde la sección “Análisis de correspondencias simple”.
+
+Análisis de Correspondencias Simple (AC)
+Realizar uno de los ejercicios propuestos en el Práctico 03, utilizando la misma base de datos pero variables distintas.
+
+Análisis de Correspondencias Múltiple (ACM)
+Realizar el ejercicio de ACM propuesto en el Práctico 03, utilizando la misma base de datos pero variables distintas. En este caso, debe incluir al menos una tercera variable.
+
+Requisitos del informe
+
+El script entregado debe incluir:
+
+El código utilizado para el análisis.
+
+Una interpretación del resultado, abordando:
+
+Existencia o no de asociación entre las variables.
+
+Masa.
+
+Inercia.
+
+Aporte de cada dimensión al modelo.
+
+Categorías que mejor explican el modelo.
+
+Finalmente, el script debe subirse al buzón de tareas de U-Campus, indicando los integrantes del grupo (si corresponde).
+
+---
+
 ## Lectura Asociada
 -  Aldás, Joaquín y Uriel, Ezequiel (2017). 
 Capítulo 5 - “Correspondence Analysis” 
+
+---
