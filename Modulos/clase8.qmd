@@ -1,6 +1,7 @@
 ---
 format: html
 editor: visual
+source-url: https://ocscoes.github.io/medicion-cohesion-LA/intro.html
 ---
 
 ## Módulo 8 · Aplicación EFA y Trabajo Final
