@@ -1,34 +1,44 @@
+# 🎯 Objetivos del Práctico
+
+## Propósito General
+Este práctico tiene como objetivo desarrollar competencias en el **análisis de asociación entre variables categóricas** mediante:
+
+1. **Construcción** de tablas de contingencia
+2. **Aplicación** de la prueba de independencia Chi-cuadrado (χ²)
+3. **Interpretación** de resultados estadísticos y sustantivos
+4. **Contraste** entre cálculo manual y automatizado
+
+## Contexto del Estudio
+Utilizaremos la **cuarta ola (2019) del Estudio Longitudinal Social de Chile (ELSOC)**, una encuesta panel representativa nacional, para analizar la relación entre **nivel educacional** y **preferencias político-democráticas**.
+
 ---
-title: "Práctico 1: Tablas de contingencia y Chi-cuadrado"
-css: styles.css
----
 
-## Objetivo del práctico
+# 🔧 Preparación del Entorno Analítico
 
-El objetivo de este práctico es construir tablas de contingencia a partir de variables categóricas
-y aplicar la prueba de independencia Chi-cuadrado (X²), tanto de forma manual como mediante R,
-con el fin de interpretar la asociación entre variables.
+## 1.1 Instalación y Carga de Paquetes
 
-Para ello y de forma ilustrativa, utilizaremos la base de datos de la cuarta ola del Estudio Longitudinal Social de Chile 2019 con el objetivo de analizar agrupaciones de variables categóricas nominales.
-
-## Preparación de los datos
-
-Antes de comenzar, prepararemos nuestros datos. Iniciamos cargando las librerias necesarias.
-
-```{r, eval=FALSE}
-pacman::p_load(tidyverse, # Manipulacion datos
-               sjPlot, # Tablas
-               psych, # Correlaciones
-               DescTools, # Tablas
-               gginference, # Visualizacion 
-               rempsyc, # Reporte
-               broom) # Varios
-
-options(scipen = 999) # para desactivar notacion cientifica
-rm(list = ls()) # para limpiar el entorno de trabajo
+```{r librerias, eval=FALSE}
+# Carga de paquetes necesarios
+pacman::p_load(
+  tidyverse,      # Manipulación y visualización de datos
+  sjPlot,         # Tablas y gráficos para ciencias sociales
+  psych,          # Análisis psicométricos y correlaciones
+  DescTools,      # Funciones descriptivas avanzadas
+  gginference,    # Visualización de pruebas inferenciales
+  rempsyc,        # Reportes estadísticos formateados
+  broom,          # Organización de resultados en dataframes
+  sjlabelled,     # Manejo de etiquetas de variables
+  sjmisc          # Funciones auxiliares para análisis
+)
 ```
+# Configuración del entorno R
+options(scipen = 999)    # Desactiva notación científica
+rm(list = ls())          # Limpia el entorno de trabajo
+set.seed(123)            # Fija semilla para reproducibilidad
 
+# Carga de la base de datos
 Luego vamos a cargar la base de datos directamente desde internet (En este caso la base de datos ELSOC esta alojada en Harvard Dataverse)
+
 
 ```{r, eval=FALSE}
 #Cargamos la base de datos desde internet
@@ -36,10 +46,15 @@ load(url("https://dataverse.harvard.edu/api/access/datafile/7245118"))
 
 dim(elsoc_long_2016_2022.2)
 ```
+##Salida Esperada:
 ```{r, eval=FALSE}
 [1] 18035   750
 ```
-Contamos con 750 variables (columnas) y 18035 observaciones (filas).
+**Interpretación:** La base contiene 18,035 casos (entrevistados) medidos en 750 variables a lo largo de diferentes olas.
+
+---
+
+Selección y Limpieza de Variables:
 
 ```{r, eval=FALSE}
 proc_data <- elsoc_long_2016_2022.2 %>% filter(ola=="4") %>% 
@@ -61,7 +76,9 @@ names(proc_data)
 
 - Con names(proc_data) vemos los nombres de las variables (columnas)
 
+---
 
+# Recodificación de variables
 ```{r, eval=FALSE}
 proc_data$educacion <- car::recode(proc_data$educacion, "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
 
@@ -105,13 +122,17 @@ Value |              Label |    N | Raw % | Valid % | Cum. %
 
 ## Tabla de contingencia
 
-Una tabla de contingencia es una de las maneras más simples y útiles para representar el cruce entre dos variables categóricas.
+Definición: Una **tabla de contingencia** (o tabla cruzada) es una matriz que muestra la distribución conjunta de dos variables categóricas.
 
-Con ella, podemos obtener en las celdas las frecuencias conjuntas entre ambas variables, es decir, cuántos casos de una determinada categoría de la variable Y ocurren conjuntamente con una determinada categoría de la variable X.
+**Componentes Esenciales:**
 
-Además, podemos presentar los totales de cada fila y columna al exterior de la tabla, también conocidas como frecuencias marginales.
+- **Frecuencias observadas:** Conteos en cada combinación de categorías
 
-En este caso veremos un ejemplo con nivel educacional y autoritarismo o democracia.
+- **Marginales de fila:** Totales por categoría de la variable X
+
+- **Marginales de columna:** Totales por categoría de la variable Y
+
+- **Gran total:** Número total de casos válidos
 
 ```{r, eval=FALSE}
 sjPlot::sjt.xtab(var.row = proc_data$educacion, var.col = proc_data$aut_demo, 
