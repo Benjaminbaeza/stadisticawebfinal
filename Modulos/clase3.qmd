@@ -38,11 +38,11 @@ En este práctico deberá aplicar Análisis de Correspondencias (AC) o Análisis
 Debe realizar UNO de los siguientes ejercicios:
 
 Análisis de Correspondencias Simple (AC)
-Replicar la segunda parte del ejercicio propuesto por el profesor Kevin Carrasco **(desde de “Análisis de correspondencias simple”.
-https://estadisticaiv.netlify.app/practicos/02-content)**, utilizando una base de datos a elección, desde la sección “Análisis de correspondencias simple”.
+Replicar la segunda parte del ejercicio propuesto por el profesor Kevin Carrasco (desde de “Análisis de correspondencias simple”).
+utilizando una base de datos a elección, desde la sección “Análisis de correspondencias simple”.
 
 Análisis de Correspondencias Simple (AC)
-Realizar uno de los ejercicios propuestos en el Práctico 03 **(https://estadisticaiv.netlify.app/practicos/03-content)**, utilizando la misma base de datos pero variables distintas.
+Realizar uno de los ejercicios propuestos en el Práctico 03, utilizando la misma base de datos pero variables distintas.
 
 Análisis de Correspondencias Múltiple (ACM)
 Realizar el ejercicio de ACM propuesto en el Práctico 03, utilizando la misma base de datos pero variables distintas. En este caso, debe incluir al menos una tercera variable.
