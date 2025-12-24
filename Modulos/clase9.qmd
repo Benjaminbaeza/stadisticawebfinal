@@ -27,7 +27,8 @@ editor: visual
        height="650px" />
 </div>
 
-## Ejercicio para Control 2 (0,2 puntos)
+---
+## Practico 9
 
 ### Instrucciones:
 Elija algún grupo de variables continuas o de Likert de la encuesta ELSOC para las que usted considere adecuado hacer un análisis de conglomerado, **es decir, que usted considere generen grupos diferenciados de personas.**
@@ -39,3 +40,16 @@ Elija algún grupo de variables continuas o de Likert de la encuesta ELSOC para 
 4. Aplique el análisis de conglomerado con método del centroide.
 5. Interprete los resultados.
 6. Justifique cuántos conglomerados seleccionó y por qué.
+
+---
+
+## Lecturas Asociadas
+
+- Cea D’ Ancona, M. A. Análisis 
+multivariable. Capítulo 3 “Análisis de 
+conglomerados”.  
+- Aldás, Joaquín y Uriel, Ezequiel (2017). 
+Capítulo 3
+- Giordani et al. An Introduction to 
+Clustering with R. Parte 2 “Standard 
+Clustering”. 
