@@ -1,10 +1,8 @@
 ---
+title: "Módulo 3 · Análisis de Correspondencias Simple (AC) y Múltiple (ACM)"
 format: html
 editor: visual
-source-url: 
--"https://estadisticaiv.netlify.app/practicos/02-content"
--"https://estadisticaiv.netlify.app/practicos/03-content"
-
+css: styles.css
 ---
 
 ## Módulo 3 · Análisis de Correspondencias Simple (AC) y Múltiple (ACM)
