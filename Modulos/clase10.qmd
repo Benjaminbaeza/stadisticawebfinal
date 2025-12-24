@@ -1,6 +1,8 @@
 ---
+title: "Módulo 2 · Análisis de Conglomerados (Cluster) - Métodos Jerárquicos"
 format: html
 editor: visual
+css: styles.css
 ---
 
 ## Módulo 2 · Análisis de Conglomerados (Cluster) - Métodos Jerárquicos
