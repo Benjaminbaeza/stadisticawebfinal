@@ -28,8 +28,6 @@ editor: visual
        height="650px" />
 </div>
 
----
-
 # Practico 4
 
 En este práctico deberá realizar un Análisis de Componentes Principales (PCA), siguiendo el ejercicio disponible en U-Campus.
