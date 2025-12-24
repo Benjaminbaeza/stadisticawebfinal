@@ -136,54 +136,53 @@ a:hover {
 }
 
 /* ============================================
-   BLOQUE DE CÓDIGO - UN SOLO CUADRO LIMPIO
+   ESTILOS QUE GANAN SOBRE QUARTO - VERSIÓN FINAL
    ============================================ */
 
-/* 1. ELIMINAR TODOS LOS CONTENEDORES EXTRA */
-div.cell,
-div.sourceCode,
-div.cell-output {
-    background-color: transparent !important;
-    border: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
+/* 1. CONTENEDOR PRINCIPAL */
+div.sourceCode pre.sourceCode,
+.cell-output pre.sourceCode,
+pre.sourceCode {
+    background-color: #2c2c2c !important;
+    border: 1px solid #555 !important;
+    border-radius: 6px !important;
+    padding: 1.2em !important;
+    margin: 1.2em 0 !important;
 }
 
-/* 2. SOLO EL CUADRO PRINCIPAL */
-pre.sourceCode,
-pre {
-    background-color: #2c2c2c !important; /* Fondo negro plomizo */
-    border: 1px solid #666 !important;    /* Borde más sutil */
-    border-radius: 8px !important;        /* Esquinas redondeadas */
-    padding: 1.5em !important;            /* Espaciado interno generoso */
-    margin: 1.5em 0 !important;           /* Espaciado externo */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important; /* Sombra sutil */
-    overflow-x: auto !important;
+/* 2. RESET DE COLORES - ATAQUE DIRECTO */
+div.sourceCode pre.sourceCode *,
+.cell-output pre.sourceCode *,
+pre.sourceCode * {
+    color: inherit !important;
 }
 
-/* 3. TEXTO DENTRO - SIN FONDOS EXTRA */
-pre.sourceCode code,
-pre code {
-    color: #f0a830 !important;            /* Naranja base */
-    background-color: transparent !important;
-    font-family: 'JetBrains Mono', 'Consolas', monospace !important;
-    font-size: 0.95em !important;
-    line-height: 1.5 !important;
-    display: block !important;
+/* 3. PALABRAS CLAVE - BLANCO (MÁS ESPECÍFICO) */
+div.sourceCode pre.sourceCode code span.kw,
+.cell-output pre.sourceCode code span.kw,
+pre.sourceCode code span.kw {
+    color: #ffffff !important;
+    font-weight: bold !important;
 }
 
-/* 4. ELIMINAR MÁRGENES INTERNOS */
-pre.sourceCode > code,
-pre > code {
-    padding: 0 !important;
-    margin: 0 !important;
+/* 4. FUNCIONES - BLANCO */
+div.sourceCode pre.sourceCode code span.fu,
+.cell-output pre.sourceCode code span.fu,
+pre.sourceCode code span.fu {
+    color: #ffffff !important;
 }
 
-/* 5. COLORES DE SINTAXIS (los mismos que antes) */
-code span.co, pre span.co { color: #d4ff00 !important; font-style: italic; }
-code span.kw, pre span.kw { color: #ffffff !important; font-weight: bold; }
-code span.fu, pre span.fu { color: #ffffff !important; }
-code span.st, pre span.st { color: #f0a830 !important; }
-code span.dv, pre span.dv { color: #f0a830 !important; }
-code span.op, pre span.op { color: #cccccc !important; }
-code span.va, pre span.va { color: #cccccc !important; }
+/* 5. COMENTARIOS - VERDE LIMA */
+div.sourceCode pre.sourceCode code span.co,
+.cell-output pre.sourceCode code span.co,
+pre.sourceCode code span.co {
+    color: #d4ff00 !important;
+    font-style: italic !important;
+}
+
+/* 6. TEXTO BASE - NARANJA */
+div.sourceCode pre.sourceCode code,
+.cell-output pre.sourceCode code,
+pre.sourceCode code {
+    color: #f0a830 !important;
+}
