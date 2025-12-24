@@ -1,6 +1,8 @@
 ---
+title: "Módulo 2 · Análisis de Conglomerados (Cluster)"
 format: html
 editor: visual
+css: styles.css
 ---
 
 ## Módulo 2 · Análisis de Conglomerados (Cluster)
