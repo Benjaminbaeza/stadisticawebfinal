@@ -29,9 +29,6 @@ source-url: "https://estadisticaiv.netlify.app/practicos/06-content"
        height="650px" />
 </div>
 
-https://estadisticaiv.netlify.app/practicos/06-content
----
-
 ## Lecturas Asociadas
 - Aldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 12.
 - Cea D'Ancona, M. A. Capítulo 5.
