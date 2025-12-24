@@ -33,19 +33,25 @@ En esta clase se espera que el estudiantado sea capaz de:
 
 ---
 
+Ejercicio: 
+Arme grupos de 2 a 3 personas: 
+1. Explore la base (dimensión)
+2. Renombrar las variables con nombres breves y generar etiquetas
+(para cada variable. 
+3. Identificar valores perdidos y darles un valor o eliminar los casos
+4. Identificar casos outliers y ver qué se hace con esos casos
+5. Identifique las variables que requieren codificación y proponga
+categorías y asigne valores 
+6. Identifique las variables nominales, ordinales, continuas y de razón
+7. Proponga preguntas de investigación que se puedan responder
+con estas variables
+8. Explore la base mediante tablas de frecuencia y tablas de
+contingencia.
+
+---
+
 ## Lecturas asociadas
 
 - Lectura 1: Introducción al análisis exploratorio.
 - Lectura 2: Uso de R en investigación social.
-
----
-
-## Actividades sugeridas
-
-- Revisión del programa del curso.
-- Instalación de R y RStudio.
-- Exploración inicial del entorno de trabajo.
-
----
-
 
