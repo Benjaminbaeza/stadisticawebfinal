@@ -32,11 +32,13 @@ css: styles.css
 
 ## Practico 7
 Comparar resultados entre un PCA y un EFA utilizando algún otro módulo de la
-encuesta ELSOC. Seguir los códigos utilizados el documento adjunto. 
+encuesta ELSOC. Seguir los códigos utilizados el documento adjunto.
+
 Alternativas:
 - Usar el EFA utilizado la clase anterior y calcular un PCA y comparar 
 - Usar un PCA realizado anteriormente y a esas variables calcularle un EFA
-La correcta realización del ejercicio dará 0,2 ptos para el Control 
+
+**La correcta realización del ejercicio dará 0,2 ptos para el Control** 
 
 ---
 
