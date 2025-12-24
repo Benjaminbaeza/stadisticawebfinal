@@ -32,25 +32,25 @@ css: styles.css
 
 # Practico 4
 
-En este práctico deberá realizar un Análisis de Componentes Principales (PCA), siguiendo el ejercicio disponible en U-Campus.
+**En este práctico deberá realizar un Análisis de Componentes Principales (PCA), siguiendo el ejercicio disponible en U-Campus.**
 
 Puede utilizar la base de datos ELSOC u otra base disponible en la sección “Enlaces” de U-Campus.
 
-Requisitos del trabajo
+**Requisitos del trabajo**
 
 El script entregado debe incluir:
 
-Cálculo de la matriz de correlaciones, junto con su interpretación. (0,1 pts)
+- Cálculo de la matriz de correlaciones, junto con su interpretación. (0,1 pts)
 
-Cálculo e interpretación de los autovalores y autovectores. (0,1 pts)
+- Cálculo e interpretación de los autovalores y autovectores. (0,1 pts)
 
-Interpretación general del análisis PCA. (0,1 pts)
+- Interpretación general del análisis PCA. (0,1 pts)
 
-Opcional:
+**Opcional:**
 
-Inclusión de gráficos (por ejemplo, scree plot o biplot) para apoyar la interpretación.
+- Inclusión de gráficos (por ejemplo, scree plot o biplot) para apoyar la interpretación.
 
-El trabajo debe entregarse en formato script, con el código y las interpretaciones correspondientes.
+- El trabajo debe entregarse en formato script, con el código y las interpretaciones correspondientes.
 
 ---
 
