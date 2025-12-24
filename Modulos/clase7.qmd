@@ -1,6 +1,8 @@
 ---
+title: "Módulo 7 · Repaso PCA y EFA"
 format: html
 editor: visual
+css: styles.css  
 ---
 
 ## Módulo 7 · Repaso PCA y EFA
