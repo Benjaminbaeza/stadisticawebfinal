@@ -136,78 +136,95 @@ a:hover {
 }
 
 /* ============================================
-   ESTILOS PARA BLOQUES DE CÓDIGO (R, Python, etc.)
+   TEMA DE CÓDIGO PERSONALIZADO - COLORES DEFINITIVOS
    ============================================ */
 
-/* 1. El CUADRO/CAJA exterior (pre) - Fondo negro plomizo */
-pre.sourceCode {
-    background-color: #2c2c2c !important;
-    border: 1px solid #444 !important;
-    border-radius: 5px;
-    padding: 1em;
-    margin: 1em 0;
+/* 1. BLOQUE DE CÓDIGO COMPLETO */
+div.sourceCode,
+pre.sourceCode,
+pre {
+    background-color: #2c2c2c !important; /* Fondo negro plomizo */
+    border: 1px solid #555 !important;
+    border-radius: 6px !important;
+    padding: 1.2em !important;
+    margin: 1.2em 0 !important;
+    overflow-x: auto !important;
 }
 
-/* 2. El código DENTRO del cuadro (code) - Texto base naranjoso */
-pre.sourceCode code {
-    color: #f0a830 !important; /* Naranjoso base */
+/* 2. TEXTO DENTRO DEL CÓDIGO - COLOR BASE */
+div.sourceCode code,
+pre.sourceCode code,
+pre code {
+    color: #f0a830 !important; /* Color base naranjoso */
     background-color: transparent !important;
-    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
-    font-size: 0.95em;
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace !important;
+    font-size: 0.95em !important;
 }
 
-/* 3. RESALTADO DE SINTAXIS - Esquema de colores personalizado */
+/* 3. RESALTADO DE SINTAXIS - TODOS LOS ELEMENTOS */
 
-/* COMENTARIOS - Verde lima brillante */
-code span.co { 
-    color: #d4ff00 !important; 
-    font-style: italic;
+/* COMENTARIOS - VERDE LIMA */
+code span.co,
+pre span.co {
+    color: #d4ff00 !important;
+    font-style: italic !important;
 }
 
-/* PALABRAS CLAVE (library, function, if, for) - BLANCO */
-code span.kw { 
-    color: #ffffff !important; 
-    font-weight: bold;
+/* PALABRAS CLAVE - BLANCO (antes azul oscuro) */
+code span.kw,
+pre span.kw {
+    color: #ffffff !important;
+    font-weight: bold !important;
 }
 
-/* FUNCIONES (p_load, filter, select) - BLANCO */
-code span.fu { 
-    color: #ffffff !important; 
+/* FUNCIONES - BLANCO (antes azul claro) */
+code span.fu,
+pre span.fu {
+    color: #ffffff !important;
 }
 
-/* CADENAS DE TEXTO - Naranja (igual que el base) */
-code span.st { 
-    color: #f0a830 !important; 
+/* CADENAS DE TEXTO - NARANJA */
+code span.st,
+pre span.st {
+    color: #f0a830 !important;
 }
 
-/* NÚMEROS Y VALORES - Naranja */
-code span.dv { 
-    color: #f0a830 !important; 
+/* NÚMEROS - NARANJA */
+code span.dv,
+pre span.dv,
+code span.fl,
+pre span.fl {
+    color: #f0a830 !important;
 }
 
-/* PUNTUACIÓN (paréntesis, comas, corchetes) - Gris claro */
-code span.op { 
-    color: #cccccc !important; 
+/* PUNTUACIÓN Y OPERADORES - GRIS CLARO */
+code span.op,
+pre span.op,
+code span.ot,
+pre span.ot {
+    color: #cccccc !important;
 }
 
-/* ARGUMENTOS/VARIABLES (dentro de funciones) - Gris claro */
-code span.va { 
-    color: #cccccc !important; 
+/* VARIABLES Y ARGUMENTOS - GRIS CLARO */
+code span.va,
+pre span.va,
+code span.cn,
+pre span.cn {
+    color: #cccccc !important;
 }
 
-/* CONSTANTES/NOMBRES ESPECIALES - Gris claro */
-code span.cn { 
-    color: #cccccc !important; 
+/* 4. ELIMINAR CUALQUIER AZUL RESTANTE */
+code span,
+pre span {
+    color: inherit !important;
 }
 
-/* OPERADORES (+, -, =, etc.) - Gris claro */
-code span.ot { 
-    color: #cccccc !important; 
+/* 5. ASEGURAR QUE NO HAYA COLORES POR DEFECTO */
+div.sourceCode *,
+pre.sourceCode *,
+pre * {
+    color: inherit !important;
 }
 
-/* ERRORES (sintaxis incorrecta) - Rojo suave para debugging */
-code span.er { 
-    color: #ff6b6b !important; 
-}
 
 
