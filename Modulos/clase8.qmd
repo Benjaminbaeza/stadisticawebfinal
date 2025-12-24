@@ -28,9 +28,10 @@ editor: visual
        height="650px" />
 </div>
 
-## Ejercicios para Control 2
+---
 
-### Ejercicio 1 (0,4 puntos)
+## Practico 4
+
 Explique las razones y procedimiento de esta construcción de un índice de cohesión social:  
 📄 [Índice de Cohesión Social - OCSCOES](https://ocscoes.github.io/medicion-cohesion-LA/intro.html){target="_blank"}
 
@@ -43,6 +44,10 @@ Proponga una investigación sociológica que pueda ser respondida por (al menos)
 - Base de datos y módulos que permitieran medir esas variables
 - Propuesta de Modelo justificado
 
+---
+
 ## Lecturas Asociadas
 - Aldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 12.
 - Carrasco, Olivares y Nuñez (2024). Material de curso Estadística IV.
+
+---
