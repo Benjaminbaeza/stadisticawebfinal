@@ -30,26 +30,26 @@ css: styles.css
 
 ## Práctico 1
 
-En este práctico deberá replicar la primera parte del ejercicio trabajado en el Módulo 2: Creación de tablas de contingencia y cálculo e interpretación de Chi-cuadrado (X²), utilizando una base de datos distinta, a elección del estudiante.
+ **En este práctico deberá replicar la primera parte del ejercicio trabajado en el Módulo 2: Creación de tablas de contingencia y cálculo e interpretación de Chi-cuadrado (X²), utilizando una base de datos distinta, a elección del estudiante.**
 
 El desarrollo debe considerar los siguientes pasos:
 
-Seleccionar una base de datos propia (puede utilizar bases disponibles en repositorios abiertos o las sugeridas por el curso).
+- Seleccionar una base de datos propia (puede utilizar bases disponibles en repositorios abiertos o las sugeridas por el curso).
 
-Construir una tabla de contingencia entre dos variables categóricas.
+- Construir una tabla de contingencia entre dos variables categóricas.
 
-Calcular el estadístico Chi-cuadrado (X²) de forma manual (puede apoyarse en calculadora, Excel, R u otro medio).
+- Calcular el estadístico Chi-cuadrado (X²) de forma manual (puede apoyarse en calculadora, Excel, R u otro medio).
 
-Registrar el cálculo manual mediante una fotografía del procedimiento.
+- Registrar el cálculo manual mediante una fotografía del procedimiento.
 
-Calcular el estadístico Chi-cuadrado (X²) en R y comparar ambos resultados.
+- Calcular el estadístico Chi-cuadrado (X²) en R y comparar ambos resultados.
 
-Utilizar la tabla de distribución Chi-cuadrado para interpretar el resultado obtenido.
+- Utilizar la tabla de distribución Chi-cuadrado para interpretar el resultado obtenido.
 
-Redactar una interpretación sustantiva del resultado en función de las variables analizadas.
+- Redactar una interpretación sustantiva del resultado en función de las variables analizadas.
 
 Finalmente, el ejercicio debe subirse al buzón de Tareas de U-Campus.
-Si el trabajo está correctamente realizado, se otorgarán 2 décimas adicionales para el próximo control.
+Si el trabajo está correctamente realizado, **se otorgarán 2 décimas adicionales para el próximo control.**
 
 ---
 
