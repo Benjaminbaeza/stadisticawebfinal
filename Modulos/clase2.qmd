@@ -26,9 +26,6 @@ editor: visual
        height="650px" />
 </div>
 
----
-
-
 ## Práctico 1
 
 En este práctico deberá replicar la primera parte del ejercicio trabajado en el Módulo 2: Creación de tablas de contingencia y cálculo e interpretación de Chi-cuadrado (X²), utilizando una base de datos distinta, a elección del estudiante.
