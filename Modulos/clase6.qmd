@@ -1,6 +1,7 @@
 ---
 format: html
 editor: visual
+source-url: "https://estadisticaiv.netlify.app/practicos/06-content"
 ---
 
 ## Módulo 6 · Análisis Factorial Exploratorio (EFA) - Parte 1
