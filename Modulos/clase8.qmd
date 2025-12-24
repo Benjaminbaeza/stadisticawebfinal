@@ -29,8 +29,6 @@ source-url: https://ocscoes.github.io/medicion-cohesion-LA/intro.html
        height="650px" />
 </div>
 
----
-
 ## Practico 4
 
 Explique las razones y procedimiento de esta construcción de un índice de cohesión social:  
