@@ -27,7 +27,6 @@ editor: visual
        height="650px" />
 </div>
 
----
 ## Practico 9
 
 ### Instrucciones:
