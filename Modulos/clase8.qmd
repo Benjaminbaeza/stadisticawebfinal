@@ -39,6 +39,7 @@ Explique las razones y procedimiento de esta construcción de un índice de cohe
 Proponga una investigación sociológica que pueda ser respondida por (al menos) Análisis de Correspondencias y/o Análisis de Componentes Principales o por Análisis Factorial Exploratorio.
 
 **Incluya:**
+
 - Pregunta de investigación
 - Dimensiones del análisis y posibles variables
 - Base de datos y módulos que permitieran medir esas variables
