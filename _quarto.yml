@@ -12,21 +12,21 @@ website:
         text: Programación
       - text: Clases
         menu:
-          - text: Modulo 1 · Presentación del curso
+          - text: "Modulo 1 · Presentación del curso"
             href: Modulos/clase1.qmd
-          - text: Modulo 2 · Estadística descriptiva
+          - text: "Modulo 2 · Estadística descriptiva"
             href: Modulos/clase2.qmd
-          - text: Modulo 3 . Análisis de Correspondencias Simple (AC) y Múltiple (ACM)
+          - text: "Modulo 3 . Análisis de Correspondencias Simple (AC) y Múltiple (ACM)"
             href: Modulos/clase3.qmd
-          - text: Modulo 4 . Análisis de Componentes Principales (PCA) Parte -1
+          - text: "Modulo 4 . Análisis de Componentes Principales (PCA) Parte -1"
             href: Modulos/clase4.qmd 
-          - text: Modulo 5 . Análisis de Componentes Principales (PCA) Parte -2
+          - text: "Modulo 5 . Análisis de Componentes Principales (PCA) Parte -2"
             href: Modulos/clase5.qmd 
-          - text: Modulo 6 . Análisis Factorial Exploratorio (EFA)
+          - text: "Modulo 6 . Análisis Factorial Exploratorio (EFA)"
             href: Modulos/clase6.qmd
-          - text: Modulo 7 . Repaso PCA y EFA
+          - text: "Modulo 7 . Repaso PCA y EFA"
             href: Modulos/clase7.qmd
-          - text: Modulo 8 . Aplicación EFA y Trabajo Final
+          - text: "Modulo 8 . Aplicación EFA y Trabajo Final"
             href: Modulos/clase8.qmd
           - text: "Modulo 9 . Análisis de Conglomerados (Cluster) Parte 1"
             href: Modulos/clase9.qmd
