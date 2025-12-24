@@ -31,8 +31,6 @@ En esta clase se espera que el estudiantado sea capaz de:
        height="650px" />
 </div>
 
----
-
 Ejercicio: 
 Arme grupos de 2 a 3 personas: 
 1. Explore la base (dimensión)
