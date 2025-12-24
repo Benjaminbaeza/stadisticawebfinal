@@ -1,8 +1,9 @@
 ---
 format: html
 editor: visual
-source-url: "https://estadisticaiv.netlify.app/practicos/02-content"
-source-url: "https://estadisticaiv.netlify.app/practicos/03-content"
+source-url: 
+-"https://estadisticaiv.netlify.app/practicos/02-content"
+-"https://estadisticaiv.netlify.app/practicos/03-content"
 
 ---
 
@@ -31,7 +32,6 @@ source-url: "https://estadisticaiv.netlify.app/practicos/03-content"
        height="650px" />
 </div>
 
----
 
 ## Practico 3
 
