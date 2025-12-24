@@ -1,9 +1,9 @@
 ---
+title: "Módulo 1 · Presentación del curso"
 format: html
 editor: visual
+css: styles.css
 ---
-
-## Módulo 1 · Presentación del curso
 
 ::: callout-note
 **Fecha:** martes 13 de agosto
@@ -31,19 +31,27 @@ En esta clase se espera que el estudiantado sea capaz de:
        height="650px" />
 </div>
 
-Ejercicio: 
+**Ejercicio:**
 Arme grupos de 2 a 3 personas: 
-1. Explore la base (dimensión)
-2. Renombrar las variables con nombres breves y generar etiquetas
-(para cada variable. 
-3. Identificar valores perdidos y darles un valor o eliminar los casos
-4. Identificar casos outliers y ver qué se hace con esos casos
-5. Identifique las variables que requieren codificación y proponga
-categorías y asigne valores 
-6. Identifique las variables nominales, ordinales, continuas y de razón
-7. Proponga preguntas de investigación que se puedan responder
-con estas variables
-8. Explore la base mediante tablas de frecuencia y tablas de
+
+- Explore la base (dimensión)
+
+- Renombrar las variables con nombres breves y generar etiquetas
+(para cada variable.)
+
+- Identificar valores perdidos y darles un valor o eliminar los casos
+
+- Identificar casos outliers y ver qué se hace con esos casos
+
+- Identifique las variables que requieren codificación y proponga
+categorías y asigne valores.
+
+- Identifique las variables nominales, ordinales, continuas y de razón.
+
+- Proponga preguntas de investigación que se puedan responder
+con estas variables.
+
+- Explore la base mediante tablas de frecuencia y tablas de
 contingencia.
 
 ---
