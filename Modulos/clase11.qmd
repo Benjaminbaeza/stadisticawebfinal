@@ -27,8 +27,6 @@ editor: visual
        height="650px" />
 </div>
 
----
-
 ## Determinación del número de clusters
 
 ### Métodos principales:
