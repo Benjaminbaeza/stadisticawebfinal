@@ -31,12 +31,13 @@ pacman::p_load(
   sjmisc          # Funciones auxiliares para análisis
 )
 ```
-# Configuración del entorno R
-options(scipen = 999)    # Desactiva notación científica
-rm(list = ls())          # Limpia el entorno de trabajo
-set.seed(123)            # Fija semilla para reproducibilidad
+# 🔧 Configuración del entorno R
+- options(scipen = 999)    # Desactiva notación científica
+- rm(list = ls())          # Limpia el entorno de trabajo
+- set.seed(123)            # Fija semilla para reproducibilidad
 
-# Carga de la base de datos
+# 🔧 Carga de la base de datos
+
 Luego vamos a cargar la base de datos directamente desde internet (En este caso la base de datos ELSOC esta alojada en Harvard Dataverse)
 
 
@@ -46,7 +47,8 @@ load(url("https://dataverse.harvard.edu/api/access/datafile/7245118"))
 
 dim(elsoc_long_2016_2022.2)
 ```
-##Salida Esperada:
+##Salida Esperada:##
+
 ```{r, eval=FALSE}
 [1] 18035   750
 ```
@@ -54,7 +56,7 @@ dim(elsoc_long_2016_2022.2)
 
 ---
 
-Selección y Limpieza de Variables:
+# 🧹 Selección y Limpieza de Variables:
 
 ```{r, eval=FALSE}
 proc_data <- elsoc_long_2016_2022.2 %>% filter(ola=="4") %>% 
@@ -78,7 +80,8 @@ names(proc_data)
 
 ---
 
-# Recodificación de variables
+# 🧬 Recodificación de variables
+
 ```{r, eval=FALSE}
 proc_data$educacion <- car::recode(proc_data$educacion, "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
 
@@ -120,7 +123,7 @@ Value |              Label |    N | Raw % | Valid % | Cum. %
 
 - Valores perdidos (NA) si los hay.
 
-## Tabla de contingencia
+# 🧮 Tabla de contingencia
 
 Definición: Una **tabla de contingencia** (o tabla cruzada) es una matriz que muestra la distribución conjunta de dos variables categóricas.
 
