@@ -39,7 +39,7 @@ dim(elsoc_long_2016_2022.2)
 ```{r, eval=FALSE}
 [1] 18035   750
 ```
-Contamos con 750 variables (columnas) y 18035 observaciones (filas).
+- Contamos con 750 variables (columnas) y 18035 observaciones (filas).
 
 ```{r, eval=FALSE}
 proc_data <- elsoc_long_2016_2022.2 %>% filter(ola=="4") %>% 
@@ -51,22 +51,15 @@ proc_data <- proc_data %>% sjlabelled::set_na(., na = c(-999, -888, -777, -666))
 # Comprobar
 names(proc_data)
 ```
+**Se renombran las variables para mayor claridad:**
 
-elsoc_long_2016_2022.2: dataset longitudinal de ELSOC.
+- m01 → educacion (nivel educacional).
 
-filter(ola=="4"): selecciona solo la ola 4 (cuarta medición de la encuesta).
+- c25 → aut_demo (preferencia entre autoritarismo o democracia).
 
-select(educacion=m01, aut_demo=c25):
+- Se elimina los NA´s (Importante verificar como es que funcionan los NA´s o si realmente tiene)}
 
-### Se renombran las variables para mayor claridad:
-
-m01 → educacion (nivel educacional).
-
-c25 → aut_demo (preferencia entre autoritarismo o democracia).
-
-### Se elimina los NA´s (Importante verificar como es que funcionan los NA´s o si realmente tiene)}
-
-### Con names(proc_data) vemos los nombres de las variables (columnas)
+- Con names(proc_data) vemos los nombres de las variables (columnas)
 
 
 ```{r, eval=FALSE}
@@ -80,7 +73,7 @@ proc_data$educacion <- sjlabelled::set_labels(proc_data$educacion,
 
 sjmisc::frq(proc_data$educacion)
 ```
-La función car::recode() agrupa categorías originales de la variable educacion en tres niveles más generales:
+**La función car::recode() agrupa categorías originales de la variable educacion en tres niveles más generales:**
 
 Valores 1,2,3 → se recodifican como 1 (Educación básica).
 
@@ -90,10 +83,10 @@ Valores 6,7,8,9,10 → se recodifican como 3 (Educación superior).
 
 ### El objetivo es simplificar la variable educacional en tres grupos.
 
-Ahora cuando usamos este codigo:
+**Ahora cuando usamos este codigo:**
 proc_data$educacion <- sjlabelled::set_labels(proc_data$educacion, labels=c("Educación básica"=1, "Educación media"=2, "Educación superior"=3))
 
-Lo que estamos haciendo en el fondo es poner etiquetas de valor para que los numeros (1,2,3) tengan nombres legibles.
+- Lo que estamos haciendo en el fondo es poner etiquetas de valor para que los numeros (1,2,3) tengan nombres legibles.
 
 ```{r, eval=FALSE}
 #sjmisc::frq(proc_data$educacion)
@@ -105,13 +98,13 @@ Value |              Label |    N | Raw % | Valid % | Cum. %
     3 | Educación superior | 1200 | 35.12 |   35.16 | 100.00
  <NA> |               <NA> |    4 |  0.12 |    <NA> |   <NA>
 ```
-La función frq() del paquete sjmisc muestra una tabla de frecuencias:
+**La función frq() del paquete sjmisc muestra una tabla de frecuencias:**
 
-Número de casos en cada categoría.
+- Número de casos en cada categoría.
 
-Porcentaje relativo.
+- Porcentaje relativo.
 
-Valores perdidos (NA) si los hay.
+- Valores perdidos (NA) si los hay.
 
 # Tabla de contingencia
 
@@ -130,15 +123,15 @@ sjPlot::sjt.xtab(var.row = proc_data$educacion, var.col = proc_data$aut_demo,
 
 [Ver tabla de contingencia](practicos/Imagenesygraficos/tabla_contingencia.html)
 
-Sumado a esto, tenemos:
+*Sumado a esto, tenemos:
 
-Frecuencias absolutas: números que aparencen en la tabla (ya sean conjuntas o marginales)
+**Frecuencias absolutas:** números que aparencen en la tabla (ya sean conjuntas o marginales)
 
-Frecuencias relativas:
+**Frecuencias relativas:**
+- porcentaje fila: % que cada frecuencia conjunta representa sobre la marginal de su fila
+- porcentaje columna: % que cada frecuencia conjunta representa sobre la marginal de su columna
+- porcentaje total: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla
 
-porcentaje fila: % que cada frecuencia conjunta representa sobre la marginal de su fila
-porcentaje columna: % que cada frecuencia conjunta representa sobre la marginal de su columna
-porcentaje total: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla
 Veamos cómo incorporar el porcentaje fila y columna en la tabla.
 
 ```{r, eval=FALSE}
