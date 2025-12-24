@@ -28,9 +28,25 @@ editor: visual
        height="650px" />
 </div>
 
+---
+
 ## Determinación del número de clusters
 
 ### Métodos principales:
 1. **Método del codo (elbow method)**: Busca el punto donde aumentar clusters ya no reduce significativamente la variación interna (WSS)
 2. **Método del silhouette**: Maximiza el promedio del índice de silhouette (mide ajuste de observaciones a su cluster)
 3. **Gap statistic**: Compara dispersión real con esperada bajo distribución aleatoria
+
+---
+
+## Lecturas Asociadas
+
+- Cea D’ Ancona, M. A. Análisis 
+multivariable. Capítulo 3 “Análisis de 
+conglomerados”.  
+- Aldás, Joaquín y Uriel, Ezequiel (2017). 
+Capítulo 3
+- Giordani et al. An Introduction to 
+Clustering with R. Parte 2 “Standard 
+Clustering”. 
+
