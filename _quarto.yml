@@ -28,11 +28,11 @@ website:
             href: Modulos/clase7.qmd
           - text: Modulo 8 . Aplicación EFA y Trabajo Final
             href: Modulos/clase8.qmd
-          - text: Modulo 9 . Análisis de Conglomerados (Cluster) Parte 1
+          - text: "Modulo 9 . Análisis de Conglomerados (Cluster) Parte 1"
             href: Modulos/clase9.qmd
-          - text: Modulo 10 . "Análisis de Conglomerados (Cluster) - Parte 2: Métodos Jerárquicos"
+          - text: "Modulo 10 . Análisis de Conglomerados (Cluster) - Parte 2: Métodos Jerárquicos"
             href: Modulos/clase10.qmd
-          - text: Modulo 11 . "Análisis de Conglomerados (Cluster) - Parte 3: Número de Clusters y Métodos No Jerárquicos"
+          - text: "Modulo 11 . Análisis de Conglomerados (Cluster) - Parte 3: Número de Clusters y Métodos No Jerárquicos"
             href: Modulos/clase11.qmd 
 
 
