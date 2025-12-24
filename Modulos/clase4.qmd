@@ -1,6 +1,8 @@
 ---
+title: "Módulo 4 · Análisis de Componentes Principales (PCA))"
 format: html
 editor: visual
+css: styles.css
 ---
 
 ## Módulo 4 · Análisis de Componentes Principales (PCA)
