@@ -29,7 +29,6 @@ source-url: "https://estadisticaiv.netlify.app/practicos/06-content"
        height="650px" />
 </div>
 
----
 https://estadisticaiv.netlify.app/practicos/06-content
 ---
 
