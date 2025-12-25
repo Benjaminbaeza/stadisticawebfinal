@@ -83,7 +83,7 @@ names(proc_data)
 # 🧬 Recodificación de variables:
 
 ```{r, eval=FALSE}
-proc_data$educacion <- car::recode(proc_data$educacion, "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
+proc_data$educacion <- car::recode(proc_data$m01, "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
 
 proc_data$educacion <- sjlabelled::set_labels(proc_data$educacion,
                                               labels=c( "Educación básica"=1,
@@ -123,7 +123,7 @@ Value |              Label |    N | Raw % | Valid % | Cum. %
 
 - Valores perdidos (NA) si los hay.
 
-# Tabla de contingencia
+## Tabla de contingencia
 
 Definición: Una **tabla de contingencia** (o tabla cruzada) es una matriz que muestra la distribución conjunta de dos variables categóricas.
 
@@ -137,12 +137,13 @@ Definición: Una **tabla de contingencia** (o tabla cruzada) es una matriz que m
 
 - **Gran total:** Número total de casos válidos
 
+Veremos un ejemplo conm ss_salud y universitaria:
+
 ```{r, eval=FALSE}
-sjPlot::sjt.xtab(var.row = proc_data$educacion, var.col = proc_data$aut_demo, 
+sjPlot::sjt.xtab(var.row = proc_data$educacion, var.col = proc_data$c29, 
                  show.summary = F, emph.total = T, encoding = "UTF-8")
 ```
-
-[Ver tabla de contingencia](practicos/Imagenesygraficos/tabla_contingencia.html)
+<div class="table-container" style="overflow-x: auto; margin: 30px 0;"><table class="contingency-table" style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif;"> <caption style="caption-side: bottom; text-align: center; padding: 10px; font-style: italic; color: #666;"> <strong>Tabla 1:</strong> Distribución conjunta entre nivel educacional y preferencia por mecanismo de cambio constitucional (N = 3,032) </caption><thead> <tr style="background-color: #2c2c2c; color: white;"> <th style="border: 2px solid #444; padding: 12px; text-align: center; font-weight: bold;" rowspan="2">Nivel Educacional</th> <th style="border: 2px solid #444; padding: 12px; text-align: center; font-weight: bold;" colspan="4">Mecanismo de Cambio Constitucional</th> <th style="border: 2px solid #444; padding: 12px; text-align: center; font-weight: bold;" rowspan="2">Total por Educación</th> </tr> <tr style="background-color: #3a3a3a; color: white;"> <th style="border: 1px solid #555; padding: 10px; text-align: center;">Grupo de Expertos</th> <th style="border: 1px solid #555; padding: 10px; text-align: center;">Parlamento</th> <th style="border: 1px solid #555; padding: 10px; text-align: center;">Asamblea Constituyente</th> <th style="border: 1px solid #555; padding: 10px; text-align: center;">Total Mecanismo</th> </tr> </thead><tbody> <tr style="background-color: #f9f9f9;"> <td style="border: 1px solid #ddd; padding: 12px; font-weight: bold;">Educación Básica</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">138</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">30</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">446</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">614</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; background-color: #e8f4f8; font-weight: bold;">614</td> </tr><tr style="background-color: #fff;"> <td style="border: 1px solid #ddd; padding: 12px; font-weight: bold;">Educación Media</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">277</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">31</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">964</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">1,272</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; background-color: #e8f4f8; font-weight: bold;">1,272</td> </tr><tr style="background-color: #f9f9f9;"> <td style="border: 1px solid #ddd; padding: 12px; font-weight: bold;">Educación Superior</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">286</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">17</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">843</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">1,146</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; background-color: #e8f4f8; font-weight: bold;">1,146</td> </tr><tr style="background-color: #2c2c2c; color: white; font-weight: bold;"> <td style="border: 2px solid #444; padding: 12px; text-align: center;">Total General</td> <td style="border: 2px solid #444; padding: 12px; text-align: center;">701</td> <td style="border: 2px solid #444; padding: 12px; text-align: center;">78</td> <td style="border: 2px solid #444; padding: 12px; text-align: center;">2,253</td> <td style="border: 2px solid #444; padding: 12px; text-align: center;">3,032</td> <td style="border: 2px solid #444; padding: 12px; text-align: center; background-color: #1a5276; color: white;">3,032</td> </tr> </tbody> </table> </div>
 
 *Sumado a esto, tenemos:
 
@@ -165,7 +166,12 @@ sjPlot::sjt.xtab(var.row = proc_data$educacion,
                  encoding= "UTF-8")
 ```
 
-[Ver tabla de contingencia](practicos/Imagenesygraficos/tabla_contingenciapor.html)
+<iframe src="http://localhost:20601/session/file38984bb8608f.html" 
+        width="100%" 
+        height="600px" 
+        style="border: none; margin: 20px 0;">
+  Tu navegador no soporta iframes. [Ver tabla externa](http://localhost:20601/session/file38984bb8608f.html)
+</iframe>
 
 Aquí, los porcentajes fila aparecen en azul y los porcentajes columna en verde.
 
