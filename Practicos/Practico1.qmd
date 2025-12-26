@@ -123,7 +123,7 @@ Value |              Label |    N | Raw % | Valid % | Cum. %
 
 - Valores perdidos (NA) si los hay.
 
-## Tabla de contingencia
+# 🧮 Tabla de contingencia
 
 Definición: Una **tabla de contingencia** (o tabla cruzada) es una matriz que muestra la distribución conjunta de dos variables categóricas.
 
@@ -278,5 +278,27 @@ sjPlot::sjt.xtab(var.row = proc_data$educacion,
 <span style="color: #0d904f;">🟢 Porcentaje columna</span>
 </div>
 </div>
+
+# 📊 Prueba Chi-cuadrado (X²): Cálculo e Interpretación
+
+## 🧮 Cálculo Manual del Chi-Cuadrado
+
+### Paso 1: Fórmula y Componentes
+
+La prueba Chi-cuadrado de independencia se calcula mediante la fórmula:
+
+**χ² = Σ [ (Oᵢⱼ - Eᵢⱼ)² / Eᵢⱼ ]**
+
+Donde:
+- **Oᵢⱼ** = Frecuencia observada en la celda (fila i, columna j)
+- **Eᵢⱼ** = Frecuencia esperada en la celda (fila i, columna j)
+
+### Paso 2: Calcular Frecuencias Esperadas
+
+Las frecuencias esperadas se calculan como:
+**Eᵢⱼ = (Total Filaᵢ × Total Columnaⱼ) / Total General**
+
+
+
 
 
