@@ -279,31 +279,4 @@ sjPlot::sjt.xtab(var.row = proc_data$educacion,
 </div>
 </div>
 
-Aquí, los porcentajes fila aparecen en azul y los porcentajes columna en verde.
-
-# Prueba Chi-cuadrado (X²)
-
-Calculo en R.
-
-```{r, eval=FALSE}
-chi_results <- chisq.test(table(proc_data$educacion, proc_data$aut_demo))
-
-stats.table <- tidy(chi_results, conf_int = T)
-nice_table(stats.table)
-```
-
-[Ver tabla de contingencia](practicos/Imagenesypracticos/chicuadrado.html)
-
-Visualizacion de esta prueba y su zona de rechazo.
-
-```{r, eval=FALSE}
-ggchisqtest(chi_results)
-```
-
-
-### Cálculo manual de X²
-
-### Cálculo de X² en R
-
-## Interpretación del resultado
 
