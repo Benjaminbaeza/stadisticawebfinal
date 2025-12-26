@@ -1,0 +1,555 @@
+[
+  {
+    "objectID": "Modulos/clase3.html",
+    "href": "Modulos/clase3.html",
+    "title": "Módulo 3 · Análisis de Correspondencias Simple (AC) y Múltiple (ACM)",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 27 de agosto"
+  },
+  {
+    "objectID": "Modulos/clase3.html#módulo-3-análisis-de-correspondencias-simple-ac-y-múltiple-acm",
+    "href": "Modulos/clase3.html#módulo-3-análisis-de-correspondencias-simple-ac-y-múltiple-acm",
+    "title": "Módulo 3 · Análisis de Correspondencias Simple (AC) y Múltiple (ACM)",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 27 de agosto"
+  },
+  {
+    "objectID": "Modulos/clase3.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase3.html#objetivos-de-la-sesión",
+    "title": "Módulo 3 · Análisis de Correspondencias Simple (AC) y Múltiple (ACM)",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nComprender la lógica del Análisis de Correspondencias (AC) y su diferencia con Chi-cuadrado\nAprender a construir e interpretar mapas perceptuales\nEntender los conceptos de inercia, masa y distancias χ²\nAplicar AC Simple y Múltiple (ACM) en R Studio con datos reales"
+  },
+  {
+    "objectID": "Modulos/clase3.html#presentación",
+    "href": "Modulos/clase3.html#presentación",
+    "title": "Módulo 3 · Análisis de Correspondencias Simple (AC) y Múltiple (ACM)",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase3.html#practico-3",
+    "href": "Modulos/clase3.html#practico-3",
+    "title": "Módulo 3 · Análisis de Correspondencias Simple (AC) y Múltiple (ACM)",
+    "section": "Practico 3",
+    "text": "Practico 3\nEn este práctico deberá aplicar Análisis de Correspondencias (AC) o Análisis de Correspondencias Múltiple (ACM) utilizando la base de datos ELSOC. Puede trabajar con las mismas variables usadas en el práctico anterior o seleccionar variables nuevas. El trabajo puede realizarse de manera individual o grupal.\nDebe realizar UNO de los siguientes ejercicios:\n\nAnálisis de Correspondencias Simple (AC) Replicar la segunda parte del ejercicio propuesto por el profesor Kevin Carrasco (desde de “Análisis de correspondencias simple”). utilizando una base de datos a elección, desde la sección “Análisis de correspondencias simple”.\nAnálisis de Correspondencias Simple (AC) Realizar uno de los ejercicios propuestos en el Práctico 03, utilizando la misma base de datos pero variables distintas.\nAnálisis de Correspondencias Múltiple (ACM) Realizar el ejercicio de ACM propuesto en el Práctico 03, utilizando la misma base de datos pero variables distintas. En este caso, debe incluir al menos una tercera variable.\n\nRequisitos del informe\nEl script entregado debe incluir:\n\nEl código utilizado para el análisis.\n\nUna interpretación del resultado, abordando:\n-Existencia o no de asociación entre las variables.\n\nMasa.\nInercia.\nAporte de cada dimensión al modelo.\nCategorías que mejor explican el modelo.\n\nFinalmente, el script debe subirse al buzón de tareas de U-Campus, indicando los integrantes del grupo (si corresponde)."
+  },
+  {
+    "objectID": "Modulos/clase3.html#lectura-asociada",
+    "href": "Modulos/clase3.html#lectura-asociada",
+    "title": "Módulo 3 · Análisis de Correspondencias Simple (AC) y Múltiple (ACM)",
+    "section": "Lectura Asociada",
+    "text": "Lectura Asociada\n\nAldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 5 - “Correspondence Analysis”"
+  },
+  {
+    "objectID": "Modulos/clase5.html",
+    "href": "Modulos/clase5.html",
+    "title": "Estadística IV",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 10 de septiembre"
+  },
+  {
+    "objectID": "Modulos/clase5.html#módulo-5-análisis-de-componentes-principales-pca",
+    "href": "Modulos/clase5.html#módulo-5-análisis-de-componentes-principales-pca",
+    "title": "Estadística IV",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 10 de septiembre"
+  },
+  {
+    "objectID": "Modulos/clase5.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase5.html#objetivos-de-la-sesión",
+    "title": "Estadística IV",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nRepasar los fundamentos del Análisis de Componentes Principales (PCA)\nAprender a decidir cuántos componentes principales seleccionar\nCrear un índice a partir del primer componente principal\nAplicar el PCA en R Studio con un caso práctico"
+  },
+  {
+    "objectID": "Modulos/clase5.html#presentación",
+    "href": "Modulos/clase5.html#presentación",
+    "title": "Estadística IV",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase5.html#lecturas-asociadas",
+    "href": "Modulos/clase5.html#lecturas-asociadas",
+    "title": "Estadística IV",
+    "section": "Lecturas Asociadas",
+    "text": "Lecturas Asociadas\n\nAldás, Joaquín y Uriel, Ezequiel (2017), Capítulo 11"
+  },
+  {
+    "objectID": "Modulos/clase9.html",
+    "href": "Modulos/clase9.html",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster)",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 22 de octubre"
+  },
+  {
+    "objectID": "Modulos/clase9.html#módulo-2-análisis-de-conglomerados-cluster",
+    "href": "Modulos/clase9.html#módulo-2-análisis-de-conglomerados-cluster",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster)",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 22 de octubre"
+  },
+  {
+    "objectID": "Modulos/clase9.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase9.html#objetivos-de-la-sesión",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster)",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nComprender la lógica y usos del análisis de conglomerados\nDiferenciar métodos jerárquicos y no jerárquicos\nAplicar método del centroide en R con datos simulados\nRealizar ejercicio práctico con datos ELSOC"
+  },
+  {
+    "objectID": "Modulos/clase9.html#presentación",
+    "href": "Modulos/clase9.html#presentación",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster)",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase9.html#practico-9",
+    "href": "Modulos/clase9.html#practico-9",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster)",
+    "section": "Practico 9",
+    "text": "Practico 9\n\nInstrucciones:\nElija algún grupo de variables continuas o de Likert de la encuesta ELSOC para las que usted considere adecuado hacer un análisis de conglomerado, es decir, que usted considere generen grupos diferenciados de personas.\n\n\nPasos a seguir:\n\nEstandarice las variables.\nConsidere hacer un muestreo de pocos casos para facilitar el trabajo del computador y la interpretación (100 casos por ejemplo).\nCalcule la matriz de distancias euclidianas al cuadrado.\nAplique el análisis de conglomerado con método del centroide.\nInterprete los resultados.\nJustifique cuántos conglomerados seleccionó y por qué."
+  },
+  {
+    "objectID": "Modulos/clase9.html#lecturas-asociadas",
+    "href": "Modulos/clase9.html#lecturas-asociadas",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster)",
+    "section": "Lecturas Asociadas",
+    "text": "Lecturas Asociadas\n\nCea D’ Ancona, M. A. Análisis multivariable. Capítulo 3 “Análisis de conglomerados”.\n\nAldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 3\nGiordani et al. An Introduction to Clustering with R. Parte 2 “Standard Clustering”."
+  },
+  {
+    "objectID": "Modulos/clase4.html",
+    "href": "Modulos/clase4.html",
+    "title": "Módulo 4 · Análisis de Componentes Principales (PCA))",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 3 de septiembre"
+  },
+  {
+    "objectID": "Modulos/clase4.html#módulo-4-análisis-de-componentes-principales-pca",
+    "href": "Modulos/clase4.html#módulo-4-análisis-de-componentes-principales-pca",
+    "title": "Módulo 4 · Análisis de Componentes Principales (PCA))",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 3 de septiembre"
+  },
+  {
+    "objectID": "Modulos/clase4.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase4.html#objetivos-de-la-sesión",
+    "title": "Módulo 4 · Análisis de Componentes Principales (PCA))",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nComprender la lógica geométrica del Análisis de Componentes Principales (PCA)\nAprender a calcular e interpretar autovalores y autovectores\nGenerar e interpretar gráficos de componentes principales en R Studio\nAplicar PCA para reducción de dimensionalidad en datos de investigación social"
+  },
+  {
+    "objectID": "Modulos/clase4.html#presentación",
+    "href": "Modulos/clase4.html#presentación",
+    "title": "Módulo 4 · Análisis de Componentes Principales (PCA))",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase4.html#lecturas-asociadas",
+    "href": "Modulos/clase4.html#lecturas-asociadas",
+    "title": "Módulo 4 · Análisis de Componentes Principales (PCA))",
+    "section": "Lecturas Asociadas",
+    "text": "Lecturas Asociadas\n\nAldás, Joaquín y Uriel, Ezequiel (2017), Capítulo 11"
+  },
+  {
+    "objectID": "Modulos/clase2.html",
+    "href": "Modulos/clase2.html",
+    "title": "Módulo 2 · Análisis exploratorio",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 20 de agosto"
+  },
+  {
+    "objectID": "Modulos/clase2.html#módulo-2-análisis-exploratorio",
+    "href": "Modulos/clase2.html#módulo-2-análisis-exploratorio",
+    "title": "Módulo 2 · Análisis exploratorio",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 20 de agosto"
+  },
+  {
+    "objectID": "Modulos/clase2.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase2.html#objetivos-de-la-sesión",
+    "title": "Módulo 2 · Análisis exploratorio",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nIntroducción al análisis exploratorio\nTipos de variables"
+  },
+  {
+    "objectID": "Modulos/clase2.html#presentación",
+    "href": "Modulos/clase2.html#presentación",
+    "title": "Módulo 2 · Análisis exploratorio",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase2.html#práctico-1",
+    "href": "Modulos/clase2.html#práctico-1",
+    "title": "Módulo 2 · Análisis exploratorio",
+    "section": "Práctico 1",
+    "text": "Práctico 1\nEn este práctico deberá replicar la primera parte del ejercicio trabajado en el Módulo 2: Creación de tablas de contingencia y cálculo e interpretación de Chi-cuadrado (X²), utilizando una base de datos distinta, a elección del estudiante.\nEl desarrollo debe considerar los siguientes pasos:\n\nSeleccionar una base de datos propia (puede utilizar bases disponibles en repositorios abiertos o las sugeridas por el curso).\nConstruir una tabla de contingencia entre dos variables categóricas.\nCalcular el estadístico Chi-cuadrado (X²) de forma manual (puede apoyarse en calculadora, Excel, R u otro medio).\nRegistrar el cálculo manual mediante una fotografía del procedimiento.\nCalcular el estadístico Chi-cuadrado (X²) en R y comparar ambos resultados.\nUtilizar la tabla de distribución Chi-cuadrado para interpretar el resultado obtenido.\nRedactar una interpretación sustantiva del resultado en función de las variables analizadas.\n\nFinalmente, el ejercicio debe subirse al buzón de Tareas de U-Campus. Si el trabajo está correctamente realizado, se otorgarán 2 décimas adicionales para el próximo control."
+  },
+  {
+    "objectID": "Modulos/clase2.html#lecturas-asociadas",
+    "href": "Modulos/clase2.html#lecturas-asociadas",
+    "title": "Módulo 2 · Análisis exploratorio",
+    "section": "Lecturas asociadas",
+    "text": "Lecturas asociadas\n\nAldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 5 - “Correspondence Analysis”"
+  },
+  {
+    "objectID": "Modulos/clase8.html",
+    "href": "Modulos/clase8.html",
+    "title": "Módulo 8 · Aplicación EFA y Trabajo Final",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 15 de octubre"
+  },
+  {
+    "objectID": "Modulos/clase8.html#módulo-8-aplicación-efa-y-trabajo-final",
+    "href": "Modulos/clase8.html#módulo-8-aplicación-efa-y-trabajo-final",
+    "title": "Módulo 8 · Aplicación EFA y Trabajo Final",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 15 de octubre"
+  },
+  {
+    "objectID": "Modulos/clase8.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase8.html#objetivos-de-la-sesión",
+    "title": "Módulo 8 · Aplicación EFA y Trabajo Final",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nRepasar Análisis Factorial Exploratorio (EFA)\nAplicar EFA con ejemplo práctico de cohesión barrial\nAvanzar en la estructura del Trabajo Final\nEjercicios para Control 2"
+  },
+  {
+    "objectID": "Modulos/clase8.html#presentación",
+    "href": "Modulos/clase8.html#presentación",
+    "title": "Módulo 8 · Aplicación EFA y Trabajo Final",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase8.html#practico-4",
+    "href": "Modulos/clase8.html#practico-4",
+    "title": "Módulo 8 · Aplicación EFA y Trabajo Final",
+    "section": "Practico 4",
+    "text": "Practico 4\nExplique las razones y procedimiento de esta construcción de un índice de cohesión social:\n📄 Índice de Cohesión Social - OCSCOES\n\nEjercicio 2 (0,2 puntos)\nProponga una investigación sociológica que pueda ser respondida por (al menos) Análisis de Correspondencias y/o Análisis de Componentes Principales o por Análisis Factorial Exploratorio.\nIncluya:\n\nPregunta de investigación\nDimensiones del análisis y posibles variables\nBase de datos y módulos que permitieran medir esas variables\nPropuesta de Modelo justificado"
+  },
+  {
+    "objectID": "Modulos/clase8.html#lecturas-asociadas",
+    "href": "Modulos/clase8.html#lecturas-asociadas",
+    "title": "Módulo 8 · Aplicación EFA y Trabajo Final",
+    "section": "Lecturas Asociadas",
+    "text": "Lecturas Asociadas\n\nAldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 12.\nCarrasco, Olivares y Nuñez (2024). Material de curso Estadística IV."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "Practicos/Practico1.html",
+    "href": "Practicos/Practico1.html",
+    "title": "🎯 Objetivos del Práctico",
+    "section": "",
+    "text": "Este práctico tiene como objetivo desarrollar competencias en el análisis de asociación entre variables categóricas mediante:\n\nConstrucción de tablas de contingencia\nAplicación de la prueba de independencia Chi-cuadrado (χ²)\nInterpretación de resultados estadísticos y sustantivos\nContraste entre cálculo manual y automatizado\n\n\n\n\nUtilizaremos la cuarta ola (2019) del Estudio Longitudinal Social de Chile (ELSOC), una encuesta panel representativa nacional, para analizar la relación entre nivel educacional y preferencias político-democráticas."
+  },
+  {
+    "objectID": "Practicos/Practico1.html#propósito-general",
+    "href": "Practicos/Practico1.html#propósito-general",
+    "title": "🎯 Objetivos del Práctico",
+    "section": "",
+    "text": "Este práctico tiene como objetivo desarrollar competencias en el análisis de asociación entre variables categóricas mediante:\n\nConstrucción de tablas de contingencia\nAplicación de la prueba de independencia Chi-cuadrado (χ²)\nInterpretación de resultados estadísticos y sustantivos\nContraste entre cálculo manual y automatizado"
+  },
+  {
+    "objectID": "Practicos/Practico1.html#contexto-del-estudio",
+    "href": "Practicos/Practico1.html#contexto-del-estudio",
+    "title": "🎯 Objetivos del Práctico",
+    "section": "",
+    "text": "Utilizaremos la cuarta ola (2019) del Estudio Longitudinal Social de Chile (ELSOC), una encuesta panel representativa nacional, para analizar la relación entre nivel educacional y preferencias político-democráticas."
+  },
+  {
+    "objectID": "Practicos/Practico1.html#instalación-y-carga-de-paquetes",
+    "href": "Practicos/Practico1.html#instalación-y-carga-de-paquetes",
+    "title": "🎯 Objetivos del Práctico",
+    "section": "1.1 Instalación y Carga de Paquetes",
+    "text": "1.1 Instalación y Carga de Paquetes\n\n# Carga de paquetes necesarios\npacman::p_load(\n  tidyverse,      # Manipulación y visualización de datos\n  sjPlot,         # Tablas y gráficos para ciencias sociales\n  psych,          # Análisis psicométricos y correlaciones\n  DescTools,      # Funciones descriptivas avanzadas\n  gginference,    # Visualización de pruebas inferenciales\n  rempsyc,        # Reportes estadísticos formateados\n  broom,          # Organización de resultados en dataframes\n  sjlabelled,     # Manejo de etiquetas de variables\n  sjmisc          # Funciones auxiliares para análisis\n)"
+  },
+  {
+    "objectID": "Practicos/Practico1.html#configuración-del-entorno-r",
+    "href": "Practicos/Practico1.html#configuración-del-entorno-r",
+    "title": "🎯 Objetivos del Práctico",
+    "section": "1.2 Configuración del entorno R",
+    "text": "1.2 Configuración del entorno R\n\noptions(scipen = 999) # Desactiva notación científica\nrm(list = ls()) # Limpia el entorno de trabajo\nset.seed(123) # Fija semilla para reproducibilidad"
+  },
+  {
+    "objectID": "Practicos/Practico1.html#cálculo-manual-del-chi-cuadrado",
+    "href": "Practicos/Practico1.html#cálculo-manual-del-chi-cuadrado",
+    "title": "🎯 Objetivos del Práctico",
+    "section": "🧮 Cálculo Manual del Chi-Cuadrado",
+    "text": "🧮 Cálculo Manual del Chi-Cuadrado\n\nPaso 1: Fórmula y Componentes\nLa prueba Chi-cuadrado de independencia se calcula mediante la fórmula:\nχ² = Σ [ (Oᵢⱼ - Eᵢⱼ)² / Eᵢⱼ ]\nDonde: - Oᵢⱼ = Frecuencia observada en la celda (fila i, columna j) - Eᵢⱼ = Frecuencia esperada en la celda (fila i, columna j)\n\n\nPaso 2: Calcular Frecuencias Esperadas\nLas frecuencias esperadas se calculan como: Eᵢⱼ = (Total Filaᵢ × Total Columnaⱼ) / Total General"
+  },
+  {
+    "objectID": "clases.html",
+    "href": "clases.html",
+    "title": "Clases",
+    "section": "",
+    "text": "En esta sección encontrarás el material correspondiente a cada sesión del curso. Las presentaciones pueden visualizarse directamente en el navegador."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Estadística IV",
+    "section": "",
+    "text": "Curso orientado a la introducción de técnicas de análisis exploratorio de datos utilizadas en la investigación social, con énfasis en la interpretación sustantiva de resultados estadísticos y su aplicación empírica mediante software especializado."
+  },
+  {
+    "objectID": "index.html#información-general-del-curso",
+    "href": "index.html#información-general-del-curso",
+    "title": "Estadística IV",
+    "section": "Información general del curso",
+    "text": "Información general del curso\n\n\n\nEquipo docente\nProfesora\nCarolina Aguilera\n📧 caguilera@uahurtado.cl\nAyudante\nBenjamin Baeza 📧 bebaeza@alumnos.uahurtado.cl\n\n\n\nDatos del curso\n\nDía: Miércoles\n\nPeriodo: Agosto – Diciembre 2026\n\nHorario:\n\nSala:\n\nModalidad: Presencial"
+  },
+  {
+    "objectID": "index.html#antes-de-comenzar",
+    "href": "index.html#antes-de-comenzar",
+    "title": "Estadística IV",
+    "section": "Antes de comenzar",
+    "text": "Antes de comenzar\nPara seguir adecuadamente el curso necesitarás:\n\nInstalar R\nInstalar RStudio\nConocimientos básicos de estadística descriptiva\n\nRevisa la sección Recursos para guías de instalación y materiales complementarios.\n\n\n\n\n\n\nTipContacto\n\n\n\nPara consultas académicas o administrativas, escribe a\ncaguilera@uahurtado.cl"
+  },
+  {
+    "objectID": "programa.html#i.-propósitos-de-aprendizaje",
+    "href": "programa.html#i.-propósitos-de-aprendizaje",
+    "title": "Programa Estadistica IV",
+    "section": "I. Propósitos de aprendizaje",
+    "text": "I. Propósitos de aprendizaje\nAl término de esta actividad curricular, las y los estudiantes serán capaces de:\n\nIdentificar las diferencias claves entre las técnicas de análisis exploratorio.\nInterpretar la información derivada de software estadísticos.\nAplicar técnicas de análisis exploratorio a problemas de investigación social."
+  },
+  {
+    "objectID": "programa.html#ii.-estructura-general-del-curso",
+    "href": "programa.html#ii.-estructura-general-del-curso",
+    "title": "Programa Estadistica IV",
+    "section": "II. Estructura general del curso",
+    "text": "II. Estructura general del curso\nEl curso se organiza en tres unidades:\n\nUnidad I: Análisis de Correspondencias.\nUnidad II: Análisis Factorial y Componentes Principales.\nUnidad III: Análisis de Conglomerados."
+  },
+  {
+    "objectID": "programa.html#iii.-contenidos",
+    "href": "programa.html#iii.-contenidos",
+    "title": "Programa Estadistica IV",
+    "section": "III. Contenidos",
+    "text": "III. Contenidos\n\nUNIDAD I. Análisis de variables observadas categóricas\nAnálisis de Correspondencias simple y múltiple\n\nAspectos previos al Análisis de Correspondencias: la prueba Chi-cuadrado.\nObjetivos del Análisis de Correspondencias.\nConstrucción de mapas perceptuales: media ponderada, masa, perfiles, vértices, distancias Chi-cuadrado e inercia.\nReducción de dimensionalidad y escalamiento óptimo.\nTransformación de mapas simétricos en mapas asimétricos.\nImplementación de la técnica y análisis de resultados en software estadísticos.\n\n\n\n\nUNIDAD II. Análisis exploratorio de variables latentes\nAnálisis Factorial y Análisis de Componentes Principales\n\nAspectos previos: correlación y regresión lineal (MCO).\nDiferencias entre variables reflectivas y formativas.\nDiferencias entre ACP y Análisis Factorial común.\nDiferencias entre análisis exploratorio y confirmatorio.\nExtracción de componentes y criterios de selección.\nRotación, interpretación y evaluación del modelo.\nAplicación práctica: construcción y validación de escalas (Alfa de Cronbach).\n\n\n\n\nUNIDAD III. Análisis exploratorio de variables observadas\nAnálisis de conglomerados\n\nClasificación en ciencias sociales.\nSupuestos del análisis de conglomerados.\nElección de variables, medidas de similitud y método de conglomeración.\nDefinición, caracterización y validación de grupos.\nImplementación y análisis de resultados en software estadísticos."
+  },
+  {
+    "objectID": "programa.html#iii.-metodología",
+    "href": "programa.html#iii.-metodología",
+    "title": "Programa Estadistica IV",
+    "section": "III. Metodología",
+    "text": "III. Metodología\nEl curso se desarrollará de manera presencial, combinando clases expositivas y prácticas. Se abordarán los fundamentos teóricos de cada técnica estadística y su aplicación en investigación empírica mediante el uso de software estadístico.\nEl curso contempla sesiones de ayudantía orientadas al refuerzo de contenidos, aprendizaje de comandos en R y preparación de evaluaciones."
+  },
+  {
+    "objectID": "programa.html#iv.-evaluación-de-aprendizajes",
+    "href": "programa.html#iv.-evaluación-de-aprendizajes",
+    "title": "Programa Estadistica IV",
+    "section": "IV. Evaluación de aprendizajes",
+    "text": "IV. Evaluación de aprendizajes\nLas evaluaciones del curso incluyen:\n\nControl 1 (Unidades I y II): 35%\n\nControl 2 (Unidades II y III): 35%\n\nTrabajo final aplicado (en pareja): 30%\n\nExamen final: 40%\n\n\n\n\n\n\n\nNote\n\n\n\nPara eximirse del examen se requiere una nota igual o superior a 4,0."
+  },
+  {
+    "objectID": "programa.html#v.-calendarización-de-actividades",
+    "href": "programa.html#v.-calendarización-de-actividades",
+    "title": "Programa Estadistica IV",
+    "section": "V. Calendarización de actividades",
+    "text": "V. Calendarización de actividades\n\n\n\nSesión\nFecha\nContenidos principales\n\n\n\n\n1\n13.08\nIntroducción y repaso de conceptos\n\n\n2\n20.08\nChi-cuadrado y AC simple\n\n\n3\n27.08\nAC múltiple\n\n\n4\n03.09\nACP\n\n\n6\n24.09\nControl 1\n\n\n11\n22.10\nAnálisis de conglomerados\n\n\n14\n12.11\nControl 2\n\n\n15\n21.11\nEntrega trabajo final\n\n\n—\n03.12\nExamen"
+  },
+  {
+    "objectID": "programa.html#vi.-recursos-pedagógicos",
+    "href": "programa.html#vi.-recursos-pedagógicos",
+    "title": "Programa Estadistica IV",
+    "section": "VI. Recursos pedagógicos",
+    "text": "VI. Recursos pedagógicos\n\nBibliografía básica\n\nCea D’Ancona, M. A. Análisis multivariable. Editorial Síntesis.\nGreenacre, M. La práctica del análisis de correspondencias. Fundación BBVA.\nHair et al. Análisis multivariante. Pearson.\n\n\n\nBibliografía complementaria\n\nAldás & Uriel. Análisis multivariante aplicado con R.\nField, A. Discovering Statistics Using R."
+  },
+  {
+    "objectID": "Modulos/clase1.html",
+    "href": "Modulos/clase1.html",
+    "title": "Módulo 1 · Presentación del curso",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 13 de agosto"
+  },
+  {
+    "objectID": "Modulos/clase1.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase1.html#objetivos-de-la-sesión",
+    "title": "Módulo 1 · Presentación del curso",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\nEn esta clase se espera que el estudiantado sea capaz de:\n\nConocer la estructura general del curso.\nComprender los objetivos de aprendizaje.\nFamiliarizarse con la dinámica de trabajo y evaluaciones."
+  },
+  {
+    "objectID": "Modulos/clase1.html#documento-de-presentación",
+    "href": "Modulos/clase1.html#documento-de-presentación",
+    "title": "Módulo 1 · Presentación del curso",
+    "section": "Documento de presentación",
+    "text": "Documento de presentación\n📄 Ver presentación (PDF)\n\n\n\nEjercicio: Arme grupos de 2 a 3 personas:\n\nExplore la base (dimensión)\nRenombrar las variables con nombres breves y generar etiquetas (para cada variable.)\nIdentificar valores perdidos y darles un valor o eliminar los casos\nIdentificar casos outliers y ver qué se hace con esos casos\nIdentifique las variables que requieren codificación y proponga categorías y asigne valores.\nIdentifique las variables nominales, ordinales, continuas y de razón.\nProponga preguntas de investigación que se puedan responder con estas variables.\nExplore la base mediante tablas de frecuencia y tablas de contingencia."
+  },
+  {
+    "objectID": "Modulos/clase1.html#lecturas-asociadas",
+    "href": "Modulos/clase1.html#lecturas-asociadas",
+    "title": "Módulo 1 · Presentación del curso",
+    "section": "Lecturas asociadas",
+    "text": "Lecturas asociadas\n\nLectura 1: Introducción al análisis exploratorio.\nLectura 2: Uso de R en investigación social."
+  },
+  {
+    "objectID": "Modulos/clase10.html",
+    "href": "Modulos/clase10.html",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Métodos Jerárquicos",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 29 de octubre"
+  },
+  {
+    "objectID": "Modulos/clase10.html#módulo-2-análisis-de-conglomerados-cluster---métodos-jerárquicos",
+    "href": "Modulos/clase10.html#módulo-2-análisis-de-conglomerados-cluster---métodos-jerárquicos",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Métodos Jerárquicos",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 29 de octubre"
+  },
+  {
+    "objectID": "Modulos/clase10.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase10.html#objetivos-de-la-sesión",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Métodos Jerárquicos",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nComprender medidas de distancia y similitud en análisis de conglomerados\nDiferenciar algoritmos jerárquicos: centroide, vecino más cercano/lejano, Ward, etc.\nAplicar método de Ward en R con datos simulados\nRealizar ejercicio práctico con datos ELSOC"
+  },
+  {
+    "objectID": "Modulos/clase10.html#presentación",
+    "href": "Modulos/clase10.html#presentación",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Métodos Jerárquicos",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase10.html#practico-10",
+    "href": "Modulos/clase10.html#practico-10",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Métodos Jerárquicos",
+    "section": "Practico 10",
+    "text": "Practico 10\nElija algún grupo de variables continuas o de Likert de la encuesta ELSOC para las que usted considere adecuado hacer un análisis de conglomerado, es decir, que usted considere generen grupos diferenciados de personas.\n\nPasos a seguir:\n\nEstandarice las variables.\nConsidere hacer un muestreo de pocos casos para facilitar el trabajo del computador y la interpretación (100 casos por ejemplo).\nCalcule la matriz de distancias euclidianas al cuadrado.\nAplique el análisis de conglomerado con método de Ward.\nInterprete los resultados.\nJustifique cuántos conglomerados seleccionó y por qué."
+  },
+  {
+    "objectID": "Modulos/clase10.html#lecturas-asociadas",
+    "href": "Modulos/clase10.html#lecturas-asociadas",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Métodos Jerárquicos",
+    "section": "Lecturas Asociadas",
+    "text": "Lecturas Asociadas\n\nCea D’ Ancona, M. A. Análisis multivariable. Capítulo 3 “Análisis de conglomerados”.\n\nAldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 3\nGiordani et al. An Introduction to Clustering with R. Parte 2 “Standard Clustering”."
+  },
+  {
+    "objectID": "Modulos/clase6.html",
+    "href": "Modulos/clase6.html",
+    "title": "Módulo 6 · Análisis Factorial Exploratorio (EFA) - Parte 1",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 1 de octubre"
+  },
+  {
+    "objectID": "Modulos/clase6.html#módulo-6-análisis-factorial-exploratorio-efa---parte-1",
+    "href": "Modulos/clase6.html#módulo-6-análisis-factorial-exploratorio-efa---parte-1",
+    "title": "Módulo 6 · Análisis Factorial Exploratorio (EFA) - Parte 1",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 1 de octubre"
+  },
+  {
+    "objectID": "Modulos/clase6.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase6.html#objetivos-de-la-sesión",
+    "title": "Módulo 6 · Análisis Factorial Exploratorio (EFA) - Parte 1",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nComprender los fundamentos del Análisis Factorial Exploratorio (EFA)\nDiferenciar entre PCA y EFA\nAprender los pasos para realizar un EFA\nAplicar EFA en R Studio con un caso práctico de confianza institucional"
+  },
+  {
+    "objectID": "Modulos/clase6.html#presentación",
+    "href": "Modulos/clase6.html#presentación",
+    "title": "Módulo 6 · Análisis Factorial Exploratorio (EFA) - Parte 1",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase6.html#lecturas-asociadas",
+    "href": "Modulos/clase6.html#lecturas-asociadas",
+    "title": "Módulo 6 · Análisis Factorial Exploratorio (EFA) - Parte 1",
+    "section": "Lecturas Asociadas",
+    "text": "Lecturas Asociadas\n\nAldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 12.\nCea D’Ancona, M. A. Capítulo 5.\nField. Discovering statistics using R. Capítulo 17 “Exploratory factor analysis”.\nLloret-Segura, et al. “El análisis factorial exploratorio de los ítems: una guía práctica, revisada y actualizada.”"
+  },
+  {
+    "objectID": "Modulos/clase7.html",
+    "href": "Modulos/clase7.html",
+    "title": "Módulo 7 · Repaso PCA y EFA",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 8 de octubre"
+  },
+  {
+    "objectID": "Modulos/clase7.html#módulo-7-repaso-pca-y-efa",
+    "href": "Modulos/clase7.html#módulo-7-repaso-pca-y-efa",
+    "title": "Módulo 7 · Repaso PCA y EFA",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 8 de octubre"
+  },
+  {
+    "objectID": "Modulos/clase7.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase7.html#objetivos-de-la-sesión",
+    "title": "Módulo 7 · Repaso PCA y EFA",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nRepasar prueba Chi cuadrado\nRepasar Análisis de Componentes Principales (PCA)\nComprender las diferencias entre PCA y EFA\nAplicar EFA con un ejemplo práctico de cohesión barrial"
+  },
+  {
+    "objectID": "Modulos/clase7.html#presentación",
+    "href": "Modulos/clase7.html#presentación",
+    "title": "Módulo 7 · Repaso PCA y EFA",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase7.html#practico-7",
+    "href": "Modulos/clase7.html#practico-7",
+    "title": "Módulo 7 · Repaso PCA y EFA",
+    "section": "Practico 7",
+    "text": "Practico 7\nComparar resultados entre un PCA y un EFA utilizando algún otro módulo de la encuesta ELSOC. Seguir los códigos utilizados el documento adjunto.\nAlternativas: - Usar el EFA utilizado la clase anterior y calcular un PCA y comparar - Usar un PCA realizado anteriormente y a esas variables calcularle un EFA\nLa correcta realización del ejercicio dará 0,2 ptos para el Control"
+  },
+  {
+    "objectID": "Modulos/clase7.html#lecturas-asociadas",
+    "href": "Modulos/clase7.html#lecturas-asociadas",
+    "title": "Módulo 7 · Repaso PCA y EFA",
+    "section": "Lecturas Asociadas",
+    "text": "Lecturas Asociadas\n\nAldás, Joaquín y Uriel, Ezequiel (2017). Capítulos 11 y 12.\nField. Discovering statistics using R. Capítulo 17 “Exploratory factor analysis”."
+  },
+  {
+    "objectID": "Modulos/clase11.html",
+    "href": "Modulos/clase11.html",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Parte 3: Número de Clusters y Métodos No Jerárquicos",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 5 de noviembre"
+  },
+  {
+    "objectID": "Modulos/clase11.html#módulo-2-análisis-de-conglomerados-cluster---parte-3-número-de-clusters-y-métodos-no-jerárquicos",
+    "href": "Modulos/clase11.html#módulo-2-análisis-de-conglomerados-cluster---parte-3-número-de-clusters-y-métodos-no-jerárquicos",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Parte 3: Número de Clusters y Métodos No Jerárquicos",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 5 de noviembre"
+  },
+  {
+    "objectID": "Modulos/clase11.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase11.html#objetivos-de-la-sesión",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Parte 3: Número de Clusters y Métodos No Jerárquicos",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nAprender métodos para determinar el número óptimo de conglomerados\nComprender y aplicar algoritmos no jerárquicos (k-means)\nAnalizar ejemplos con variables categóricas y continuas\nIntegrar enfoques jerárquicos y no jerárquicos"
+  },
+  {
+    "objectID": "Modulos/clase11.html#presentación",
+    "href": "Modulos/clase11.html#presentación",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Parte 3: Número de Clusters y Métodos No Jerárquicos",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase11.html#determinación-del-número-de-clusters",
+    "href": "Modulos/clase11.html#determinación-del-número-de-clusters",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Parte 3: Número de Clusters y Métodos No Jerárquicos",
+    "section": "Determinación del número de clusters",
+    "text": "Determinación del número de clusters\n\nMétodos principales:\n\nMétodo del codo (elbow method): Busca el punto donde aumentar clusters ya no reduce significativamente la variación interna (WSS)\nMétodo del silhouette: Maximiza el promedio del índice de silhouette (mide ajuste de observaciones a su cluster)\nGap statistic: Compara dispersión real con esperada bajo distribución aleatoria"
+  },
+  {
+    "objectID": "Modulos/clase11.html#lecturas-asociadas",
+    "href": "Modulos/clase11.html#lecturas-asociadas",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Parte 3: Número de Clusters y Métodos No Jerárquicos",
+    "section": "Lecturas Asociadas",
+    "text": "Lecturas Asociadas\n\nCea D’ Ancona, M. A. Análisis multivariable. Capítulo 3 “Análisis de conglomerados”.\n\nAldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 3\nGiordani et al. An Introduction to Clustering with R. Parte 2 “Standard Clustering”."
+  }
+]
