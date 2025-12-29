@@ -5,8 +5,6 @@ editor: visual
 css: styles.css
 ---
 
-## Módulo 2 · Análisis de Conglomerados (Cluster) - Parte 3: Número de Clusters y Métodos No Jerárquicos
-
 ::: callout-note
 **Fecha:** martes 5 de noviembre
 :::
