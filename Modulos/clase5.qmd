@@ -3,8 +3,6 @@ format: html
 editor: visual
 ---
 
-## Módulo 5 · Análisis de Componentes Principales (PCA)
-
 ::: callout-note
 **Fecha:** martes 10 de septiembre
 :::
