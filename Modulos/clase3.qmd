@@ -45,7 +45,7 @@ Realizar uno de los ejercicios propuestos en el Práctico 03, utilizando la mism
 - Análisis de Correspondencias Múltiple (ACM)
 Realizar el ejercicio de ACM propuesto en el Práctico 03, utilizando la misma base de datos pero variables distintas. En este caso, debe incluir al menos una tercera variable.
 
-**Requisitos del informe**
+### Requisitos del informe
 
 El script entregado debe incluir:
 
