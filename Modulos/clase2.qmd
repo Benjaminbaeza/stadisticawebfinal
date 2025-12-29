@@ -5,8 +5,6 @@ editor: visual
 css: styles.css
 ---
 
-## Módulo 2 · Análisis exploratorio
-
 ::: callout-note
 **Fecha:** martes 20 de agosto
 :::
