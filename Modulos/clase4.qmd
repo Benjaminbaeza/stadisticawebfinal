@@ -34,7 +34,7 @@ css: styles.css
 
 Puede utilizar la base de datos ELSOC u otra base disponible en la sección “Enlaces” de U-Campus.
 
-**Requisitos del trabajo**
+### Requisitos del trabajo
 
 El script entregado debe incluir:
 
@@ -44,7 +44,7 @@ El script entregado debe incluir:
 
 - Interpretación general del análisis PCA. (0,1 pts)
 
-**Opcional:**
+### Opcional:
 
 - Inclusión de gráficos (por ejemplo, scree plot o biplot) para apoyar la interpretación.
 
