@@ -5,9 +5,6 @@ editor: visual
 css: styles.css
 ---
 
-
-## Módulo 6 · Análisis Factorial Exploratorio (EFA) - Parte 1
-
 ::: callout-note
 **Fecha:** martes 1 de octubre
 :::
