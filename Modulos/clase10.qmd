@@ -5,8 +5,6 @@ editor: visual
 css: styles.css
 ---
 
-## Módulo 2 · Análisis de Conglomerados (Cluster) - Métodos Jerárquicos
-
 ::: callout-note
 **Fecha:** martes 29 de octubre
 :::
