@@ -5,8 +5,6 @@ editor: visual
 css: styles.css
 ---
 
-## Módulo 3 · Análisis de Correspondencias Simple (AC) y Múltiple (ACM)
-
 ::: callout-note
 **Fecha:** martes 27 de agosto
 :::
@@ -55,7 +53,7 @@ El script entregado debe incluir:
 
 Una interpretación del resultado, abordando:
 
--Existencia o no de asociación entre las variables.
+- Existencia o no de asociación entre las variables.
 
 - Masa.
 
