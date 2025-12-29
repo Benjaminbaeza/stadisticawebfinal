@@ -5,8 +5,6 @@ editor: visual
 css: styles.css  # ← ¡IMPORTANTE! Si usas estilos personalizados
 ---
 
-## Módulo 8 · Aplicación EFA y Trabajo Final
-
 ::: callout-note
 **Fecha:** martes 15 de octubre
 :::
