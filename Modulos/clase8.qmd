@@ -36,7 +36,7 @@ Explique las razones y procedimiento de esta construcción de un índice de cohe
 ### Ejercicio 2 (0,2 puntos)
 Proponga una investigación sociológica que pueda ser respondida por (al menos) Análisis de Correspondencias y/o Análisis de Componentes Principales o por Análisis Factorial Exploratorio.
 
-**Incluya:**
+### Incluya:
 
 - Pregunta de investigación
 - Dimensiones del análisis y posibles variables
