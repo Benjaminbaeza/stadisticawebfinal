@@ -33,16 +33,16 @@ En este caso se les entregara una base d datos en particular que sera la de ELSO
 
 ## Paso 2: Exploración 
 ```{r, eval=FALSE}
-Cargar la base de datos (ejemplo con archivo local)
+#Cargar la base de datos (ejemplo con archivo local)
 datos <- read.csv("ruta/a/tu/base_de_datos.csv")
 
-Explorar dimensiones: ¿cuántas filas (casos) y columnas (variables) tiene?
+#Explorar dimensiones: ¿cuántas filas (casos) y columnas (variables) tiene?
 dim(datos)
 
-Explorar estructura: ¿qué tipo de variables tenemos?
+#Explorar estructura: ¿qué tipo de variables tenemos?
 str(datos)
 
-Ver las primeras filas para inspeccionar el contenido
+#Ver las primeras filas para inspeccionar el contenido
 head(datos)
 ```
 **Respondan:**
