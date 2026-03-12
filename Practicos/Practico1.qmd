@@ -32,7 +32,7 @@ Elijan una base de datos que sea de su interés. Puede ser:
 En este caso se les entregara una base d datos en particular que sera la de ELSOC_Long_2016_2023.dta
 
 ## Paso 2: Exploración 
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 Cargar la base de datos (ejemplo con archivo local)
 datos <- read.csv("ruta/a/tu/base_de_datos.csv")
 
@@ -64,8 +64,7 @@ Aqui el unico limite es la imaginación, lo ideal es que la pregunta sea pertine
 
 ## Paso 4: Identificar valores perdidos y darles un valor o eliminar los casos.
 
-```{r librerias, eval=FALSE}
-
+```{r, eval=FALSE}
 # Identificar valores perdidos en cada variable
 sapply(datos, function(x) sum(is.na(x)))
 
@@ -78,7 +77,7 @@ Opción A: Eliminar casos con NA (si son pocos)
 ```
 ## Paso 5: Identificar casos outliers y ver qué se hace con esos casos.
 
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Método visual: boxplots
 boxplot(datos$variable_numerica)
 # Método estadístico: rango intercuartílico (IQR)
@@ -106,7 +105,7 @@ Revisen sus variables y pregunten:
 
 3. ¿Hay valores que necesiten ser etiquetados para mejor comprensión?
 
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Ejemplo: crear tramos de edad
 datos$tramo_edad <- cut(datos$edad, 
                          breaks = c(0, 18, 30, 45, 60, 100),
@@ -202,27 +201,27 @@ Ejemplos:
 ## 9.1 Tablas de Frecuencia
 Para variables categóricas (nominales u ordinales), obtengan tablas de frecuencia:
 
-{r
-# Con el paquete sjmisc (como en el práctico 2)
+```{r, eval=FALSE}
+# Con el paquete sjmisc 
 sjmisc::frq(datos$variable_categorica)
 
 # O con R base
 table(datos$variable_categorica)
 prop.table(table(datos$variable_categorica)) * 100  # Porcentajes
+```
 Interpreten: ¿Qué categoría es la más frecuente? ¿Hay categorías con pocos casos?
 
 ## 9.2 Tablas de Contingencia
 Para explorar la relación entre dos variables categóricas, construyan tablas de contingencia:
 
-{r
-# Con sjPlot (similar al práctico 2)
+```{r, eval=FALSE}
+# Con sjPlot 
 sjPlot::sjt.xtab(var.row = datos$variable1, 
                  var.col = datos$variable2,
                  show.row.prc = TRUE,   # Porcentajes por fila
                  show.col.prc = TRUE,   # Porcentajes por columna
                  show.summary = FALSE,
                  encoding = "UTF-8")
-
 # O con R base
 tabla <- table(datos$variable1, datos$variable2)
 print(tabla)
@@ -230,4 +229,5 @@ print(tabla)
 # Porcentajes
 prop.table(tabla, 1) * 100  # Porcentajes por fila
 prop.table(tabla, 2) * 100  # Porcentajes por columna
+```
 Interpreten: ¿Observan algún patrón visual en la tabla? ¿Parece haber asociación entre las variables?
