@@ -1,1 +1,233 @@
+# 🎯 Objetivos del Práctico
+## Propósito General
+Este práctico introductorio tiene como objetivo desarrollar competencias fundamentales para el manejo y exploración inicial de bases de datos, sentando las bases para análisis estadísticos posteriores.
 
+Mediante el trabajo en grupo, los estudiantes aprenderán a:
+
+1. **Seleccionar** y explorar una base de datos, comprendiendo su estructura y contenido.
+
+2. **Identificar** y tratar problemas comunes como valores perdidos y casos atípicos (outliers).
+
+3. **Clasificar** variables según su escala de medición (nominal, ordinal, continua, de razón).
+
+4. **Recodificar** variables para facilitar su análisis posterior.
+
+5. **Formular** preguntas de investigación relevantes a partir de los datos disponibles.
+
+6. **Realizar** un análisis descriptivo inicial mediante tablas de frecuencia y tablas de contingencia.
+
+## Ejercicio a desarrollar:
+Trabajando en grupos de 2 a 3 personas, deberán aplicar los siguientes pasos con una base de datos de su elección:
+
+# 🔍 Guia paso a paso
+
+## Paso 1: Selección de la base a utilizar.
+
+Elijan una base de datos que sea de su interés. Puede ser:
+
+1. Una base de datos propia (de su disciplina o investigación).
+
+2. Datos públicos de repositorios como Harvard Dataverse, Kaggle, INE (institutos nacionales de estadística), etc.
+
+En este caso se les entregara una base d datos en particular que sera la de ELSOC_Long_2016_2023.dta
+
+## Paso 2: Exploración 
+```{r librerias, eval=FALSE}
+Cargar la base de datos (ejemplo con archivo local)
+datos <- read.csv("ruta/a/tu/base_de_datos.csv")
+
+Explorar dimensiones: ¿cuántas filas (casos) y columnas (variables) tiene?
+dim(datos)
+
+Explorar estructura: ¿qué tipo de variables tenemos?
+str(datos)
+
+Ver las primeras filas para inspeccionar el contenido
+head(datos)
+```
+**Respondan:**
+
+¿Cuántos casos y variables tiene la base?
+
+¿Qué tipo de variables encuentran (numéricas, categóricas, etc.)?
+
+## Paso 3: Imaginación de una pregunta de investigación
+
+Antes de limpiar que es el paso que vamos a ver a continuación, piensen: ¿qué les gustaría investigar con estos datos?
+No necesita ser definitiva, pero les ayudará a enfocar el trabajo. Por ejemplo:
+
+- "Queremos saber si existe relación entre el nivel educativo y la confianza en instituciones."
+
+- "Nos interesa explorar cómo varía el ingreso según la región."
+
+Aqui el unico limite es la imaginación, lo ideal es que la pregunta sea pertinente, interesante y abordable sociologicamente, y obvio, que tenga relación directa con los datos que vas a utilizar.
+
+## Paso 4: Identificar valores perdidos y darles un valor o eliminar los casos.
+
+```{r librerias, eval=FALSE}
+
+# Identificar valores perdidos en cada variable
+sapply(datos, function(x) sum(is.na(x)))
+
+# Decidir qué hacer:
+Opción A: Eliminar casos con NA (si son pocos)
+# datos_sin_na <- na.omit(datos)
+
+# Opción B: Imputar un valor (media, mediana, moda)
+# datos$variable[is.na(datos$variable)] <- mean(datos$variable, na.rm = TRUE)
+```
+## Paso 5: Identificar casos outliers y ver qué se hace con esos casos.
+
+```{r librerias, eval=FALSE}
+# Método visual: boxplots
+boxplot(datos$variable_numerica)
+# Método estadístico: rango intercuartílico (IQR)
+Q1 <- quantile(datos$variable_numerica, 0.25, na.rm = TRUE)
+Q3 <- quantile(datos$variable_numerica, 0.75, na.rm = TRUE)
+IQR <- Q3 - Q1
+
+# Límites para outliers
+limite_inferior <- Q1 - 1.5 * IQR
+limite_superior <- Q3 + 1.5 * IQR
+
+# Identificar outliers
+outliers <- datos$variable_numerica[datos$variable_numerica < limite_inferior | 
+                                     datos$variable_numerica > limite_superior]
+print(outliers)
+```
+
+## Paso 6: Identifique las variables que requieren codificación y proponga categorías y asigne valores.
+
+Revisen sus variables y pregunten:
+
+1. ¿Hay variables con muchas categorías que puedan agruparse?
+
+2. ¿Hay variables numéricas que tendría sentido convertir a categóricas (por ejemplo, edad en tramos)?
+
+3. ¿Hay valores que necesiten ser etiquetados para mejor comprensión?
+
+```{r librerias, eval=FALSE}
+# Ejemplo: crear tramos de edad
+datos$tramo_edad <- cut(datos$edad, 
+                         breaks = c(0, 18, 30, 45, 60, 100),
+                         labels = c("0-18", "19-30", "31-45", "46-60", "60+"))
+
+# Ejemplo: recodificar y etiquetar (similar al práctico 2)
+datos$educacion <- car::recode(datos$educacion_original, "c(1,2)=1; c(3,4)=2; c(5,6,7)=3")
+datos$educacion <- sjlabelled::set_labels(datos$educacion,
+                                            labels = c("Baja" = 1,
+                                                       "Media" = 2,
+                                                       "Alta" = 3))
+```
+# Paso 7: Identifique las variables nominales, ordinales, continuas y de razón.
+
+Clasifiquen las variables de su interés (las que usarán para sus preguntas) en:
+
+<div class="table-container" style="overflow-x: auto; margin: 30px 0;">
+
+<table style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif; font-size: 0.95em; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+<caption style="caption-side: top; text-align: center; padding: 12px; font-weight: bold; font-size: 1.1em; background-color: #f8f9fa; border: 1px solid #ddd; border-bottom: none;">
+📋 Tabla 2: Clasificación de Variables según Escala de Medición
+</caption>
+<thead>
+<tr style="background-color: #2c2c2c; color: white;">
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Tipo de Variable</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Descripción</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Ejemplos</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #e8f4f8;">Nominal</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Categorías <strong>sin orden jerárquico</strong>. Solo indican pertenencia a un grupo.</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px; margin: 2px; display: inline-block;">Sexo</span>
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px; margin: 2px; display: inline-block;">Región</span>
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px; margin: 2px; display: inline-block;">Religión</span>
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px; margin: 2px; display: inline-block;">Estado civil</span>
+</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #fff3cd;">Ordinal</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Categorías con <strong>orden o jerarquía</strong>, pero sin distancia matemática precisa entre ellas.</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px; margin: 2px; display: inline-block;">Nivel educativo</span>
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px; margin: 2px; display: inline-block;">Tramo de edad</span>
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px; margin: 2px; display: inline-block;">Nivel de acuerdo</span>
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px; margin: 2px; display: inline-block;">Clase social</span>
+</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #d4edda;">Continua / De Razón</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Valores numéricos con <strong>significado métrico</strong>. El cero es absoluto (razón) o arbitrario (intervalar).</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px; margin: 2px; display: inline-block;">Ingreso ($)</span>
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px; margin: 2px; display: inline-block;">Edad (años)</span>
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px; margin: 2px; display: inline-block;">Número de hijos</span>
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px; margin: 2px; display: inline-block;">Puntaje prueba</span>
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr style="background-color: #f0f0f0; font-size: 0.85em;">
+<td colspan="3" style="border: 1px solid #ddd; padding: 12px; text-align: center; color: #555;">
+<strong>Nota:</strong> Esta clasificación es fundamental para elegir las técnicas estadísticas apropiadas (pruebas paramétricas, no paramétricas, tablas de contingencia, etc.)
+</td>
+</tr>
+</tfoot>
+</table>
+
+<div style="text-align: center; padding: 8px; color: #666; font-size: 0.8em; border: 1px solid #ddd; border-top: none; background-color: #fafafa;">
+<strong>Elaboración propia</strong> basada en la clasificación de Stevens (1946)
+</div>
+
+</div>
+
+
+# Paso 8: Formulación de Preguntas de Investigación
+Basándose en las variables que tienen y su clasificación, propongan al menos dos preguntas de investigación que puedan responderse con estos datos.
+
+Ejemplos:
+
+1. ¿Existe asociación entre el sexo (nominal) y la preferencia política (nominal)?
+
+2. ¿Cómo se distribuye el ingreso (continua) según el nivel educativo (ordinal)?
+
+3. ¿Hay diferencias en la edad promedio (continua) entre quienes votaron y no votaron (nominal)?
+
+4. Escriban sus preguntas y justifiquen por qué son relevantes o interesantes.
+
+# Paso 9: Análisis Descriptivo Inicial
+
+## 9.1 Tablas de Frecuencia
+Para variables categóricas (nominales u ordinales), obtengan tablas de frecuencia:
+
+{r
+# Con el paquete sjmisc (como en el práctico 2)
+sjmisc::frq(datos$variable_categorica)
+
+# O con R base
+table(datos$variable_categorica)
+prop.table(table(datos$variable_categorica)) * 100  # Porcentajes
+Interpreten: ¿Qué categoría es la más frecuente? ¿Hay categorías con pocos casos?
+
+## 9.2 Tablas de Contingencia
+Para explorar la relación entre dos variables categóricas, construyan tablas de contingencia:
+
+{r
+# Con sjPlot (similar al práctico 2)
+sjPlot::sjt.xtab(var.row = datos$variable1, 
+                 var.col = datos$variable2,
+                 show.row.prc = TRUE,   # Porcentajes por fila
+                 show.col.prc = TRUE,   # Porcentajes por columna
+                 show.summary = FALSE,
+                 encoding = "UTF-8")
+
+# O con R base
+tabla <- table(datos$variable1, datos$variable2)
+print(tabla)
+
+# Porcentajes
+prop.table(tabla, 1) * 100  # Porcentajes por fila
+prop.table(tabla, 2) * 100  # Porcentajes por columna
+Interpreten: ¿Observan algún patrón visual en la tabla? ¿Parece haber asociación entre las variables?
