@@ -118,7 +118,7 @@ datos$educacion <- sjlabelled::set_labels(datos$educacion,
                                                        "Media" = 2,
                                                        "Alta" = 3))
 ```
-# Paso 7: Identifique las variables nominales, ordinales, continuas y de razón.
+## Paso 7: Identifique las variables nominales, ordinales, continuas y de razón.
 
 Clasifiquen las variables de su interés (las que usarán para sus preguntas) en:
 
@@ -183,7 +183,7 @@ Clasifiquen las variables de su interés (las que usarán para sus preguntas) en
 </div>
 
 
-# Paso 8: Formulación de Preguntas de Investigación
+## Paso 8: Formulación de Preguntas de Investigación
 Basándose en las variables que tienen y su clasificación, propongan al menos dos preguntas de investigación que puedan responderse con estos datos.
 
 Ejemplos:
@@ -196,9 +196,9 @@ Ejemplos:
 
 4. Escriban sus preguntas y justifiquen por qué son relevantes o interesantes.
 
-# Paso 9: Análisis Descriptivo Inicial
+## Paso 9: Análisis Descriptivo Inicial
 
-## 9.1 Tablas de Frecuencia
+# 9.1 Tablas de Frecuencia
 Para variables categóricas (nominales u ordinales), obtengan tablas de frecuencia:
 
 ```{r, eval=FALSE}
@@ -211,7 +211,7 @@ prop.table(table(datos$variable_categorica)) * 100  # Porcentajes
 ```
 Interpreten: ¿Qué categoría es la más frecuente? ¿Hay categorías con pocos casos?
 
-## 9.2 Tablas de Contingencia
+# 9.2 Tablas de Contingencia
 Para explorar la relación entre dos variables categóricas, construyan tablas de contingencia:
 
 ```{r, eval=FALSE}
