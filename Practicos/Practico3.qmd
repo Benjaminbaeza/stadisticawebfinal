@@ -1,1 +1,209 @@
+# 🎯 Objetivos del Práctico
+## Propósito General
+Este práctico está dedicado al análisis de asociación entre variables categóricas mediante técnicas de reducción de dimensionalidad. Los objetivos son:
+
+1. **Aplicar** Análisis de Correspondencia Simple (ACS) para explorar la relación entre dos variables categóricas.
+
+2. **Aplicar** Análisis de Correspondencia Múltiple (ACM) para explorar relaciones entre tres o más variables categóricas.
+
+3. **Interpretar** los resultados fundamentales: masa, inercia, contribuciones y mapa perceptual.
+
+4. **Visualizar** y comunicar las asociaciones entre categorías de manera efectiva.
+
+# 📝 Ejercicio a Desarrollar
+Pueden trabajar en grupos de 2 a 3 personas o de manera individual. Deben elegir UNO de los siguientes ejercicios, utilizando la base de datos ELSOC (u otra de su elección, si se especifica).
+
+## Opción 1: Análisis de Correspondencia Simple (ACS)
+Objetivo: Realizar la segunda parte del ejercicio propuesto por el profesor Kevin Carrasco (desde "Análisis de correspondencia simple"), utilizando la misma base de datos que en el Práctico 2.
+
+## Opción 2: Análisis de Correspondencia Simple (ACS) con Nuevas Variables
+Objetivo: Realizar un ACS con la misma base de datos, pero seleccionando otras variables (diferentes a las usadas en el Práctico 2 o 3).
+
+## Opción 3: Análisis de Correspondencia Múltiple (ACM)
+Objetivo: Realizar un ACM con la misma base de datos, incorporando al menos tres variables categóricas para explorar sus relaciones simultáneas.
+
+#🔧 Preparación del Entorno Analítico
+## Carga de Paquetes
+Para este práctico necesitarás paquetes específicos para análisis de correspondencia.
+
+```{r, eval=FALSE}
+pacman::p_load(tidyverse, sjPlot, psych, DescTools, ggplot2,
+               broom, rempsyc, FactoMineR, factoextra, corrplot,
+               dplyr, nFactors, ggbiplot, ggrepel, sjlabelled)
+```
+## Carga y Preparación de la Base de Datos
+Carguen la base ELSOC y seleccionen las variables de interés.
+
+```{r, eval=FALSE}
+# Cargar base ELSOC (ajustar ruta según corresponda)
+load(url("https://dataverse.harvard.edu/api/access/datafile/7245118"))
+
+# Filtrar ola y seleccionar variables (¡ejemplo con variables hipotéticas!)
+datos_acs <- elsoc_long_2016_2022.2 %>%
+  filter(ola == "4") %>%
+  select(m01,           # Nivel educacional
+         c25,           # Preferencia democracia
+         d01_01         # Confianza en el gobierno (para ACM)
+         )
+
+# Convertir códigos de valores perdidos a NA
+datos_acs <- datos_acs %>% sjlabelled::set_na(., na = c(-999, -888, -777, -666))
+
+# Eliminar casos con NA (para simplificar el análisis)
+datos_acs <- na.omit(datos_acs)
+
+# Ver estructura
+str(datos_acs)
+```
+📊 Análisis de Correspondencia Simple (ACS)
+## Paso 1: Crear Tabla de Contingencia
+El ACS se aplica sobre una tabla de contingencia.
+
+```{r, eval=FALSE}
+# Crear tabla de contingencia
+tabla_contingencia <- table(datos_acs$m01, datos_acs$c25)
+print(tabla_contingencia)
+
+# Verificar con sjPlot (opcional)
+sjPlot::sjt.xtab(var.row = datos_acs$m01, var.col = datos_acs$c25,
+                 show.row.prc = TRUE, show.col.prc = TRUE)
+```
+## Paso 2: Realizar el ACS
+Utilizaremos la función CA() del paquete FactoMineR.
+
+```{r, eval=FALSE}
+# Realizar Análisis de Correspondencia Simple
+resultado_ca <- CA(tabla_contingencia, graph = FALSE)
+
+# Ver resumen del resultado
+print(resultado_ca)
+summary(resultado_ca) # Más detalles
+```
+
+## Paso 3: Interpretación de Resultados Clave
+A continuación, se deben interpretar los siguientes elementos:
+
+📊 **Masa (Mass)** : Representa la proporción que cada fila y cada columna aporta al total de la tabla. Una masa alta indica una categoría con muchos casos.
+
+```{r, eval=FALSE}
+# Masa de filas y columnas
+resultado_ca$row$mass
+resultado_ca$col$mass
+```
+⚖️ **Inercia (Inertia)** : Mide la varianza total explicada por las dimensiones. Es análogo al concepto de varianza en un PCA. Una inercia total alta indica una fuerte asociación entre las variables.
+
+```{r, eval=FALSE}
+# Inercia total y por dimensión
+resultado_ca$eig
+```
+- Interpretar: ¿Qué porcentaje de la inercia total explica cada dimensión (usualmente las dos primeras)?
+
+📈 Aporte de cada dimensión al modelo (Contributions): Indica qué categorías contribuyen más a la construcción de cada dimensión.
+
+```{r, eval=FALSE}
+# Contribuciones de filas y columnas a las dimensiones
+resultado_ca$row$contrib
+resultado_ca$col$contrib
+```
+Interpretar: ¿Qué categorías de fila y columna tienen mayor contribución a la Dimensión 1? ¿Y a la Dimensión 2?
+
+## Paso 4: Visualización: El Mapa Perceptual
+El mapa perceptual (o biplot) es la herramienta clave para interpretar las asociaciones.
+
+```{r, eval=FALSE}
+# Visualización básica
+plot(resultado_ca)
+
+# Visualización más elaborada con factoextra
+fviz_ca_biplot(resultado_ca, repel = TRUE) # repel evita superposición de etiquetas
+
+# Personalizar
+fviz_ca_biplot(resultado_ca,
+               col.row = "blue",      # Color para categorías de fila
+               col.col = "red",       # Color para categorías de columna
+               repel = TRUE,
+               title = "Mapa Perceptual - Nivel Educacional vs Preferencia Política")
+```
+## Interpretación del Mapa:
+
+- Proximidad entre puntos de FILA: Categorías de fila cercanas tienen perfiles similares en relación a las columnas.
+
+- Proximidad entre puntos de COLUMNA: Categorías de columna cercanas tienen perfiles similares en relación a las filas.
+
+- Proximidad entre un punto de FILA y uno de COLUMNA: Indica una asociación entre esas dos categorías específicas. Cuanto más cerca estén, más fuerte es la asociación.
+
+- Ángulos: Un ángulo agudo (< 90°) entre vectores desde el origen indica correlación positiva; un ángulo obtuso (> 90°) indica correlación negativa.
+
+# 🔬 Análisis de Correspondencia Múltiple (ACM)
+(Si el estudiante elige esta opción)
+
+```{r, eval=FALSE}
+## Paso 1: Preparar Datos para ACM
+El ACM trabaja directamente con un data frame que contiene las variables categóricas.
+
+# Seleccionar al menos 3 variables categóricas
+datos_acm <- datos_acs %>% select(m01, c25, d01_01) # Ejemplo
+
+# Asegurarse de que sean factores
+datos_acm$m01 <- as.factor(datos_acm$m01)
+datos_acm$c25 <- as.factor(datos_acm$c25)
+datos_acm$d01_01 <- as.factor(datos_acm$d01_01)
+```
+## Paso 2: Realizar el ACM
+Usamos la función MCA() de FactoMineR.
+
+```{r, eval=FALSE}
+# Realizar Análisis de Correspondencia Múltiple
+resultado_mca <- MCA(datos_acm, graph = FALSE)
+
+# Ver resumen
+summary(resultado_mca)
+```
+## Paso 3: Interpretación de Resultados Clave (ACM)
+- **Inercia y Valores Propios:** Similar al ACS, pero ahora la inercia total se distribuye en más dimensiones. resultado_mca$eig
+
+- **Contribuciones:** Identificar qué categorías (de todas las variables) contribuyen más a cada dimensión. resultado_mca$var$contrib
+
+- **Coordenadas:** Posición de cada categoría en el mapa. resultado_mca$var$coord
+
+## Paso 4: Visualización del ACM
+
+```{r, eval=FALSE}
+# Gráfico de categorías
+fviz_mca_var(resultado_mca, repel = TRUE, title = "ACM - Categorías de Variables")
+
+# Gráfico de individuos (si interesa)
+# fviz_mca_ind(resultado_mca, repel = TRUE)
+
+# Biplot de individuos y categorías
+fviz_mca_biplot(resultado_mca, repel = TRUE, title = "Mapa Perceptual - ACM")
+```
+
+**Interpretación del Mapa en ACM:**
+
+- Las categorías que aparecen cercanas entre sí en el mapa están asociadas; es decir, tienden a aparecer juntas en los mismos individuos.
+
+- La distancia desde el origen indica la "rareza" o particularidad de esa categoría. Categorías muy alejadas del origen tienen un perfil muy distintivo.
+
+📦 Entrega y Evaluación
+
+## Formato de Entrega
+
+Cada grupo/individuo deberá entregar un script de R (.R) o un archivo R Markdown (.Rmd) que incluya:
+
+1. Encabezado: Nombre de los integrantes, fecha y opción de ejercicio elegida (ACS o ACM).
+
+2. Código completo: Desde la carga de paquetes hasta las visualizaciones, bien comentado.
+
+3. Interpretación de resultados: Responder explícitamente a las preguntas guía:
+
+- **Asociación:** ¿Existe asociación entre las variables? ¿Cómo lo sabes (por inercia, por mapa)?
+
+- **Masa:** ¿Qué categorías tienen mayor y menor peso en el análisis?
+
+- **Inercia:** ¿Cuánta varianza total explican las dos primeras dimensiones? ¿Es suficiente?
+
+- **Aporte de dimensiones:** ¿Qué categorías contribuyen más a la Dimensión 1? ¿Y a la Dimensión 2?
+
+- **Mapa perceptual:** Describe los patrones de asociación que observas. ¿Qué categorías se asocian? ¿Hay alguna categoría con un perfil muy diferente?
 
