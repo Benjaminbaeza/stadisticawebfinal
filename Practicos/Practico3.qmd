@@ -185,7 +185,7 @@ fviz_mca_biplot(resultado_mca, repel = TRUE, title = "Mapa Perceptual - ACM")
 
 - La distancia desde el origen indica la "rareza" o particularidad de esa categoría. Categorías muy alejadas del origen tienen un perfil muy distintivo.
 
-📦 Entrega y Evaluación
+# 📦 Entrega y Evaluación
 
 ## Formato de Entrega
 
