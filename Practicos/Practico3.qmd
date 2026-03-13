@@ -22,7 +22,7 @@ Objetivo: Realizar un ACS con la misma base de datos, pero seleccionando otras v
 ## Opción 3: Análisis de Correspondencia Múltiple (ACM)
 Objetivo: Realizar un ACM con la misma base de datos, incorporando al menos tres variables categóricas para explorar sus relaciones simultáneas.
 
-#🔧 Preparación del Entorno Analítico
+# 🔧 Preparación del Entorno Analítico
 ## Carga de Paquetes
 Para este práctico necesitarás paquetes específicos para análisis de correspondencia.
 
@@ -55,7 +55,7 @@ datos_acs <- na.omit(datos_acs)
 # Ver estructura
 str(datos_acs)
 ```
-📊 Análisis de Correspondencia Simple (ACS)
+# 📊 Análisis de Correspondencia Simple (ACS)
 ## Paso 1: Crear Tabla de Contingencia
 El ACS se aplica sobre una tabla de contingencia.
 
@@ -98,7 +98,7 @@ resultado_ca$eig
 ```
 - Interpretar: ¿Qué porcentaje de la inercia total explica cada dimensión (usualmente las dos primeras)?
 
-📈 Aporte de cada dimensión al modelo (Contributions): Indica qué categorías contribuyen más a la construcción de cada dimensión.
+📈 **Aporte de cada dimensión al modelo (Contributions):** Indica qué categorías contribuyen más a la construcción de cada dimensión.
 
 ```{r, eval=FALSE}
 # Contribuciones de filas y columnas a las dimensiones
@@ -126,21 +126,21 @@ fviz_ca_biplot(resultado_ca,
 ```
 ## Interpretación del Mapa:
 
-- Proximidad entre puntos de FILA: Categorías de fila cercanas tienen perfiles similares en relación a las columnas.
+- **Proximidad entre puntos de FILA:** Categorías de fila cercanas tienen perfiles similares en relación a las columnas.
 
-- Proximidad entre puntos de COLUMNA: Categorías de columna cercanas tienen perfiles similares en relación a las filas.
+- **Proximidad entre puntos de COLUMNA:** Categorías de columna cercanas tienen perfiles similares en relación a las filas.
 
-- Proximidad entre un punto de FILA y uno de COLUMNA: Indica una asociación entre esas dos categorías específicas. Cuanto más cerca estén, más fuerte es la asociación.
+- **Proximidad entre un punto de FILA y uno de COLUMNA:** Indica una asociación entre esas dos categorías específicas. Cuanto más cerca estén, más fuerte es la asociación.
 
-- Ángulos: Un ángulo agudo (< 90°) entre vectores desde el origen indica correlación positiva; un ángulo obtuso (> 90°) indica correlación negativa.
+- **Ángulos:** Un ángulo agudo (< 90°) entre vectores desde el origen indica correlación positiva; un ángulo obtuso (> 90°) indica correlación negativa.
 
 # 🔬 Análisis de Correspondencia Múltiple (ACM)
 (Si el estudiante elige esta opción)
 
-```{r, eval=FALSE}
 ## Paso 1: Preparar Datos para ACM
 El ACM trabaja directamente con un data frame que contiene las variables categóricas.
 
+```{r, eval=FALSE}
 # Seleccionar al menos 3 variables categóricas
 datos_acm <- datos_acs %>% select(m01, c25, d01_01) # Ejemplo
 
