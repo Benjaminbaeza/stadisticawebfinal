@@ -42,6 +42,8 @@ website:
             href: Practicos/Practico1.qmd
           - text: "Práctico 2: Creación de tablas de contingencia y Chi-cuadrado"
             href: Practicos/Practico2.qmd
+          - text: "Práctico 3: Análisis de Correspondencia (Simple y Múltiple)"
+            href: Practicos/Practico3.qmd
 
         
       - href: ayudantia.qmd
