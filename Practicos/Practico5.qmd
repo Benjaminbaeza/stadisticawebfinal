@@ -2,8 +2,8 @@
 Este script realiza un análisis de conglomerados jerárquico utilizando datos del Latinobarómetro para identificar patrones de confianza institucional en América Latina. Se emplea el método de Ward con distancia euclidiana sobre variables estandarizadas.
 
 ## 📦 1. Configuración Inicial y Paquetes
-# Limpiar entorno (opcional)
-# rm(list = ls())
+**Limpiar entorno (opcional)**
+**rm(list = ls())**
 
 ```{r librerias, eval=FALSE}
 # Cargar paquetes necesarios
@@ -20,7 +20,7 @@ options(scipen = 999)  # Evitar notación científica
 set.seed(123)          # Para reproducibilidad
 ```
 
-# 📂 2. Carga de Datos
+## 📂 2. Carga de Datos
 ```{r librerias, eval=FALSE}
 # Cargar base de datos (AJUSTA LA RUTA)
 lb <- read_xlsx("/ruta/a/tu/archivo/latinobarometro_subset_4vars.xlsx")
@@ -30,7 +30,7 @@ glimpse(lb)
 summary(lb)
 ```
 
-# 🧹 3. Limpieza y Preparación de Variables
+## 🧹 3. Limpieza y Preparación de Variables
 ```{r librerias, eval=FALSE}
 # 3.1 Identificar variables de interés (confianza en instituciones)
 vars_items <- intersect(names(lb), c("P34NI.BB", "P34NI.BE", "P34NI.BD", "P34NI.BC"))
@@ -44,7 +44,7 @@ lb <- lb %>%
 sapply(lb[, vars_items], class)
 ```
 
-# 🔍 4. Selección de Variables para el Cluster
+## 🔍 4. Selección de Variables para el Cluster
 
 ```{r librerias, eval=FALSE}
 # 4.1 Identificar todas las columnas numéricas
@@ -63,7 +63,7 @@ vars_para_cluster <- setdiff(num_cols, var_excluir)
 print(vars_para_cluster)
 ```
 
-# 🧪 5. Filtrar Casos Completos (Sin NA)
+## 🧪 5. Filtrar Casos Completos (Sin NA)
 
 ```{r librerias, eval=FALSE}
 # Eliminar filas con NA en las variables de clustering
@@ -75,7 +75,7 @@ cat("Casos originales:", nrow(lb), "\n")
 cat("Casos sin NA:", nrow(lb_limpio), "\n")
 ```
 
-# 🏷️ 6. Etiquetas para Identificar Casos
+## 🏷️ 6. Etiquetas para Identificar Casos
 ```{r librerias, eval=FALSE}
 # Usar PAIS_NOMBRE como etiqueta si existe
 if ("PAIS_NOMBRE" %in% names(lb_limpio)) {
@@ -85,7 +85,7 @@ if ("PAIS_NOMBRE" %in% names(lb_limpio)) {
 }
 ```
 
-# ⚖️ 7. Estandarización de Variables
+## ⚖️ 7. Estandarización de Variables
 ```{r librerias, eval=FALSE}
 # 7.1 Seleccionar solo las variables para cluster como matriz
 X <- lb_limpio %>% 
@@ -100,7 +100,7 @@ round(colMeans(Z), 2)  # Deberían ser ~0
 apply(Z, 2, sd)        # Deberían ser 1
 ```
 
-# 📐 8. Cálculo de Distancias y Clustering
+## 📐 8. Cálculo de Distancias y Clustering
 
 ```{r librerias, eval=FALSE}
 # 8.1 Calcular matriz de distancias euclidianas
@@ -114,7 +114,7 @@ hc$height
 hc$merge
 ```
 
-# 📊 9. Tabla del Proceso de Clustering
+## 📊 9. Tabla del Proceso de Clustering
 {r,
 # Crear una tabla legible con cada paso de fusión
 out <- data.frame(
@@ -127,7 +127,7 @@ print(out)
 ```
 
 
-# 🌲 10. Visualización del Dendrograma
+## 🌲 10. Visualización del Dendrograma
 ```{r librerias, eval=FALSE}
 # Guardar parámetros gráficos originales
 op <- par(no.readonly = TRUE)
@@ -155,7 +155,7 @@ par(op)
 ```
 
 
-# ✂️ 11. Cortar el Árbol y Asignar Clústeres
+## ✂️ 11. Cortar el Árbol y Asignar Clústeres
 ```{r librerias, eval=FALSE}
 # Cortar el dendrograma en K grupos
 clusters <- cutree(hc, k = K)
@@ -165,7 +165,7 @@ table(clusters)
 ```
 
 
-# 📋 12. Anexar Clústeres a los Datos
+## 📋 12. Anexar Clústeres a los Datos
 ```{r librerias, eval=FALSE}
 # Añadir columna de cluster al data frame
 lb_resultado <- lb_limpio %>%
@@ -175,7 +175,7 @@ lb_resultado <- lb_limpio %>%
 head(lb_resultado %>% select(PAIS_NOMBRE, all_of(vars_items), Cluster))
 ```
 
-# 📈 13. Caracterización de los Clústeres
+## 📈 13. Caracterización de los Clústeres
 ```{r librerias, eval=FALSE}
 # 13.1 Medias por cluster
 resumen_means <- lb_resultado %>%
@@ -209,7 +209,7 @@ if ("PAIS_NOMBRE" %in% names(lb_resultado)) {
 }
 ```
 
-# 📊 14. Visualizaciones Adicionales
+## 📊 14. Visualizaciones Adicionales
 ```{r librerias, eval=FALSE}
 # 14.1 Tamaño de clusters
 barplot(table(lb_resultado$Cluster),
@@ -242,7 +242,7 @@ ggplot(perfiles, aes(x = Variable, y = Media,
 ```
 
 
-# 💾 15. Exportar Resultados
+## 💾 15. Exportar Resultados
 
 ```{r librerias, eval=FALSE}
 # Exportar a Excel (varias hojas)
@@ -260,7 +260,7 @@ cat("✅ Resultados exportados a 'latinobarometro_clusters_resultado.xlsx'\n")
 ```
 
 
-# 📝 16. Interpretación de Resultados
+## 📝 16. Interpretación de Resultados
 Completar según los resultados obtenidos:
 
 ```{r librerias, eval=FALSE}
