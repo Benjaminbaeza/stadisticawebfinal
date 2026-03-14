@@ -115,7 +115,7 @@ hc$merge
 ```
 
 ## 📊 9. Tabla del Proceso de Clustering
-{r,
+```{r librerias, eval=FALSE}
 # Crear una tabla legible con cada paso de fusión
 out <- data.frame(
   paso   = seq_along(hc$height),
