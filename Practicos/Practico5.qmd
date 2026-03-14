@@ -30,7 +30,7 @@ glimpse(lb)
 summary(lb)
 ```
 
-#🧹 3. Limpieza y Preparación de Variables
+# 🧹 3. Limpieza y Preparación de Variables
 ```{r librerias, eval=FALSE}
 # 3.1 Identificar variables de interés (confianza en instituciones)
 vars_items <- intersect(names(lb), c("P34NI.BB", "P34NI.BE", "P34NI.BD", "P34NI.BC"))
