@@ -1,1 +1,164 @@
+# 🎯 Objetivo del Ejercicio
+Este ejercicio tiene como objetivo aplicar técnicas de clustering jerárquico utilizando el método del centroide para identificar grupos (conglomerados) en una base de datos estandarizada. El análisis se basa en la distancia euclidiana al cuadrado como medida de disimilitud.
 
+Valor: 0,2 puntos para el Control 2
+
+## 📝 Ejercicio a Desarrollar
+Sigan los siguientes pasos con una base de datos de su elección (preferiblemente la misma ELSOC u otra con variables numéricas):
+
+#🔧 Paso 1: Preparación del Entorno
+{r,
+## Cargar paquetes necesarios
+pacman::p_load(
+  tidyverse,      # Manipulación de datos
+  factoextra,     # Visualización de clustering
+  amap,           # Para hclust.centroide (método centroide)
+  cluster         # Análisis de conglomerados
+)
+
+## Configurar entorno
+options(scipen = 999)
+set.seed(123)     # Para reproducibilidad
+📊 Paso 2: Carga y Selección de Variables
+Seleccionen variables numéricas para el análisis de conglomerados.
+
+```{r librerias, eval=FALSE}
+# Ejemplo con ELSOC (adaptar a su base)
+load(url("https://dataverse.harvard.edu/api/access/datafile/7245118"))
+
+# Filtrar ola 4 y seleccionar variables numéricas
+datos_cluster <- elsoc_long_2016_2022.2 %>%
+  filter(ola == "4") %>%
+  select(edad,    # Edad (numérica)
+         ingreso, # Ingreso (numérica)
+         educacion # Nivel educacional (ordinal, puede tratarse como numérica)
+         )
+# Eliminar NA
+datos_cluster <- na.omit(datos_cluster)
+
+# Ver estructura
+summary(datos_cluster)
+```
+
+# ⚖️ Paso 3: Estandarización de Variables
+Es fundamental estandarizar las variables para que todas tengan la misma escala (media = 0, desviación estándar = 1).
+
+```{r librerias, eval=FALSE}
+# Estandarizar (normalizar) las variables
+data.scaled <- scale(datos_cluster)
+
+# Verificar
+head(data.scaled)
+summary(data.scaled)  # Media ~0, SD ~1
+```
+
+# 📐 Paso 4: Calcular la Distancia Euclidiana
+Calculamos la matriz de distancias euclideanas entre todos los casos.
+
+```{r librerias, eval=FALSE}
+# Calcular distancia euclidiana
+d <- dist(data.scaled, method = "euclidean")
+
+# Ver dimensión de la matriz de distancias
+print(d)
+```
+
+# 🔲 Paso 5: Elevar al Cuadrado las Distancias
+Para el método del centroide (y el de Ward), se requiere usar la distancia al cuadrado.
+
+```{r librerias, eval=FALSE}
+# Elevar cada distancia al cuadrado
+d2 <- d^2
+
+# Verificar
+str(d2)
+```
+
+#🌲 Paso 6: Ejecutar el Análisis de Conglomerados (Método Centroide)
+Utilizamos la función hclust.centroide() del paquete amap, que implementa el método del centroide con distancias al cuadrado.
+
+```{r librerias, eval=FALSE}
+# Ejecutar clustering jerárquico con método centroide
+hc <- hclust.centroide(d2)
+
+# Ver resultados básicos
+names(hc)
+hc$method  # Debería ser "centroid"
+```
+
+# 📈 Paso 7: Visualizar el Dendrograma
+El dendrograma muestra la jerarquía de los conglomerados.
+
+```{r librerias, eval=FALSE}
+# Visualizar dendrograma básico
+plot(hc, hang = -1, main = "Clustering por centroide (amap)")
+
+# Añadir rectángulos para cortar en k grupos (ejemplo k=4)
+rect.hclust(hc, k = 4, border = 2:5)  # border = colores para cada grupo
+```
+
+# Visualización mejorada con factoextra:
+```{r librerias, eval=FALSE}
+# Dendrograma más profesional
+fviz_dend(hc, 
+          k = 4,                    # Cortar en 4 grupos
+          cex = 0.6,                 # Tamaño de etiquetas
+          color_labels_by_k = TRUE,  # Colorear etiquetas por grupo
+          rect = TRUE,               # Añadir rectángulos
+          rect_fill = TRUE,           # Rellenar rectángulos
+          main = "Dendrograma - Método Centroide (k=4)")
+```
+
+# ✂️ Paso 8: Asignar y Analizar los Conglomerados
+Una vez decidido el número de grupos (k), asignamos cada caso a su conglomerado.
+
+```{r librerias, eval=FALSE}
+# Cortar el árbol en k grupos (ejemplo k=4)
+k <- 4
+grupos <- cutree(hc, k = k)
+
+# Añadir los grupos a los datos originales
+datos_cluster$grupo <- grupos
+
+# Ver cuántos casos por grupo
+table(datos_cluster$grupo)
+
+# Ver medias de las variables originales por grupo
+datos_cluster %>%
+  group_by(grupo) %>%
+  summarise(across(where(is.numeric), mean, na.rm = TRUE))
+```
+
+# 📝 Paso 9: Interpretación de Resultados
+En el script, deben incluir una interpretación clara de los resultados:
+
+## 🔍 Preguntas guía para la interpretación:
+Número de grupos (k): ¿Por qué eligieron k=4? ¿Qué otros valores probaron? (Pueden usar el método del codo o el coeficiente de silueta para justificar)
+
+```{r librerias, eval=FALSE}
+# Método del codo para ayudar a elegir k
+fviz_nbclust(data.scaled, hcut, method = "wss") +
+  geom_vline(xintercept = 4, linetype = 2, color = "red")
+```
+
+**Caracterización de los grupos:** A partir de las medias por grupo (calculadas arriba), describan el perfil de cada conglomerado.
+
+**Ejemplo:** "El Grupo 1 se caracteriza por personas jóvenes con ingresos medios-altos..."
+
+**Altura de corte:** ¿A qué altura cortaron en el dendrograma? ¿Qué significa esa altura en términos de disimilitud?
+
+**Validación:** ¿Tienen sentido sustantivo (teórico/práctico) los grupos encontrados?
+
+# Formato de Entrega
+Suban al buzón de tareas un script de R (.R) que contenga:
+
+Encabezado: Nombres de los integrantes del grupo (o indicar si es individual).
+
+Código completo (como el de arriba) con comentarios que expliquen cada paso.
+
+Interpretación final (como comentarios al final del script o en un bloque de texto) respondiendo a las preguntas guía del Paso 9.
+
+Criterios de Evaluación (0,2 puntos)
+✅ Código correcto y bien comentado (0,1 puntos)
+
+✅ Interpretación adecuada de los resultados (0,1 puntos)
