@@ -1,1 +1,289 @@
+# 🎯 Objetivo del Análisis
+Este script realiza un análisis de conglomerados jerárquico utilizando datos del Latinobarómetro para identificar patrones de confianza institucional en América Latina. Se emplea el método de Ward con distancia euclidiana sobre variables estandarizadas.
 
+## 📦 1. Configuración Inicial y Paquetes
+# Limpiar entorno (opcional)
+# rm(list = ls())
+
+```{r librerias, eval=FALSE}
+# Cargar paquetes necesarios
+library(readxl)      # Lectura de archivos Excel
+library(dplyr)       # Manipulación de datos
+library(writexl)     # Exportar a Excel
+library(cluster)     # Análisis de conglomerados
+library(tidyr)       # Reestructuración de datos
+library(readr)       # parse_number() para convertir texto a número
+library(ggplot2)     # Visualizaciones (opcional)
+
+# Configurar opciones
+options(scipen = 999)  # Evitar notación científica
+set.seed(123)          # Para reproducibilidad
+```
+
+# 📂 2. Carga de Datos
+```{r librerias, eval=FALSE}
+# Cargar base de datos (AJUSTA LA RUTA)
+lb <- read_xlsx("/ruta/a/tu/archivo/latinobarometro_subset_4vars.xlsx")
+
+# Ver estructura de los datos
+glimpse(lb)
+summary(lb)
+```
+
+#🧹 3. Limpieza y Preparación de Variables
+```{r librerias, eval=FALSE}
+# 3.1 Identificar variables de interés (confianza en instituciones)
+vars_items <- intersect(names(lb), c("P34NI.BB", "P34NI.BE", "P34NI.BD", "P34NI.BC"))
+
+# 3.2 Asegurar que sean numéricas (a veces vienen como texto)
+lb <- lb %>%
+  mutate(across(all_of(vars_items), 
+                ~ suppressWarnings(readr::parse_number(as.character(.x)))))
+
+# 3.3 Verificar que ahora sean numéricas
+sapply(lb[, vars_items], class)
+```
+
+# 🔍 4. Selección de Variables para el Cluster
+
+```{r librerias, eval=FALSE}
+# 4.1 Identificar todas las columnas numéricas
+num_cols <- names(lb)[sapply(lb, is.numeric)]
+
+# 4.2 Si no hay numéricas, usar las variables de interés
+if (length(num_cols) == 0 && length(vars_items) > 0) {
+  num_cols <- vars_items
+}
+
+# 4.3 Excluir variables que no deben influir en el cluster (ej. PAIS_NOMBRE)
+var_excluir <- "PAIS_NOMBRE"
+vars_para_cluster <- setdiff(num_cols, var_excluir)
+
+# Mostrar variables que se usarán
+print(vars_para_cluster)
+```
+
+# 🧪 5. Filtrar Casos Completos (Sin NA)
+
+```{r librerias, eval=FALSE}
+# Eliminar filas con NA en las variables de clustering
+lb_limpio <- lb %>% 
+  drop_na(all_of(vars_para_cluster))
+
+# Ver cuántos casos se perdieron
+cat("Casos originales:", nrow(lb), "\n")
+cat("Casos sin NA:", nrow(lb_limpio), "\n")
+```
+
+# 🏷️ 6. Etiquetas para Identificar Casos
+```{r librerias, eval=FALSE}
+# Usar PAIS_NOMBRE como etiqueta si existe
+if ("PAIS_NOMBRE" %in% names(lb_limpio)) {
+  etiquetas <- lb_limpio$PAIS_NOMBRE
+} else {
+  etiquetas <- paste0("Caso_", seq_len(nrow(lb_limpio)))
+}
+```
+
+# ⚖️ 7. Estandarización de Variables
+```{r librerias, eval=FALSE}
+# 7.1 Seleccionar solo las variables para cluster como matriz
+X <- lb_limpio %>% 
+  select(all_of(vars_para_cluster)) %>% 
+  as.matrix()
+
+# 7.2 ESTANDARIZACIÓN (media 0, desviación 1)
+Z <- scale(X)
+
+# Verificar estandarización
+round(colMeans(Z), 2)  # Deberían ser ~0
+apply(Z, 2, sd)        # Deberían ser 1
+```
+
+# 📐 8. Cálculo de Distancias y Clustering
+
+```{r librerias, eval=FALSE}
+# 8.1 Calcular matriz de distancias euclidianas
+D <- dist(Z, method = "euclidean")
+
+# 8.2 Aplicar método de Ward (con distancias al cuadrado)
+hc <- hclust(D, method = "ward.D2")
+
+# 8.3 Ver alturas de fusión
+hc$height
+hc$merge
+```
+
+# 📊 9. Tabla del Proceso de Clustering
+{r,
+# Crear una tabla legible con cada paso de fusión
+out <- data.frame(
+  paso   = seq_along(hc$height),
+  merge1 = hc$merge[,1],
+  merge2 = hc$merge[,2],
+  height = round(hc$height, 3)
+)
+print(out)
+```
+
+
+# 🌲 10. Visualización del Dendrograma
+```{r librerias, eval=FALSE}
+# Guardar parámetros gráficos originales
+op <- par(no.readonly = TRUE)
+
+# Ajustar márgenes
+par(mar = c(8, 4, 4, 2))
+
+# Dendrograma básico
+plot(hc,
+     labels = as.character(etiquetas),
+     main = "Dendrograma - Clustering Jerárquico (Ward.D2)",
+     xlab = "", 
+     sub = "",
+     cex = 0.7,
+     hang = -1)
+
+# DEFINIR NÚMERO DE CLUSTERS (k)
+K <- 4  # <-- CAMBIA SEGÚN TU ANÁLISIS
+
+# Añadir rectángulos
+rect.hclust(hc, k = K, border = 2:(K+1))
+
+# Restaurar parámetros
+par(op)
+```
+
+
+# ✂️ 11. Cortar el Árbol y Asignar Clústeres
+```{r librerias, eval=FALSE}
+# Cortar el dendrograma en K grupos
+clusters <- cutree(hc, k = K)
+
+# Distribución de casos por cluster
+table(clusters)
+```
+
+
+# 📋 12. Anexar Clústeres a los Datos
+```{r librerias, eval=FALSE}
+# Añadir columna de cluster al data frame
+lb_resultado <- lb_limpio %>%
+  mutate(Cluster = clusters)
+
+# Ver primeras filas
+head(lb_resultado %>% select(PAIS_NOMBRE, all_of(vars_items), Cluster))
+```
+
+# 📈 13. Caracterización de los Clústeres
+```{r librerias, eval=FALSE}
+# 13.1 Medias por cluster
+resumen_means <- lb_resultado %>%
+  group_by(Cluster) %>%
+  summarise(
+    across(all_of(vars_items), 
+           ~ mean(.x, na.rm = TRUE), 
+           .names = "{.col}_mean"),
+    n_casos = n(),
+    .groups = "drop"
+  )
+print(resumen_means)
+
+# 13.2 Renombrar variables para mejor interpretación
+lb_resultado_nombres <- lb_resultado %>%
+  rename(
+    Confianza_empresarios = `P34NI.BB`,
+    Confianza_partidos    = `P34NI.BE`,
+    Confianza_congreso    = `P34NI.BD`,
+    Confianza_poder_jud   = `P34NI.BC`
+  )
+
+# 13.3 Tabla cruzada: País vs Cluster
+if ("PAIS_NOMBRE" %in% names(lb_resultado)) {
+  tabla_pais_cluster <- table(lb_resultado$PAIS_NOMBRE, lb_resultado$Cluster)
+  print(tabla_pais_cluster)
+  
+  # Porcentajes por país
+  pct_fila <- round(prop.table(tabla_pais_cluster, margin = 1) * 100, 1)
+  print(pct_fila)
+}
+```
+
+# 📊 14. Visualizaciones Adicionales
+```{r librerias, eval=FALSE}
+# 14.1 Tamaño de clusters
+barplot(table(lb_resultado$Cluster),
+        main = paste("Tamaño de clústeres (k =", K, ")"),
+        xlab = "Clúster", 
+        ylab = "Frecuencia",
+        col = 2:(K+1))
+
+# 14.2 Perfiles de clusters (gráfico de líneas)
+perfiles <- lb_resultado_nombres %>%
+  group_by(Cluster) %>%
+  summarise(
+    across(Confianza_empresarios:Confianza_poder_jud, mean, na.rm = TRUE)
+  ) %>%
+  pivot_longer(cols = -Cluster, 
+               names_to = "Variable", 
+               values_to = "Media")
+
+# Gráfico con ggplot2
+ggplot(perfiles, aes(x = Variable, y = Media, 
+                     group = Cluster, color = as.factor(Cluster))) +
+  geom_line(size = 1) +
+  geom_point(size = 3) +
+  labs(title = "Perfil de medias por cluster",
+       x = "Variable", 
+       y = "Media",
+       color = "Cluster") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+
+# 💾 15. Exportar Resultados
+
+```{r librerias, eval=FALSE}
+# Exportar a Excel (varias hojas)
+write_xlsx(
+  list(
+    DatosConCluster = lb_resultado,
+    MediasPorCluster = resumen_means,
+    Conteo = data.frame(Cluster = 1:K, 
+                        Frecuencia = as.vector(table(clusters)))
+  ),
+  "latinobarometro_clusters_resultado.xlsx"
+)
+
+cat("✅ Resultados exportados a 'latinobarometro_clusters_resultado.xlsx'\n")
+```
+
+
+# 📝 16. Interpretación de Resultados
+Completar según los resultados obtenidos:
+
+```{r librerias, eval=FALSE}
+# 1. NÚMERO DE CLUSTERS (k)
+# ¿Por qué se eligió k = 4?
+
+# 2. PERFILES DE CADA CLUSTER
+# Cluster 1: [Alta confianza en todas las instituciones]
+# Cluster 2: [Baja confianza generalizada]
+# Cluster 3: [Confianza selectiva - ej. alta en justicia, baja en partidos]
+# Cluster 4: [Perfil mixto...]
+
+# 3. DISTRIBUCIÓN GEOGRÁFICA
+# ¿Qué países predominan en cada cluster?
+
+# 4. CONCLUSIONES
+# ¿Qué patrones de confianza institucional existen en Latinoamérica?
+# ¿Hay diferencias regionales significativas?
+```
+
+ℹ️ Notas Importantes
+**Estandarización:** Es fundamental porque las variables originales pueden tener escalas diferentes.
+
+**Número de clusters (k):** No hay una única respuesta correcta. Debe justificarse según el dendrograma, el método del codo o criterios sustantivos.
+
+**Interpretación:** El análisis de cluster es una herramienta exploratoria. Los resultados deben tener sentido teórico.
