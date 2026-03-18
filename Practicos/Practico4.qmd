@@ -3,11 +3,11 @@ Este ejercicio tiene como objetivo aplicar técnicas de clustering jerárquico u
 
 Valor: 0,2 puntos para el Control 2
 
-## 📝 Ejercicio a Desarrollar
+# 📝 Ejercicio a Desarrollar
 Sigan los siguientes pasos con una base de datos de su elección (preferiblemente la misma ELSOC u otra con variables numéricas):
 
-#🔧 Paso 1: Preparación del Entorno
-{r,
+##🔧 Paso 1: Preparación del Entorno
+```{r, eval=FALSE}
 ## Cargar paquetes necesarios
 pacman::p_load(
   tidyverse,      # Manipulación de datos
@@ -19,7 +19,9 @@ pacman::p_load(
 ## Configurar entorno
 options(scipen = 999)
 set.seed(123)     # Para reproducibilidad
-📊 Paso 2: Carga y Selección de Variables
+```
+
+## 📊 Paso 2: Carga y Selección de Variables
 Seleccionen variables numéricas para el análisis de conglomerados.
 
 ```{r librerias, eval=FALSE}
@@ -40,10 +42,10 @@ datos_cluster <- na.omit(datos_cluster)
 summary(datos_cluster)
 ```
 
-# ⚖️ Paso 3: Estandarización de Variables
+## ⚖️ Paso 3: Estandarización de Variables
 Es fundamental estandarizar las variables para que todas tengan la misma escala (media = 0, desviación estándar = 1).
 
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Estandarizar (normalizar) las variables
 data.scaled <- scale(datos_cluster)
 
@@ -52,10 +54,10 @@ head(data.scaled)
 summary(data.scaled)  # Media ~0, SD ~1
 ```
 
-# 📐 Paso 4: Calcular la Distancia Euclidiana
+## 📐 Paso 4: Calcular la Distancia Euclidiana
 Calculamos la matriz de distancias euclideanas entre todos los casos.
 
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Calcular distancia euclidiana
 d <- dist(data.scaled, method = "euclidean")
 
@@ -63,10 +65,10 @@ d <- dist(data.scaled, method = "euclidean")
 print(d)
 ```
 
-# 🔲 Paso 5: Elevar al Cuadrado las Distancias
+## 🔲 Paso 5: Elevar al Cuadrado las Distancias
 Para el método del centroide (y el de Ward), se requiere usar la distancia al cuadrado.
 
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Elevar cada distancia al cuadrado
 d2 <- d^2
 
@@ -74,10 +76,10 @@ d2 <- d^2
 str(d2)
 ```
 
-#🌲 Paso 6: Ejecutar el Análisis de Conglomerados (Método Centroide)
+## 🌲 Paso 6: Ejecutar el Análisis de Conglomerados (Método Centroide)
 Utilizamos la función hclust.centroide() del paquete amap, que implementa el método del centroide con distancias al cuadrado.
 
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Ejecutar clustering jerárquico con método centroide
 hc <- hclust.centroide(d2)
 
@@ -86,10 +88,10 @@ names(hc)
 hc$method  # Debería ser "centroid"
 ```
 
-# 📈 Paso 7: Visualizar el Dendrograma
+## 📈 Paso 7: Visualizar el Dendrograma
 El dendrograma muestra la jerarquía de los conglomerados.
 
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Visualizar dendrograma básico
 plot(hc, hang = -1, main = "Clustering por centroide (amap)")
 
@@ -98,7 +100,8 @@ rect.hclust(hc, k = 4, border = 2:5)  # border = colores para cada grupo
 ```
 
 # Visualización mejorada con factoextra:
-```{r librerias, eval=FALSE}
+
+```{r, eval=FALSE}
 # Dendrograma más profesional
 fviz_dend(hc, 
           k = 4,                    # Cortar en 4 grupos
@@ -109,10 +112,10 @@ fviz_dend(hc,
           main = "Dendrograma - Método Centroide (k=4)")
 ```
 
-# ✂️ Paso 8: Asignar y Analizar los Conglomerados
+## ✂️ Paso 8: Asignar y Analizar los Conglomerados
 Una vez decidido el número de grupos (k), asignamos cada caso a su conglomerado.
 
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Cortar el árbol en k grupos (ejemplo k=4)
 k <- 4
 grupos <- cutree(hc, k = k)
@@ -129,13 +132,13 @@ datos_cluster %>%
   summarise(across(where(is.numeric), mean, na.rm = TRUE))
 ```
 
-# 📝 Paso 9: Interpretación de Resultados
+## 📝 Paso 9: Interpretación de Resultados
 En el script, deben incluir una interpretación clara de los resultados:
 
 ## 🔍 Preguntas guía para la interpretación:
 Número de grupos (k): ¿Por qué eligieron k=4? ¿Qué otros valores probaron? (Pueden usar el método del codo o el coeficiente de silueta para justificar)
 
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Método del codo para ayudar a elegir k
 fviz_nbclust(data.scaled, hcut, method = "wss") +
   geom_vline(xintercept = 4, linetype = 2, color = "red")
