@@ -1,1 +1,543 @@
 
+# 🎯 Objetivo del Análisis
+Este script realiza un análisis de conglomerados para identificar perfiles de confianza institucional en América Latina utilizando datos del Latinobarómetro. Las variables miden confianza en cuatro instituciones en escala Likert (1-4):
+
+Variable	Institución
+P34NI.BB	Confianza en los empresarios
+P34NI.BE	Confianza en los partidos políticos
+P34NI.BD	Confianza en el Congreso Nacional
+P34NI.BC	Confianza en el Poder Judicial
+
+**Enfoque metodológico:**
+
+- Escalas Likert tratadas como numéricas (1-4)
+
+- Distancias euclidianas para medir similitud
+
+- Método de Ward para clustering jerárquico
+
+- K-means para validación y asignación de clusters
+
+- PCA para visualización en 2 dimensiones
+
+# 📚 Fundamentos Teóricos
+
+**¿Qué es el método de Ward?**
+El método de Ward (o Ward.D2) es un algoritmo de clustering jerárquico que minimiza la varianza intra-cluster. En cada paso, fusiona los dos clusters que producen el menor incremento en la suma total de cuadrados dentro de los grupos.
+
+**Ventajas:**
+
+- Produce clusters compactos y esféricos
+
+- Muy utilizado en ciencias sociales
+
+- Robusto y con buena interpretación
+
+**Desventajas:**
+
+- Sensible a outliers
+
+- Tiende a crear clusters de tamaño similar
+
+**¿Por qué combinar Ward, k-means y PCA?**
+
+- Ward: Nos da la estructura jerárquica y ayuda a decidir k
+
+- K-means: Asigna casos a clusters de manera óptima dado k
+
+- PCA: Reduce dimensionalidad para visualizar los clusters en 2D
+
+## 📦 1. Instalación y Carga de Paquetes
+**¿Qué hacemos?** Cargamos todas las librerías necesarias.
+
+**¿Por qué?** Cada paquete aporta funciones específicas para distintas etapas del análisis.
+
+```{r, eval=FALSE}
+# Instalar paquetes (solo primera vez)
+install.packages(c("readxl", "dplyr", "writexl", "cluster", 
+                   "tidyr", "tidyverse", "ggplot2"))
+
+# Cargar paquetes
+library(readxl)      # Lectura de Excel
+library(dplyr)       # Manipulación de datos
+library(writexl)     # Exportar a Excel
+library(cluster)     # Análisis de conglomerados
+library(tidyr)       # Reestructuración de datos
+library(tidyverse)   # Conjunto de paquetes
+library(ggplot2)     # Visualizaciones
+
+# Configurar opciones
+options(scipen = 999)  # Evitar notación científica
+set.seed(123)          # Fijar semilla para reproducibilidad
+```
+
+## 📂 2. Carga de Datos
+**¿Qué hacemos?** Importamos la base de datos del Latinobarómetro.
+
+**¿Por qué?** Necesitamos los datos en R para poder procesarlos.
+
+```{r, eval=FALSE}
+# Cargar la base (¡CAMBIAR A TU RUTA!)
+lb <- read_excel("/Users/carolinaaguilera/Dropbox/UAH/Cursos Sociología/2 Sem 2025/Est IV/Laboratorios/latinobarometro_subset_4vars solo 4.xlsx")
+
+# Ver cuántos casos tiene la base
+n_total <- nrow(lb)
+cat("Total de casos en la base original:", n_total, "\n")
+
+# Exploración inicial
+glimpse(lb)
+summary(lb)
+```
+
+**Interpretación:** La base contiene r n_total casos. Debemos verificar que las variables de interés estén presentes y sean del tipo correcto.
+
+## 🏷️ 3. Definir Etiquetas para las Variables
+¿Qué hacemos? Creamos un vector con nombres descriptivos para las variables.
+
+¿Por qué? Es más fácil interpretar "Confianza en empresarios" que "P34NI.BB".
+
+```{r, eval=FALSE}
+# Definir etiquetas legibles
+nuevas_labels <- c(
+  "P34NI.BB" = "Confianza en los empresarios",
+  "P34NI.BE" = "Confianza en los partidos políticos",
+  "P34NI.BD" = "Confianza en el Congreso Nacional",
+  "P34NI.BC" = "Confianza en el Poder Judicial"
+)
+
+print(nuevas_labels)
+```
+
+## 🔢 4. Asegurar Tipo Numérico
+¿Qué hacemos? Convertimos las variables Likert a numéricas.
+
+¿Por qué? Aunque son ordinales, para clustering las trataremos como numéricas (1-4). Esto es común cuando las categorías tienen un orden claro y equidistancia asumida.
+
+```{r, eval=FALSE}
+# Identificar columnas que son variables Likert
+likert_cols <- intersect(names(lb), names(nuevas_labels))
+cat("Variables Likert identificadas:", paste(likert_cols, collapse = ", "), "\n")
+
+# Convertir a numéricas (parse_number extrae el número aunque venga como texto)
+lb <- lb %>%
+  mutate(across(all_of(likert_cols), ~ parse_number(as.character(.x))))
+
+# Verificar
+summary(lb[, likert_cols])
+```
+
+**Interpretación:** Ahora las variables tienen valores entre 1 y 4 (o NA si hay perdidos).
+
+## 🧹 5. Selección y Limpieza
+
+**¿Qué hacemos?** Seleccionamos solo variables numéricas y eliminamos casos con NA.
+
+**¿Por qué?** El clustering requiere datos completos (sin valores perdidos).
+
+```{r, eval=FALSE}
+# Seleccionar solo columnas numéricas
+num_cols <- names(lb)[sapply(lb, is.numeric)]
+cat("Variables numéricas disponibles:", paste(num_cols, collapse = ", "), "\n")
+
+# Eliminar filas con NA en esas variables
+lb_limpio <- lb %>% 
+  select(all_of(num_cols)) %>% 
+  drop_na()
+
+# Ver cuántos casos se perdieron
+cat("Casos después de limpiar NA:", nrow(lb_limpio), "\n")
+cat("Casos eliminados:", n_total - nrow(lb_limpio), 
+    "(", round(100 * (n_total - nrow(lb_limpio))/n_total, 1), "%)\n")
+```
+
+**Interpretación:** Hemos perdido algunos casos con NA, pero ahora tenemos una matriz completa para el clustering.
+
+## 🔢 6. Preparar Matriz para Clustering
+¿Qué hacemos? Convertimos los datos limpios a matriz.
+
+¿Por qué? La mayoría de funciones de clustering trabajan con matrices.
+
+```{r, eval=FALSE}
+# Convertir a matriz
+X <- as.matrix(lb_limpio)
+
+# Ver dimensiones
+dim(X)
+
+# Renombrar columnas con etiquetas legibles (opcional)
+colnames(X) <- ifelse(colnames(X) %in% names(nuevas_labels),
+                      nuevas_labels[colnames(X)],
+                      colnames(X))
+
+# Ver primeras filas
+head(X)
+```
+
+## 📊 7. Determinar Número de Clústeres (Método del Codo)
+¿Qué hacemos? Usamos k-means para evaluar diferentes números de clusters y graficamos la suma de cuadrados intra-cluster.
+
+¿Por qué? El método del codo nos ayuda a elegir k: buscamos el punto donde la curva deja de caer bruscamente.
+
+```{r, eval=FALSE}
+# Evaluar k de 1 a 10
+k.max <- 10
+wss <- sapply(1:k.max, function(k) {
+  km <- kmeans(X, centers = k, nstart = 25, iter.max = 100)
+  km$tot.withinss  # Suma de cuadrados intra-cluster
+})
+
+# Graficar
+plot(1:k.max, wss, 
+     type = "b", 
+     pch = 19, 
+     col = "blue",
+     xlab = "Número de clusters (k)", 
+     ylab = "Suma de cuadrados intra-cluster",
+     main = "Método del Codo para elegir k")
+
+# Añadir línea en el posible codo
+abline(v = 2, col = "red", lty = 2, lwd = 2)  # Cambiar según el gráfico
+abline(v = 3, col = "red", lty = 2, lwd = 2)
+```
+
+**Interpretación:** Buscamos el punto donde la disminución de WSS se estabiliza (forma de codo). En este caso, k=2 o k=3 son candidatos.
+
+## 📏 8. Calcular Matriz de Distancias
+¿Qué hacemos? Calculamos la matriz de distancias euclidianas entre todos los casos.
+
+¿Por qué? Necesitamos esta matriz para el clustering jerárquico.
+
+```{r, eval=FALSE}
+# Calcular distancias euclidianas
+dist_euclidea <- dist(X, method = "euclidean")
+
+# Ver estructura
+str(dist_euclidea)
+
+# Distancias entre primeros 5 casos
+as.matrix(dist_euclidea)[1:5, 1:5]
+```
+
+## 🌲 9. Clustering Jerárquico con Método de Ward
+
+¿Qué hacemos? Aplicamos clustering jerárquico con el método de Ward.D2.
+
+¿Por qué? Ward.D2 usa distancias al cuadrado y minimiza la varianza intra-cluster.
+
+```{r, eval=FALSE}
+# Clustering jerárquico con Ward.D2
+hc <- hclust(dist_euclidea, method = "ward.D2")
+
+# Visualizar dendrograma
+plot(hc, 
+     hang = -1, 
+     main = "Dendrograma - Método de Ward",
+     xlab = "Casos", 
+     ylab = "Altura (distancia)")
+```
+
+## ✂️ 10. Elegir Número de Clústeres (k)
+¿Qué hacemos? Decidimos k basado en el método del codo y la interpretabilidad.
+
+```{r, eval=FALSE}
+# Elegir k (ajustar según análisis)
+K <- 2  # Cambiar a 3 si corresponde
+
+# Cortar el dendrograma
+clusters_hc <- cutree(hc, k = K)
+
+# Ver distribución
+cat("Distribución de clusters (k =", K, "):\n")
+print(table(clusters_hc))
+```
+
+
+## 🔄 11. K-means para Asignación Óptima
+¿Qué hacemos? Usamos k-means para refinar la asignación de clusters.
+
+¿Por qué? K-means optimiza la asignación minimizando la distancia a los centroides, complementando el análisis jerárquico.
+
+```{r, eval=FALSE}
+# K-means con el mismo k
+set.seed(123)  # Para reproducibilidad
+km <- kmeans(X, centers = K, nstart = 50, iter.max = 100)
+
+# Asignaciones
+clusters_km <- factor(km$cluster)
+
+# Comparar con clustering jerárquico
+tabla_comparacion <- table(Hierárquico = clusters_hc, Kmeans = clusters_km)
+print(tabla_comparacion)
+
+# Usaremos los clusters de k-means para el resto del análisis
+```
+## 📋 12. Anexar Clústeres a los Datos
+¿Qué hacemos? Agregamos la columna de cluster a nuestros datos.
+
+```{r, eval=FALSE}
+# Crear data frame con resultados
+resultados_km <- as.data.frame(lb_limpio)
+resultados_km$Cluster <- clusters_km
+
+# Ver primeras filas
+head(resultados_km)
+
+# Distribución final
+table(resultados_km$Cluster)
+```
+
+## 📈 13. Caracterización de los Clústeres
+¿Qué hacemos? Calculamos los promedios de cada variable por cluster para entender los perfiles.
+
+```{r, eval=FALSE}
+# Variables de interés (las originales)
+vars_interes <- names(nuevas_labels)[names(nuevas_labels) %in% colnames(resultados_km)]
+
+# Calcular medias por cluster
+resumen_km <- resultados_km %>%
+  group_by(Cluster) %>%
+  summarise(
+    across(all_of(vars_interes),
+           ~ mean(as.numeric(.x), na.rm = TRUE),
+           .names = "{.col}"),
+    n = n(),
+    .groups = "drop"
+  )
+
+# Renombrar con etiquetas legibles
+for (i in seq_along(vars_interes)) {
+  old_name <- vars_interes[i]
+  new_name <- nuevas_labels[old_name]
+  if (!is.na(new_name) && new_name != old_name) {
+    colnames(resumen_km)[colnames(resumen_km) == old_name] <- new_name
+  }
+}
+
+# Mostrar resultados
+print(resumen_km)
+
+# Tamaños de cluster
+cat("\nTamaños de cluster:\n")
+print(table(clusters_km))
+```
+
+**Interpretación de los perfiles:** (completar según resultados)
+
+- Cluster 1: [ej. Baja confianza en todas las instituciones]
+
+- Cluster 2: [ej. Confianza moderada, más alta en empresarios]
+
+- Cluster 3: [si aplica, etc.]
+
+## 🎨 14. Visualización con PCA
+
+¿Qué hacemos? Reducimos dimensionalidad con PCA para visualizar los clusters en 2D.
+
+¿Por qué? Es difícil visualizar clusters en 4 dimensiones. PCA nos da una "vista satelital".
+
+## 14.1 Realizar PCA
+
+```{r, eval=FALSE}
+# PCA con escalamiento (recomendado para Likert)
+pca <- prcomp(X, center = TRUE, scale. = TRUE)
+
+# Ver resumen
+summary(pca)
+
+# Varianza explicada
+varianza_explicada <- (pca$sdev^2) / sum(pca$sdev^2)
+cat("Varianza explicada:\n")
+for (i in 1:4) {
+  cat("PC", i, ": ", round(100 * varianza_explicada[i], 1), "%\n", sep = "")
+}
+```
+
+## 14.2 Preparar datos para graficar
+```{r, eval=FALSE}
+# Extraer puntajes de las primeras dos componentes
+scores <- as.data.frame(pca$x[, 1:2])
+names(scores) <- c("PC1", "PC2")
+scores$Cluster <- clusters_km
+
+# Calcular centroides por cluster en el espacio PCA
+centroides <- scores %>%
+  group_by(Cluster) %>%
+  summarise(PC1 = mean(PC1), PC2 = mean(PC2), .groups = "drop")
+
+# Título con varianza explicada
+tit <- sprintf("PCA: Confianza institucional (PC1: %.1f%%, PC2: %.1f%%) – coloreado por clúster",
+               100 * varianza_explicada[1], 100 * varianza_explicada[2])
+```
+
+## 14.3 Graficar
+```{r, eval=FALSE}
+# Gráfico PCA con clusters
+ggplot(scores, aes(x = PC1, y = PC2, color = Cluster)) +
+  # Puntos de casos
+  geom_point(alpha = 0.7, size = 2) +
+  # Elipses de confianza (95%)
+  stat_ellipse(type = "t", linewidth = 0.8, alpha = 0.5) +
+  # Centroides
+  geom_point(data = centroides, 
+             aes(x = PC1, y = PC2, color = Cluster),
+             size = 6, shape = 18, show.legend = FALSE) +
+  # Etiquetas de centroides
+  geom_text(data = centroides,
+            aes(x = PC1, y = PC2, label = paste("Cluster", Cluster)),
+            vjust = -1, size = 4, fontface = "bold") +
+  # Título y etiquetas
+  labs(title = tit,
+       x = paste0("PC1 (", round(100 * varianza_explicada[1], 1), "%)"),
+       y = paste0("PC2 (", round(100 * varianza_explicada[2], 1), "%)"),
+       color = "Cluster") +
+  # Tema
+  theme_minimal(base_size = 12) +
+  theme(legend.position = "bottom",
+        plot.title = element_text(hjust = 0.5, face = "bold"))
+```
+
+**Interpretación del PCA:**
+
+PC1 (eje horizontal): [ej. Contraste entre confianza general vs desconfianza]
+
+PC2 (eje vertical): [ej. Contraste entre confianza en instituciones políticas vs económicas]
+
+Separación de clusters: [ej. Los clusters se separan claramente en PC1]
+
+# 📝 15. Interpretación Detallada de Resultados
+¿Qué hacemos? Damos sentido sustantivo a los clusters encontrados.
+
+```{r, eval=FALSE}
+# ==============================================================================
+# INTERPRETACIÓN DE RESULTADOS - COMPLETAR SEGÚN DATOS
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 1. NÚMERO DE CLUSTERS ELEGIDO
+# ------------------------------------------------------------------------------
+cat("Se eligió k =", K, "por las siguientes razones:\n")
+cat("- El método del codo mostró una disminución importante hasta k =", K, "\n")
+cat("- Los clusters son interpretables teóricamente\n")
+cat("- La visualización PCA muestra separación clara\n")
+
+# ------------------------------------------------------------------------------
+# 2. TAMAÑO DE LOS CLUSTERS
+# ------------------------------------------------------------------------------
+print(table(clusters_km))
+
+# ------------------------------------------------------------------------------
+# 3. PERFIL DE CADA CLUSTER
+# ------------------------------------------------------------------------------
+print(resumen_km)
+
+# Descripción cualitativa
+cat("\n🔵 CLUSTER 1:\n")
+cat("- Tamaño:", resumen_km$n[1], "casos\n")
+cat("- Perfil:\n")
+for (var in nuevas_labels) {
+  if (var %in% colnames(resumen_km)) {
+    cat("  *", var, ":", round(resumen_km[[var]][1], 2), "\n")
+  }
+}
+cat("- Interpretación: [COMPLETAR: ej. Ciudadanos con baja confianza generalizada]\n")
+
+cat("\n🟢 CLUSTER 2:\n")
+# Similar para cluster 2...
+
+# ------------------------------------------------------------------------------
+# 4. VARIABLES MÁS DISCRIMINANTES
+# ------------------------------------------------------------------------------
+# Calcular diferencias entre clusters
+medias_por_cluster <- resumen_km[, -which(names(resumen_km) == "n")]
+rango_por_variable <- sapply(medias_por_cluster, function(x) diff(range(x)))
+
+cat("\n📌 VARIABLES QUE MÁS DIFERENCIAN LOS CLUSTERS:\n")
+print(sort(rango_por_variable, decreasing = TRUE))
+
+# ------------------------------------------------------------------------------
+# 5. CONCLUSIONES GENERALES
+# ------------------------------------------------------------------------------
+cat("\n🎯 CONCLUSIONES:\n")
+cat("1. [Ej. Existen", K, "perfiles de confianza institucional en Latinoamérica]\n")
+cat("2. [Ej. La variable más discriminante es la confianza en partidos políticos]\n")
+cat("3. [Ej. Los clusters se diferencian principalmente en el eje de confianza general]\n")
+cat("4. [Ej. Estos perfiles podrían relacionarse con características sociodemográficas]\n")
+```
+
+## 💾 16. Exportar Resultados
+¿Qué hacemos? Guardamos los resultados en archivos Excel.
+
+{r,
+# Preparar lista de resultados
+resultados_exportar <- list(
+  DatosConCluster = resultados_km,           # Datos originales + cluster
+  PerfilesCluster = resumen_km,               # Medias por cluster
+  Tamaños = as.data.frame(table(clusters_km)) # Distribución
+)
+
+# Exportar a Excel
+write_xlsx(resultados_exportar, "resultados_cluster_confianza.xlsx")
+
+cat("\n✅ Resultados exportados a:", file.path(getwd(), "resultados_cluster_confianza.xlsx"))
+```
+
+## 📊 17. Visualizaciones Adicionales
+
+# 17.1 Gráfico de perfiles (radar o líneas)
+
+```{r, eval=FALSE}
+# Preparar datos para gráfico de perfiles
+perfiles_long <- resumen_km %>%
+  select(-n) %>%
+  pivot_longer(cols = everything(),
+               names_to = "Variable",
+               values_to = "Media") %>%
+  mutate(Cluster = rep(paste("Cluster", 1:K), each = length(nuevas_labels)))
+
+# Gráfico de líneas
+ggplot(perfiles_long, aes(x = Variable, y = Media, 
+                          group = Cluster, color = Cluster)) +
+  geom_line(size = 1.2) +
+  geom_point(size = 3) +
+  labs(title = "Perfil de confianza por cluster",
+       x = "", y = "Confianza promedio (1-4)") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1),
+        legend.position = "bottom")
+```
+
+# 17.2 Diagramas de caja por cluster
+
+```{r, eval=FALSE}
+# Para una variable específica
+ggplot(resultados_km, aes(x = Cluster, y = .data[[vars_interes[1]]], fill = Cluster)) +
+  geom_boxplot() +
+  labs(title = paste("Distribución de", nuevas_labels[vars_interes[1]], "por cluster"),
+       y = "Valor (1-4)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+```
+
+## ⚠️ Notas Metodológicas Importantes
+1. Tratamiento de escalas Likert
+Se trataron como numéricas asumiendo equidistancia entre categorías
+
+Alternativa: usar distancia de Gower para variables mixtas
+
+2. Estandarización
+En el clustering usamos datos sin estandarizar (las escalas ya son comparables: 1-4)
+
+En PCA sí estandarizamos (scale. = TRUE) para dar igual peso a todas
+
+3. Validación cruzada
+Comparamos Ward (jerárquico) con k-means (particional)
+
+La alta concordancia entre métodos valida la solución
+
+4. Limitaciones
+Análisis sensible a outliers
+
+La elección de k tiene un componente subjetivo
+
+Se asume independencia de observaciones
+
