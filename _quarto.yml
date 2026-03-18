@@ -48,6 +48,10 @@ website:
             href: Practicos/Practico4.qmd
           - text: "Práctico 5: Análisis de Conglomerados (Cluster) - Latinobarómetro"
             href: Practicos/Practico5.qmd 
+          - text: "Práctico 6: Clustering Jerárquico Aglomerativo con Distancia de Jaccard y Enlace Promedio (UPGMA)"
+            href: Practico/Practico6.qmd
+          - text: "Práctico 7: Análisis de Conglomerados - Confianza Institucional en Latinoamérica"
+            href: Practico/Practico7.qmd
           
           
 
