@@ -491,8 +491,12 @@ print(tabs_cat$edad)
 
 cat("\n📊 EJE POLÍTICO por cluster:\n")
 print(tabs_cat$eje_politico)
+```
+
+
 12.3 Análisis detallado
-{r,
+
+```{r, eval=FALSE
 # Función para crear tabla de proporciones clara
 tabla_proporciones <- function(var_name) {
   prop <- prop.table(table(datos_cluster$cluster, datos_cluster[[var_name]]), 1) * 100
@@ -521,7 +525,7 @@ print("Eje político por cluster:")
 print(prop_eje)
 ```
 
-📝 13. Interpretación de Resultados (¡LA PARTE MÁS IMPORTANTE!)
+## 📝 13. Interpretación de Resultados (¡LA PARTE MÁS IMPORTANTE!)
 ¿Qué hacemos? Damos sentido sociológico a los clusters encontrados.
 
 **Guía para la interpretación:**
@@ -581,10 +585,12 @@ cat("1. [Conclusión principal sobre los perfiles encontrados]\n")
 cat("2. [Relación con teorías sociológicas o hallazgos previos]\n")
 cat("3. [Implicaciones para análisis posteriores]\n")
 cat("4. [Limitaciones del análisis y próximos pasos]\n")
-💾 14. Exportar Resultados
+```
+
+##💾 14. Exportar Resultados
 ¿Qué hacemos? Guardamos los resultados en archivos para su uso posterior.
 
-{r,
+```{r, eval=FALSE
 # Exportar resumen de perfiles
 write_xlsx(resumen_pct, "resumen_clusters_jaccard.xlsx")
 
@@ -603,7 +609,7 @@ write_xlsx(
 )
 
 cat("\n✅ Archivos guardados en:", getwd())
-```}
+```
 
 ## ⚠️ Notas y Advertencias Importantes
 
