@@ -5,7 +5,7 @@ Este script realiza un análisis de conglomerados jerárquico utilizando datos d
 **Limpiar entorno (opcional)**
 **rm(list = ls())**
 
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Cargar paquetes necesarios
 library(readxl)      # Lectura de archivos Excel
 library(dplyr)       # Manipulación de datos
@@ -21,7 +21,7 @@ set.seed(123)          # Para reproducibilidad
 ```
 
 ## 📂 2. Carga de Datos
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Cargar base de datos (AJUSTA LA RUTA)
 lb <- read_xlsx("/ruta/a/tu/archivo/latinobarometro_subset_4vars.xlsx")
 
@@ -31,7 +31,7 @@ summary(lb)
 ```
 
 ## 🧹 3. Limpieza y Preparación de Variables
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # 3.1 Identificar variables de interés (confianza en instituciones)
 vars_items <- intersect(names(lb), c("P34NI.BB", "P34NI.BE", "P34NI.BD", "P34NI.BC"))
 
@@ -46,7 +46,7 @@ sapply(lb[, vars_items], class)
 
 ## 🔍 4. Selección de Variables para el Cluster
 
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # 4.1 Identificar todas las columnas numéricas
 num_cols <- names(lb)[sapply(lb, is.numeric)]
 
@@ -65,7 +65,7 @@ print(vars_para_cluster)
 
 ## 🧪 5. Filtrar Casos Completos (Sin NA)
 
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Eliminar filas con NA en las variables de clustering
 lb_limpio <- lb %>% 
   drop_na(all_of(vars_para_cluster))
@@ -76,7 +76,7 @@ cat("Casos sin NA:", nrow(lb_limpio), "\n")
 ```
 
 ## 🏷️ 6. Etiquetas para Identificar Casos
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Usar PAIS_NOMBRE como etiqueta si existe
 if ("PAIS_NOMBRE" %in% names(lb_limpio)) {
   etiquetas <- lb_limpio$PAIS_NOMBRE
@@ -86,7 +86,7 @@ if ("PAIS_NOMBRE" %in% names(lb_limpio)) {
 ```
 
 ## ⚖️ 7. Estandarización de Variables
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # 7.1 Seleccionar solo las variables para cluster como matriz
 X <- lb_limpio %>% 
   select(all_of(vars_para_cluster)) %>% 
@@ -102,7 +102,7 @@ apply(Z, 2, sd)        # Deberían ser 1
 
 ## 📐 8. Cálculo de Distancias y Clustering
 
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # 8.1 Calcular matriz de distancias euclidianas
 D <- dist(Z, method = "euclidean")
 
@@ -115,7 +115,7 @@ hc$merge
 ```
 
 ## 📊 9. Tabla del Proceso de Clustering
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Crear una tabla legible con cada paso de fusión
 out <- data.frame(
   paso   = seq_along(hc$height),
@@ -128,7 +128,7 @@ print(out)
 
 
 ## 🌲 10. Visualización del Dendrograma
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Guardar parámetros gráficos originales
 op <- par(no.readonly = TRUE)
 
@@ -156,7 +156,7 @@ par(op)
 
 
 ## ✂️ 11. Cortar el Árbol y Asignar Clústeres
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Cortar el dendrograma en K grupos
 clusters <- cutree(hc, k = K)
 
@@ -166,7 +166,7 @@ table(clusters)
 
 
 ## 📋 12. Anexar Clústeres a los Datos
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Añadir columna de cluster al data frame
 lb_resultado <- lb_limpio %>%
   mutate(Cluster = clusters)
@@ -176,7 +176,7 @@ head(lb_resultado %>% select(PAIS_NOMBRE, all_of(vars_items), Cluster))
 ```
 
 ## 📈 13. Caracterización de los Clústeres
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # 13.1 Medias por cluster
 resumen_means <- lb_resultado %>%
   group_by(Cluster) %>%
@@ -210,7 +210,7 @@ if ("PAIS_NOMBRE" %in% names(lb_resultado)) {
 ```
 
 ## 📊 14. Visualizaciones Adicionales
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # 14.1 Tamaño de clusters
 barplot(table(lb_resultado$Cluster),
         main = paste("Tamaño de clústeres (k =", K, ")"),
@@ -244,7 +244,7 @@ ggplot(perfiles, aes(x = Variable, y = Media,
 
 ## 💾 15. Exportar Resultados
 
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # Exportar a Excel (varias hojas)
 write_xlsx(
   list(
@@ -263,7 +263,7 @@ cat("✅ Resultados exportados a 'latinobarometro_clusters_resultado.xlsx'\n")
 ## 📝 16. Interpretación de Resultados
 Completar según los resultados obtenidos:
 
-```{r librerias, eval=FALSE}
+```{r, eval=FALSE}
 # 1. NÚMERO DE CLUSTERS (k)
 # ¿Por qué se eligió k = 4?
 
