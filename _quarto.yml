@@ -52,6 +52,8 @@ website:
             href: Practicos/Practico6.qmd
           - text: "Práctico 7: Análisis de Conglomerados - Confianza Institucional en Latinoamérica"
             href: Practicos/Practico7.qmd
+          - text: "Práctico 8: Construcción de Índice de Cohesión Barrial mediante PCA con datos ELSOC"
+            href: Practicos/Practico8.qmd
           
           
 
