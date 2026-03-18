@@ -44,6 +44,9 @@ website:
             href: Practicos/Practico2.qmd
           - text: "Práctico 3: Análisis de Correspondencia (Simple y Múltiple)"
             href: Practicos/Practico3.qmd
+          - text: "Práctico 4: Análisis de Conglomerados (Cluster) - Latinobarómetro"
+            href: Práctico/Practico4.qmd 
+          
 
         
       - href: ayudantia.qmd
