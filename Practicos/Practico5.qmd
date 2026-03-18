@@ -1,5 +1,5 @@
 # 🎯 Objetivo del Análisis
-Este script realiza un análisis de conglomerados jerárquico utilizando datos del Latinobarómetro para identificar patrones de confianza institucional en América Latina. Se emplea el método de Ward con distancia euclidiana sobre variables estandarizadas.
+Este script realiza un análisis de conglomerados jerárquico utilizando datos del **Latinobarómetro** para identificar patrones de confianza institucional en América Latina. Se emplea el método de Ward con distancia euclidiana sobre variables estandarizadas.
 
 ## 📦 1. Configuración Inicial y Paquetes
 **Limpiar entorno (opcional)**
