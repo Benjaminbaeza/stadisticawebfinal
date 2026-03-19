@@ -133,19 +133,7 @@ print(matriz_cor)
 
 ## Salida esperada:
 
-![Visualización estadística](Imagen_estadistica.png)
-
-
-
-##            barrio_ideal integrado identifico parte_de_mi amigos sociable cordialidad colaboracion
-## barrio_ideal    1.0000   0.6970    0.6256     0.6709   0.3695  0.3604     0.4458      0.3518
-## integrado       0.6970   1.0000    0.7423     0.7211   0.4676  0.4546     0.4875      0.4161
-## identifico      0.6256   0.7423    1.0000     0.7256   0.4862  0.4768     0.5221      0.4426
-## parte_de_mi     0.6709   0.7211    0.7256     1.0000   0.4512  0.4281     0.4754      0.4083
-## amigos          0.3695   0.4676    0.4862     0.4512   1.0000  0.6548     0.5432      0.4778
-## sociable        0.3604   0.4546    0.4768     0.4281   0.6548  1.0000     0.6704      0.5561
-## cordialidad     0.4458   0.4875    0.5221     0.4754   0.5432  0.6704     1.0000      0.5715
-## colaboracion    0.3518   0.4161    0.4426     0.4083   0.4778  0.5561     0.5715      1.0000
+![](Imagenesygraficos/Graficomatrizcor.png)
 
 **Interpretación:**
 
