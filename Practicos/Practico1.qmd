@@ -19,9 +19,9 @@ Mediante el trabajo en grupo, los estudiantes aprenderán a:
 ## Ejercicio a desarrollar:
 Trabajando en grupos de 2 a 3 personas, deberán aplicar los siguientes pasos con una base de datos de su elección:
 
-# 🔍 Guia paso a paso
+## 🔍 Guia paso a paso
 
-## Paso 1: Selección de la base a utilizar.
+# Paso 1: Selección de la base a utilizar.
 
 Elijan una base de datos que sea de su interés. Puede ser:
 
@@ -31,7 +31,7 @@ Elijan una base de datos que sea de su interés. Puede ser:
 
 En este caso se les entregara una base d datos en particular que sera la de ELSOC_Long_2016_2023.dta
 
-## Paso 2: Exploración 
+# Paso 2: Exploración 
 ```{r, eval=FALSE}
 #Cargar la base de datos (ejemplo con archivo local)
 datos <- read.csv("ruta/a/tu/base_de_datos.csv")
@@ -51,7 +51,7 @@ head(datos)
 
 ¿Qué tipo de variables encuentran (numéricas, categóricas, etc.)?
 
-## Paso 3: Imaginación de una pregunta de investigación
+# Paso 3: Imaginación de una pregunta de investigación
 
 Antes de limpiar que es el paso que vamos a ver a continuación, piensen: ¿qué les gustaría investigar con estos datos?
 No necesita ser definitiva, pero les ayudará a enfocar el trabajo. Por ejemplo:
@@ -62,7 +62,7 @@ No necesita ser definitiva, pero les ayudará a enfocar el trabajo. Por ejemplo:
 
 Aqui el unico limite es la imaginación, lo ideal es que la pregunta sea pertinente, interesante y abordable sociologicamente, y obvio, que tenga relación directa con los datos que vas a utilizar.
 
-## Paso 4: Identificar valores perdidos y darles un valor o eliminar los casos.
+# Paso 4: Identificar valores perdidos y darles un valor o eliminar los casos.
 
 ```{r, eval=FALSE}
 # Identificar valores perdidos en cada variable
@@ -75,7 +75,7 @@ Opción A: Eliminar casos con NA (si son pocos)
 # Opción B: Imputar un valor (media, mediana, moda)
 # datos$variable[is.na(datos$variable)] <- mean(datos$variable, na.rm = TRUE)
 ```
-## Paso 5: Identificar casos outliers y ver qué se hace con esos casos.
+# Paso 5: Identificar casos outliers y ver qué se hace con esos casos.
 
 ```{r, eval=FALSE}
 # Método visual: boxplots
@@ -95,7 +95,7 @@ outliers <- datos$variable_numerica[datos$variable_numerica < limite_inferior |
 print(outliers)
 ```
 
-## Paso 6: Identifique las variables que requieren codificación y proponga categorías y asigne valores.
+# Paso 6: Identifique las variables que requieren codificación y proponga categorías y asigne valores.
 
 Revisen sus variables y pregunten:
 
@@ -118,7 +118,7 @@ datos$educacion <- sjlabelled::set_labels(datos$educacion,
                                                        "Media" = 2,
                                                        "Alta" = 3))
 ```
-## Paso 7: Identifique las variables nominales, ordinales, continuas y de razón.
+# Paso 7: Identifique las variables nominales, ordinales, continuas y de razón.
 
 Clasifiquen las variables de su interés (las que usarán para sus preguntas) en:
 
@@ -183,22 +183,22 @@ Clasifiquen las variables de su interés (las que usarán para sus preguntas) en
 </div>
 
 
-## Paso 8: Formulación de Preguntas de Investigación
+# Paso 8: Formulación de Preguntas de Investigación
 Basándose en las variables que tienen y su clasificación, propongan al menos dos preguntas de investigación que puedan responderse con estos datos.
 
 Ejemplos:
 
-1. ¿Existe asociación entre el sexo (nominal) y la preferencia política (nominal)?
+1- ¿Existe asociación entre el sexo (nominal) y la preferencia política (nominal)?
 
-2. ¿Cómo se distribuye el ingreso (continua) según el nivel educativo (ordinal)?
+2- ¿Cómo se distribuye el ingreso (continua) según el nivel educativo (ordinal)?
 
-3. ¿Hay diferencias en la edad promedio (continua) entre quienes votaron y no votaron (nominal)?
+3- ¿Hay diferencias en la edad promedio (continua) entre quienes votaron y no votaron (nominal)?
 
-4. Escriban sus preguntas y justifiquen por qué son relevantes o interesantes.
+4- Escriban sus preguntas y justifiquen por qué son relevantes o interesantes.
 
-## Paso 9: Análisis Descriptivo Inicial
+# Paso 9: Análisis Descriptivo Inicial
 
-# 9.1 Tablas de Frecuencia
+## 9.1 Tablas de Frecuencia
 Para variables categóricas (nominales u ordinales), obtengan tablas de frecuencia:
 
 ```{r, eval=FALSE}
@@ -211,7 +211,7 @@ prop.table(table(datos$variable_categorica)) * 100  # Porcentajes
 ```
 Interpreten: ¿Qué categoría es la más frecuente? ¿Hay categorías con pocos casos?
 
-# 9.2 Tablas de Contingencia
+## 9.2 Tablas de Contingencia
 Para explorar la relación entre dos variables categóricas, construyan tablas de contingencia:
 
 ```{r, eval=FALSE}
