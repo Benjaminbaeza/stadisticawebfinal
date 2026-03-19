@@ -1,7 +1,7 @@
 # 🎯 Objetivos del Análisis
 Este ejercicio tiene como objetivos:
 
-- Realizar un Análisis de Componentes Principales (PCA) con el paquete FactoMineR utilizando variables de cohesión territorial de la encuesta ELSOC.
+- **Realizar un Análisis de Componentes Principales (PCA)** con el paquete FactoMineR utilizando variables de cohesión territorial de la encuesta ELSOC.
 
 - **Interpretar** los resultados del PCA: autovalores, cargas factoriales, varianza explicada.
 
@@ -15,11 +15,11 @@ Este ejercicio tiene como objetivos:
 **¿Qué es el Análisis de Componentes Principales (PCA)?**
 El Análisis de Componentes Principales es una técnica de reducción de dimensionalidad que:
 
-Transforma un conjunto de variables correlacionadas en un nuevo conjunto de variables no correlacionadas llamadas componentes principales.
+- Transforma un conjunto de variables correlacionadas en un nuevo conjunto de variables no correlacionadas llamadas componentes principales.
 
-La primera componente principal captura la máxima varianza posible de los datos.
+- La primera componente principal captura la máxima varianza posible de los datos.
 
-Las componentes siguientes capturan la varianza restante en orden decreciente.
+- Las componentes siguientes capturan la varianza restante en orden decreciente.
 
 # Aplicación en este ejercicio:
 
@@ -37,9 +37,9 @@ t03_03	cordialidad	La gente en este barrio es cordial
 t03_04	colaboracion	La gente en este barrio es colaboradora
 
 # 📦 1. Instalación y Carga de Paquetes
-¿Qué hacemos? Cargamos todas las librerías necesarias para el análisis.
+**¿Qué hacemos?** Cargamos todas las librerías necesarias para el análisis.
 
-¿Por qué? Necesitamos FactoMineR para el PCA, factoextra para visualizaciones, y paran para la prueba de Horn.
+**¿Por qué?** Necesitamos FactoMineR para el PCA, factoextra para visualizaciones, y paran para la prueba de Horn.
 
 ```{r, eval=FALSE}
 # Instalar paquetes (solo primera vez)
@@ -73,9 +73,9 @@ options(scipen = 999)
 ```
 
 # 📂 2. Carga de la Base de Datos
-¿Qué hacemos? Cargamos la encuesta ELSOC directamente desde Harvard Dataverse.
+**¿Qué hacemos?** Cargamos la encuesta ELSOC directamente desde Harvard Dataverse.
 
-¿Por qué? La base está disponible públicamente y contiene las variables que necesitamos.
+**¿Por qué?** La base está disponible públicamente y contiene las variables que necesitamos.
 
 ```{r, eval=FALSE}
 # Cargar la encuesta ELSOC (ola 4, 2019)
@@ -88,9 +88,9 @@ dim(elsoc_long_2016_2022.2)
 **Interpretación:** La base contiene 18,035 casos (entrevistados) medidos en 750 variables a lo largo de diferentes olas.
 
 # 🔍 3. Selección de Variables
-¿Qué hacemos? Seleccionamos 8 variables ordinales de escala Likert (1 a 4) del módulo de cohesión territorial.
+**¿Qué hacemos?** Seleccionamos 8 variables ordinales de escala Likert (1 a 4) del módulo de cohesión territorial.
 
-¿Por qué? Estas variables miden diferentes dimensiones de la percepción del barrio y son adecuadas para PCA por estar en la misma escala.
+**¿Por qué?** Estas variables miden diferentes dimensiones de la percepción del barrio y son adecuadas para PCA por estar en la misma escala.
 
 ```{r, eval=FALSE}
 # Filtrar ola 4 y seleccionar variables
@@ -121,9 +121,9 @@ summary(proc_data)
 ```
 
 # 📊 4. Matriz de Correlaciones
-¿Qué hacemos? Calculamos la matriz de correlaciones entre las 8 variables.
+**¿Qué hacemos?** Calculamos la matriz de correlaciones entre las 8 variables.
 
-¿Por qué? El PCA se basa en las correlaciones entre variables. Altas correlaciones indican que las variables comparten información y pueden resumirse en componentes.
+**¿Por qué?** El PCA se basa en las correlaciones entre variables. Altas correlaciones indican que las variables comparten información y pueden resumirse en componentes.
 
 ```{r, eval=FALSE}
 # Calcular matriz de correlación (excluyendo NA)
@@ -148,9 +148,9 @@ print(matriz_cor)
 **Esto sugiere que podrían existir dos dimensiones subyacentes**
 
 # 📐 5. Realizar el Análisis de Componentes Principales (PCA)
-¿Qué hacemos? Aplicamos PCA con el paquete FactoMineR.
+**¿Qué hacemos?** Aplicamos PCA con el paquete FactoMineR.
 
-¿Por qué? FactoMineR proporciona una salida completa y bien estructurada para interpretar.
+**¿Por qué?** FactoMineR proporciona una salida completa y bien estructurada para interpretar.
 
 ```{r, eval=FALSE}
 # Realizar PCA (con datos sin NA)
@@ -165,9 +165,9 @@ fit$eig
 
 # 📈 6. Interpretación de Resultados
 ## 6.1 Cargas factoriales (coordenadas)
-¿Qué hacemos? Examinamos las cargas factoriales (correlaciones variables-componentes).
+**¿Qué hacemos?** Examinamos las cargas factoriales (correlaciones variables-componentes).
 
-¿Por qué? Nos indican qué variables definen cada componente.
+**¿Por qué?** Nos indican qué variables definen cada componente.
 
 ```{r, eval=FALSE}
 # Cargas factoriales (coordenadas)
