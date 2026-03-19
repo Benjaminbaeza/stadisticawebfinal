@@ -1,0 +1,181 @@
+# 🎯 Objetivos
+
+- **Realizar** AFE con 4 variables de actitudes hacia inmigrantes (ELSOC)
+
+- **Determinar** estructura factorial subyacente
+
+- **Calcular** puntajes factoriales para análisis posteriores
+
+# 📦 1. Paquetes y datos
+```{r, eval=FALSE}
+# Paquetes
+library(tidyverse)
+library(haven)
+library(sjlabelled)
+library(psych)
+library(GPArotation)
+library(knitr)  # Para tablas bonitas
+
+# Directorio
+setwd("C:/Users/cherr/OneDrive/Desktop/Trabajo final estadistica 4")
+
+# Cargar datos
+Elsoc <- read_dta("Elsoc_Long_2016_2023.dta")
+```
+
+# 🔍 2. Selección y limpieza
+
+```{r, eval=FALSE}
+# Variables: r12_01 a r12_04 (actitudes hacia inmigrantes)
+datos_limpios <- Elsoc %>%
+  select(r12_01, r12_02, r12_03, r12_04) %>%
+  filter(
+    !r12_01 %in% c(-999, -888, -666),
+    !r12_02 %in% c(-999, -888, -666),
+    !r12_03 %in% c(-999, -888, -666),
+    !r12_04 %in% c(-999, -888, -666)
+  ) %>%
+  drop_na()
+```
+
+# Muestra de 100 casos 
+- (para el ejemplo, ya que pueden ser muchos mas)
+
+```{r, eval=FALSE}
+set.seed(123)
+
+datos_afe <- datos_limpios %>% slice_sample(n = 100)
+```
+
+📊 3. Matriz de correlaciones
+```{r, eval=FALSE}
+corMat <- muestra_100 %>% 
+  select(r12_01, r12_02, r12_03, r12_04) %>% 
+  cor(use = "complete.obs")
+
+print(corMat)
+```
+
+![](Imagenesygraficos/Prac1graf1.png)
+
+## Figura 1: Matriz de correlaciones
+
+**Interpretación:**
+
+r12_01 y r12_02: correlación muy alta (+0.95) → mismo constructo
+
+r12_03 y r12_04: correlación alta (+0.63) → mismo constructo
+
+Entre ambos grupos: correlaciones negativas → dos dimensiones opuestas
+
+# ✅ 4. Pruebas de adecuación
+
+```{r, eval=FALSE}
+# KMO
+kmo <- KMO(corMat)
+print(kmo)
+
+# Bartlett
+cortest.bartlett(corMat, n = nrow(muestra_100))
+print(bartlett)
+```
+
+**Resultados:**
+
+KMO = 0.55 → adecuación aceptable para AFE exploratorio
+
+Bartlett = El test arroja un χ² = 294.97 (gl = 6) con un p-valor < 0.001  → lo que permite rechazar la hipotesis nula de la matriz de correlaciones
+
+# 📈 5. Número de factores
+
+```{r, eval=FALSE}
+# Scree plot
+scree(muestra_100, factors = TRUE)
+```
+![](Imagenesygraficos/Prac1graf2.png)
+
+## Figura 2: Scree plot
+
+```{r, eval=FALSE}
+# Análisis paralelo
+fa.parallel(muestra_100, fa = "fa", n.obs = nrow(muestra_100))
+```
+![](Imagenesygraficos/Prac1graf3.png)
+
+## Figura 3: Análisis paralelo de Horn
+
+Conclusión: Ambos métodos indican 2 factores
+
+#🔧 6. Extracción de factores
+## 6.1 Ejes principales (PA)
+
+```{r, eval=FALSE}
+fac_pa <- muestra_100 %>%
+  select(r12_01, r12_02, r12_03, r12_04) %>%
+  fa(nfactors = 2, fm = "pa", rotate = "none")
+
+print(fac_pa, digits = 2, sort = TRUE)
+
+```
+
+## 6.2 Máxima verosimilitud (ML)
+
+```{r, eval=FALSE}
+fac_ml <- muestra_100 %>%
+  select(r12_01, r12_02, r12_03, r12_04) %>%
+  fa(nfactors = 2, fm = "ml", rotate = "none")
+
+print(fac_ml, digits = 2, sort = TRUE))
+```
+
+# 🔄 7. Rotaciones
+## 7.1 Varimax (ortogonal)
+```{r, eval=FALSE}
+fac_varimax <- muestra_100 %>%
+  select(r12_01, r12_02, r12_03, r12_04) %>%
+  fa(nfactors = 2, fm = "ml", rotate = "varimax")
+
+print(fac_varimax, digits = 2, sort = TRUE)
+```
+
+
+## 7.2 Promax (oblicua)
+```{r, eval=FALSE}
+fac_promax <- muestra_100 %>%
+  select(r12_01, r12_02, r12_03, r12_04) %>%
+  fa(nfactors = 2, fm = "ml", rotate = "promax")
+
+print(fac_promax, digits = 2, sort = TRUE)
+
+fa.diagram(fac_promax)
+```
+
+# 🧮 9. Puntajes factoriales
+
+```{r, eval=FALSE}
+fac_final <- muestra_100 %>%
+  select(r12_01, r12_02, r12_03, r12_04) %>%
+  fa(nfactors = 2, fm = "ml", rotate = "promax", scores = "regression")
+
+puntajes <- as.data.frame(fac_final$scores)
+names(puntajes) <- c("Factor1", "Factor2")
+
+# Unir puntajes a la muestra
+muestra_100_completa <- cbind(muestra_100, puntajes)
+
+head(muestra_100_completa)
+
+# Estadísticas descriptivas
+summary(puntajes)
+
+✅ 11. Conclusiones
+Estructura bifactorial clara: Actitud positiva (apertura) vs. negativa (amenaza)
+
+71% de varianza explicada → solución robusta
+
+Puntajes factoriales disponibles para análisis posteriores
+
+Próximos pasos: Regresiones, diferencias por grupo, etc.
+
+
+Rotación oblicua (Promax) recomendada por correlación entre factores
