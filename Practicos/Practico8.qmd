@@ -70,7 +70,7 @@ pacman::p_load(
 
 # Limpiar R: desactivar notación científica
 options(scipen = 999)
-```{r, eval=FALSE}
+```
 
 # 📂 2. Carga de la Base de Datos
 ¿Qué hacemos? Cargamos la encuesta ELSOC directamente desde Harvard Dataverse.
@@ -132,6 +132,10 @@ print(matriz_cor)
 ```
 
 ## Salida esperada:
+
+![Visualización estadística](Imagen_estadistica.png)
+
+
 
 ##            barrio_ideal integrado identifico parte_de_mi amigos sociable cordialidad colaboracion
 ## barrio_ideal    1.0000   0.6970    0.6256     0.6709   0.3695  0.3604     0.4458      0.3518
