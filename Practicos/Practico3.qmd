@@ -13,13 +13,13 @@ Este práctico está dedicado al análisis de asociación entre variables categ�
 # 📝 Ejercicio a Desarrollar
 Pueden trabajar en grupos de 2 a 3 personas o de manera individual. Deben elegir UNO de los siguientes ejercicios, utilizando la base de datos ELSOC (u otra de su elección, si se especifica).
 
-## Opción 1: Análisis de Correspondencia Simple (ACS)
+### Opción 1: Análisis de Correspondencia Simple (ACS)
 Objetivo: Realizar la segunda parte del ejercicio propuesto por el profesor Kevin Carrasco (desde "Análisis de correspondencia simple"), utilizando la misma base de datos que en el Práctico 2.
 
-## Opción 2: Análisis de Correspondencia Simple (ACS) con Nuevas Variables
+### Opción 2: Análisis de Correspondencia Simple (ACS) con Nuevas Variables
 Objetivo: Realizar un ACS con la misma base de datos, pero seleccionando otras variables (diferentes a las usadas en el Práctico 2 o 3).
 
-## Opción 3: Análisis de Correspondencia Múltiple (ACM)
+### Opción 3: Análisis de Correspondencia Múltiple (ACM)
 Objetivo: Realizar un ACM con la misma base de datos, incorporando al menos tres variables categóricas para explorar sus relaciones simultáneas.
 
 # 🔧 Preparación del Entorno Analítico
