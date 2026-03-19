@@ -1,12 +1,12 @@
 # 🎯 Objetivo del Ejercicio
 Este ejercicio tiene como objetivo aplicar técnicas de clustering jerárquico utilizando el método del centroide para identificar grupos (conglomerados) en una base de datos estandarizada. El análisis se basa en la distancia euclidiana al cuadrado como medida de disimilitud.
 
-Valor: 0,2 puntos para el Control 2
+**Valor: 0,2 puntos para el Control 2**
 
 # 📝 Ejercicio a Desarrollar
 Sigan los siguientes pasos con una base de datos de su elección (preferiblemente la misma ELSOC u otra con variables numéricas):
 
-##🔧 Paso 1: Preparación del Entorno
+# 🔧 Paso 1: Preparación del Entorno
 ```{r, eval=FALSE}
 ## Cargar paquetes necesarios
 pacman::p_load(
@@ -21,7 +21,7 @@ options(scipen = 999)
 set.seed(123)     # Para reproducibilidad
 ```
 
-## 📊 Paso 2: Carga y Selección de Variables
+# 📊 Paso 2: Carga y Selección de Variables
 Seleccionen variables numéricas para el análisis de conglomerados.
 
 ```{r librerias, eval=FALSE}
@@ -42,7 +42,7 @@ datos_cluster <- na.omit(datos_cluster)
 summary(datos_cluster)
 ```
 
-## ⚖️ Paso 3: Estandarización de Variables
+# ⚖️ Paso 3: Estandarización de Variables
 Es fundamental estandarizar las variables para que todas tengan la misma escala (media = 0, desviación estándar = 1).
 
 ```{r, eval=FALSE}
@@ -54,7 +54,7 @@ head(data.scaled)
 summary(data.scaled)  # Media ~0, SD ~1
 ```
 
-## 📐 Paso 4: Calcular la Distancia Euclidiana
+# 📐 Paso 4: Calcular la Distancia Euclidiana
 Calculamos la matriz de distancias euclideanas entre todos los casos.
 
 ```{r, eval=FALSE}
@@ -65,7 +65,7 @@ d <- dist(data.scaled, method = "euclidean")
 print(d)
 ```
 
-## 🔲 Paso 5: Elevar al Cuadrado las Distancias
+# 🔲 Paso 5: Elevar al Cuadrado las Distancias
 Para el método del centroide (y el de Ward), se requiere usar la distancia al cuadrado.
 
 ```{r, eval=FALSE}
@@ -76,7 +76,7 @@ d2 <- d^2
 str(d2)
 ```
 
-## 🌲 Paso 6: Ejecutar el Análisis de Conglomerados (Método Centroide)
+# 🌲 Paso 6: Ejecutar el Análisis de Conglomerados (Método Centroide)
 Utilizamos la función hclust.centroide() del paquete amap, que implementa el método del centroide con distancias al cuadrado.
 
 ```{r, eval=FALSE}
@@ -88,7 +88,7 @@ names(hc)
 hc$method  # Debería ser "centroid"
 ```
 
-## 📈 Paso 7: Visualizar el Dendrograma
+# 📈 Paso 7: Visualizar el Dendrograma
 El dendrograma muestra la jerarquía de los conglomerados.
 
 ```{r, eval=FALSE}
@@ -99,7 +99,7 @@ plot(hc, hang = -1, main = "Clustering por centroide (amap)")
 rect.hclust(hc, k = 4, border = 2:5)  # border = colores para cada grupo
 ```
 
-# Visualización mejorada con factoextra:
+## Visualización mejorada con factoextra:
 
 ```{r, eval=FALSE}
 # Dendrograma más profesional
@@ -112,7 +112,7 @@ fviz_dend(hc,
           main = "Dendrograma - Método Centroide (k=4)")
 ```
 
-## ✂️ Paso 8: Asignar y Analizar los Conglomerados
+# ✂️ Paso 8: Asignar y Analizar los Conglomerados
 Una vez decidido el número de grupos (k), asignamos cada caso a su conglomerado.
 
 ```{r, eval=FALSE}
@@ -132,7 +132,7 @@ datos_cluster %>%
   summarise(across(where(is.numeric), mean, na.rm = TRUE))
 ```
 
-## 📝 Paso 9: Interpretación de Resultados
+# 📝 Paso 9: Interpretación de Resultados
 En el script, deben incluir una interpretación clara de los resultados:
 
 ## 🔍 Preguntas guía para la interpretación:
@@ -153,15 +153,15 @@ fviz_nbclust(data.scaled, hcut, method = "wss") +
 **Validación:** ¿Tienen sentido sustantivo (teórico/práctico) los grupos encontrados?
 
 # Formato de Entrega
-Suban al buzón de tareas un script de R (.R) que contenga:
+**Suban al buzón de tareas un script de R (.R) que contenga:**
 
-Encabezado: Nombres de los integrantes del grupo (o indicar si es individual).
+- Encabezado: Nombres de los integrantes del grupo (o indicar si es individual).
 
-Código completo (como el de arriba) con comentarios que expliquen cada paso.
+- Código completo (como el de arriba) con comentarios que expliquen cada paso.
 
-Interpretación final (como comentarios al final del script o en un bloque de texto) respondiendo a las preguntas guía del Paso 9.
+- Interpretación final (como comentarios al final del script o en un bloque de texto) respondiendo a las preguntas guía del Paso 9.
 
-Criterios de Evaluación (0,2 puntos)
+## Criterios de Evaluación (0,2 puntos)
 ✅ Código correcto y bien comentado (0,1 puntos)
 
 ✅ Interpretación adecuada de los resultados (0,1 puntos)
