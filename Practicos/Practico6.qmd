@@ -2,61 +2,64 @@
 # 🎯 Objetivo del Análisis
 El análisis de conglomerados (clustering) es una técnica exploratoria que busca agrupar casos (personas, países, etc.) en grupos homogéneos llamados clústeres. Los casos dentro de un mismo clúster son similares entre sí, mientras que casos de diferentes clústeres son diferentes.
 
-En este script utilizamos:
+### En este script utilizamos:
 
-Distancia de Jaccard: Ideal para variables categóricas (transformadas a binarias)
+- **Distancia de Jaccard:** Ideal para variables categóricas (transformadas a binarias)
 
-Enlace promedio (UPGMA): Método de clustering que usa el promedio de distancias entre grupos
+- **Enlace promedio (UPGMA):** Método de clustering que usa el promedio de distancias entre grupos
 
-Datos del Latinobarómetro: Para identificar perfiles sociológicos basados en:
+- **Datos del Latinobarómetro:** Para identificar perfiles sociológicos basados en:
+ 
+- **Ingresos** (Deciles)
 
-Ingresos (Deciles)
+- **Educación** (Básico a Postgrado)
 
-Educación (Básico a Postgrado)
+- **Edad** (Tramos etarios)
 
-Edad (Tramos etarios)
-
-Posición política (Izquierda, Centro, Derecha)
+- **Posición política** (Izquierda, Centro, Derecha)
 
 # 📚 Fundamentos Teóricos
 ¿Qué es la distancia de Jaccard?
 La distancia de Jaccard mide la disimilitud entre dos casos basándose en la presencia/ausencia de atributos. Se calcula como:
 
-Distancia Jaccard = 1 - (Intersección / Unión)
+### Distancia Jaccard = 1 - (Intersección / Unión)
 
-Donde:
+**Donde:**
 
-Intersección: Número de atributos que ambos casos tienen en común (valor 1 en ambos)
+- Intersección: Número de atributos que ambos casos tienen en común (valor 1 en ambos)
 
-Unión: Número total de atributos que al menos uno de los casos tiene
+- Unión: Número total de atributos que al menos uno de los casos tiene
 
-Ejemplo: Si comparamos dos personas y tenemos 10 categorías posibles:
+**Ejemplo: Si comparamos dos personas y tenemos 10 categorías posibles:
 
-Persona A: Tiene las categorías 1, 3, 5
+- Persona A: Tiene las categorías 1, 3, 5
 
-Persona B: Tiene las categorías 1, 5, 7
+- Persona B: Tiene las categorías 1, 5, 7
 
-Intersección = {1, 5} → 2 categorías
+- Intersección = {1, 5} → 2 categorías
 
-Unión = {1, 3, 5, 7} → 4 categorías
+- Unión = {1, 3, 5, 7} → 4 categorías
 
-Similitud Jaccard = 2/4 = 0.5
+- Similitud Jaccard = 2/4 = 0.5
 
-Distancia Jaccard = 1 - 0.5 = 0.5
+- Distancia Jaccard = 1 - 0.5 = 0.5
 
-¿Qué es el enlace promedio (UPGMA)?
+---
+
+## ¿Qué es el enlace promedio (UPGMA)?
+
 UPGMA significa Unweighted Pair Group Method with Arithmetic Mean. Es un método de clustering que:
 
-Calcula la distancia entre dos clusters como el promedio de todas las distancias entre pares de puntos de cada cluster
+- Calcula la distancia entre dos clusters como el promedio de todas las distancias entre pares de puntos de cada cluster
 
-Tiende a producir clusters más equilibrados que otros métodos
+- Tiende a producir clusters más equilibrados que otros métodos
 
-Es menos sensible a valores atípicos que el enlace simple o completo
+- Es menos sensible a valores atípicos que el enlace simple o completo
 
-## 📦 1. Instalación y Carga de Paquetes
-¿Qué hacemos? Cargamos todas las librerías necesarias para el análisis.
+# 📦 1. Instalación y Carga de Paquetes
+**¿Qué hacemos?** Cargamos todas las librerías necesarias para el análisis.
 
-¿Por qué? Cada paquete aporta funciones específicas: vegan para distancia de Jaccard, factoextra para visualización, janitor para tablas claras, etc.
+**¿Por qué?** Cada paquete aporta funciones específicas: vegan para distancia de Jaccard, factoextra para visualización, janitor para tablas claras, etc.
 
 ```{r, eval=FALSE}
 # Instalar paquetes (solo la primera vez)
@@ -79,12 +82,12 @@ options(scipen = 999)  # Evitar notación científica
 set.seed(123)          # Fijar semilla para reproducibilidad
 ```
 
-## 📂 2. Carga de Datos
-¿Qué hacemos? Importamos la base de datos desde un archivo Excel.
+# 📂 2. Carga de Datos
+**¿Qué hacemos?** Importamos la base de datos desde un archivo Excel.
 
-¿Por qué? Necesitamos los datos en R para poder procesarlos.
+**¿Por qué?** Necesitamos los datos en R para poder procesarlos.
 
-¿Qué esperamos? Un data frame con las columnas: ingresos, educacion, edad, eje_politico.
+**¿Qué esperamos?** Un data frame con las columnas: ingresos, educacion, edad, eje_politico.
 
 ```{r, eval=FALSE}
 # Cargar la base (¡CAMBIAR A TU RUTA!)
@@ -100,16 +103,18 @@ head(datos_cluster)
 
 **Interpretación:** Debemos verificar que las variables sean las esperadas y que no haya valores extraños.
 
-## 🏷️ 3. Convertir Variables a Factores
-¿Qué hacemos? Transformamos cada variable a factor, especificando los niveles y su orden.
+---
 
-¿Por qué? Las variables categóricas deben ser tratadas como factores para:
+# 🏷️ 3. Convertir Variables a Factores
+**¿Qué hacemos?** Transformamos cada variable a factor, especificando los niveles y su orden.
 
-Respetar la naturaleza de los datos (no son números continuos)
+**¿Por qué?** Las variables categóricas deben ser tratadas como factores para:
 
-Poder crear las variables binarias (dummies) correctamente
+- Respetar la naturaleza de los datos (no son números continuos)
 
-Mantener el orden en variables ordinales (educación, edad)
+- Poder crear las variables binarias (dummies) correctamente
+
+- Mantener el orden en variables ordinales (educación, edad)
 
 ```{r, eval=FALSE}
 # Convertir cada variable a factor con sus niveles correspondientes
@@ -139,22 +144,22 @@ sapply(datos_cluster, class)
 
 **Interpretación:** Ahora R entiende que "Básico" es menor que "Universitario" y que los deciles tienen un orden. Esto es crucial para análisis posteriores.
 
-## 🔄 4. Transformar a Variables Binarias (Dummies)
-¿Qué hacemos? Convertimos las variables categóricas en una matriz de indicadores binarios (0/1), donde cada categoría se convierte en una columna separada.
+# 🔄 4. Transformar a Variables Binarias (Dummies)
+**¿Qué hacemos?** Convertimos las variables categóricas en una matriz de indicadores binarios (0/1), donde cada categoría se convierte en una columna separada.
 
-¿Por qué? La distancia de Jaccard trabaja con datos binarios. Necesitamos representar cada categoría como:
+**¿Por qué?** La distancia de Jaccard trabaja con datos binarios. Necesitamos representar cada categoría como:
 
 1: La persona pertenece a esa categoría
 
 0: La persona NO pertenece a esa categoría
 
-Ejemplo: Para educación con 5 categorías, cada persona tendrá:
+### Ejemplo: Para educación con 5 categorías, cada persona tendrá:
 
-Básico: [1,0,0,0,0]
+- **Básico:** [1,0,0,0,0]
 
-Medio: [0,1,0,0,0]
+- **Medio:** [0,1,0,0,0]
 
-Técnico: [0,0,1,0,0]
+- **Técnico:** [0,0,1,0,0]
 
 etc.
 
@@ -181,16 +186,16 @@ cat("TOTAL:", ncol(X), "columnas binarias\n")
 
 **Interpretación:** Ahora tenemos una matriz donde cada fila es una persona y cada columna es una categoría (ej. "IngresosDecil1", "EducaciónBásico", "Edad15-24", etc.). Los valores son solo 0 o 1.
 
-## 📐 5. Calcular Distancia de Jaccard
-¿Qué hacemos? Calculamos la matriz de distancias entre todas las personas usando la distancia de Jaccard.
+# 📐 5. Calcular Distancia de Jaccard
+**¿Qué hacemos?** Calculamos la matriz de distancias entre todas las personas usando la distancia de Jaccard.
 
-¿Por qué? Necesitamos saber qué tan similares o diferentes son las personas entre sí para poder agruparlas.
+**¿Por qué?** Necesitamos saber qué tan similares o diferentes son las personas entre sí para poder agruparlas.
 
-¿Cómo funciona? Para cada par de personas:
+**¿Cómo funciona?** Para cada par de personas:
 
-Comparamos sus vectores binarios (ej. [1,0,1,0,...] vs [1,1,0,0,...])
+- Comparamos sus vectores binarios (ej. [1,0,1,0,...] vs [1,1,0,0,...])
 
-La distancia será 0 si son idénticas, y se acercará a 1 si son muy diferentes
+- La distancia será 0 si son idénticas, y se acercará a 1 si son muy diferentes
 
 ```{r, eval=FALSE}
 # Calcular distancia de Jaccard
@@ -214,28 +219,30 @@ matriz_dist[1:5, 1:5]
 
 **Interpretación:** La matriz de distancias es la base para el clustering. Dos personas con distancia cercana a 0 son candidatas a estar en el mismo cluster.
 
-## 🌲 6. Clustering Jerárquico con Enlace Promedio (UPGMA)
-¿Qué hacemos? Aplicamos el algoritmo de clustering jerárquico usando el método de enlace promedio.
+---
 
-¿Cómo funciona el algoritmo?
+# 🌲 6. Clustering Jerárquico con Enlace Promedio (UPGMA)
+**¿Qué hacemos?** Aplicamos el algoritmo de clustering jerárquico usando el método de enlace promedio.
 
-Comienza con cada persona como un cluster individual
+**¿Cómo funciona el algoritmo?**
 
-Encuentra los dos clusters más cercanos (menor distancia)
+- Comienza con cada persona como un cluster individual
 
-Los fusiona en un nuevo cluster
+- Encuentra los dos clusters más cercanos (menor distancia)
 
-Calcula las distancias entre el nuevo cluster y los demás usando el promedio de distancias
+- Los fusiona en un nuevo cluster
 
-Repite hasta que todo queda en un solo cluster
+- Calcula las distancias entre el nuevo cluster y los demás usando el promedio de distancias
 
-¿Por qué enlace promedio? Es un equilibrio entre:
+- Repite hasta que todo queda en un solo cluster
 
-Enlace simple (mínima distancia): Tiende a crear cadenas largas
+### ¿Por qué enlace promedio? Es un equilibrio entre:
 
-Enlace completo (máxima distancia): Tiende a crear clusters muy compactos
+- Enlace simple (mínima distancia): Tiende a crear cadenas largas
 
-Enlace promedio: Más robusto y realista
+- Enlace completo (máxima distancia): Tiende a crear clusters muy compactos
+
+- Enlace promedio: Más robusto y realista
 
 ```{r, eval=FALSE}
 # Realizar clustering jerárquico
@@ -262,20 +269,20 @@ head(cbind(Paso = 1:6,
 
 **Interpretación:** El dendrograma (que veremos después) representa visualmente este proceso de fusiones. Las alturas indican qué tan diferentes son los clusters que se unen.
 
-## 📊 7. Determinar el Número Óptimo de Clústeres
-¿Qué hacemos? Evaluamos diferentes números de clusters para elegir el más adecuado.
+# 📊 7. Determinar el Número Óptimo de Clústeres
+**¿Qué hacemos?** Evaluamos diferentes números de clusters para elegir el más adecuado.
 
-¿Por qué? El clustering jerárquico no nos dice automáticamente cuántos grupos elegir. Necesitamos un criterio.
+**¿Por qué?** El clustering jerárquico no nos dice automáticamente cuántos grupos elegir. Necesitamos un criterio.
 
-Método de la silueta:
+## Método de la silueta:
 
 Mide qué tan bien clasificado está cada caso
 
-Valores cercanos a 1: bien clasificado
+- Valores cercanos a 1: bien clasificado
 
-Valores cercanos a 0: en el borde entre clusters
+- Valores cercanos a 0: en el borde entre clusters
 
-Valores negativos: mal clasificado (quizás en cluster equivocado)
+- Valores negativos: mal clasificado (quizás en cluster equivocado)
 
 ```{r, eval=FALSE}
 # Calcular silueta para diferentes números de clusters
@@ -304,16 +311,16 @@ fviz_nbclust(
 
 - Debemos equilibrar: alto valor de silueta y clusters interpretables
 
-## ✂️ 8. Evaluar Diferentes Números de Clústeres
-¿Qué hacemos? Probamos varios valores de k para ver cómo se distribuyen los casos.
+# ✂️ 8. Evaluar Diferentes Números de Clústeres
+**¿Qué hacemos?** Probamos varios valores de k para ver cómo se distribuyen los casos.
 
-¿Por qué? El número óptimo según silueta puede no ser el más interpretable. También debemos considerar:
+**¿Por qué?** El número óptimo según silueta puede no ser el más interpretable. También debemos considerar:
 
-Tamaño mínimo de clusters (evitar clusters con 1-2 casos)
+- Tamaño mínimo de clusters (evitar clusters con 1-2 casos)
 
-Interpretabilidad teórica
+- Interpretabilidad teórica
 
-Parsimonia (pocos clusters pero explicativos)
+- Parsimonia (pocos clusters pero explicativos)
 
 ```{r, eval=FALSE}
 # Probar diferentes números de clusters
@@ -336,10 +343,10 @@ print(table(clusters))
 
 **Interpretación:** Buscamos que ningún cluster sea demasiado pequeño (ej. menos del 5% de los casos) y que los tamaños sean relativamente equilibrados.
 
-## 📋 9. Asignar Clústeres a los Datos
-¿Qué hacemos? Agregamos una nueva columna a nuestros datos originales con el número de cluster asignado a cada persona.
+# 📋 9. Asignar Clústeres a los Datos
+**¿Qué hacemos?** Agregamos una nueva columna a nuestros datos originales con el número de cluster asignado a cada persona.
 
-¿Por qué? Para poder analizar las características de cada cluster.
+**¿Por qué?** Para poder analizar las características de cada cluster.
 
 ```{r, eval=FALSE}
 # Agregar columna de cluster (como factor para mejor manejo)
@@ -356,16 +363,16 @@ table(datos_cluster$cluster)
 
 **Interpretación:** Cada persona ahora tiene una etiqueta de cluster. Podemos empezar a caracterizar los grupos.
 
-## 🌳 10. Visualizar Dendrograma
-¿Qué hacemos? Creamos una representación visual del árbol de clustering.
+# 🌳 10. Visualizar Dendrograma
+**¿Qué hacemos?** Creamos una representación visual del árbol de clustering.
 
-¿Por qué? El dendrograma nos ayuda a entender:
+**¿Por qué?** El dendrograma nos ayuda a entender:
 
-La jerarquía de los grupos
+- La jerarquía de los grupos
 
-A qué altura se formaron los clusters
+- A qué altura se formaron los clusters
 
-Las distancias relativas entre grupos
+- Las distancias relativas entre grupos
 
 ```{r, eval=FALSE}
 # Dendrograma básico
@@ -393,10 +400,10 @@ fviz_dend(hc,
 
 - Rectángulos: Muestran los k clusters elegidos
 
-## 📈 11. Visualización Alternativa: MDS
-¿Qué hacemos? Usamos Escalamiento Multidimensional (MDS) para visualizar los clusters en 2 dimensiones.
+# 📈 11. Visualización Alternativa: MDS
+**¿Qué hacemos?** Usamos Escalamiento Multidimensional (MDS) para visualizar los clusters en 2 dimensiones.
 
-¿Por qué? El dendrograma puede ser confuso con muchos casos. MDS nos da una "vista satelital" de los clusters.
+**¿Por qué?** El dendrograma puede ser confuso con muchos casos. MDS nos da una "vista satelital" de los clusters.
 
 ```{r, eval=FALSE}
 # Calcular MDS (reducir a 2 dimensiones)
@@ -434,12 +441,12 @@ ggplot(mds_df, aes(x = Dim1, y = Dim2, color = cluster)) +
 
 - Separación: Si las elipses no se superponen mucho, los clusters están bien definidos
 
-## 📊 12. Caracterización de los Clústeres
-¿Qué hacemos? Analizamos qué caracteriza a cada cluster en términos de las variables originales.
+# 📊 12. Caracterización de los Clústeres
+**¿Qué hacemos?** Analizamos qué caracteriza a cada cluster en términos de las variables originales.
 
-¿Por qué? Para poder "nombrar" los clusters y darles sentido sociológico.
+**¿Por qué?** Para poder "nombrar" los clusters y darles sentido sociológico.
 
-# 12.1 Perfiles a partir de la matriz de dummies
+## 12.1 Perfiles a partir de la matriz de dummies
 
 ```{r, eval=FALSE}
 # Calcular proporciones por cluster (a partir de dummies)
@@ -460,7 +467,7 @@ colnames(resumen_t) <- paste("Cluster", 1:k_elegido)
 print(round(resumen_t, 1))
 ```
 
-# 12.2 Tablas de contingencia con janitor
+## 12.2 Tablas de contingencia con janitor
 
 ```{r, eval=FALSE}
 # Variables a analizar
@@ -494,7 +501,7 @@ print(tabs_cat$eje_politico)
 ```
 
 
-12.3 Análisis detallado
+## 12.3 Análisis detallado
 
 ```{r, eval=FALSE
 # Función para crear tabla de proporciones clara
@@ -525,8 +532,8 @@ print("Eje político por cluster:")
 print(prop_eje)
 ```
 
-## 📝 13. Interpretación de Resultados (¡LA PARTE MÁS IMPORTANTE!)
-¿Qué hacemos? Damos sentido sociológico a los clusters encontrados.
+# 📝 13. Interpretación de Resultados (¡LA PARTE MÁS IMPORTANTE!)
+**¿Qué hacemos?** Damos sentido sociológico a los clusters encontrados.
 
 **Guía para la interpretación:**
 
@@ -585,30 +592,6 @@ cat("1. [Conclusión principal sobre los perfiles encontrados]\n")
 cat("2. [Relación con teorías sociológicas o hallazgos previos]\n")
 cat("3. [Implicaciones para análisis posteriores]\n")
 cat("4. [Limitaciones del análisis y próximos pasos]\n")
-```
-
-##💾 14. Exportar Resultados
-¿Qué hacemos? Guardamos los resultados en archivos para su uso posterior.
-
-```{r, eval=FALSE
-# Exportar resumen de perfiles
-write_xlsx(resumen_pct, "resumen_clusters_jaccard.xlsx")
-
-# Exportar resultados completos (múltiples hojas)
-write_xlsx(
-  list(
-    DatosConCluster = datos_cluster,                    # Datos originales + cluster
-    PerfilesPorCluster = resumen_pct,                   # Proporciones de dummies
-    Educacion = prop_educ,                              # Educación por cluster
-    Ingresos = prop_ingresos,                           # Ingresos por cluster
-    Edad = prop_edad,                                   # Edad por cluster
-    EjePolitico = prop_eje,                              # Posición política por cluster
-    Distribucion = as.data.frame(table(datos_cluster$cluster))  # Conteo
-  ),
-  "resultado_completo_clusters.xlsx"
-)
-
-cat("\n✅ Archivos guardados en:", getwd())
 ```
 
 ## ⚠️ Notas y Advertencias Importantes
