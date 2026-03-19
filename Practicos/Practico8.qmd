@@ -161,16 +161,7 @@ fit$eig
 ```
 **Salida esperada:**
 
-text
-##        eigenvalue percentage of variance cumulative percentage of variance
-## comp 1   4.6776837                58.47105                            58.47105
-## comp 2   1.1653557                14.56695                            73.03799
-## comp 3   0.5470319                 6.83790                            79.87589
-## comp 4   0.4340711                 5.42589                            85.30178
-## comp 5   0.3687271                 4.60909                            89.91087
-## comp 6   0.2928437                 3.66055                            93.57142
-## comp 7   0.2798620                 3.49828                            97.06969
-## comp 8   0.2344246                 2.93031                           100.00000
+![](Imagenesygraficos/autovaloresprac8.png)
 
 # 📈 6. Interpretación de Resultados
 ## 6.1 Cargas factoriales (coordenadas)
@@ -180,10 +171,9 @@ text
 
 ```{r, eval=FALSE}
 # Cargas factoriales (coordenadas)
-```{r, eval=FALSE}
 fit$var$coord
 ```
-<div class="image-container" style="text-align: center; margin: 30px 0;"> <img src="ruta/a/tu/imagen/tabla_coordenadas.png" alt="Tabla de cargas factoriales" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 5px;"> <p style="color: #666; font-size: 0.9em; margin-top: 10px;"> <strong>Tabla 1:</strong> Coordenadas (cargas factoriales) de las variables en cada componente </p> </div>
+![](Imagenesygraficos/fitvarcoord.png)
 
 **Interpretación de la tabla:**
 
@@ -213,13 +203,10 @@ Esta dimensión distingue entre dos tipos de vinculación con el barrio:
 
 ```{r, eval=FALSE}
 # Varianza explicada por componente
-fviz_eig(fit, addlabels = TRUE, ylim = c(0, 60)) +
-  theme_minimal() +
-  labs(title = "Varianza explicada por componente",
-       x = "Componente", y = "Porcentaje de varianza explicada")
+fit$eig
 ```
 
-<div class="image-container" style="text-align: center; margin: 30px 0;"> <img src="ruta/a/tu/imagen/scree_plot.png" alt="Gráfico de sedimentación (scree plot)" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 5px;"> <p style="color: #666; font-size: 0.9em; margin-top: 10px;"> <strong>Figura 1:</strong> Gráfico de sedimentación (scree plot) mostrando la varianza explicada por cada componente </p> </div>
+![](Imagenesygraficos/varianzaexplicada.png)
 
 **Interpretación:**
 
@@ -254,7 +241,8 @@ ggplot(datos.grafico2) +
   theme(legend.position = "none")
 ```
 
-<div class="image-container" style="text-align: center; margin: 30px 0;"> <img src="ruta/a/tu/imagen/circulo_correlaciones.png" alt="Círculo de correlaciones" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 5px;"> <p style="color: #666; font-size: 0.9em; margin-top: 10px;"> <strong>Figura 2:</strong> Círculo de correlaciones - Posición de las variables en el plano de las dos primeras componentes </p> </div>
+![](Imagenesygraficos/graficosdoscomps.png)
+
 Interpretación del gráfico:
 
 **Este gráfico confirma lo observado en las tablas:**
@@ -290,7 +278,7 @@ ggplot(datos_grafico_ind) +
   theme_minimal()
 ```
 
-<div class="image-container" style="text-align: center; margin: 30px 0;"> <img src="ruta/a/tu/imagen/individuos_pca.png" alt="Gráfico de individuos" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 5px;"> <p style="color: #666; font-size: 0.9em; margin-top: 10px;"> <strong>Figura 3:</strong> Distribución de los individuos en el plano de las dos primeras componentes </p> </div>
+![](Imagenesygraficos/visualizaciondeindividuos.png)
 
 **Interpretación:**
 
@@ -328,7 +316,7 @@ ggbiplot(fit_prcomp,
   theme_minimal()
 ```
 
-<div class="image-container" style="text-align: center; margin: 30px 0;"> <img src="ruta/a/tu/imagen/biplot.png" alt="Biplot" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 5px;"> <p style="color: #666; font-size: 0.9em; margin-top: 10px;"> <strong>Figura 4:</strong> Biplot mostrando individuos (puntos) y variables (flechas) </p> </div>
+![](Imagenesygraficos/biplot.png)
 
 **Interpretación del biplot:**
 
@@ -385,16 +373,8 @@ library(paran)
 paran(na.omit(proc_data), iterations = 5000, graph = TRUE, color = FALSE)
 ```
 
-<div class="image-container" style="text-align: center; margin: 30px 0;"> <img src="ruta/a/tu/imagen/paralelo_horn.png" alt="Análisis paralelo de Horn" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 5px;"> <p style="color: #666; font-size: 0.9em; margin-top: 10px;"> <strong>Figura 6:</strong> Análisis paralelo de Horn - Comparación de autovalores observados vs. aleatorios </p> </div>
+![](Imagenesygraficos/paran.png)
 
-**Salida esperada:**
-
-## Results of Horn's Parallel Analysis for component retention
-## 5000 iterations, using the mean estimate
-## 
-## Component   Adjusted   Unadjusted   Estimated
-##            Eigenvalue  Eigenvalue    Bias
-## 1           4.137924    4.202646    0.064722
 
 **Interpretación de la prueba de Horn:**
 
@@ -458,25 +438,6 @@ Valor máximo teórico: Si una persona responde 4 (máximo) en todas las variabl
 - Valores más bajos: Menor cohesión barrial percibida
 
 - El índice combina tanto el apego al lugar como las relaciones sociales
-
-# 📊 12. Visualización del Índice
-¿Qué hacemos? Graficamos la distribución del índice creado.
-
-```{r, eval=FALSE}
-# Histograma del índice
-ggplot(proc_data, aes(x = Indice_Cohesion)) +
-  geom_histogram(bins = 30, fill = "steelblue", color = "white", alpha = 0.8) +
-  labs(title = "Distribución del Índice de Cohesión Barrial",
-       x = "Índice de Cohesión Barrial",
-       y = "Frecuencia") +
-  theme_minimal() +
-  geom_vline(aes(xintercept = mean(Indice_Cohesion, na.rm = TRUE)),
-             color = "red", linetype = "dashed", size = 1) +
-  annotate("text", x = mean(proc_data$Indice_Cohesion, na.rm = TRUE) + 2,
-           y = 200, label = "Media", color = "red")
-```
-
-<div class="image-container" style="text-align: center; margin: 30px 0;"> <img src="ruta/a/tu/imagen/histograma_indice.png" alt="Histograma del índice" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 5px;"> <p style="color: #666; font-size: 0.9em; margin-top: 10px;"> <strong>Figura 7:</strong> Distribución del Índice de Cohesión Barrial </p> </div>
 
 # 📝 13. Interpretación Final y Aplicaciones
 ## 13.1 Resumen de hallazgos
