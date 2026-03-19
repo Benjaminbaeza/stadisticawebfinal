@@ -167,8 +167,9 @@ head(muestra_100_completa)
 
 # Estadísticas descriptivas
 summary(puntajes)
+´´´
 
-✅ 11. Conclusiones
+# ✅ 11. Conclusiones
 Estructura bifactorial clara: Actitud positiva (apertura) vs. negativa (amenaza)
 
 71% de varianza explicada → solución robusta
