@@ -1,0 +1,698 @@
+# 🎯 Propuesta de Investigación Sociológica
+Pregunta de Investigación
+¿Existen diferentes perfiles de chilenos en sus actitudes hacia la inmigración, y cómo se caracterizan estos grupos en términos de agrado, confianza y percepciones de amenaza?
+
+<div class="table-container" style="overflow-x: auto; margin: 30px 0;">
+
+<table style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif; font-size: 0.95em; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+<caption style="caption-side: top; text-align: center; padding: 12px; font-weight: bold; font-size: 1.1em; background-color: #f8f9fa; border: 1px solid #ddd; border-bottom: none;">
+📋 Tabla 1: Dimensiones del Análisis y Variables Utilizadas
+</caption>
+<thead>
+<tr style="background-color: #2c2c2c; color: white;">
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Dimensión</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Variable ELSOC</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Descripción</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Escala</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #e8f4f8;">Agrado hacia inmigrantes</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">r09</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Grado de agrado hacia inmigrantes [país]</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span>
+</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #fff3cd;">Amenaza identitaria</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">r12_03</td>
+<td style="border: 1px solid #ddd; padding: 14px;">"Chile está perdiendo su identidad con inmigrantes"</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span>
+</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #f8d7da;">Amenaza económica</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">r12_04</td>
+<td style="border: 1px solid #ddd; padding: 14px;">"Inmigrantes aumentan el desempleo"</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span>
+</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #d4edda;">Confianza en inmigrantes</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">r16</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Confianza en inmigrantes [país]</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span>
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr style="background-color: #f0f0f0; font-size: 0.85em;">
+<td colspan="4" style="border: 1px solid #ddd; padding: 12px; text-align: center; color: #555;">
+<strong>Nota:</strong> Todas las variables son de escala ordinal tipo Likert (1=Totalmente en desacuerdo a 5=Totalmente de acuerdo). Para el análisis de conglomerados se trataron como variables numéricas continuas previa estandarización.
+</td>
+</tr>
+</tfoot>
+</table>
+
+<div style="text-align: center; padding: 8px; color: #666; font-size: 0.8em; border: 1px solid #ddd; border-top: none; background-color: #fafafa;">
+<strong>Elaboración propia</strong> basada en datos del Estudio Longitudinal Social de Chile (ELSOC) - COES
+</div>
+
+</div>
+
+# Base de Datos
+- Estudio Longitudinal Social de Chile (ELSOC) - Ola 2019 (o la más reciente disponible)
+
+- Módulo: Inmigración (variables r09, r12_03, r12_04, r16)
+
+- Institución: COES (Centro de Estudios de Conflicto y Cohesión Social)
+
+# 📚 Fundamentos Teóricos
+**¿Qué es el Análisis de Conglomerados (Clustering)?**
+- El análisis de conglomerados es una técnica exploratoria que busca agrupar casos (personas) en grupos homogéneos llamados clústeres. Los casos dentro de un mismo clúster son similares entre sí, mientras que casos de diferentes clústeres son diferentes.
+
+**En esta investigación: Buscamos identificar perfiles de chilenos según sus actitudes hacia la inmigración, lo que permitiría:**
+
+- Segmentar a la población según su posición frente al fenómeno migratorio
+
+- Caracterizar cada perfil sociológicamente
+
+- Diseñar políticas o comunicaciones diferenciadas
+
+**Método utilizado: Centroide con distancia euclidiana al cuadrado**
+El método del centroide define la distancia entre dos clusters como la distancia entre sus centroides (puntos promedio). Requiere usar distancias al cuadrado para funcionar correctamente.
+
+# 📦 1. Instalación y Carga de Paquetes
+¿Qué hacemos? Cargamos las librerías necesarias para el análisis.
+
+¿Por qué? Cada paquete aporta funciones específicas: amap para clustering con centroide, tidyverse para manipulación.
+
+```{r, eval=FALSE}
+# Instalar paquetes (solo primera vez)
+install.packages(c("haven", "sjlabelled", "amap", "tidyverse"))
+
+# Cargar paquetes
+library(haven)        # Lectura de archivos .dta (Stata)
+library(sjlabelled)   # Manejo de etiquetas
+library(amap)         # Para hclust.centroide (método centroide)
+library(tidyverse)    # Manipulación de datos y gráficos
+
+# Configurar entorno
+options(scipen = 999)  # Desactivar notación científica
+set.seed(123)          # Fijar semilla para reproducibilidad
+```
+
+# 📂 2. Carga de Datos
+¿Qué hacemos? Establecemos el directorio de trabajo y cargamos la base ELSOC.
+
+¿Por qué? Necesitamos acceder a los datos desde la ubicación donde están guardados.
+
+```{r, eval=FALSE}
+# Establecer directorio de trabajo (¡CAMBIAR A TU RUTA!)
+setwd("C:/Users/cherr/OneDrive/Desktop/Apunte general para uso de R")
+
+# Cargar base ELSOC en formato Stata
+Elsoc <- read_dta("Elsoc_Long_2016_2023.dta")
+
+# Ver estructura de la base
+glimpse(Elsoc)
+dim(Elsoc)
+```{r, eval=FALSE}
+
+🔍 3. Selección de Variables y Limpieza
+¿Qué hacemos? Seleccionamos las 4 variables de interés y filtramos valores perdidos.
+
+¿Por qué? Es fundamental eliminar los códigos de valores perdidos (-999, -888, -666) que utiliza ELSOC para no distorsionar el análisis.
+
+```{r, eval=FALSE}
+# Variables seleccionadas:
+# r09       → Grado de agrado hacia inmigrantes [país]
+# r12_03    → "Chile está perdiendo su identidad con inmigrantes"
+# r12_04    → "Inmigrantes aumentan el desempleo"
+# r16       → Confianza en inmigrantes [país]
+
+# Limpiar valores perdidos
+datos_limpios <- Elsoc %>%
+  select(r09, r12_03, r12_04, r16) %>%
+  filter(
+    !r09 %in% c(-999, -888, -666),
+    !r12_03 %in% c(-999, -888, -666),
+    !r12_04 %in% c(-999, -888, -666),
+    !r16 %in% c(-999, -888, -666)
+  ) %>%
+  drop_na()
+# Ver cuántos casos quedaron
+cat("Casos totales después de limpiar:", nrow(datos_limpios), "\n")
+
+# Extraer una muestra aleatoria de 100 casos (para el ejemplo)
+set.seed(123)
+muestra_100 <- datos_limpios %>%
+  slice_sample(n = 100)
+
+# Usaremos la muestra para el análisis
+datos_cluster <- muestra_100
+
+# Ver primeras filas
+head(datos_cluster)
+```
+
+# ⚖️ 4. Estandarización de Variables
+
+**¿Qué hacemos?** Estandarizamos las variables para que todas tengan media 0 y desviación estándar 1.
+
+**¿Por qué?** Es fundamental cuando las variables tienen diferentes escalas de respuesta (aunque todas son 1-5, el clustering es sensible a diferencias de magnitud). La estandarización asegura que todas las variables tengan el mismo peso en el análisis.
+
+```{r, eval=FALSE}
+# Estandarizar variables (scale)
+datos.scaled <- scale(datos_cluster)
+
+# Verificar estandarización
+cat("Medias después de estandarizar (deberían ser ~0):\n")
+print(round(colMeans(datos.scaled), 2))
+
+cat("Desviaciones después de estandarizar (deberían ser 1):\n")
+print(apply(datos.scaled, 2, sd))
+```
+
+**Interpretación:** Ahora todas las variables tienen la misma importancia. Una diferencia de 1 unidad en r09 significa lo mismo que una diferencia de 1 unidad en r16 (en términos de desviaciones estándar).
+
+# 📐 5. Cálculo de Distancias
+¿Qué hacemos? Calculamos la matriz de distancias euclidianas entre todos los casos.
+
+¿Por qué? Necesitamos una medida de disimilitud para poder agrupar casos similares. La distancia euclidiana es la más común: mide la "distancia geométrica" entre puntos en un espacio multidimensional.
+
+```{r, eval=FALSE}
+# Calcular distancia euclidiana
+d <- dist(datos.scaled, method = "euclidean")
+
+# Ver las primeras distancias (matriz triangular inferior)
+print(d)
+```
+
+**Interpretación de la matriz de distancias:**
+La matriz de distancias muestra qué tan similares o diferentes son los casos entre sí:
+
+- Valores pequeños (cercanos a 0) → casos muy similares
+
+- Valores grandes → casos muy diferentes
+
+[INSERTAR IMAGEN: matriz_distancias.png]
+Tabla: Fragmento de la matriz de distancias euclidianas entre los primeros casos
+
+# 🔲 6. Elevar al Cuadrado las Distancias
+**¿Qué hacemos?** Elevamos cada distancia al cuadrado.
+
+**¿Por qué?** El método del centroide requiere distancias al cuadrado para funcionar correctamente. Esto se debe a la fórmula de actualización de centroides.
+
+```{r, eval=FALSE}
+# Elevar al cuadrado
+d2 <- d^2
+
+# Verificar
+cat("Primeras distancias originales:", round(as.vector(d)[1:5], 3), "\n")
+cat("Primeras distancias al cuadrado:", round(as.vector(d2)[1:5], 3), "\n")
+```
+
+**Interpretación:** Las distancias ahora son mayores (al cuadrado), pero el orden relativo se mantiene (la distancia más pequeña sigue siendo la más pequeña).
+
+# 🌲 7. Clustering con Método del Centroide
+**¿Qué hacemos?** Aplicamos el algoritmo de clustering jerárquico usando el método del centroide.
+
+**¿Cómo funciona?**
+
+1. Cada caso comienza como un cluster individual
+
+2. Se calcula el centroide (promedio) de cada cluster
+
+3. Se fusionan los dos clusters con los centroides más cercanos
+
+4. Se recalcula el centroide del nuevo cluster
+
+5. Se repite hasta que todo queda en un solo cluster
+
+```{r, eval=FALSE}
+# Ejecutar clustering con método del centroide
+hc <- hclust(d2, method = "centroid")
+
+# Ver alturas de fusión
+print(hc$height)
+```
+
+# 📈 8. Visualización del Dendrograma
+**¿Qué hacemos?** Visualizamos el dendrograma para observar la estructura jerárquica.
+
+**¿Por qué?** El dendrograma nos ayuda a identificar visualmente el número óptimo de clusters y las distancias relativas entre grupos.
+
+```{r, eval=FALSE}
+# Visualizar dendrograma
+plot(hc, 
+     hang = -1, 
+     main = "Clustering por centroide - Actitudes hacia inmigrantes",
+     xlab = "Casos", 
+     ylab = "Altura (distancia al cuadrado)")
+
+# Añadir rectángulos para k = 4 clusters
+rect.hclust(hc, k = 4, border = 2:5)
+```
+
+[INSERTAR IMAGEN: dendrograma.png]
+
+*Figura 1: Dendrograma del análisis de conglomerados (método centroide, k=4)*
+
+**Interpretación del dendrograma:**
+
+1. La altura de las fusiones indica qué tan diferentes son los clusters que se unen
+
+2. El corte en k=4 (rectángulos de colores) muestra 4 grupos distintos
+
+3. Algunos grupos son más compactos (fusiones a baja altura) que otros
+
+# ✂️ 9. Asignación de Clústeres
+**¿Qué hacemos?** Cortamos el dendrograma en 4 clusters y asignamos cada caso a su grupo.
+
+**¿Por qué?** Necesitamos una variable que identifique a qué cluster pertenece cada persona para poder caracterizar los grupos.
+
+```{r, eval=FALSE}
+# Cortar en 4 clusters
+k <- 4
+cluster <- cutree(hc, k = k)
+
+# Agregar la variable de cluster a nuestra muestra
+muestra_100$cluster <- factor(cluster, 
+                              levels = 1:k,
+                              labels = paste("Cluster", 1:k))
+
+# Ver distribución
+table(muestra_100$cluster)
+prop.table(table(muestra_100$cluster)) * 100
+```
+
+## Resultados:
+
+<div class="table-container" style="overflow-x: auto; margin: 30px 0;">
+
+<table style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif; font-size: 0.95em; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+<caption style="caption-side: top; text-align: center; padding: 12px; font-weight: bold; font-size: 1.1em; background-color: #f8f9fa; border: 1px solid #ddd; border-bottom: none;">
+📋 Tabla 2: Distribución de casos por cluster
+</caption>
+<thead>
+<tr style="background-color: #2c2c2c; color: white;">
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Cluster</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Frecuencia (n)</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Porcentaje (%)</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #e8f4f8;">Cluster 1</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">52</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px; font-weight: bold;">52%</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Mayoría absoluta</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #fff3cd;">Cluster 2</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">39</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px; font-weight: bold;">39%</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Grupo significativo</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #f8d7da;">Cluster 3</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">8</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px; font-weight: bold;">8%</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Minoría</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #d4edda;">Cluster 4</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">1</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px; font-weight: bold;">1%</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Caso extremo / atípico</td>
+</tr>
+</tbody>
+<tfoot>
+<tr style="background-color: #f0f0f0; font-size: 0.85em;">
+<td colspan="4" style="border: 1px solid #ddd; padding: 12px; text-align: center; color: #555;">
+<strong>Nota:</strong> Distribución basada en muestra de 100 casos. El Cluster 4 (1%) corresponde a un caso atípico con postura extremadamente pro-integración.
+</td>
+</tr>
+</tfoot>
+</table>
+
+<div style="text-align: center; padding: 8px; color: #666; font-size: 0.8em; border: 1px solid #ddd; border-top: none; background-color: #fafafa;">
+<strong>Elaboración propia</strong> en base a análisis de conglomerados con método del centroide (k=4)
+</div>
+
+</div>
+
+
+# 📊 10. Caracterización de los Clústeres
+**¿Qué hacemos?** Calculamos el promedio de cada variable en cada cluster para entender sus perfiles.
+
+**¿Por qué?** Esto nos permite "nombrar" los clusters y darles sentido sociológico.
+
+```{r, eval=FALSE}
+# Calcular medias por cluster
+medias_cluster <- aggregate(
+  cbind(r09, r12_03, r12_04, r16) ~ cluster, 
+  data = muestra_100, 
+  FUN = mean
+)
+
+print(medias_cluster)
+```
+
+**Resultados (valores en escala original 1-5):**
+
+<div class="table-container" style="overflow-x: auto; margin: 30px 0;">
+
+<table style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif; font-size: 0.95em; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+<caption style="caption-side: top; text-align: center; padding: 12px; font-weight: bold; font-size: 1.1em; background-color: #f8f9fa; border: 1px solid #ddd; border-bottom: none;">
+📋 Tabla 3: Perfil de medias por cluster (escala 1-5)
+</caption>
+<thead>
+<tr style="background-color: #2c2c2c; color: white;">
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Cluster</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">r09 <br><span style="font-size: 0.8em; color: #ccc;">(agrado)</span></th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">r12_03 <br><span style="font-size: 0.8em; color: #ccc;">(identidad)</span></th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">r12_04 <br><span style="font-size: 0.8em; color: #ccc;">(desempleo)</span></th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">r16 <br><span style="font-size: 0.8em; color: #ccc;">(confianza)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #e8f4f8;">Cluster 1</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #ffe6e6; padding: 4px 8px; border-radius: 12px; font-weight: bold;">2.46</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #ffcccc; padding: 4px 8px; border-radius: 12px; font-weight: bold;">3.79</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #ffcccc; padding: 4px 8px; border-radius: 12px; font-weight: bold;">3.85</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #ffe6e6; padding: 4px 8px; border-radius: 12px; font-weight: bold;">2.19</span>
+</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #fff3cd;">Cluster 2</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #ccffcc; padding: 4px 8px; border-radius: 12px; font-weight: bold;">3.97</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #ccffcc; padding: 4px 8px; border-radius: 12px; font-weight: bold;">1.74</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e6ffe6; padding: 4px 8px; border-radius: 12px; font-weight: bold;">2.28</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #ccffcc; padding: 4px 8px; border-radius: 12px; font-weight: bold;">3.36</span>
+</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #f8d7da;">Cluster 3</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #ffe6e6; padding: 4px 8px; border-radius: 12px; font-weight: bold;">2.00</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e6ffe6; padding: 4px 8px; border-radius: 12px; font-weight: bold;">1.88</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e6ffe6; padding: 4px 8px; border-radius: 12px; font-weight: bold;">1.88</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #ffe6e6; padding: 4px 8px; border-radius: 12px; font-weight: bold;">1.63</span>
+</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #d4edda;">Cluster 4</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #ccffcc; padding: 4px 8px; border-radius: 12px; font-weight: bold;">5.00</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #ccffcc; padding: 4px 8px; border-radius: 12px; font-weight: bold;">1.00</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #ccffcc; padding: 4px 8px; border-radius: 12px; font-weight: bold;">1.00</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #ccffcc; padding: 4px 8px; border-radius: 12px; font-weight: bold;">5.00</span>
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr style="background-color: #f0f0f0; font-size: 0.85em;">
+<td colspan="5" style="border: 1px solid #ddd; padding: 12px; text-align: center; color: #555;">
+<strong>Nota:</strong> Valores en escala 1-5. <span style="background-color: #ffcccc; padding: 2px 6px; border-radius: 10px;">Rojo</span> = alto (≥3.5), <span style="background-color: #ccffcc; padding: 2px 6px; border-radius: 10px;">Verde</span> = bajo (≤2.5), <span style="background-color: #ffe6e6; padding: 2px 6px; border-radius: 10px;">Rosa</span> = medio-bajo, <span style="background-color: #e6ffe6; padding: 2px 6px; border-radius: 10px;">Verde claro</span> = medio.
+</td>
+</tr>
+</tfoot>
+</table>
+
+<div style="text-align: center; padding: 8px; color: #666; font-size: 0.8em; border: 1px solid #ddd; border-top: none; background-color: #fafafa;">
+<strong>Elaboración propia</strong> en base a medias por cluster del análisis de conglomerados
+</div>
+
+</div>
+
+# 📝 11. Interpretación de los Perfiles
+
+<div class="clusters-container" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin: 30px 0; font-family: 'Segoe UI', sans-serif;">
+
+<!-- CLUSTER 1 -->
+<div style="background-color: #f9f9f9; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+<div style="background-color: #e8f4f8; padding: 15px; text-align: center; border-bottom: 3px solid #2c2c2c;">
+<span style="font-size: 1.3em; font-weight: bold;">🔵 Cluster 1</span><br>
+<span style="font-size: 1.1em; font-weight: bold;">"Críticos de la inmigración"</span><br>
+<span style="background-color: #2c2c2c; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.9em; display: inline-block; margin-top: 8px;">52% - Mayoría absoluta</span>
+</div>
+<div style="padding: 15px;">
+<table style="width: 100%; border-collapse: collapse;">
+<tr style="border-bottom: 1px solid #ddd;">
+<th style="text-align: left; padding: 8px; width: 30%;">Variable</th>
+<th style="text-align: left; padding: 8px; width: 25%;">Valor</th>
+<th style="text-align: left; padding: 8px;">Interpretación</th>
+</tr>
+<tr>
+<td style="padding: 8px;">Agrado (r09)</td>
+<td style="padding: 8px;"><span style="background-color: #ffe6e6; padding: 3px 8px; border-radius: 12px; font-weight: bold;">2.46/5</span></td>
+<td style="padding: 8px;">Bajo agrado hacia inmigrantes</td>
+</tr>
+<tr style="background-color: #f2f2f2;">
+<td style="padding: 8px;">Confianza (r16)</td>
+<td style="padding: 8px;"><span style="background-color: #ffe6e6; padding: 3px 8px; border-radius: 12px; font-weight: bold;">2.19/5</span></td>
+<td style="padding: 8px;">Poca confianza</td>
+</tr>
+<tr>
+<td style="padding: 8px;">Amenaza identitaria</td>
+<td style="padding: 8px;"><span style="background-color: #ffcccc; padding: 3px 8px; border-radius: 12px; font-weight: bold;">3.79/5</span></td>
+<td style="padding: 8px;">Alta preocupación por pérdida de identidad</td>
+</tr>
+<tr style="background-color: #f2f2f2;">
+<td style="padding: 8px;">Amenaza económica</td>
+<td style="padding: 8px;"><span style="background-color: #ffcccc; padding: 3px 8px; border-radius: 12px; font-weight: bold;">3.85/5</span></td>
+<td style="padding: 8px;">Alta preocupación por desempleo</td>
+</tr>
+</table>
+<div style="margin-top: 15px; padding: 12px; background-color: #e8f4f8; border-radius: 8px; font-style: italic; border-left: 4px solid #2c2c2c;">
+<strong>Perfil:</strong> Ciudadanos que desconfían y tienen bajo agrado hacia inmigrantes, con alta percepción de amenaza tanto identitaria como económica. Es el grupo predominante en Chile.
+</div>
+</div>
+</div>
+
+<!-- CLUSTER 2 -->
+<div style="background-color: #f9f9f9; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+<div style="background-color: #fff3cd; padding: 15px; text-align: center; border-bottom: 3px solid #2c2c2c;">
+<span style="font-size: 1.3em; font-weight: bold;">🟡 Cluster 2</span><br>
+<span style="font-size: 1.1em; font-weight: bold;">"Tolerantes moderados"</span><br>
+<span style="background-color: #2c2c2c; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.9em; display: inline-block; margin-top: 8px;">39% - Grupo significativo</span>
+</div>
+<div style="padding: 15px;">
+<table style="width: 100%; border-collapse: collapse;">
+<tr style="border-bottom: 1px solid #ddd;">
+<th style="text-align: left; padding: 8px;">Variable</th>
+<th style="text-align: left; padding: 8px;">Valor</th>
+<th style="text-align: left; padding: 8px;">Interpretación</th>
+</tr>
+<tr>
+<td style="padding: 8px;">Agrado (r09)</td>
+<td style="padding: 8px;"><span style="background-color: #ccffcc; padding: 3px 8px; border-radius: 12px; font-weight: bold;">3.97/5</span></td>
+<td style="padding: 8px;">Alto agrado hacia inmigrantes</td>
+</tr>
+<tr style="background-color: #f2f2f2;">
+<td style="padding: 8px;">Confianza (r16)</td>
+<td style="padding: 8px;"><span style="background-color: #ccffcc; padding: 3px 8px; border-radius: 12px; font-weight: bold;">3.36/5</span></td>
+<td style="padding: 8px;">Confianza media-alta</td>
+</tr>
+<tr>
+<td style="padding: 8px;">Amenaza identitaria</td>
+<td style="padding: 8px;"><span style="background-color: #ccffcc; padding: 3px 8px; border-radius: 12px; font-weight: bold;">1.74/5</span></td>
+<td style="padding: 8px;">Baja preocupación identitaria</td>
+</tr>
+<tr style="background-color: #f2f2f2;">
+<td style="padding: 8px;">Amenaza económica</td>
+<td style="padding: 8px;"><span style="background-color: #e6ffe6; padding: 3px 8px; border-radius: 12px; font-weight: bold;">2.28/5</span></td>
+<td style="padding: 8px;">Preocupación económica moderada</td>
+</tr>
+</table>
+<div style="margin-top: 15px; padding: 12px; background-color: #fff3cd; border-radius: 8px; font-style: italic; border-left: 4px solid #2c2c2c;">
+<strong>Perfil:</strong> Ciudadanos con actitud positiva hacia inmigrantes, baja percepción de amenaza identitaria y moderada preocupación económica. Representan una postura tolerante pero con ciertas reservas económicas.
+</div>
+</div>
+</div>
+
+<!-- CLUSTER 3 -->
+<div style="background-color: #f9f9f9; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+<div style="background-color: #f8d7da; padding: 15px; text-align: center; border-bottom: 3px solid #2c2c2c;">
+<span style="font-size: 1.3em; font-weight: bold;">🔴 Cluster 3</span><br>
+<span style="font-size: 1.1em; font-weight: bold;">"Rechazo generalizado"</span><br>
+<span style="background-color: #2c2c2c; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.9em; display: inline-block; margin-top: 8px;">8% - Minoría</span>
+</div>
+<div style="padding: 15px;">
+<table style="width: 100%; border-collapse: collapse;">
+<tr style="border-bottom: 1px solid #ddd;">
+<th style="text-align: left; padding: 8px;">Variable</th>
+<th style="text-align: left; padding: 8px;">Valor</th>
+<th style="text-align: left; padding: 8px;">Interpretación</th>
+</tr>
+<tr>
+<td style="padding: 8px;">Agrado (r09)</td>
+<td style="padding: 8px;"><span style="background-color: #ffe6e6; padding: 3px 8px; border-radius: 12px; font-weight: bold;">2.00/5</span></td>
+<td style="padding: 8px;">Muy bajo agrado</td>
+</tr>
+<tr style="background-color: #f2f2f2;">
+<td style="padding: 8px;">Confianza (r16)</td>
+<td style="padding: 8px;"><span style="background-color: #ffe6e6; padding: 3px 8px; border-radius: 12px; font-weight: bold;">1.63/5</span></td>
+<td style="padding: 8px;">Confianza muy baja</td>
+</tr>
+<tr>
+<td style="padding: 8px;">Amenaza identitaria</td>
+<td style="padding: 8px;"><span style="background-color: #e6ffe6; padding: 3px 8px; border-radius: 12px; font-weight: bold;">1.88/5</span></td>
+<td style="padding: 8px;">Moderada-baja</td>
+</tr>
+<tr style="background-color: #f2f2f2;">
+<td style="padding: 8px;">Amenaza económica</td>
+<td style="padding: 8px;"><span style="background-color: #e6ffe6; padding: 3px 8px; border-radius: 12px; font-weight: bold;">1.88/5</span></td>
+<td style="padding: 8px;">Moderada-baja</td>
+</tr>
+</table>
+<div style="margin-top: 15px; padding: 12px; background-color: #f8d7da; border-radius: 8px; font-style: italic; border-left: 4px solid #2c2c2c;">
+<strong>Perfil:</strong> Grupo pequeño con rechazo generalizado hacia inmigrantes, pero sin una percepción clara de amenaza (sus puntajes en amenaza son moderados). Podría tratarse de personas con actitudes negativas no basadas en percepciones de amenaza específicas.
+</div>
+</div>
+</div>
+
+<!-- CLUSTER 4 -->
+<div style="background-color: #f9f9f9; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+<div style="background-color: #d4edda; padding: 15px; text-align: center; border-bottom: 3px solid #2c2c2c;">
+<span style="font-size: 1.3em; font-weight: bold;">🟢 Cluster 4</span><br>
+<span style="font-size: 1.1em; font-weight: bold;">"Integracionistas convencidos"</span><br>
+<span style="background-color: #2c2c2c; color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.9em; display: inline-block; margin-top: 8px;">1% - Caso atípico</span>
+</div>
+<div style="padding: 15px;">
+<table style="width: 100%; border-collapse: collapse;">
+<tr style="border-bottom: 1px solid #ddd;">
+<th style="text-align: left; padding: 8px;">Variable</th>
+<th style="text-align: left; padding: 8px;">Valor</th>
+<th style="text-align: left; padding: 8px;">Interpretación</th>
+</tr>
+<tr>
+<td style="padding: 8px;">Agrado (r09)</td>
+<td style="padding: 8px;"><span style="background-color: #ccffcc; padding: 3px 8px; border-radius: 12px; font-weight: bold;">5.00/5</span></td>
+<td style="padding: 8px;">Máximo agrado</td>
+</tr>
+<tr style="background-color: #f2f2f2;">
+<td style="padding: 8px;">Confianza (r16)</td>
+<td style="padding: 8px;"><span style="background-color: #ccffcc; padding: 3px 8px; border-radius: 12px; font-weight: bold;">5.00/5</span></td>
+<td style="padding: 8px;">Máxima confianza</td>
+</tr>
+<tr>
+<td style="padding: 8px;">Amenaza identitaria</td>
+<td style="padding: 8px;"><span style="background-color: #ccffcc; padding: 3px 8px; border-radius: 12px; font-weight: bold;">1.00/5</span></td>
+<td style="padding: 8px;">Mínima preocupación</td>
+</tr>
+<tr style="background-color: #f2f2f2;">
+<td style="padding: 8px;">Amenaza económica</td>
+<td style="padding: 8px;"><span style="background-color: #ccffcc; padding: 3px 8px; border-radius: 12px; font-weight: bold;">1.00/5</span></td>
+<td style="padding: 8px;">Mínima preocupación</td>
+</tr>
+</table>
+<div style="margin-top: 15px; padding: 12px; background-color: #d4edda; border-radius: 8px; font-style: italic; border-left: 4px solid #2c2c2c;">
+<strong>Perfil:</strong> Caso extremo (probablemente una persona) con postura pro-integración absoluta: máximo agrado y confianza, nula percepción de amenaza.
+</div>
+</div>
+</div>
+
+</div>
+
+<div style="text-align: center; padding: 8px; margin-top: 10px; color: #666; font-size: 0.8em; border: 1px solid #ddd; border-radius: 4px; background-color: #fafafa;">
+<strong>Elaboración propia</strong> en base a análisis de conglomerados con método del centroide (k=4). Escala de colores: <span style="background-color: #ffcccc; padding: 2px 6px; border-radius: 10px;">🔴 Rojo</span> = alto (≥3.5), <span style="background-color: #ccffcc; padding: 2px 6px; border-radius: 10px;">🟢 Verde</span> = bajo (≤2.5), colores intermedios según intensidad.
+</div>
+
+
+# 📊 12. Visualización de los Perfiles
+```{r, eval=FALSE}
+# Preparar datos para gráfico
+perfiles_long <- medias_cluster %>%
+  pivot_longer(cols = -cluster, 
+               names_to = "variable", 
+               values_to = "media")
+
+# Gráfico de barras por cluster
+ggplot(perfiles_long, aes(x = variable, y = media, fill = cluster)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Perfiles de actitudes hacia inmigrantes por cluster",
+       x = "Variable", 
+       y = "Media (escala 1-5)",
+       fill = "Cluster") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+[INSERTAR IMAGEN: perfiles_cluster.png]
+
+Figura 2: Perfiles de medias por cluster para las cuatro variables
+
+# ✅ 13. Conclusiones de la Investigación
+Hallazgos principales:
+
+- Mayoría crítica: El 52% de los chilenos (Cluster 1) muestra una postura crítica hacia la inmigración, con bajo agrado, baja confianza y alta percepción de amenaza (especialmente económica e identitaria).
+
+- Minoría tolerante significativa: Un 39% (Cluster 2) mantiene una postura tolerante pero con reservas: alto agrado y confianza, baja amenaza identitaria, pero moderada preocupación económica.
+
+- Grupos extremos pequeños: Existen minorías con rechazo generalizado (8%) y casos excepcionales de integración absoluta (1%).
+
+## Respuesta a la pregunta de investigación:
+¿Existen diferentes perfiles de chilenos en sus actitudes hacia la inmigración?
+
+- Sí, se identificaron 4 perfiles claramente diferenciados, que van desde el rechazo absoluto hasta la integración plena, pasando por posiciones intermedias. La mayoría de la población se concentra en dos grandes grupos: los críticos (52%) y los tolerantes moderados (39%).
+
+Implicaciones sociológicas:
+- El debate migratorio en Chile está polarizado pero con un centro significativo
+
+- Las preocupaciones económicas (desempleo) son más transversales que las identitarias
+
+- La confianza y el agrado hacia inmigrantes están fuertemente asociados (clusters 2 y 4)
+
+- Las políticas de integración deberían diferenciar mensajes según el perfil: para el Cluster 1, abordar preocupaciones económicas; para el Cluster 2, reforzar actitudes positivas
+
+# ⚠️ Notas Metodológicas
+- Muestra reducida: Se utilizó una muestra de 100 casos para fines demostrativos. Con la muestra completa de ELSOC (miles de casos) los resultados serían más robustos.
+
+- Estandarización: Fue necesaria para que todas las variables tuvieran el mismo peso, aunque todas son escala 1-5.
+
+- Método del centroide: Se eligió por su interpretación intuitiva (centroides como perfiles promedio), pero otros métodos (Ward, enlace promedio) podrían dar resultados complementarios.
+
+- Número de clusters: Se eligió k=4 basado en la interpretabilidad de los perfiles. Otras soluciones (k=3 o k=5) podrían explorarse.
