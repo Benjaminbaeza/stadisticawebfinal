@@ -32,10 +32,12 @@ pacman::p_load(
 )
 ```
 ## 1.2 Configuración del entorno R
+
+```{r, eval=FALSE}
 - options(scipen = 999)    # Desactiva notación científica
 - rm(list = ls())          # Limpia el entorno de trabajo
 - set.seed(123)            # Fija semilla para reproducibilidad
-
+```
 # ⏳ Carga de la base de datos
 
 Luego vamos a cargar la base de datos directamente desde internet (En este caso la base de datos ELSOC esta alojada en Harvard Dataverse)
@@ -147,7 +149,9 @@ sjPlot::sjt.xtab(var.row = proc_data$educacion, var.col = proc_data$c29,
 
 <div class="table-container" style="overflow-x: auto; margin: 30px 0;"><table class="contingency-table" style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif;"> <caption style="caption-side: bottom; text-align: center; padding: 10px; font-style: italic; color: #666;"> <strong>Tabla 1:</strong> Distribución conjunta entre nivel educacional y preferencia por mecanismo de cambio constitucional (N = 3,032) </caption><thead> <tr style="background-color: #2c2c2c; color: white;"> <th style="border: 2px solid #444; padding: 12px; text-align: center; font-weight: bold;" rowspan="2">Nivel Educacional</th> <th style="border: 2px solid #444; padding: 12px; text-align: center; font-weight: bold;" colspan="4">Mecanismo de Cambio Constitucional</th> <th style="border: 2px solid #444; padding: 12px; text-align: center; font-weight: bold;" rowspan="2">Total por Educación</th> </tr> <tr style="background-color: #3a3a3a; color: white;"> <th style="border: 1px solid #555; padding: 10px; text-align: center;">Grupo de Expertos</th> <th style="border: 1px solid #555; padding: 10px; text-align: center;">Parlamento</th> <th style="border: 1px solid #555; padding: 10px; text-align: center;">Asamblea Constituyente</th> <th style="border: 1px solid #555; padding: 10px; text-align: center;">Total Mecanismo</th> </tr> </thead><tbody> <tr style="background-color: #f9f9f9;"> <td style="border: 1px solid #ddd; padding: 12px; font-weight: bold;">Educación Básica</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">138</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">30</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">446</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">614</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; background-color: #e8f4f8; font-weight: bold;">614</td> </tr><tr style="background-color: #fff;"> <td style="border: 1px solid #ddd; padding: 12px; font-weight: bold;">Educación Media</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">277</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">31</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">964</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">1,272</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; background-color: #e8f4f8; font-weight: bold;">1,272</td> </tr><tr style="background-color: #f9f9f9;"> <td style="border: 1px solid #ddd; padding: 12px; font-weight: bold;">Educación Superior</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">286</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">17</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">843</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">1,146</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; background-color: #e8f4f8; font-weight: bold;">1,146</td> </tr><tr style="background-color: #2c2c2c; color: white; font-weight: bold;"> <td style="border: 2px solid #444; padding: 12px; text-align: center;">Total General</td> <td style="border: 2px solid #444; padding: 12px; text-align: center;">701</td> <td style="border: 2px solid #444; padding: 12px; text-align: center;">78</td> <td style="border: 2px solid #444; padding: 12px; text-align: center;">2,253</td> <td style="border: 2px solid #444; padding: 12px; text-align: center;">3,032</td> <td style="border: 2px solid #444; padding: 12px; text-align: center; background-color: #1a5276; color: white;">3,032</td> </tr> </tbody> </table> </div>
 
-### Sumado a esto, tenemos:
+---
+
+# Sumado a esto, tenemos:
 
 **Frecuencias absolutas:** 
 
@@ -280,6 +284,8 @@ sjPlot::sjt.xtab(var.row = proc_data$educacion,
 <span style="color: #0d904f;">🟢 Porcentaje columna</span>
 </div>
 </div>
+
+---
 
 # 📊 Prueba Chi-cuadrado (X²): Cálculo e Interpretación
 
