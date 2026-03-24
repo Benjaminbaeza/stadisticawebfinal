@@ -122,7 +122,7 @@ Elsoc <- read_dta("Elsoc_Long_2016_2023.dta")
 # Ver estructura de la base
 glimpse(Elsoc)
 dim(Elsoc)
-```{r, eval=FALSE}
+```
 
 🔍 3. Selección de Variables y Limpieza
 ¿Qué hacemos? Seleccionamos las 4 variables de interés y filtramos valores perdidos.
@@ -298,7 +298,9 @@ prop.table(table(muestra_100$cluster)) * 100
 
 <table style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif; font-size: 0.95em; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
 <caption style="caption-side: top; text-align: center; padding: 12px; font-weight: bold; font-size: 1.1em; background-color: #f8f9fa; border: 1px solid #ddd; border-bottom: none;">
-📋 Tabla 2: Distribución de casos por cluster
+
+## 📋 Tabla 2: Distribución de casos por cluster
+
 </caption>
 <thead>
 <tr style="background-color: #2c2c2c; color: white;">
@@ -380,7 +382,8 @@ print(medias_cluster)
 
 <table style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif; font-size: 0.95em; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
 <caption style="caption-side: top; text-align: center; padding: 12px; font-weight: bold; font-size: 1.1em; background-color: #f8f9fa; border: 1px solid #ddd; border-bottom: none;">
-📋 Tabla 3: Perfil de medias por cluster (escala 1-5)
+
+## 📋 Tabla 3: Perfil de medias por cluster (escala 1-5)
 </caption>
 <thead>
 <tr style="background-color: #2c2c2c; color: white;">
