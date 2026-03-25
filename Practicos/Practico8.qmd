@@ -214,13 +214,7 @@ print(matriz_cor)
 ```{r, eval=FALSE}
 # Realizar PCA (con datos sin NA)
 fit <- PCA(na.omit(proc_data), scale.unit = TRUE, graph = FALSE)
-
-# Ver autovalores (eigenvalues)
-fit$eig
 ```
-**Salida esperada:**
-
-![](Imagenesygraficos/autovaloresprac8.png)
 
 # 📈 6. Interpretación de Resultados
 ## 6.1 Cargas factoriales (coordenadas)
@@ -264,8 +258,7 @@ Esta dimensión distingue entre dos tipos de vinculación con el barrio:
 # Varianza explicada por componente
 fit$eig
 ```
-
-![](Imagenesygraficos/varianzaexplicada.png)
+![](Imagenesygraficos/autovaloresprac8.png)
 
 **Interpretación:**
 
@@ -300,7 +293,7 @@ ggplot(datos.grafico2) +
   theme(legend.position = "none")
 ```
 
-![](Imagenesygraficos/graficosdoscomps.png)
+![](Imagenesygraficos/graficodoscomps.png)
 
 Interpretación del gráfico:
 
@@ -337,7 +330,7 @@ ggplot(datos_grafico_ind) +
   theme_minimal()
 ```
 
-![](Imagenesygraficos/visualizaciondeindividuos.png)
+![](Imagenesygraficos/prac8-2.png)
 
 **Interpretación:**
 
@@ -375,7 +368,7 @@ ggbiplot(fit_prcomp,
   theme_minimal()
 ```
 
-![](Imagenesygraficos/biplot.png)
+![](Imagenesygraficos/prac8-3.png)
 
 **Interpretación del biplot:**
 
@@ -416,7 +409,7 @@ fviz_eig(fit, geom = "line") +
   labs(title = "Scree plot - Método del codo")
 ```
 
-<div class="image-container" style="text-align: center; margin: 30px 0;"> <img src="ruta/a/tu/imagen/scree_plot_codo.png" alt="Scree plot con método del codo" style="max-width: 100%; border: 1px solid #ddd; border-radius: 4px; padding: 5px;"> <p style="color: #666; font-size: 0.9em; margin-top: 10px;"> <strong>Figura 5:</strong> Scree plot para identificar el "codo" o punto de inflexión </p> </div>
+![](Imagenesygraficos/prac8-4.png)
 
 **Interpretación:** El gráfico muestra una caída pronunciada hasta la componente 2, luego se estabiliza. Esto sugiere retener 2 componentes.
 
@@ -431,9 +424,6 @@ library(paran)
 # Realizar análisis paralelo (excluimos primera columna si es necesario)
 paran(na.omit(proc_data), iterations = 5000, graph = TRUE, color = FALSE)
 ```
-
-![](Imagenesygraficos/paran.png)
-
 
 **Interpretación de la prueba de Horn:**
 
@@ -455,8 +445,92 @@ print(round(cargas_dim1, 2))
 ```
 
 **Resultado:**
-barrio_ideal     integrado    identificor    parte_de_mi        amigos      sociable  cordialidad colaboracion 
-        0.77          0.83          0.83          0.81          0.72          0.74          0.76          0.67 
+
+<div class="table-container" style="overflow-x: auto; margin: 30px 0;">
+
+<table style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif; font-size: 0.95em; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+<caption style="caption-side: top; text-align: center; padding: 12px; font-weight: bold; font-size: 1.1em; background-color: #f8f9fa; border: 1px solid #ddd; border-bottom: none;">
+📋 Tabla: Cargas factoriales de la primera componente (Factor de Cohesión Barrial)
+</caption>
+<thead>
+<tr style="background-color: #2c2c2c; color: white;">
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Variable</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Carga factorial</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Interpretación</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">barrio_ideal</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e8f4f8; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.77</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Alta contribución al factor</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">integrado</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #d4edda; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.83</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Muy alta contribución</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">identifico</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #d4edda; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.83</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Muy alta contribución</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">parte_de_mi</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #d4edda; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.81</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Muy alta contribución</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">amigos</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #fff3cd; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.72</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Alta contribución</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">sociable</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #fff3cd; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.74</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Alta contribución</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">cordialidad</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #fff3cd; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.76</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Alta contribución</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">colaboracion</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #f8d7da; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.67</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Contribución moderada-alta</td>
+</tr>
+</tbody>
+<tfoot>
+<tr style="background-color: #f0f0f0; font-size: 0.85em;">
+<td colspan="3" style="border: 1px solid #ddd; padding: 12px; text-align: center; color: #555;">
+<strong>Nota:</strong> Las cargas factoriales representan la correlación entre cada variable y la primera componente principal (Factor de Cohesión Barrial). Valores más altos indican mayor contribución al factor. La primera componente explica el <strong>58.5%</strong> de la varianza total.
+</td>
+</tr>
+</tfoot>
+</table>
+
+<div style="text-align: center; padding: 8px; color: #666; font-size: 0.8em; border: 1px solid #ddd; border-top: none; background-color: #fafafa;">
+<strong>Elaboración propia</strong> en base a análisis de componentes principales (PCA) con datos ELSOC
+</div>
+
+</div>
 
 ## 11.2 Calcular el índice
 ¿Qué hacemos? Creamos una nueva variable que es la suma ponderada de las 8 variables originales.
