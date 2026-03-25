@@ -50,10 +50,17 @@ website:
             href: Practicos/Practico5.qmd 
           - text: "Práctico 6: Clustering Jerárquico Aglomerativo con Distancia de Jaccard y Enlace Promedio (UPGMA)"
             href: Practicos/Practico6.qmd
-          - text: "Práctico 7: Análisis de Conglomerados - Confianza Institucional en Latinoamérica"
+          - text: "Práctico 7: Análisis de Conglomerados (Ward + k-means + PCA) - Confianza Institucional en Latinoamérica"
             href: Practicos/Practico7.qmd
           - text: "Práctico 8: Construcción de Índice de Cohesión Barrial mediante PCA con datos ELSOC"
             href: Practicos/Practico8.qmd
+          - text: "Práctico 9: Analisis Factorial Exploratorio (AFE) con actitudes hacia migrantes"
+            href: Practicos/Practico9.qmd
+          - text: "Práctico 10: Analisis de Conglomerados"
+            href: Practicos/Practico10.qmd
+          - text: "Práctico 11: Propuesta de Investigación con Métodos Multivariantes"
+            href: Practicos/Practico11.qmd
+          - text: "Práctico 12: 
           
           
 
