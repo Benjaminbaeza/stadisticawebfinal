@@ -54,13 +54,14 @@ website:
             href: Practicos/Practico7.qmd
           - text: "Práctico 8: Construcción de Índice de Cohesión Barrial mediante PCA con datos ELSOC"
             href: Practicos/Practico8.qmd
-          - text: "Práctico 9: Analisis Factorial Exploratorio (AFE) con actitudes hacia migrantes"
+          - text: "Práctico 9: Analisis Factorial Exploratorio (AFE) con actitudes hacia migrantes (Ejercicio Introductorio)"
             href: Practicos/Practico9.qmd
           - text: "Práctico 10: Analisis de Conglomerados (Propuesta completa)"
             href: Practicos/Practico10.qmd
           - text: "Práctico 11: Propuesta de Investigación con Métodos Multivariantes"
             href: Practicos/Practico11.qmd
-          - text: "Práctico 12: 
+          - text: "Práctico 12: Análisis Factorial Exploratorio - Cohesión Barrial (Ejercicio Completo)"
+            href: Practicos/Practico12.qmd
           
           
 
