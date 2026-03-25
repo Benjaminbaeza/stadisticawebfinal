@@ -28,21 +28,6 @@ css: styles.css  # ← ¡IMPORTANTE! Si usas estilos personalizados
        height="650px" />
 </div>
 
-## Practico 4
-
-Explique las razones y procedimiento de esta construcción de un índice de cohesión social:  
-📄 [Índice de Cohesión Social - OCSCOES](https://ocscoes.github.io/medicion-cohesion-LA/intro.html){target="_blank"}
-
-### Ejercicio 2 (0,2 puntos)
-Proponga una investigación sociológica que pueda ser respondida por (al menos) Análisis de Correspondencias y/o Análisis de Componentes Principales o por Análisis Factorial Exploratorio.
-
-### Incluya:
-
-- Pregunta de investigación
-- Dimensiones del análisis y posibles variables
-- Base de datos y módulos que permitieran medir esas variables
-- Propuesta de Modelo justificado
-
 ---
 
 ## Lecturas Asociadas
