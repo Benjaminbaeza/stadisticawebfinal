@@ -55,6 +55,7 @@ datos_acs <- na.omit(datos_acs)
 # Ver estructura
 str(datos_acs)
 ```
+
 # 📊 Análisis de Correspondencia Simple (ACS)
 ## Paso 1: Crear Tabla de Contingencia
 El ACS se aplica sobre una tabla de contingencia.
@@ -87,8 +88,22 @@ A continuación, se deben interpretar los siguientes elementos:
 
 ```{r, eval=FALSE}
 # Masa de filas y columnas
-resultado_ca$row$mass
-resultado_ca$col$mass
+masas_filas <- resultado_ca$call$marge.row
+masas_columnas <- resultado_ca$call$marge.col
+
+# Visualizar con mejor formato
+cat("\n📊 Masas de filas (proporción de cada categoría educacional):\n")
+print(round(masas_filas, 4))
+
+cat("\n📊 Masas de columnas (proporción de cada preferencia democrática):\n")
+print(round(masas_columnas, 4))
+
+# Gráfico de masas para mejor visualización
+barplot(masas_filas, 
+        main = "Masa por categoría educacional",
+        xlab = "Nivel educacional", 
+        ylab = "Proporción",
+        col = "steelblue")
 ```
 ⚖️ **Inercia (Inertia)** : Mide la varianza total explicada por las dimensiones. Es análogo al concepto de varianza en un PCA. Una inercia total alta indica una fuerte asociación entre las variables.
 
