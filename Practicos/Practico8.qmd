@@ -630,27 +630,27 @@ cat("✅ Resultados exportados a:", file.path(getwd(), "resultados_pca_cohesion_
 # ⚠️ Notas Metodológicas Importantes
 
 1. Escalamiento de variables
-Se utilizó scale.unit = TRUE en PCA() para estandarizar las variables (media 0, desviación 1)
+- Se utilizó scale.unit = TRUE en PCA() para estandarizar las variables (media 0, desviación 1)
 
-Esto es necesario porque aunque todas son escala Likert 1-4, el método PCA se basa en correlaciones
+- Esto es necesario porque aunque todas son escala Likert 1-4, el método PCA se basa en correlaciones
 
 2. Tratamiento de valores perdidos
-Se excluyeron casos con NA mediante na.omit() antes del PCA
+- Se excluyeron casos con NA mediante na.omit() antes del PCA
 
-Esto es necesario porque el PCA no admite valores perdidos
+- Esto es necesario porque el PCA no admite valores perdidos
 
 3. Selección del número de componentes
-Se utilizaron tres criterios: autovalores > 1, scree plot, y análisis paralelo de Horn
+- Se utilizaron tres criterios: autovalores > 1, scree plot, y análisis paralelo de Horn
 
-El análisis paralelo es el más robusto y recomendado en la literatura
+- El análisis paralelo es el más robusto y recomendado en la literatura
 
 4. Construcción del índice
-Se usaron las cargas factoriales crudas (no rotadas) porque solo retenemos una componente
+- Se usaron las cargas factoriales crudas (no rotadas) porque solo retenemos una componente
 
-El índice resultante es una variable continua apta para análisis paramétricos
+- El índice resultante es una variable continua apta para análisis paramétricos
 
 5. Limitaciones
-El índice asume que las variables Likert pueden tratarse como numéricas (equidistancia entre categorías)
+- El índice asume que las variables Likert pueden tratarse como numéricas (equidistancia entre categorías)
 
-La interpretación del índice depende de la calidad de las variables originales
+- La interpretación del índice depende de la calidad de las variables originales
 
