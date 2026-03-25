@@ -310,6 +310,8 @@ fac_pa <- proc_data %>%
 print(fac_pa, digits = 2)
 ```
 
+![](Imagenesygraficos/prac13-7.png)
+
 ## 7.2 Método de Máxima Verosimilitud (Maximum Likelihood - ML)
 ```{r, eval=FALSE}
 # Extracción con máxima verosimilitud
@@ -320,9 +322,9 @@ fac_ml <- proc_data %>%
 print(fac_ml, digits = 2)
 ```
 
-Interpretación de los resultados:
+![](Imagenesygraficos/prac13-8.png)
 
-![](Imagenesygraficos/prac13-7.png)
+Interpretación de los resultados:
 
 **Interpretación:**
 
@@ -347,10 +349,8 @@ fac_ml_pro <- proc_data %>%
 
 print(fac_ml_pro, digits = 2)
 ```
-![](Imagenesygraficos/prac13-8.png)
 
-
-Tabla resumen con sjPlot
+Tabla resumen con sjPlot:
 
 ```{r, eval=FALSE}
 proc_data %>% 
