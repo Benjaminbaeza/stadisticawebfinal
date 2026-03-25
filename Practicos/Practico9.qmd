@@ -47,16 +47,16 @@ set.seed(123)
 datos_afe <- datos_limpios %>% slice_sample(n = 100)
 ```
 
-📊 3. Matriz de correlaciones
+# 📊 3. Matriz de correlaciones
 ```{r, eval=FALSE}
-corMat <- muestra_100 %>% 
+corMat <- datos_afe %>% 
   select(r12_01, r12_02, r12_03, r12_04) %>% 
   cor(use = "complete.obs")
 
 print(corMat)
 ```
 
-![](Imagenesygraficos/Prac1graf1.png)
+![](Imagenesygraficos/prac9-1.png)
 
 ## Figura 1: Matriz de correlaciones
 
@@ -76,7 +76,7 @@ kmo <- KMO(corMat)
 print(kmo)
 
 # Bartlett
-cortest.bartlett(corMat, n = nrow(muestra_100))
+bartlett <- cortest.bartlett(corMat, n = nrow(datos_afe))
 print(bartlett)
 ```
 
@@ -90,27 +90,27 @@ Bartlett = El test arroja un χ² = 294.97 (gl = 6) con un p-valor < 0.001  → 
 
 ```{r, eval=FALSE}
 # Scree plot
-scree(muestra_100, factors = TRUE)
+scree(datos_afe, factors = TRUE)
 ```
-![](Imagenesygraficos/Prac1graf2.png)
+![](Imagenesygraficos/prac9-2.png)
 
 ## Figura 2: Scree plot
 
 ```{r, eval=FALSE}
 # Análisis paralelo
-fa.parallel(muestra_100, fa = "fa", n.obs = nrow(muestra_100))
+fa.parallel(datos_afe, fa = "fa", n.obs = nrow(datos_afe))
 ```
-![](Imagenesygraficos/Prac1graf3.png)
+![](Imagenesygraficos/prac9-3.png)
 
 ## Figura 3: Análisis paralelo de Horn
 
 Conclusión: Ambos métodos indican 2 factores
 
-#🔧 6. Extracción de factores
+# 🔧 6. Extracción de factores
 ## 6.1 Ejes principales (PA)
 
 ```{r, eval=FALSE}
-fac_pa <- muestra_100 %>%
+fac_pa <- datos_afe %>%
   select(r12_01, r12_02, r12_03, r12_04) %>%
   fa(nfactors = 2, fm = "pa", rotate = "none")
 
@@ -121,7 +121,7 @@ print(fac_pa, digits = 2, sort = TRUE)
 ## 6.2 Máxima verosimilitud (ML)
 
 ```{r, eval=FALSE}
-fac_ml <- muestra_100 %>%
+fac_ml <- datos_afe %>%
   select(r12_01, r12_02, r12_03, r12_04) %>%
   fa(nfactors = 2, fm = "ml", rotate = "none")
 
@@ -131,7 +131,7 @@ print(fac_ml, digits = 2, sort = TRUE))
 # 🔄 7. Rotaciones
 ## 7.1 Varimax (ortogonal)
 ```{r, eval=FALSE}
-fac_varimax <- muestra_100 %>%
+fac_varimax <- datos_Afe %>%
   select(r12_01, r12_02, r12_03, r12_04) %>%
   fa(nfactors = 2, fm = "ml", rotate = "varimax")
 
@@ -141,7 +141,7 @@ print(fac_varimax, digits = 2, sort = TRUE)
 
 ## 7.2 Promax (oblicua)
 ```{r, eval=FALSE}
-fac_promax <- muestra_100 %>%
+fac_promax <- datos_afe %>%
   select(r12_01, r12_02, r12_03, r12_04) %>%
   fa(nfactors = 2, fm = "ml", rotate = "promax")
 
@@ -153,7 +153,7 @@ fa.diagram(fac_promax)
 # 🧮 9. Puntajes factoriales
 
 ```{r, eval=FALSE}
-fac_final <- muestra_100 %>%
+fac_final <- datos_Afe %>%
   select(r12_01, r12_02, r12_03, r12_04) %>%
   fa(nfactors = 2, fm = "ml", rotate = "promax", scores = "regression")
 
@@ -161,7 +161,7 @@ puntajes <- as.data.frame(fac_final$scores)
 names(puntajes) <- c("Factor1", "Factor2")
 
 # Unir puntajes a la muestra
-muestra_100_completa <- cbind(muestra_100, puntajes)
+muestra_100_completa <- cbind(datos_afe, puntajes)
 
 head(muestra_100_completa)
 
