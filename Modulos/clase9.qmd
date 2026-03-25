@@ -27,18 +27,6 @@ css: styles.css
        height="650px" />
 </div>
 
-## Practico 9
-
-### Instrucciones:
-Elija algún grupo de variables continuas o de Likert de la encuesta ELSOC para las que usted considere adecuado hacer un análisis de conglomerado, **es decir, que usted considere generen grupos diferenciados de personas.**
-
-### Pasos a seguir:
-1. Estandarice las variables.
-2. Considere hacer un muestreo de pocos casos para facilitar el trabajo del computador y la interpretación (100 casos por ejemplo).
-3. Calcule la matriz de distancias euclidianas al cuadrado.
-4. Aplique el análisis de conglomerado con método del centroide.
-5. Interprete los resultados.
-6. Justifique cuántos conglomerados seleccionó y por qué.
 
 ---
 
