@@ -20,7 +20,7 @@ Este ejercicio corresponde al Control 2 y tiene un valor de 0,2 puntos. Consiste
 
 ### A continuación, se presenta una propuesta desarrollada a partir de los análisis realizados en prácticos anteriores, utilizando datos del Estudio Longitudinal Social de Chile (ELSOC).
 
-# Pregunta de investigación
+# 🔍 Pregunta de investigación
 
 ¿Existen dimensiones subyacentes en las actitudes hacia la inmigración en Chile, y cómo se relacionan estas dimensiones con características sociodemográficas como nivel educacional, posición política y sexo?
 
@@ -122,12 +122,12 @@ Este ejercicio corresponde al Control 2 y tiene un valor de 0,2 puntos. Consiste
 
 </div>
 
-# Base de datos y módulos:
+### Base de datos y módulos:
 - Base de datos: Estudio Longitudinal Social de Chile (ELSOC) - Ola 4 (2019)
 
 - Institución: Centro de Estudios de Conflicto y Cohesión Social (COES)
 
-# Módulos utilizados:
+### Módulos utilizados:
 
 - **Inmigración:** Variables: r09, r12_01, r12_02, r12_03, r12_04, r16
 
@@ -141,7 +141,8 @@ Para responder a la pregunta de investigación, se propone el siguiente esquema 
 
 ### Dependiendo del enfoque, se puede elegir entre tres métodos multivariantes:
 
-# Comparación de Métodos: ¿Cuándo usar cada uno?
+- Comparación de Métodos: ¿Cuándo usar cada uno?
+
 ## 1. Análisis de Componentes Principales (PCA)
 **¿Qué hace?**
 - Reduce un conjunto de variables correlacionadas a un número menor de componentes (combinaciones lineales) que retienen la máxima varianza posible.
@@ -262,4 +263,4 @@ La elección del método depende del objetivo específico:
 
 - ACS/ACM: Explorar asociaciones entre variables categóricas
 
-Para esta investigación, se recomienda AFE para identificar dimensiones de actitud hacia inmigrantes, seguido de ACM para relacionar esas dimensiones con características sociodemográficas.
+**Para esta investigación, se recomienda AFE para identificar dimensiones de actitud hacia inmigrantes, seguido de ACM para relacionar esas dimensiones con características sociodemográficas.**
