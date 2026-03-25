@@ -131,8 +131,8 @@ options(scipen = 999)
 ¿Por qué? Necesitamos los datos para realizar el análisis.
 
 ```{r, eval=FALSE}
-# Cargar base ELSOC (¡CAMBIAR A TU RUTA!)
-ELSOC_Long_2016_2023 <- haven::read_sav("C:/Users/caguilera/Dropbox/UAH/Cursos Sociologia/2 Sem 2025/Est IV/Laboratorios/Entrega 4/ELSOC_Long_2016_2023.sav")
+# Cargar base ELSOC 
+ELSOC_Long_2016_2023 <- haven::read_dta("C:/Users/caguilera/Dropbox/UAH/Cursos Sociologia/2 Sem 2025/Est IV/Laboratorios/Entrega 4/ELSOC_Long_2016_2023.dta")
 ```
 
 # 🔍 3. Selección de Variables
