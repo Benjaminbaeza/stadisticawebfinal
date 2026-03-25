@@ -192,7 +192,7 @@ print(matriz_cor)
 
 ## Salida esperada:
 
-![](Imagenesygraficos/Graficomatrizcor.png)
+![](Imagenesygraficos/prac8-1.png)
 
 **Interpretación:**
 
