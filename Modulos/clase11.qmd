@@ -18,7 +18,7 @@ css: styles.css
 
 ## Presentación
 
-📄 [Ver presentación (PDF)](../clases/Clase_5_noviembre_Est_IV.pdf){target="_blank"}
+📄 [Ver presentación (PDF)](../clases/Clase_5_noviembre._Est_IV._.pdf){target="_blank"}
 
 <div class="pdf-container" style="border: 1px solid #ddd; border-radius: 5px; margin: 20px 0;">
 <embed src="../clases/Clase_5_noviembre_Est_IV.pdf" 
