@@ -1,6 +1,4 @@
 
-Ejercicio 12 - Propuesta de Investigación con Métodos Multivariantes
-
 # 🎯 Sobre este ejercicio
 Este ejercicio corresponde al Control 2 y tiene un valor de 0,2 puntos. Consiste en diseñar una propuesta de investigación sociológica que pueda ser respondida utilizando al menos uno de los siguientes métodos multivariantes:
 
