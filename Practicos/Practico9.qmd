@@ -62,9 +62,9 @@ print(corMat)
 
 **Interpretación:**
 
-r12_01 y r12_02: correlación muy alta (+0.95) → mismo constructo
+- r12_01 y r12_02: correlación muy alta (+0.95) → mismo constructo
 
-r12_03 y r12_04: correlación alta (+0.63) → mismo constructo
+- r12_03 y r12_04: correlación alta (+0.63) → mismo constructo
 
 Entre ambos grupos: correlaciones negativas → dos dimensiones opuestas
 
@@ -82,9 +82,9 @@ print(bartlett)
 
 **Resultados:**
 
-KMO = 0.55 → adecuación aceptable para AFE exploratorio
+- KMO = 0.55 → adecuación aceptable para AFE exploratorio
 
-Bartlett = El test arroja un χ² = 294.97 (gl = 6) con un p-valor < 0.001  → lo que permite rechazar la hipotesis nula de la matriz de correlaciones
+- Bartlett = El test arroja un χ² = 294.97 (gl = 6) con un p-valor < 0.001  → lo que permite rechazar la hipotesis nula de la matriz de correlaciones
 
 # 📈 5. Número de factores
 
