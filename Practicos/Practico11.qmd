@@ -1,1 +1,267 @@
 
+Ejercicio 12 - Propuesta de Investigación con Métodos Multivariantes
+
+# 🎯 Sobre este ejercicio
+Este ejercicio corresponde al Control 2 y tiene un valor de 0,2 puntos. Consiste en diseñar una propuesta de investigación sociológica que pueda ser respondida utilizando al menos uno de los siguientes métodos multivariantes:
+
+- **Análisis de Correspondencias (Simple o Múltiple)**
+
+- **Análisis de Componentes Principales (PCA)**
+
+- **Análisis Factorial Exploratorio (AFE)**
+
+## La propuesta debe incluir cuatro elementos fundamentales:
+
+- Pregunta de investigación (clara, precisa y abordable con los datos)
+
+- Dimensiones del análisis y posibles variables (qué conceptos medir y con qué ítems)
+
+- Base de datos y módulos (dónde obtener los datos)
+
+- Propuesta de modelo justificada (qué método usar y por qué)
+
+### A continuación, se presenta una propuesta desarrollada a partir de los análisis realizados en prácticos anteriores, utilizando datos del Estudio Longitudinal Social de Chile (ELSOC).
+
+# Pregunta de investigación
+
+¿Existen dimensiones subyacentes en las actitudes hacia la inmigración en Chile, y cómo se relacionan estas dimensiones con características sociodemográficas como nivel educacional, posición política y sexo?
+
+<div class="table-container" style="overflow-x: auto; margin: 30px 0;">
+
+<table style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif; font-size: 0.95em; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+<caption style="caption-side: top; text-align: center; padding: 12px; font-weight: bold; font-size: 1.1em; background-color: #f8f9fa; border: 1px solid #ddd; border-bottom: none;">
+📋 Dimensiones del análisis y posibles variables
+</caption>
+<thead>
+<tr style="background-color: #2c2c2c; color: white;">
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Dimensión</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Variable</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Descripción</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Escala</th>
+</tr>
+</thead>
+<tbody>
+
+<!-- Apertura hacia inmigrantes -->
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #e8f4f8;" rowspan="2">Apertura hacia inmigrantes</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">r12_01</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Inmigrantes hacen más diversa la cultura chilena</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">r12_02</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Inmigrantes hacen más rica la economía</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
+</tr>
+
+<!-- Amenaza percibida -->
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #f8d7da;" rowspan="2">Amenaza percibida</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">r12_03</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Chile está perdiendo su identidad con inmigrantes</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">r12_04</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Inmigrantes aumentan el desempleo</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
+</tr>
+
+<!-- Confianza en inmigrantes -->
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #fff3cd;">Confianza en inmigrantes</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">r16</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Confianza en inmigrantes [país]</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
+</tr>
+
+<!-- Agrado hacia inmigrantes -->
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #d4edda;">Agrado hacia inmigrantes</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">r09</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Grado de agrado hacia inmigrantes [país]</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
+</tr>
+
+<!-- Nivel educacional -->
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #e8f4f8;">Nivel educacional</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">m01</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Nivel educacional alcanzado</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">Ordinal</span></td>
+</tr>
+
+<!-- Posición política -->
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #fff3cd;">Posición política</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">eje_politico</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Ubicación en espectro izquierda-derecha</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">Nominal</span></td>
+</tr>
+
+<!-- Sexo -->
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold; text-align: center; background-color: #f8d7da;">Sexo</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">m01_sexo</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Sexo del entrevistado</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">Nominal</span></td>
+</tr>
+
+</tbody>
+<tfoot>
+<tr style="background-color: #f0f0f0; font-size: 0.85em;">
+<td colspan="4" style="border: 1px solid #ddd; padding: 12px; text-align: center; color: #555;">
+<strong>Nota:</strong> Las variables de actitud (r09, r12_01, r12_02, r12_03, r12_04, r16) se miden en escala Likert 1-5. Las variables sociodemográficas se utilizarán para segmentar y caracterizar los perfiles encontrados.
+</td>
+</tr>
+</tfoot>
+</table>
+
+<div style="text-align: center; padding: 8px; color: #666; font-size: 0.8em; border: 1px solid #ddd; border-top: none; background-color: #fafafa;">
+<strong>Elaboración propia</strong> basada en datos del Estudio Longitudinal Social de Chile (ELSOC) - COES
+</div>
+
+</div>
+
+# Base de datos y módulos:
+- Base de datos: Estudio Longitudinal Social de Chile (ELSOC) - Ola 4 (2019)
+
+- Institución: Centro de Estudios de Conflicto y Cohesión Social (COES)
+
+# Módulos utilizados:
+
+- **Inmigración:** Variables: r09, r12_01, r12_02, r12_03, r12_04, r16
+
+- **Sociodemográfico:** Variables: m01, m01_sexo, eje_politico
+
+### Propuesta de Modelo Justificado
+Para responder a la pregunta de investigación, se propone el siguiente esquema analítico:
+
+- Paso 1: Identificar dimensiones subyacentes en las actitudes hacia inmigrantes.
+- Paso 2: Asociar esas dimensiones con variables sociodemográficas.
+
+### Dependiendo del enfoque, se puede elegir entre tres métodos multivariantes:
+
+# Comparación de Métodos: ¿Cuándo usar cada uno?
+## 1. Análisis de Componentes Principales (PCA)
+**¿Qué hace?**
+- Reduce un conjunto de variables correlacionadas a un número menor de componentes (combinaciones lineales) que retienen la máxima varianza posible.
+
+**¿Cuándo usarlo?**
+
+- Cuando las variables son numéricas continuas (o escalas Likert tratadas como continuas)
+
+- Cuando el objetivo es reducir dimensionalidad para construir un índice
+
+- Cuando no interesa identificar "factores latentes" sino resumir información
+
+### Ejemplo en esta investigación:
+Podría usarse para crear un índice de actitud hacia inmigrantes combinando r09, r12_01, r12_02, r16 en una sola variable que resuma la "apertura".
+
+- Ventajas: Simple, no asume estructura latente, útil para predicción.
+- Limitación: No identifica factores no observados (solo combina los observados).
+
+## 2. Análisis Factorial Exploratorio (AFE)
+**¿Qué hace?**
+- Identifica factores latentes (no observados) que explican las correlaciones entre las variables. Asume que las variables observadas son manifestaciones de constructos subyacentes.
+
+**¿Cuándo usarlo?**
+
+- Cuando se busca entender la estructura subyacente de los datos
+
+- Cuando hay teoría previa sobre dimensiones que podrían existir (ej. "apertura" y "amenaza")
+
+- Cuando se espera que las variables midan constructos no directamente observables
+
+### Ejemplo en esta investigación:
+Ideal para confirmar si las actitudes hacia inmigrantes se organizan en dos dimensiones: una de apertura positiva (r09, r12_01, r12_02, r16) y otra de amenaza (r12_03, r12_04).
+
+- Ventajas: Identifica estructura latente, permite rotación para mejor interpretación.
+- Limitación: Requiere decisiones subjetivas (número de factores, tipo de rotación).
+
+## 3. Análisis de Correspondencias (ACS / ACM)
+**¿Qué hace?**
+- Analiza la asociación entre variables categóricas. ACS para dos variables, ACM para tres o más. Representa las categorías en un mapa perceptual donde la proximidad indica asociación.
+
+**¿Cuándo usarlo?**
+
+- Cuando las variables son categóricas (nominales u ordinales)
+
+- Cuando se quiere visualizar asociaciones entre categorías
+
+- Cuando se busca identificar perfiles (combinaciones de categorías)
+
+### Ejemplo en esta investigación:
+Se podría usar ACM para explorar la asociación entre:
+
+-Actitud hacia inmigrantes (recodificada en: Baja / Media / Alta)
+
+- Nivel educacional (Básica / Media / Superior)
+
+- Posición política (Izquierda / Centro / Derecha)
+
+- Sexo (Hombre / Mujer)
+
+---
+
+- Ventajas: No asume linealidad, visualización intuitiva, maneja variables categóricas.
+- Limitación: No identifica dimensiones latentes como el AFE, solo asociaciones entre categorías.
+
+<div class="table-container" style="overflow-x: auto; margin: 30px 0;">
+
+<table style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif; font-size: 0.95em; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+<caption style="caption-side: top; text-align: center; padding: 12px; font-weight: bold; font-size: 1.1em; background-color: #f8f9fa; border: 1px solid #ddd; border-bottom: none;">
+📊 Propuesta metodológica para la investigación
+</caption>
+<thead>
+<tr style="background-color: #2c2c2c; color: white;">
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Objetivo</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Método Recomendado</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Justificación</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold;">Identificar dimensiones subyacentes en actitudes hacia inmigrantes</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e8f4f8; padding: 6px 12px; border-radius: 20px; font-weight: bold;">AFE</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Permite confirmar si existe estructura bifactorial (apertura vs. amenaza)</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-weight: bold;">Relacionar esas dimensiones con variables sociodemográficas</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #fff3cd; padding: 6px 12px; border-radius: 20px; font-weight: bold;">ACM</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">Las variables sociodemográficas son categóricas; ACM visualiza perfiles</td>
+</tr>
+</tbody>
+<tfoot>
+<tr style="background-color: #f0f0f0; font-size: 0.85em;">
+<td colspan="3" style="border: 1px solid #ddd; padding: 12px; text-align: center; color: #555;">
+<strong>Nota:</strong> AFE = Análisis Factorial Exploratorio; ACM = Análisis de Correspondencias Múltiple. Ambos métodos se complementan para abordar los dos objetivos planteados.
+</td>
+</tr>
+</tfoot>
+</table>
+
+<div style="text-align: center; padding: 8px; color: #666; font-size: 0.8em; border: 1px solid #ddd; border-top: none; background-color: #fafafa;">
+<strong>Elaboración propia</strong> en base a los análisis realizados en prácticos anteriores
+</div>
+
+</div>
+
+## Estrategia alternativa:
+Si se prefiere un enfoque más simple, se puede usar PCA para construir un índice de actitud y luego correlacionarlo con las variables sociodemográficas.
+
+# Conclusión
+La elección del método depende del objetivo específico:
+
+- PCA: Resumir información en un índice
+
+- AFE: Descubrir estructura latente subyacente
+
+- ACS/ACM: Explorar asociaciones entre variables categóricas
+
+Para esta investigación, se recomienda AFE para identificar dimensiones de actitud hacia inmigrantes, seguido de ACM para relacionar esas dimensiones con características sociodemográficas.
