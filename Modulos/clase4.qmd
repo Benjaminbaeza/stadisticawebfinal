@@ -1,5 +1,5 @@
 ---
-title: "Módulo 4 · Análisis de Componentes Principales (PCA))"
+title: "Módulo 4 · Análisis de Componentes Principales (PCA)"
 format: html
 editor: visual
 css: styles.css
