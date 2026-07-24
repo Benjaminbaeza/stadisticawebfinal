@@ -65,9 +65,11 @@ website:
           
           
 
-        
-      - href: ayudantia.qmd
-        text: Ayudantias
+        text: Ayudantia
+        menu:
+          - text: "Ayudantia 1 - Presentación"
+            href: Ayudantiass/Ayudantia1.qmd
+
 
 
         
