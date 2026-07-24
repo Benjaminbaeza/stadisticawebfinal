@@ -1,1 +1,6 @@
-
+---
+title: "Ayudantia 1"
+subtitle: "Departamento de Sociología · Facultad de Ciencias Sociales  
+Universidad Alberto Hurtado"
+page-layout: full
+---
