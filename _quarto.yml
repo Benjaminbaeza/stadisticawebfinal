@@ -64,11 +64,11 @@ website:
             href: Practicos/Practico12.qmd
           
           
-
-        - text: Ayudantia
+      - text: Ayudantia
         menu:
-          - text: "Ayudantia 1 - Presentación"
+          - text: "Ayudantia"
             href: Ayudantiass/Ayudantia1.qmd
+
 
 
 
