@@ -231,3 +231,32 @@ prop.table(tabla, 1) * 100  # Porcentajes por fila
 prop.table(tabla, 2) * 100  # Porcentajes por columna
 ```
 Interpreten: ¿Observan algún patrón visual en la tabla? ¿Parece haber asociación entre las variables?
+
+
+# Paso 10
+
+## Paso 10.1 
+
+Aqui vamos a hacer uan forma no **manual hacer la volaita** y todo eso
+
+```{r, eval=FALSE}
+# Con sjPlot 
+sjPlot::sjt.xtab(var.row = datos$variable1, 
+                 var.col = datos$variable2,
+                 show.row.prc = TRUE,   # Porcentajes por fila
+                 show.col.prc = TRUE,   # Porcentajes por columna
+                 show.summary = FALSE,
+                 encoding = "UTF-8")
+# O con R base
+tabla <- table(datos$variable1, datos$variable2)
+print(tabla)
+
+# Porcentajes
+prop.table(tabla, 1) * 100  # Porcentajes por fila
+prop.table(tabla, 2) * 100  # Porcentajes por columna
+```
+Pasos
+
+1- **dksjodbnxb**
+2- **wljhdjsdjk**
+3- **sdljhjsdjhds**
