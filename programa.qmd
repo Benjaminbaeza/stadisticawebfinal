@@ -10,8 +10,8 @@ title: "Programa Estadistica IV"
 Al término de esta actividad curricular, las y los estudiantes serán capaces de:
 
 - Identificar las diferencias claves entre las técnicas de análisis exploratorio.
-- Interpretar la información derivada de software estadísticos.
-- Aplicar técnicas de análisis exploratorio a problemas de investigación social.
+- Interpretar la información derivada de software estadísticos de cada técnica.
+- Aplicar las diferentes técnicas de análisis exploratorio a problemas de investigación social.
 
 ---
 
