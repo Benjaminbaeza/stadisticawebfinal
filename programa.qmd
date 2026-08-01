@@ -64,7 +64,8 @@ El curso se organiza en tres unidades:
 
 El curso se desarrollará de manera presencial, combinando clases expositivas y prácticas en donde se revisarán los elementos teóricos basicos de cada técnica estadistica, así como su aplicación en la investigación empírica y la interpretación de sus resultados.
 
-El curso cuenta también con sesiones de ayudantía en donde los/las estudiantes reforzarán los contenidos aprendidos en la cátedra, aprenderán el uso de comandos de software estadísticos y se prepararán para los controles y el trabajo final. La definición del horario de ayudantía se reañizara la primera semana de clases.
+El curso cuenta también con sesiones de ayudantía en donde se reforzarán los contenidos aprendidos en clase, se trabajara el uso de software estadísticos y se prepararán para los controles y el trabajo final. 
+La definición del horario de ayudantía se realizara la primera semana de clases.
 ---
 
 ## IV. Evaluación de aprendizajes
