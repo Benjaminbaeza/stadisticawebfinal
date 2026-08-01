@@ -19,7 +19,7 @@ Al término de esta actividad curricular, las y los estudiantes serán capaces d
 
 El curso se organiza en tres unidades:
 
-- **Unidad I:** Análisis de Correspondencias.
+- **Unidad I:** Análisis de Correspondencias simple y múltiple.
 - **Unidad II:** Análisis Factorial y Componentes Principales.
 - **Unidad III:** Análisis de Conglomerados.
 
@@ -34,7 +34,7 @@ El curso se organiza en tres unidades:
 - Objetivos del Análisis de Correspondencias.
 - Construcción de mapas perceptuales: media ponderada, masa, perfiles, vértices,
   distancias Chi-cuadrado e inercia.
-- Reducción de dimensionalidad y escalamiento óptimo.
+- Reducción de dimensionalidad y escalamiento óptimo: cómo construir mapas perceptuales bidimensionales
 - Transformación de mapas simétricos en mapas asimétricos.
 - Implementación de la técnica y análisis de resultados en software estadísticos.
 
@@ -43,49 +43,44 @@ El curso se organiza en tres unidades:
 ### UNIDAD II. Análisis exploratorio de variables latentes  
 **Análisis Factorial y Análisis de Componentes Principales**
 
-- Aspectos previos: correlación y regresión lineal (MCO).
-- Diferencias entre variables reflectivas y formativas.
-- Diferencias entre ACP y Análisis Factorial común.
-- Diferencias entre análisis exploratorio y confirmatorio.
-- Extracción de componentes y criterios de selección.
-- Rotación, interpretación y evaluación del modelo.
-- Aplicación práctica: construcción y validación de escalas (Alfa de Cronbach).
+- Aspectos previos: correlación y regresión lineal de mínimos cuadrados ordinarios (MCO).
+- Aproximaciones a la técnica: Diferencias entre análisis de variables reflectivas y de variables formativas; diferencias entre Análisis de Componentes Principales y Análisis de Factor Común (o "Análisis Factorial"); diferencias entre análisis exploratorio y análisis confirmatorio
+- Forma de operación del análisis de componentes principales (ACP): procedimiento de extrasión componentes; criterios para escoger el número de componentes adecuados; anáñisis de la matriz factorial; rotación de componentes y tipos de rotación disponibles; interpretación y evaluación del modelo final; cálculo de puntuaciones factoriales. 
+- Implementación de la técnica e interpretación de resultados en software estadísticos
+- Aplicación prática (construcción de escalas): el ACP como técnica para chequear la dimensionalidad de una escala; chqqueo de la validez de una escala (Alfa de Cronbach).
 
 ---
 
 ### UNIDAD III. Análisis exploratorio de variables observadas  
 **Análisis de conglomerados**
 
-- Clasificación en ciencias sociales.
-- Supuestos del análisis de conglomerados.
-- Elección de variables, medidas de similitud y método de conglomeración.
-- Definición, caracterización y validación de grupos.
+- Objetico de la técnica: clasificación en ciencias sociales.
+- El análisis de conglomerados como técnica: definición de supuestos; elección de variables, de la medición de similitud entre objetos y del método de conglomeración; definición del número adecuado de grupos, caracterización y validación de dichos grupos.
 - Implementación y análisis de resultados en software estadísticos.
 
 ---
 
 ## III. Metodología
 
-El curso se desarrollará de manera presencial, combinando clases expositivas y prácticas.
-Se abordarán los fundamentos teóricos de cada técnica estadística y su aplicación en
-investigación empírica mediante el uso de software estadístico.
+El curso se desarrollará de manera presencial, combinando clases expositivas y prácticas en donde se revisarán los elementos teóricos basicos de cada técnica estadistica, así como su aplicación en la investigación empírica y la interpretación de sus resultados.
 
-El curso contempla sesiones de ayudantía orientadas al refuerzo de contenidos,
-aprendizaje de comandos en R y preparación de evaluaciones.
-
+El curso cuenta también con sesiones de ayudantía en donde los/las estudiantes reforzarán los contenidos aprendidos en la cátedra, aprenderán el uso de comandos de software estadísticos y se prepararán para los controles y el trabajo final. La definición del horario de ayudantía se reañizara la primera semana de clases.
 ---
 
 ## IV. Evaluación de aprendizajes
 
-Las evaluaciones del curso incluyen:
+Durante el semestre se realizarán distintas actividades evaluadas, que incluyen instacias individuales y en pareja:
 
-- **Control 1** (Unidades I y II): 35%  
-- **Control 2** (Unidades II y III): 35%  
-- **Trabajo final aplicado (en pareja):** 30%  
-- **Examen final:** 40%  
+- **2 Controles** de la materia asociada a cada una de las técnicas de análisis explooratorio (Unidades I - III): **35% de Ponderación cada uno**  
+- **Trabajo final (Presentación oral): 30% de Ponderación**  
+- **Examen final: 40% de Ponderación**  
 
 ::: {.callout-note}
-Para eximirse del examen se requiere una nota igual o superior a 4,0.
+Para eximirse del examen se requiere una nota igual o superior a 5,5.
+
+Para presentarse a exmen se requiere una nota promedio igual o superior a 3,5 y un 70% de asistencia al curso.
+
+De forma excepcional, podrán presentarse solo a examen de repetición (segunda oportunidad) quienes tengan una asistencia minima de 50%, siempre y cuando se cumpla con el promedio de notas para dar examem, es decir notas parciales igual o superior a 3,5.
 :::
 
 ---
