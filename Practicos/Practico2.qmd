@@ -74,8 +74,6 @@ names(proc_data)
 
 - m01 → educacion (nivel educacional).
 
-- c25 → aut_demo (preferencia entre autoritarismo o democracia).
-
 - Se elimina los NA´s (Importante verificar como es que funcionan los NA´s o si realmente tiene)}
 
 - Con names(proc_data) vemos los nombres de las variables (columnas)
@@ -85,12 +83,6 @@ names(proc_data)
 # 🧬 Recodificación de variables:
 
 ```{r, eval=FALSE}
-proc_data <- elsoc_long_2016_2022.2 %>%
-  dplyr::filter(ola == "4") %>%
-  dplyr::select(aut_demo = c25,      # preferencia autoritarismo / democracia
-                educacion_ori = m01) %>%
-  sjlabelled::set_na(na = c(-999, -888, -777, -666))
-
 proc_data$educacion <- car::recode(proc_data$educacion_ori,
                                    "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
 proc_data$educacion <- sjlabelled::set_labels(
