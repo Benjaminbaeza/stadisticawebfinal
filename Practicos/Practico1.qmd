@@ -80,6 +80,7 @@ Opción A: Eliminar casos con NA (si son pocos)
 datos_sin_na <- na.omit(datos)
 
 # Opción B: Imputar un valor (media, mediana, moda)
+datos <- sjlabelled::set_na(datos, na = c(-999, -888, -777, -666)) # Con sjlabelled, se indica que los valores -999, -888, -777 y -666 son valores NA, para posteriomente ser imputados con el uso del is.na
 datos$variable[is.na(datos$variable)] <- mean(datos$variable, na.rm = TRUE)
 ```
 # Paso 5: Identificar casos outliers y ver qué se hace con esos casos.
