@@ -279,6 +279,9 @@ sjPlot::sjt.xtab(var.row = proc_data$educacion,
 </div>
 </div>
 
+::: {.callout-note}
+Los valores de la tabla de frecuencias de (781/1.432/1.200 + 4 NA) y la tabla de contingencia de 3.032 son ambos correctos.
+La diferencia en los 381 casos son por los valores perdidos de la variable c29.
 
 ---
 
