@@ -102,6 +102,9 @@ outliers <- datos$variable_numerica[datos$variable_numerica < limite_inferior |
                                      datos$variable_numerica > limite_superior]
 print(outliers)
 ```
+::: {.callout-note}
+El gruso de las variables del ELSOC, son de tipo Likert, por lo que estas no identificarian IQR de forma utiles, en caso de aplicar este paso, se sugiere acortarlo a variables continuas como edad o ingreso y declararlo explicitamente.
+:::
 
 # Paso 6: Identifique las variables que requieren codificación y proponga categorías y asigne valores.
 
