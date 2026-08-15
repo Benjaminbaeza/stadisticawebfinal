@@ -42,6 +42,9 @@ lb <- lb %>%
 
 # 3.3 Verificar que ahora sean numéricas
 sapply(lb[, vars_items], class)
+
+# 3.4 Definir las variables a usar
+vars_para_cluster <- vars_items %>% select("P34NI.BB", "P34NI.BE", "P34NI.BD", "P34NI.BC")
 ```
 
 ## 🔍 4. Selección de Variables para el Cluster
