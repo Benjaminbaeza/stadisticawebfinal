@@ -43,8 +43,6 @@ lb <- lb %>%
 # 3.3 Verificar que ahora sean numéricas
 sapply(lb[, vars_items], class)
 
-# 3.4 Definir las variables a usar
-vars_para_cluster <- vars_items %>% select("P34NI.BB", "P34NI.BE", "P34NI.BD", "P34NI.BC")
 ```
 
 ## 🔍 4. Selección de Variables para el Cluster
@@ -65,6 +63,10 @@ vars_para_cluster <- setdiff(num_cols, var_excluir)
 # Mostrar variables que se usarán
 print(vars_para_cluster)
 ```
+::: {.callout-note}
+El objeto vars_items corre sobre todas las columnas numéricas de la plantilla y tambien considera otras variables que debieron ser excluidas.
+Es a partir de aquello que se opto por crear el objeto vars_para_cluster
+:::
 
 ## 🧪 5. Filtrar Casos Completos (Sin NA)
 
