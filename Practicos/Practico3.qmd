@@ -14,7 +14,7 @@ Este práctico está dedicado al análisis de asociación entre variables categ�
 Pueden trabajar en grupos de 2 a 3 personas o de manera individual. Deben elegir UNO de los siguientes ejercicios, utilizando la base de datos ELSOC (u otra de su elección, si se especifica).
 
 ### Opción 1: Análisis de Correspondencia Simple (ACS)
-Objetivo: Realizar la segunda parte del ejercicio propuesto por el profesor Kevin Carrasco (desde "Análisis de correspondencia simple"), utilizando la misma base de datos que en el Práctico 2.
+Objetivo: Realizar la segunda parte del ejercicio propuesto por el profesor Kevin Carrasco (desde "Análisis de correspondencia simple"), utilizando la misma base de datos que en el Práctico 2. (https://estadisticaiv.netlify.app/practicos/03-content#an%C3%A1lisis-de-correspondencias-simple) 
 
 ### Opción 2: Análisis de Correspondencia Simple (ACS) con Nuevas Variables
 Objetivo: Realizar un ACS con la misma base de datos, pero seleccionando otras variables (diferentes a las usadas en el Práctico 2 o 3).
@@ -43,8 +43,16 @@ datos_acs <- elsoc_long_2016_2022.2 %>%
   filter(ola == "4") %>%
   select(m01,           # Nivel educacional
          c25,           # Preferencia democracia
-         d01_01         # Confianza en el gobierno (para ACM)
+         c05_01         # Confianza en el gobierno (para ACM)
          )
+
+# Recodificamos la variable m01 para facilitar su interpretación
+
+proc_data$educacion <- car::recode(proc_data$m01,
+                                   "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
+proc_data$educacion <- sjlabelled::set_labels(
+  proc_data$educacion,
+  labels = c("Educación básica" = 1, "Educación media" = 2, "Educación superior" = 3))
 
 # Convertir códigos de valores perdidos a NA
 datos_acs <- datos_acs %>% sjlabelled::set_na(., na = c(-999, -888, -777, -666))
@@ -147,6 +155,11 @@ fviz_ca_biplot(resultado_ca,
 
 - **Proximidad entre un punto de FILA y uno de COLUMNA:** Indica una asociación entre esas dos categorías específicas. Cuanto más cerca estén, más fuerte es la asociación.
 
+::: {.callout-note}
+El punto anterior no puede ser aplicable si se trata de un mapa simétrico, donde las distancias fila-columna no son directamente aplicables.
+En caso de querer realziarlo usen un **biplot asimétrico**
+:::
+
 # 🔬 Análisis de Correspondencia Múltiple (ACM)
 (Si el estudiante elige esta opción)
 
@@ -173,11 +186,23 @@ resultado_mca <- MCA(datos_acm, graph = FALSE)
 summary(resultado_mca)
 ```
 ## Paso 3: Interpretación de Resultados Clave (ACM)
-- **Inercia y Valores Propios:** Similar al ACS, pero ahora la inercia total se distribuye en más dimensiones. resultado_mca$eig
+- **Inercia y Valores Propios:** Similar al ACS, pero ahora la inercia total se distribuye en más dimensiones.
 
-- **Contribuciones:** Identificar qué categorías (de todas las variables) contribuyen más a cada dimensión. resultado_mca$var$contrib
+```{r, eval=FALSE}
+resultado_mca$eig
+```
 
-- **Coordenadas:** Posición de cada categoría en el mapa. resultado_mca$var$coord
+- **Contribuciones:** Identificar qué categorías (de todas las variables) contribuyen más a cada dimensión. 
+
+```{r, eval=FALSE}
+resultado_mca$var$contrib
+```
+
+- **Coordenadas:** Posición de cada categoría en el mapa. 
+
+```{r, eval=FALSE}
+resultado_mca$var$coord
+```
 
 ## Paso 4: Visualización del ACM
 
@@ -214,7 +239,7 @@ Cada grupo/individuo deberá entregar un script de R (.R) o un archivo R Markdow
 
 - **Masa:** ¿Qué categorías tienen mayor y menor peso en el análisis?
 
-- **Inercia:** ¿Cuánta varianza total explican las dos primeras dimensiones? ¿Es suficiente?
+- **Inercia:** ¿Con cuánta varianza total contribuyen las dos primeras dimensiones? ¿Es suficiente?
 
 - **Aporte de dimensiones:** ¿Qué categorías contribuyen más a la Dimensión 1? ¿Y a la Dimensión 2?
 
