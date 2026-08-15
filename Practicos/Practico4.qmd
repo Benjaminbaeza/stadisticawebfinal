@@ -37,7 +37,7 @@ datos_cluster <- elsoc_long_2016_2022.2 %>%
          )
 # Eliminar NA
 
-
+datos_cluster <- datos_cluster %>% sjlabelled::set_na(., na = c(-999, -888, -777, -666))
 
 datos_cluster <- na.omit(datos_cluster)
 
@@ -69,14 +69,12 @@ print(d)
 ```
 
 # 🔲 Paso 5: Elevar al Cuadrado las Distancias
-Para el método del centroide (y el de Ward), se requiere usar la distancia al cuadrado.
+Para el método del centroide (y el de Ward), en R, eleva las distancias al cuadrado automaticamente
 
 ```{r, eval=FALSE}
-# Elevar cada distancia al cuadrado
-d2 <- d^2
 
-# Verificar
-str(d2)
+hc_ward <- hclust(dist(Z, method = "euclidean"), method = "ward.D2")
+
 ```
 
 # 🌲 Paso 6: Ejecutar el Análisis de Conglomerados (Método Centroide)
@@ -126,7 +124,8 @@ k <- 4
 grupos <- cutree(hc, k = k)
 
 # Añadir los grupos a los datos originales
-datos_cluster$grupo <- grupos
+across(-grupo, ~mean(.x, na.rm
+= TRUE))
 
 # Ver cuántos casos por grupo
 table(datos_cluster$grupo)
