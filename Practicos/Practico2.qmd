@@ -34,9 +34,9 @@ pacman::p_load(
 ## 1.2 Configuración del entorno R
 
 ```{r, eval=FALSE}
-- options(scipen = 999)    # Desactiva notación científica
-- rm(list = ls())          # Limpia el entorno de trabajo
-- set.seed(123)            # Fija semilla para reproducibilidad
+options(scipen = 999)    # Desactiva notación científica
+rm(list = ls())          # Limpia el entorno de trabajo
+set.seed(123)            # Fija semilla para reproducibilidad
 ```
 # ⏳ Carga de la base de datos
 
@@ -85,15 +85,22 @@ names(proc_data)
 # 🧬 Recodificación de variables:
 
 ```{r, eval=FALSE}
-proc_data$educacion <- car::recode(proc_data$m01, "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
+proc_data <- elsoc_long_2016_2022.2 %>%
+  dplyr::filter(ola == "4") %>%
+  dplyr::select(aut_demo = c25,      # preferencia autoritarismo / democracia
+                educacion_ori = m01) %>%
+  sjlabelled::set_na(na = c(-999, -888, -777, -666))
 
-proc_data$educacion <- sjlabelled::set_labels(proc_data$educacion,
-                                              labels=c( "Educación básica"=1,
-                                                        "Educación media"=2,
-                                                        "Educación superior"=3))
+proc_data$educacion <- car::recode(proc_data$educacion_ori,
+                                   "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
+proc_data$educacion <- sjlabelled::set_labels(
+  proc_data$educacion,
+  labels = c("Educación básica" = 1, "Educación media" = 2, "Educación superior" = 3))
 
+sjPlot::sjt.xtab(var.row = proc_data$educacion, var.col = proc_data$aut_demo,
+                 show.row.prc = TRUE, show.col.prc = TRUE,
+                 show.summary = FALSE, emph.total = TRUE, encoding = "UTF-8")
 
-sjmisc::frq(proc_data$educacion)
 ```
 **La función car::recode() agrupa categorías originales de la variable educacion en tres niveles más generales:**
 
@@ -289,24 +296,42 @@ sjPlot::sjt.xtab(var.row = proc_data$educacion,
 
 # 📊 Prueba Chi-cuadrado (X²): Cálculo e Interpretación
 
-## 🧮 Cálculo Manual del Chi-Cuadrado
+```{r, eval=FALSE}
+tabla <- matrix(c(138, 30, 446,
+                  277, 31, 964,
+                  286, 17, 843), nrow = 3, byrow = TRUE,
+                dimnames = list(Educacion = c("Básica","Media","Superior"),
+                                Mecanismo = c("Expertos","Parlamento","Asamblea")))
+```
 
-### Paso 1: Fórmula y Componentes
+# Paso 2: frecuencias esperadas  E_ij = (fila_i * col_j) / N
+```{r, eval=FALSE}
+E <- outer(rowSums(tabla), colSums(tabla)) / sum(tabla)
+round(E, 2)
+stopifnot(all(E >= 5))          # supuesto de la prueba: todas las esperadas >= 5
+```
 
-La prueba Chi-cuadrado de independencia se calcula mediante la fórmula:
+# Paso 3: chi-cuadrado manual
+```{r, eval=FALSE}
+contrib <- (tabla - E)^2 / E
+chi2 <- sum(contrib)
+gl   <- (nrow(tabla) - 1) * (ncol(tabla) - 1)
+p    <- pchisq(chi2, gl, lower.tail = FALSE)
+c(chi2 = chi2, gl = gl, p = p)          # 21.614 | 4 | 0.00024
+```
 
-**χ² = Σ [ (Oᵢⱼ - Eᵢⱼ)² / Eᵢⱼ ]**
+# Paso 4: contraste con la función de R
+```{r, eval=FALSE}
+chisq.test(tabla)
+```
 
-Donde:
-- **Oᵢⱼ** = Frecuencia observada en la celda (fila i, columna j)
-- **Eᵢⱼ** = Frecuencia esperada en la celda (fila i, columna j)
-
-### Paso 2: Calcular Frecuencias Esperadas
-
-Las frecuencias esperadas se calculan como:
-**Eᵢⱼ = (Total Filaᵢ × Total Columnaⱼ) / Total General**
-
-
+# Paso 5: TAMAÑO DE EFECTO (lo que falta para interpretar bien)
+```{r, eval=FALSE}
+V <- sqrt(chi2 / (sum(tabla) * (min(dim(tabla)) - 1)))
+V                                        # 0.060 -> asociación significativa pero MUY débil
+round(100 * contrib / chi2, 1)           # 59% del chi2 viene de Básica x Parlamento
+round(chisq.test(tabla)$stdres, 2)       # residuos estandarizados
+```
 
 
 
