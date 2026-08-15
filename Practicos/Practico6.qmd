@@ -90,8 +90,8 @@ set.seed(123)          # Fijar semilla para reproducibilidad
 **¿Qué esperamos?** Un data frame con las columnas: ingresos, educacion, edad, eje_politico.
 
 ```{r, eval=FALSE}
-# Cargar la base (¡CAMBIAR A TU RUTA!)
-datos_cluster <- read_excel("/Users/carolinaaguilera/Dropbox/UAH/Cursos Sociología/2 Sem 2025/Est IV/Laboratorios/datos_cluster_var.xlsx")
+# Cargar la base 
+datos_cluster <- read_excel("Aca debes insertar por ejemplo la URL que utilizaras o la ruta de tu computador)
 
 # Exploración inicial
 glimpse(datos_cluster)  # Muestra estructura: tipos de variables, primeras filas
@@ -127,22 +127,6 @@ datos_cluster <- datos_cluster %>%
     eje_politico = factor(eje_politico, levels = c("Izquierda","Centro","Derecha"))
   )
 
-vars <- c("ingresos", "educacion", "edad", "eje_politico")
-X <- model.matrix(~ . - 1, data = datos_cluster[vars],
-                  contrasts.arg = lapply(datos_cluster[vars], contrasts, contrasts = FALSE))
-stopifnot(all(X %in% c(0, 1)), all(rowSums(X) == length(vars)))   # 23 columnas 0/1
-
-# Advertencia: con one-hot de 4 variables, Jaccard solo toma 5 valores posibles
-sort(unique(round(1 - (0:4) / (8 - (0:4)), 4)))   # 0.0000 0.4000 0.6667 0.8571 1.0000
-
-# Alternativa recomendada para variables categóricas nominales+ordinales:
-
-# d_gower <- cluster::daisy(datos_cluster[vars], metric = "gower")
-
-# hc <- hclust(d_gower, method = "average")
-
-# Verificar que ahora son factores
-sapply(datos_cluster, class)
 ```
 
 **Interpretación:** Ahora R entiende que "Básico" es menor que "Universitario" y que los deciles tienen un orden. Esto es crucial para análisis posteriores.
@@ -218,6 +202,23 @@ matriz_dist[1:5, 1:5]
 # - Diagonal = 0 (una persona es idéntica a sí misma)
 # - Valores bajos (ej. 0.2) indican personas similares
 # - Valores altos (ej. 0.8) indican personas muy diferentes
+
+vars <- c("ingresos", "educacion", "edad", "eje_politico")
+X <- model.matrix(~ . - 1, data = datos_cluster[vars],
+                  contrasts.arg = lapply(datos_cluster[vars], contrasts, contrasts = FALSE))
+stopifnot(all(X %in% c(0, 1)), all(rowSums(X) == length(vars)))   # 23 columnas 0/1
+
+# Advertencia: con one-hot de 4 variables, Jaccard solo toma 5 valores posibles
+sort(unique(round(1 - (0:4) / (8 - (0:4)), 4)))   # 0.0000 0.4000 0.6667 0.8571 1.0000
+
+# Frente a dicha situación la alternativa recomendada para variables categóricas nominales+ordinales es la siguiente:
+
+# d_gower <- cluster::daisy(datos_cluster[vars], metric = "gower")
+
+# hc <- hclust(d_gower, method = "average")
+
+# Verificar que ahora son factores
+sapply(datos_cluster, class)
 ```
 
 **Interpretación:** La matriz de distancias es la base para el clustering. Dos personas con distancia cercana a 0 son candidatas a estar en el mismo cluster.
@@ -296,7 +297,7 @@ fviz_nbclust(
   diss = dist_jaccard,         # Usar nuestra matriz de distancia
   k.max = 10                   # Evaluar de 2 a 10 clusters
 ) +
-  geom_vline(xintercept = 5, linetype = 2, color = "red") +
+  geom_vline(xintercept = linetype = 2, color = "red") +
   labs(title = "Método Silhouette para elegir número de clusters",
        subtitle = "Mayor valor = mejor calidad de clustering",
        x = "Número de clusters (k)",
@@ -506,7 +507,7 @@ print(tabs_cat$eje_politico)
 
 ## 12.3 Análisis detallado
 
-```{r, eval=FALSE
+```{r, eval=FALSE}
 # Función para crear tabla de proporciones clara
 tabla_proporciones <- function(var_name) {
   prop <- prop.table(table(datos_cluster$cluster, datos_cluster[[var_name]]), 1) * 100
