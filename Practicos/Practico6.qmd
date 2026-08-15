@@ -120,23 +120,26 @@ head(datos_cluster)
 # Convertir cada variable a factor con sus niveles correspondientes
 datos_cluster <- datos_cluster %>%
   mutate(
-    # Ingresos: 10 deciles, orden natural
     ingresos     = factor(ingresos, levels = paste("Decil", 1:10)),
-    
-    # Educación: orden creciente (básico < medio < técnico < universitario < postgrado)
-    educacion    = factor(educacion, 
-                          levels = c("Básico", "Medio", "Técnico", "Universitario", "Postgrado"),
-                          ordered = TRUE),  # ordered = TRUE indica que hay jerarquía
-    
-    # Edad: tramos etarios en orden creciente
-    edad         = factor(edad, 
-                          levels = c("15-24", "25-39", "40-54", "55-69", "70-99"),
-                          ordered = TRUE),
-    
-    # Eje político: sin orden natural (nominal)
-    eje_politico = factor(eje_politico, 
-                          levels = c("Izquierda", "Centro", "Derecha"))
+    educacion    = factor(educacion, levels = c("Básico","Medio","Técnico",
+                                                "Universitario","Postgrado")),
+    edad         = factor(edad, levels = c("15-24","25-39","40-54","55-69","70-99")),
+    eje_politico = factor(eje_politico, levels = c("Izquierda","Centro","Derecha"))
   )
+
+vars <- c("ingresos", "educacion", "edad", "eje_politico")
+X <- model.matrix(~ . - 1, data = datos_cluster[vars],
+                  contrasts.arg = lapply(datos_cluster[vars], contrasts, contrasts = FALSE))
+stopifnot(all(X %in% c(0, 1)), all(rowSums(X) == length(vars)))   # 23 columnas 0/1
+
+# Advertencia: con one-hot de 4 variables, Jaccard solo toma 5 valores posibles
+sort(unique(round(1 - (0:4) / (8 - (0:4)), 4)))   # 0.0000 0.4000 0.6667 0.8571 1.0000
+
+# Alternativa recomendada para variables categóricas nominales+ordinales:
+
+# d_gower <- cluster::daisy(datos_cluster[vars], metric = "gower")
+
+# hc <- hclust(d_gower, method = "average")
 
 # Verificar que ahora son factores
 sapply(datos_cluster, class)
