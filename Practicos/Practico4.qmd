@@ -33,9 +33,12 @@ datos_cluster <- elsoc_long_2016_2022.2 %>%
   filter(ola == "4") %>%
   select(edad,    # Edad (numérica)
          ingreso, # Ingreso (numérica)
-         educacion # Nivel educacional (ordinal, puede tratarse como numérica)
+         m01 # Nivel educacional (ordinal, puede tratarse como numérica)
          )
 # Eliminar NA
+
+
+
 datos_cluster <- na.omit(datos_cluster)
 
 # Ver estructura
@@ -77,11 +80,13 @@ str(d2)
 ```
 
 # 🌲 Paso 6: Ejecutar el Análisis de Conglomerados (Método Centroide)
-Utilizamos la función hclust.centroide() del paquete amap, que implementa el método del centroide con distancias al cuadrado.
 
 ```{r, eval=FALSE}
 # Ejecutar clustering jerárquico con método centroide
-hc <- hclust.centroide(d2)
+
+d  <- dist(data.scaled, method = "euclidean")
+d2 <- d^2
+hc <- hclust(d2, method = "centroid")
 
 # Ver resultados básicos
 names(hc)
