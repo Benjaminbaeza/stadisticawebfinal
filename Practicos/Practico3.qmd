@@ -147,8 +147,6 @@ fviz_ca_biplot(resultado_ca,
 
 - **Proximidad entre un punto de FILA y uno de COLUMNA:** Indica una asociación entre esas dos categorías específicas. Cuanto más cerca estén, más fuerte es la asociación.
 
-- **Ángulos:** Un ángulo agudo (< 90°) entre vectores desde el origen indica correlación positiva; un ángulo obtuso (> 90°) indica correlación negativa.
-
 # 🔬 Análisis de Correspondencia Múltiple (ACM)
 (Si el estudiante elige esta opción)
 
