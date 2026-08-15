@@ -24,8 +24,6 @@ pacman::p_load(
   sjPlot,         # Tablas y gráficos para ciencias sociales
   psych,          # Análisis psicométricos y correlaciones
   DescTools,      # Funciones descriptivas avanzadas
-  gginference,    # Visualización de pruebas inferenciales
-  rempsyc,        # Reportes estadísticos formateados
   broom,          # Organización de resultados en dataframes
   sjlabelled,     # Manejo de etiquetas de variables
   sjmisc          # Funciones auxiliares para análisis
@@ -280,6 +278,7 @@ sjPlot::sjt.xtab(var.row = proc_data$educacion,
 <span style="color: #0d904f;">🟢 Porcentaje columna</span>
 </div>
 </div>
+
 
 ---
 
