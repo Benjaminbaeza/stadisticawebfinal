@@ -53,7 +53,10 @@ head(datos)
 
 ::: {.callout-note}
 
-Existen distintas formas de cargar una base de datos, todo depende del formato de esta; para el caso de que dispongan de la base de datos de ELSOC_Long_2016_2023.dta, de forma individual, se recomienda usar el paquete **"haven"**, con el siguiente codigo: haven::read_dta("ELSOC_Long_2016_2023.dta").
+Existen distintas formas de cargar una base de datos, todo depende del formato de esta. 
+Para el caso de que dispongan de la base de datos de ELSOC_Long_2016_2023.dta, de forma individual, se recomienda usar el paquete **"haven"**, con el siguiente codigo: 
+haven::read_dta("ELSOC_Long_2016_2023.dta").
+
 Esta base de datos del ELSOC_Long_2016_2023 tambien puede ser cargada de forma directa, desde la pagina web, con el siguiente codigo: **load(url("https://dataverse.harvard.edu/api/access/datafile/7245118"))** como se vera en los practicos posteriores.
 :::
 
