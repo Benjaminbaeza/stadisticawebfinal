@@ -70,9 +70,6 @@ proc_data <- proc_data %>% sjlabelled::set_na(., na = c(-999, -888, -777, -666))
 # Comprobar
 names(proc_data)
 ```
-**Se renombran las variables para mayor claridad:**
-
-- m01 → educacion (nivel educacional).
 
 - Se elimina los NA´s (Importante verificar como es que funcionan los NA´s o si realmente tiene)}
 
@@ -296,7 +293,7 @@ tabla <- matrix(c(138, 30, 446,
                                 Mecanismo = c("Expertos","Parlamento","Asamblea")))
 ```
 
-# Paso 2: frecuencias esperadas  E_ij = (fila_i * col_j) / N
+# Paso 2: frecuencias esperadas 
 ```{r, eval=FALSE}
 E <- outer(rowSums(tabla), colSums(tabla)) / sum(tabla)
 round(E, 2)
@@ -325,5 +322,5 @@ round(100 * contrib / chi2, 1)           # 59% del chi2 viene de Básica x Parla
 round(chisq.test(tabla)$stdres, 2)       # residuos estandarizados
 ```
 
-
+La asociación de V: 0.060 es significativa pero muy debil y el 59,1% del x2 proviene de una sola celda /correspondiente a Básica x Parlamento), con un 24,4% adicional en Superior x Parlamento.
 
