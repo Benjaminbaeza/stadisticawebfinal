@@ -110,7 +110,7 @@ apply(Z, 2, sd)        # Deberían ser 1
 D <- dist(Z, method = "euclidean")
 
 # 8.2 Aplicar método de Ward (con distancias al cuadrado)
-hc <- hclust(D, method = "ward.D2")
+hc_ward <- hclust(dist(Z, method = "euclidean"), method = "ward.D2")
 
 # 8.3 Ver alturas de fusión
 hc$height
