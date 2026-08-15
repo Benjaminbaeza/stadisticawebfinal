@@ -90,36 +90,21 @@ if ("PAIS_NOMBRE" %in% names(lb_limpio)) {
 }
 ```
 
-## ⚖️ 7. Estandarización de Variables
-```{r, eval=FALSE}
-# 7.1 Seleccionar solo las variables para cluster como matriz
-X <- lb_limpio %>% 
-  select(all_of(vars_para_cluster)) %>% 
-  as.matrix()
-
-# 7.2 ESTANDARIZACIÓN (media 0, desviación 1)
-Z <- scale(X)
-
-# Verificar estandarización
-round(colMeans(Z), 2)  # Deberían ser ~0
-apply(Z, 2, sd)        # Deberían ser 1
-```
-
-## 📐 8. Cálculo de Distancias y Clustering
+## 📐 7. Cálculo de Distancias y Clustering
 
 ```{r, eval=FALSE}
-# 8.1 Calcular matriz de distancias euclidianas
+# 7.1 Calcular matriz de distancias euclidianas
 D <- dist(Z, method = "euclidean")
 
-# 8.2 Aplicar método de Ward (con distancias al cuadrado)
+# 7.2 Aplicar método de Ward (con distancias al cuadrado)
 hc_ward <- hclust(dist(Z, method = "euclidean"), method = "ward.D2")
 
-# 8.3 Ver alturas de fusión
+# 7.3 Ver alturas de fusión
 hc$height
 hc$merge
 ```
 
-## 📊 9. Tabla del Proceso de Clustering
+## 📊 8. Tabla del Proceso de Clustering
 ```{r, eval=FALSE}
 # Crear una tabla legible con cada paso de fusión
 out <- data.frame(
@@ -132,7 +117,7 @@ print(out)
 ```
 
 
-## 🌲 10. Visualización del Dendrograma
+## 🌲 9. Visualización del Dendrograma
 ```{r, eval=FALSE}
 # Guardar parámetros gráficos originales
 op <- par(no.readonly = TRUE)
@@ -160,7 +145,7 @@ par(op)
 ```
 
 
-## ✂️ 11. Cortar el Árbol y Asignar Clústeres
+## ✂️ 10. Cortar el Árbol y Asignar Clústeres
 ```{r, eval=FALSE}
 # Cortar el dendrograma en K grupos
 clusters <- cutree(hc, k = K)
@@ -170,7 +155,7 @@ table(clusters)
 ```
 
 
-## 📋 12. Anexar Clústeres a los Datos
+## 📋 11. Anexar Clústeres a los Datos
 ```{r, eval=FALSE}
 # Añadir columna de cluster al data frame
 lb_resultado <- lb_limpio %>%
@@ -180,7 +165,7 @@ lb_resultado <- lb_limpio %>%
 head(lb_resultado %>% select(PAIS_NOMBRE, all_of(vars_items), Cluster))
 ```
 
-## 📈 13. Caracterización de los Clústeres
+## 📈 12. Caracterización de los Clústeres
 ```{r, eval=FALSE}
 # 13.1 Medias por cluster
 resumen_means <- lb_resultado %>%
@@ -194,7 +179,7 @@ resumen_means <- lb_resultado %>%
   )
 print(resumen_means)
 
-# 13.2 Renombrar variables para mejor interpretación
+# 13.1 Renombrar variables para mejor interpretación
 lb_resultado_nombres <- lb_resultado %>%
   rename(
     Confianza_empresarios = `P34NI.BB`,
@@ -203,7 +188,7 @@ lb_resultado_nombres <- lb_resultado %>%
     Confianza_poder_jud   = `P34NI.BC`
   )
 
-# 13.3 Tabla cruzada: País vs Cluster
+# 13.2 Tabla cruzada: País vs Cluster
 if ("PAIS_NOMBRE" %in% names(lb_resultado)) {
   tabla_pais_cluster <- table(lb_resultado$PAIS_NOMBRE, lb_resultado$Cluster)
   print(tabla_pais_cluster)
