@@ -51,6 +51,13 @@ head(datos)
 
 ¿Qué tipo de variables encuentran (numéricas, categóricas, etc.)?
 
+::: {.callout-note}
+
+Existen distintas formas de cargar una base de datos, todo depende del formato de esta; para el caso de que dispongan de la base de datos de ELSOC_Long_2016_2023.dta, de forma individual, se recomienda usar el paquete **"haven"**, con el siguiente codigo: haven::read_dta("ELSOC_Long_2016_2023.dta").
+Esta base de datos del ELSOC_Long_2016_2023 tambien puede ser cargada de forma directa, desde la pagina web, con el siguiente codigo: **load(url("https://dataverse.harvard.edu/api/access/datafile/7245118"))** como se vera en los practicos posteriores.
+:::
+
+
 # Paso 3: Imaginación de una pregunta de investigación
 
 Antes de limpiar que es el paso que vamos a ver a continuación, piensen: ¿qué les gustaría investigar con estos datos?
@@ -70,10 +77,10 @@ sapply(datos, function(x) sum(is.na(x)))
 
 # Decidir qué hacer:
 Opción A: Eliminar casos con NA (si son pocos)
-# datos_sin_na <- na.omit(datos)
+datos_sin_na <- na.omit(datos)
 
 # Opción B: Imputar un valor (media, mediana, moda)
-# datos$variable[is.na(datos$variable)] <- mean(datos$variable, na.rm = TRUE)
+datos$variable[is.na(datos$variable)] <- mean(datos$variable, na.rm = TRUE)
 ```
 # Paso 5: Identificar casos outliers y ver qué se hace con esos casos.
 
