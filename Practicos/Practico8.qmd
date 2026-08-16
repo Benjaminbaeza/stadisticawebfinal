@@ -29,7 +29,7 @@ Construiremos un índice de cohesión barrial a partir de la primera componente 
 
 <table style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif; font-size: 0.95em; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
 <caption style="caption-side: top; text-align: center; padding: 12px; font-weight: bold; font-size: 1.1em; background-color: #f8f9fa; border: 1px solid #ddd; border-bottom: none;">
-📋 Tabla 1: Variables utilizadas - Módulo de cohesión territorial (ELSOC) - Escala Likert 1-4
+📋 Tabla 1: Variables utilizadas - Módulo de cohesión territorial (ELSOC) - Escala Likert 1-5
 </caption>
 <thead>
 <tr style="background-color: #2c2c2c; color: white;">
@@ -44,55 +44,55 @@ Construiremos un índice de cohesión barrial a partir de la primera componente 
 <td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">t02_01</td>
 <td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">barrio_ideal</td>
 <td style="border: 1px solid #ddd; padding: 14px;">Este es el barrio ideal para mí</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-4</span></td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
 </tr>
 <tr style="background-color: #ffffff;">
 <td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">t02_02</td>
 <td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">integrado</td>
 <td style="border: 1px solid #ddd; padding: 14px;">Me siento integrado/a en este barrio</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-4</span></td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
 </tr>
 <tr style="background-color: #f9f9f9;">
 <td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">t02_03</td>
 <td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">identifico</td>
 <td style="border: 1px solid #ddd; padding: 14px;">Me identifico con la gente de este barrio</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-4</span></td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
 </tr>
 <tr style="background-color: #ffffff;">
 <td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">t02_04</td>
 <td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">parte_de_mi</td>
 <td style="border: 1px solid #ddd; padding: 14px;">Este barrio es parte de mí</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-4</span></td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
 </tr>
 <tr style="background-color: #f9f9f9;">
 <td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">t03_01</td>
 <td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">amigos</td>
 <td style="border: 1px solid #ddd; padding: 14px;">En este barrio es fácil hacer amigos</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-4</span></td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
 </tr>
 <tr style="background-color: #ffffff;">
 <td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">t03_02</td>
 <td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">sociable</td>
 <td style="border: 1px solid #ddd; padding: 14px;">La gente en este barrio es sociable</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-4</span></td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
 </tr>
 <tr style="background-color: #f9f9f9;">
 <td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">t03_03</td>
 <td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">cordialidad</td>
 <td style="border: 1px solid #ddd; padding: 14px;">La gente en este barrio es cordial</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-4</span></td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
 </tr>
 <tr style="background-color: #ffffff;">
 <td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">t03_04</td>
 <td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">colaboracion</td>
 <td style="border: 1px solid #ddd; padding: 14px;">La gente en este barrio es colaboradora</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-4</span></td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
 </tr>
 </tbody>
 <tfoot>
 <tr style="background-color: #f0f0f0; font-size: 0.85em;">
 <td colspan="4" style="border: 1px solid #ddd; padding: 12px; text-align: center; color: #555;">
-<strong>Nota:</strong> Todas las variables son de escala ordinal tipo Likert (1=Totalmente en desacuerdo a 4=Totalmente de acuerdo). Estas variables provienen del módulo de cohesión territorial de la encuesta ELSOC.
+<strong>Nota:</strong> Todas las variables son de escala ordinal tipo Likert (1=Totalmente en desacuerdo a 5=Totalmente de acuerdo). Estas variables provienen del módulo de cohesión territorial de la encuesta ELSOC.
 </td>
 </tr>
 </tfoot>
