@@ -422,14 +422,14 @@ fviz_eig(fit, geom = "line") +
 library(paran)
 
 # Realizar análisis paralelo (excluimos primera columna si es necesario)
-paran(na.omit(proc_data), iterations = 5000, graph = TRUE, color = FALSE)
+psych::fa.parallel(na.omit(proc_data), fa = "pc", n.iter = 500)
 ```
 
 **Interpretación de la prueba de Horn:**
 
-La prueba indica que solo la primera componente tiene un autovalor ajustado superior a 1 (4.14). Esto significa que, aunque la segunda componente tiene autovalor > 1 en el análisis real, cuando se compara con lo que se obtendría por azar, su valor no supera el umbral.
+La prueba indica que ahi dos componentes que tienen un autovalor ajustado superior a 1. 
 
-Decisión final: Para construir un índice de cohesión barrial, utilizaremos UNA SOLA COMPONENTE (la primera), que ya explica el 58.5% de la varianza y captura el factor común de todas las variables.
+Decisión final: Para construir un índice de cohesión barrial, utilizaremos dos componente, que ya explican porcentaje de la varianza y captura el factor común de todas las variables.
 
 # 🏗️ 11. Construcción del Índice de Cohesión Barrial
 ¿Qué hacemos? Construimos un índice como combinación lineal de las variables originales ponderadas por sus cargas factoriales.
