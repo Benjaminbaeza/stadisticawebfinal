@@ -78,7 +78,7 @@ set.seed(123)          # Fijar semilla para reproducibilidad
 
 ```{r, eval=FALSE}
 # Cargar la base (¡CAMBIAR A TU RUTA!)
-lb <- read_excel("/Users/carolinaaguilera/Dropbox/UAH/Cursos Sociología/2 Sem 2025/Est IV/Laboratorios/latinobarometro_subset_4vars solo 4.xlsx")
+lb <- read_excel("aca se debe insertar la ruta desde ell PC hasta el archivo o la URL que aloje la base de datos)
 
 # Ver cuántos casos tiene la base
 n_total <- nrow(lb)
@@ -469,7 +469,7 @@ cat("4. [Ej. Estos perfiles podrían relacionarse con características sociodemo
 ## 💾 16. Exportar Resultados
 ¿Qué hacemos? Guardamos los resultados en archivos Excel.
 
-{r,
+```{r, eval=FALSE}
 # Preparar lista de resultados
 resultados_exportar <- list(
   DatosConCluster = resultados_km,           # Datos originales + cluster
