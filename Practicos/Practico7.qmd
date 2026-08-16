@@ -490,22 +490,18 @@ cat("\n✅ Resultados exportados a:", file.path(getwd(), "resultados_cluster_con
 ```{r, eval=FALSE}
 # Preparar datos para gráfico de perfiles
 perfiles_long <- resumen_km %>%
-  select(-n) %>%
-  pivot_longer(cols = everything(),
-               names_to = "Variable",
-               values_to = "Media") %>%
-  mutate(Cluster = rep(paste("Cluster", 1:K), each = length(nuevas_labels)))
+  tidyr::pivot_longer(cols = -c(Cluster, n),
+                      names_to = "Variable", values_to = "Media")
+
 
 # Gráfico de líneas
-ggplot(perfiles_long, aes(x = Variable, y = Media, 
-                          group = Cluster, color = Cluster)) +
-  geom_line(size = 1.2) +
-  geom_point(size = 3) +
-  labs(title = "Perfil de confianza por cluster",
-       x = "", y = "Confianza promedio (1-4)") +
+p_perfiles <- ggplot(perfiles_long, aes(x = Variable, y = Media,
+                                        group = Cluster, colour = Cluster)) +
+  geom_line(linewidth = 1.2) + geom_point(size = 3) +
+  labs(title = "Perfil de confianza por cluster", x = NULL, y = "Confianza promedio (1-4)") +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1),
-        legend.position = "bottom")
+  theme(axis.text.x = element_text(angle = 45, hjust = 1), legend.position = "bottom")
+
 ```
 
 # 17.2 Diagramas de caja por cluster
