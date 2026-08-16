@@ -124,7 +124,8 @@ pacman::p_load(
   corrplot,       
   nFactors,       
   ggrepel,        
-  knitr
+  knitr,
+  writexl, 
 )
 
 # Limpiar R: desactivar notación científica
@@ -137,7 +138,7 @@ options(scipen = 999)
 **¿Por qué?** La base está disponible públicamente y contiene las variables que necesitamos.
 
 ```{r, eval=FALSE}
-# Cargar la encuesta ELSOC (ola 4, 2019)
+# Cargar la encuesta ELSOC completa, posteriormente cuando se seleccionen las variables se seleccionaran los casos correspondientes al año 2019 (ola 4)
 load(url("https://dataverse.harvard.edu/api/access/datafile/7245118"))
 
 # Ver dimensión de la base
@@ -436,6 +437,10 @@ Decisión final: Para construir un índice de cohesión barrial, utilizaremos do
 
 ¿Por qué? La primera componente principal es la mejor combinación lineal de las variables para resumir la información común.
 
+::: {.callout-note}
+Los signos de los componentes son indeterminantes; si el signo se invierte, el indice se interpreta al revés.
+:::
+
 ## 11.1 Obtener los pesos (cargas factoriales)
 
 ```{r, eval=FALSE}
@@ -538,20 +543,32 @@ print(round(cargas_dim1, 2))
 ```{r, eval=FALSE}
 # Calcular índice de cohesión barrial
 Indice_Cohesion_Barrial <- with(proc_data, 
-                                 0.77 * barrio_ideal + 
-                                 0.83 * integrado + 
-                                 0.83 * identifico + 
-                                 0.81 * parte_de_mi + 
-                                 0.72 * amigos + 
-                                 0.74 * sociable + 
-                                 0.76 * cordialidad + 
-                                 0.67 * colaboracion)
+                                 0.745 * barrio_ideal + 
+                                 0.825 * integrado + 
+                                 0.831 * identifico + 
+                                 0.807 * parte_de_mi + 
+                                 0.719 * amigos + 
+                                 0.744 * sociable + 
+                                 0.766 * cordialidad + 
+                                 0.676 * colaboracion)
 
 # Añadir a la base de datos
 proc_data$Indice_Cohesion <- Indice_Cohesion_Barrial
 
 # Ver resumen del índice
 summary(proc_data$Indice_Cohesion)
+```
+::: {.callout-note}
+El índice saca contruido, se construyo multiplicando las cargas por las variables en su escala original, 
+pero las cargas provienen de un PCA sobre variables estandarizadas.
+Para realizarlo de aquella forma o conciderandondo el PCA sobre las variables estandarizadas, se puede realizar el siguiente codigo.
+:::
+
+```{r, eval=FALSE}
+
+fit <- FactoMineR::PCA(na.omit(proc_data), scale.unit = TRUE, graph = FALSE)
+indice <- fit$ind$coord[, 1]
+
 ```
 
 ## 11.3 Interpretación del índice
@@ -572,8 +589,8 @@ Valor máximo teórico: Si una persona responde 4 (máximo) en todas las variabl
 
 - El índice combina tanto el apego al lugar como las relaciones sociales
 
-# 📝 13. Interpretación Final y Aplicaciones
-## 13.1 Resumen de hallazgos
+# 📝 12. Interpretación Final y Aplicaciones
+## 12.1 Resumen de hallazgos
 Estructura factorial: Las 8 variables de cohesión barrial se resumen adecuadamente en una dimensión principal que explica el 58.5% de la varianza.
 
 Dimensiones subyacentes: Aunque existe una segunda dimensión que distingue entre apego al lugar y vínculos sociales, su contribución es limitada (14.6%) y el análisis paralelo sugiere retener solo la primera componente.
@@ -586,7 +603,7 @@ parte_de_mi (0.81)
 
 barrio_ideal (0.77)
 
-## 13.2 Aplicaciones del índice
+## 12.2 Aplicaciones del índice
 El índice creado puede utilizarse como variable dependiente o independiente en análisis posteriores:
 
 - Modelos de regresión: ¿Qué factores (género, edad, nivel educacional, tipo de barrio) predicen mayores niveles de cohesión barrial?
@@ -595,7 +612,7 @@ El índice creado puede utilizarse como variable dependiente o independiente en 
 
 - Comparaciones: ¿Existen diferencias significativas en cohesión barrial entre comunas, regiones o tipos de barrio?
 
-## 13.3 Ejemplo de código para análisis posteriores
+## 12.3 Ejemplo de código para análisis posteriores
 
 ```{r, eval=FALSE}
 # Ejemplo: ¿Diferencias por género? (requiere tener variable de género)
@@ -610,7 +627,7 @@ El índice creado puede utilizarse como variable dependiente o independiente en 
 #   theme(legend.position = "none")
 ```
 
-# 💾 14. Exportar Resultados
+# 💾 13. Exportar Resultados
 ¿Qué hacemos? Guardamos los resultados para su uso posterior.
 
 ```{r, eval=FALSE}
