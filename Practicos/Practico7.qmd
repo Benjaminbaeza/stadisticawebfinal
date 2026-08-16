@@ -448,8 +448,10 @@ cat("\n🟢 CLUSTER 2:\n")
 # 4. VARIABLES MÁS DISCRIMINANTES
 # ------------------------------------------------------------------------------
 # Calcular diferencias entre clusters
-medias_por_cluster <- resumen_km[, -which(names(resumen_km) == "n")]
+medias_por_cluster <- resumen_km %>% dplyr::select(-Cluster, -n)
 rango_por_variable <- sapply(medias_por_cluster, function(x) diff(range(x)))
+sort(rango_por_variable, decreasing = TRUE)
+
 
 cat("\n📌 VARIABLES QUE MÁS DIFERENCIAN LOS CLUSTERS:\n")
 print(sort(rango_por_variable, decreasing = TRUE))
