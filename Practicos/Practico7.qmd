@@ -222,7 +222,7 @@ as.matrix(dist_euclidea)[1:5, 1:5]
 
 ¿Qué hacemos? Aplicamos clustering jerárquico con el método de Ward.D2.
 
-¿Por qué? Ward.D2 usa distancias al cuadrado y minimiza la varianza intra-cluster.
+¿Por qué? Ward.D2 recibe distancias simples y las eleva internamente al cuadrado y minimiza la varianza intra-cluster.
 
 ```{r, eval=FALSE}
 # Clustering jerárquico con Ward.D2
