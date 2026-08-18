@@ -19,7 +19,8 @@ website:
 
       - text: Prácticos
         menu:
-          - text: "Práctico 1 Nociones Basicas de Rstudios: Exploración y Preparación de Bases de Datos"
+          - text: "Práctico 1 Nociones basicas de Rstudios: Exploración y Preparación de Bases de Datos"
+            href: Practicos/Practico1.qmd
 
                     
       - text: Ayudantia
