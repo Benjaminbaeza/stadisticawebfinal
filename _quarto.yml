@@ -14,56 +14,14 @@ website:
         menu:
           - text: "Modulo 1 · Presentación del curso"
             href: Modulos/clase1.qmd
-          - text: "Modulo 2 · Estadística descriptiva"
-            href: Modulos/clase2.qmd
-          - text: "Modulo 3 . Análisis de Correspondencias Simple (AC) y Múltiple (ACM)"
-            href: Modulos/clase3.qmd
-          - text: "Modulo 4 . Análisis de Componentes Principales (PCA) Parte -1"
-            href: Modulos/clase4.qmd 
-          - text: "Modulo 5 . Análisis de Componentes Principales (PCA) Parte -2"
-            href: Modulos/clase5.qmd 
-          - text: "Modulo 6 . Análisis Factorial Exploratorio (EFA)"
-            href: Modulos/clase6.qmd
-          - text: "Modulo 7 . Repaso PCA y EFA"
-            href: Modulos/clase7.qmd
-          - text: "Modulo 8 . Aplicación EFA y Trabajo Final"
-            href: Modulos/clase8.qmd
-          - text: "Modulo 9 . Análisis de Conglomerados (Cluster) Parte 1"
-            href: Modulos/clase9.qmd
-          - text: "Modulo 10 . Análisis de Conglomerados (Cluster) - Parte 2: Métodos Jerárquicos"
-            href: Modulos/clase10.qmd
-          - text: "Modulo 11 . Análisis de Conglomerados (Cluster) - Parte 3: Número de Clusters y Métodos No Jerárquicos"
-            href: Modulos/clase11.qmd 
+       
 
 
       - text: Prácticos
         menu:
-          - text: "Práctico 1: Exploración y Preparación de Bases de Datos"
-            href: Practicos/Practico1.qmd
-          - text: "Práctico 2: Creación de tablas de contingencia y Chi-cuadrado"
-            href: Practicos/Practico2.qmd
-          - text: "Práctico 3: Análisis de Correspondencia (Simple y Múltiple)"
-            href: Practicos/Practico3.qmd
-          - text: "Práctico 4: Análisis de Conglomerados (Método del Centroide)"
-            href: Practicos/Practico4.qmd
-          - text: "Práctico 5: Análisis de Conglomerados (Cluster) - Latinobarómetro"
-            href: Practicos/Practico5.qmd 
-          - text: "Práctico 6: Clustering Jerárquico Aglomerativo con Distancia de Jaccard y Enlace Promedio (UPGMA)"
-            href: Practicos/Practico6.qmd
-          - text: "Práctico 7: Análisis de Conglomerados (Ward + k-means + PCA) - Confianza Institucional en Latinoamérica"
-            href: Practicos/Practico7.qmd
-          - text: "Práctico 8: Construcción de Índice de Cohesión Barrial mediante PCA con datos ELSOC"
-            href: Practicos/Practico8.qmd
-          - text: "Práctico 9: Analisis Factorial Exploratorio (AFE) con actitudes hacia migrantes (Ejercicio Introductorio)"
-            href: Practicos/Practico9.qmd
-          - text: "Práctico 10: Analisis de Conglomerados (Propuesta completa)"
-            href: Practicos/Practico10.qmd
-          - text: "Práctico 11: Propuesta de Investigación con Métodos Multivariantes"
-            href: Practicos/Practico11.qmd
-          - text: "Práctico 12: Análisis Factorial Exploratorio - Cohesión Barrial (Ejercicio Completo)"
-            href: Practicos/Practico12.qmd
-          
-          
+          - text: "Práctico 1 Nociones Basicas de Rstudios: Exploración y Preparación de Bases de Datos"
+
+                    
       - text: Ayudantia
         menu:
           - text: "Ayudantia"
