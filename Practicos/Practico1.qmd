@@ -16,11 +16,6 @@ Mediante el trabajo en grupo, los estudiantes aprenderán a:
 
 6. **Realizar** un análisis descriptivo inicial mediante tablas de frecuencia y tablas de contingencia.
 
-## Ejercicio a desarrollar:
-Trabajando en grupos de 2 a 3 personas, deberán aplicar los siguientes pasos con una base de datos de su elección:
-
-## 🔍 Guia paso a paso
-
 # Paso 1: Selección de la base a utilizar.
 
 Elijan una base de datos que sea de su interés. Puede ser:
@@ -61,40 +56,99 @@ library(tidyverse) # Nota para cargar o llamar paquetes no es necesario que el n
 install.packages("pacman")   # En el caso particular de "pacman", este facilita y agiliza 
 # la lectura de los paquetes a utilizar en R, ya que "pacman" instala paquetes y los carga a la vez
 
-pacman::p_load(tidyverse,
-               dplyr,       # nos permite seleccionar variables de un set de datos
-               haven,       # cargar y exportar bases de datos en formatos .sav y .dta
-               sjmisc,      # explorar datos
-               sjPlot,      # para visualizar datos
-               car)         # para recodificar ciertas variables y aplicable 
-                            # a modelos estadisticos
+pacman::p_load(tidyverse, haven, sjPlot, psych, skimr, labelled, car)
+
 ```
 
-# Paso 3: Exploración 
+## Paso 2.2: Selección de variables 
+
 ```{r, eval=FALSE}
 
-# Antes de explorar, requerimos cargar la base de datos del ENUSC, año 2024
+# Antes de comenzar a trabajar siempre es recomendable o sugerible
+# limpiar nuestro entorno de trabajo
+
+rm(list = ls()) # Con este comando borramos todo el Environment
+gc()
+
+# En caso de querer borrar algo especifico o en concreto se debe realizar de la siguiente forma:
+# rm(nombre de lo que queramos borrar)
+
+# Tambien debemos fijar nuestro directorio de trabajo, para eso tenemos dos opciones:
+
+# OPCIÓN 1 - Forma manual: Vamos a la opción Session de Rstudios > Le damos a la opción 
+# "Set Working Directory" > Ultima opción: "Choose Directory".
+
+# OPCIÓN 2 - Uso de codigos: Para aquello debemos usar el siguiente codigo: 
+# setwd("C:/Users/ Tu Usuario / Documents / MiProyecto o Carpeta ")
+
+# Para optener los datos a llenar en las barras de arriba se cuentan con los siguientes otros
+# Codigos: 
+
+getwd() # Para comprobar donde se esta trabajando
+
+list.files() # Para ver los archivos del directorio
+
+# Ahora antes de comenzar a explorar las variables, requerimos cargar la base de datos 
+# del ENUSC, año 2024
+
 datos <- read_sav("ENUSC2024.sav")
+
+# Tambien se puede adecuar según el directorio donde tiene cargada la base de datos
+
+library(labelled)
 
 # Con los siguientes codigos podemos explorar la misma
 
-view_df(datos) #Para explorar las variables de la base de datos, proviene del paquete sjPlot
+look_for(datos) # Con look_for podemos ver todas las variables con sus etiquetas
+                # de toda la base de datos
 
-class(datos$rph_sexo)  # para observar el tipo de datos que componen las variables, 
-                       # proviene del paquete base 
-descr(datos$SCREEN_INT_RPS_N) # nos otorga estadísticos de tendencia central para 
-                              # las variable numéricas
-frq(datos$EV_CONFIA_CCH)      # para  ver la distribución variables categóricas 
+look_for(datos, "rps") # Con una variación del codigo mismo (agregando ", rps" por
+                       # ejemplo) podemos ver una variable especifica 
+
+look_for(datos, "robo") # El condigo en si tambien nos perimite ver variables que 
+                        # contengan una palabra
+
+# Las variables con las que trabajaremos serán a continuación las siguientes:
+# - edad: Edad en tramo
+# - sexo: Sexo del encuestado
+# - delincuencia: Percepción aumento delincuencia en el país (P_AUMENTO_PAIS)
+# - robo: Robo a Persona en la Calle en últimos 12 meses (SCREEN_INT_RPS_N)
 
 ```
 Con lo anterior: **Respondan**
 
 ¿Cuántos casos y variables tiene la base?
 
-¿Qué tipo de variables encuentran (numéricas, categóricas, etc.)?
+¿A partir de las variables que trabajamos y otras que pudieron observar qué tipo de 
+variables encuentran (numéricas, categóricas, etc.)?
 
 
-# Paso 4: Imaginación de una pregunta de investigación
+## 2.3: Verificación de variables
+
+```{r, eval=FALSE}
+
+cat("=== VERIFICACIÓN DE COLUMNAS ===\n\n")
+
+# Ver todas las columnas
+cat("Total de columnas:", ncol(datos), "\n\n")
+
+# Procederemos a crear una versión limpia de la base de datos transformando datos en numericos)
+
+datos_limpio <- datos %>%
+  mutate(
+    rps = as.numeric(as.character(rps)),
+    rvi = as.numeric(as.character(rvi)),
+    rfv = as.numeric(as.character(rfv)),
+    pad = as.numeric(as.character(pad)),
+    padb = as.numeric(as.character(padb)),
+    edad = as.numeric(as.character(edad)),
+    sexo = as.numeric(as.character(sexo))
+  ) %>%
+  filter(rowSums(!is.na(.)) > 0)
+
+```
+
+# Paso 3: Imaginación de una pregunta de investigación
 
 Antes de limpiar que es el paso que vamos a ver a continuación, piensen: ¿qué les gustaría investigar con estos datos?
 No necesita ser definitiva, pero les ayudará a enfocar el trabajo. Por ejemplo:
@@ -105,73 +159,79 @@ No necesita ser definitiva, pero les ayudará a enfocar el trabajo. Por ejemplo:
 
 Aqui el unico limite es la imaginación y la propia base de datos con la que estemos trabajando, lo ideal es que la pregunta sea pertinente, interesante y abordable sociologicamente, y obvio, que tenga relación directa con los datos que vas a utilizar.
 
-# Paso 5: Selección de variables
+# Paso 4: Exploración de variables
+
+## Paso 4.1: Exploración basica
 
 ```{r, eval=FALSE}
 
-# La variables con las que trabajaremos seran a continuación las siguientes:
-
-# Sexo
-# rph_edad: Edad en tramo (En futuros practicos veremos como recodificar variables como 
-# la edad, para que estas este en tramos en caso que no lo este)
-
-# P_AUMENTO_PAIS:  usted diria que los ultimos doce meses la delincuencia en el pais
-# EV_CONFIA_CCH: confianza en carabineros
-# SCREEN_INT_RPS_N: cuantas veces en los últimos doce meses, ¿usted o algún integrante de su 
-# hogar fue víctima de robo o intento de robo # POR SORPRESA?
-
-datos_proc <- select(datos,
-                     edad=rph_edad,          
-                     sexo=rph_sexo,                             
-                     delincuencia=P_AUMENTO_PAIS,
-                     confianzacarab=EV_CONFIA_CCH,
-                     robo=SCREEN_INT_RPS_N)
-
-# el (=) lo utilizaremos para renombrar las variables, por ejemplo / edad=rph_edad, es 
-# la forma que tenemos para hacer que rph_edad caso de llamarse asi, con el (=), 
-# pase a llamarse edad; lo mismo con las otras subsecuentes variables
-
-view_df(datos_proc) 
-
-# Con view_df vemos las variables que trabajaremos
-
-frq(datos_proc$delincuencia)
-
-frq(datos_proc$robo)
-
-frq(datos_proc$confianzacarab)
-
-# Con frq podemos ver cosas como: frecuencia absoluta de las variables; porcentajes o cantidad 
-# de datos faltantes esta función es especialmente util para tener resumenes 
-# de variables categoricas 
+cat("\n=== EXPLORACIÓN DEL DATASET ===\n")
+glimpse(datos)
 
 ```
 
-# Paso 6: Identificar valores perdidos y darles un valor o eliminar los casos.
-
-Algunas bases de datos (por no decir la mayoria) presentaran en si misma datos perdidos o NA, frente a estos datos debemos decidir que hacer.
-
-Opción A: Eliminar casos con NA (si son pocos)
-
-Por ejemplos podemos utilizar la función na.omit: 
-
-datos_sin_na <- na.omit(datos)
-
-aplicamos na.omit en (datos), siempre es util crear bases de respaldo para no perder nuestro progreso o consultar nuestros resultados
-de ahi que para este caso creemos otras sub-base de datos alterna llamada datos_sin_na 
-
-# Opción B: Imputar un valor (media, mediana, moda) para efectos de este practico no se vera aquello
+## Paso 4.2: Estadísticos Descriptivos
 
 ```{r, eval=FALSE}
 
-# En este practico realizaremos la opción A, con la variable de delincuencia
-
-datos_proc$delincuencia<-car::recode(datos_proc$delincuencia, "c (88, 96, 99) = NA") 
-#comando para dejar datos perdidos como NA
-
-datos_proc <- na.omit(datos_proc) #comando para eliminar todos los NA de una base 
-
-datos_proc <- datos_proc[!is.na(datos_proc$delincuencia), ] 
-# comando para eliminar NA solo de una variable
+cat("\n=== ESTADÍSTICOS RPS ===\n")
+describe(datos$rps)
 
 ```
+
+## Paso 4.3: Variables categóricas (Solo las que existen)
+
+```{r, eval=FALSE}
+
+cat("\n=== VARIABLES CATEGÓRICAS DISPONIBLES ===\n")
+
+# Mostrar algunas columnas disponibles
+  
+cat("\nEjemplos de variables disponibles:\n")
+print(head(colnames(datos), 30))
+
+```
+
+# Paso 5: Tablas cruzadas para explorar posibles relaciones.
+
+```{r, eval=FALSE}
+
+cat("\n=== TABLAS CRUZADAS ===\n")
+
+# RPS por Sexo (ser víctima de robo en la calle seún sexo)
+cat("\nRPS por Sexo:\n")
+datos %>%
+  filter(!is.na(rps) & !is.na(sexo)) %>%
+  group_by(sexo) %>%
+  summarise(
+    media_rps = mean(rps, na.rm = TRUE),
+    n = n(),
+    .groups = 'drop'
+  ) %>%
+  print()
+
+```
+
+## Paso 5.1: Visualizaciones
+
+
+```{r, eval=FALSE}
+
+cat("\n=== GENERANDO GRÁFICOS ===\n")
+
+# Histograma RPS
+p1 <- datos %>%
+  filter(!is.na(rps)) %>%
+  ggplot(aes(x = rps)) +
+  geom_histogram(binwidth = 1, fill = "steelblue", color = "black", alpha = 0.7) +
+  labs(
+    title = "Distribución de Robo a Persona en la Calle (RPS)",
+    x = "Número de incidentes",
+    y = "Frecuencia"
+  ) +
+  theme_minimal()
+
+print(p1)
+
+```
+
