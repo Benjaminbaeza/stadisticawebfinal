@@ -45,26 +45,29 @@ Para este práctico necesitarás paquetes específicos para explorar la base de 
 
 # Para instalar paquetes usamos el comando de (install.packages(""))
 
-install.packages("tidyverse") # Para este caso instalaremos el paquete "tidyverse" el cual es una colección 
+install.packages("tidyverse") # Para este caso instalaremos el paquete "tidyverse" el cual 
+es una colección 
 # de paquetes, conteniendo otros como "dplyr" y/o "haven"
 
 # Para llamar paquetes usamos el comando (library (""))
 
 # Para este caso particular seria:
 
-library(tidyverse) # Nota para cargar o llamar paquetes no es necesario que el nombre del paquete contenga
-# Comillas como en el caso de (install.packages(""))
+library(tidyverse) # Nota para cargar o llamar paquetes no es necesario que el nombre 
+# del paquete contenga comillas como en el caso de (install.packages(""))
 
 # Paquete opcional "pacman"
 
-install.packages("pacman")   # En el caso particular de "pacman", este facilita y agiliza la lectura de los paquetes a utilizar en R, ya que "pacman" instala paquetes y los carga a la vez
+install.packages("pacman")   # En el caso particular de "pacman", este facilita y agiliza 
+# la lectura de los paquetes a utilizar en R, ya que "pacman" instala paquetes y los carga a la vez
 
 pacman::p_load(tidyverse,
                dplyr,       # nos permite seleccionar variables de un set de datos
                haven,       # cargar y exportar bases de datos en formatos .sav y .dta
                sjmisc,      # explorar datos
                sjPlot,      # para visualizar datos
-               car)       # para recodificar ciertas variables y aplicable a modelos estadisticos
+               car)         # para recodificar ciertas variables y aplicable 
+                            # a modelos estadisticos
 ```
 
 # Paso 3: Exploración 
@@ -77,9 +80,11 @@ datos <- read_sav("ENUSC2024.sav")
 
 view_df(datos) #Para explorar las variables de la base de datos, proviene del paquete sjPlot
 
-class(datos$rph_sexo)  # para observar el tipo de datos que componen las variables, proviene del paquete base 
-descr(datos$SCREEN_INT_RPS_N) # nos otorga estadísticos de tendencia central para las variable numéricas
-frq(datos$EV_CONFIA_CCH)    # para  ver la distribución variables categóricas 
+class(datos$rph_sexo)  # para observar el tipo de datos que componen las variables, 
+                       # proviene del paquete base 
+descr(datos$SCREEN_INT_RPS_N) # nos otorga estadísticos de tendencia central para 
+                              # las variable numéricas
+frq(datos$EV_CONFIA_CCH)      # para  ver la distribución variables categóricas 
 
 ```
 Con lo anterior: **Respondan**
@@ -107,12 +112,13 @@ Aqui el unico limite es la imaginación y la propia base de datos con la que est
 # La variables con las que trabajaremos seran a continuación las siguientes:
 
 # Sexo
-# rph_edad: Edad en tramo (En futuros practicos veremos como recodificar variables como la edad, para que estas este en tramos en caso
-# que no lo este)
+# rph_edad: Edad en tramo (En futuros practicos veremos como recodificar variables como 
+# la edad, para que estas este en tramos en caso que no lo este)
 
 # P_AUMENTO_PAIS:  usted diria que los ultimos doce meses la delincuencia en el pais
 # EV_CONFIA_CCH: confianza en carabineros
-# SCREEN_INT_RPS_N: cuantas veces en los últimos doce meses, ¿usted o algún integrante de su hogar fue víctima de robo o intento de robo # POR SORPRESA?
+# SCREEN_INT_RPS_N: cuantas veces en los últimos doce meses, ¿usted o algún integrante de su 
+# hogar fue víctima de robo o intento de robo # POR SORPRESA?
 
 datos_proc <- select(datos,
                      edad=rph_edad,          
@@ -121,8 +127,9 @@ datos_proc <- select(datos,
                      confianzacarab=EV_CONFIA_CCH,
                      robo=SCREEN_INT_RPS_N)
 
-# el (=) lo utilizaremos para renombrar las variables, por ejemplo / edad=rph_edad, es la forma que tenemos para hacer que rph_edad
-# caso de llamarse asi, con el (=), pase a llamarse edad; lo mismo con las otras subsecuentes variables
+# el (=) lo utilizaremos para renombrar las variables, por ejemplo / edad=rph_edad, es 
+# la forma que tenemos para hacer que rph_edad caso de llamarse asi, con el (=), 
+# pase a llamarse edad; lo mismo con las otras subsecuentes variables
 
 view_df(datos_proc) 
 
@@ -134,8 +141,9 @@ frq(datos_proc$robo)
 
 frq(datos_proc$confianzacarab)
 
-# Con frq podemos ver cosas como: frecuencia absoluta de las variables; porcentajes o cantidad de datos faltantes
-# esta función es especialmente util para tener resumenes de variables categoricas 
+# Con frq podemos ver cosas como: frecuencia absoluta de las variables; porcentajes o cantidad 
+# de datos faltantes esta función es especialmente util para tener resumenes 
+# de variables categoricas 
 
 ```
 
@@ -158,10 +166,12 @@ de ahi que para este caso creemos otras sub-base de datos alterna llamada datos_
 
 # En este practico realizaremos la opción A, con la variable de delincuencia
 
-datos_proc$delincuencia<-car::recode(datos_proc$delincuencia, "c (88, 96, 99) = NA") #comando para dejar datos perdidos como NA
+datos_proc$delincuencia<-car::recode(datos_proc$delincuencia, "c (88, 96, 99) = NA") 
+#comando para dejar datos perdidos como NA
 
 datos_proc <- na.omit(datos_proc) #comando para eliminar todos los NA de una base 
 
-datos_proc <- datos_proc[!is.na(datos_proc$delincuencia), ]# comando para eliminar NA solo de una variable
+datos_proc <- datos_proc[!is.na(datos_proc$delincuencia), ] 
+# comando para eliminar NA solo de una variable
 
 ```
