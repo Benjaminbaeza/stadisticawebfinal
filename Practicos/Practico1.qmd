@@ -32,6 +32,7 @@ En esta misma tambien contaran con los manuales de usuario de las bases de datos
 :::
 
 # Paso 2: 🔧 Preparación del Entorno Analítico o de trabajo
+
 ## 2.1 Carga de Paquetes
 
 Para este práctico necesitarás paquetes específicos para explorar la base de datos, pero en un futuro, se requeriran otro ripos de paquetes para realizar los distintos tipos de análisis.
@@ -60,7 +61,7 @@ pacman::p_load(tidyverse, haven, sjPlot, psych, skimr, labelled, car)
 
 ```
 
-## Paso 2.2: Selección de variables 
+## Paso 2.2: Preparación y limpiza del entorno de trabajo
 
 ```{r, eval=FALSE}
 
@@ -87,6 +88,12 @@ gc()
 getwd() # Para comprobar donde se esta trabajando
 
 list.files() # Para ver los archivos del directorio
+
+```
+
+## Paso 2.3: Selección de variables
+
+```{r, eval=FALSE}
 
 # Ahora antes de comenzar a explorar las variables, requerimos cargar la base de datos 
 # del ENUSC, año 2024
@@ -123,7 +130,7 @@ Con lo anterior: **Respondan**
 variables encuentran (numéricas, categóricas, etc.)?
 
 
-## 2.3: Verificación de variables
+## 2.4: Verificación de variables
 
 ```{r, eval=FALSE}
 
@@ -213,7 +220,6 @@ datos %>%
 ```
 
 ## Paso 5.1: Visualizaciones
-
 
 ```{r, eval=FALSE}
 
