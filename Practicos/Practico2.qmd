@@ -158,7 +158,7 @@ datos_acs <- elsoc_long_2016_2022.2 %>%
   filter(ola == "4") %>%
   select(m01,           # Nivel educacional
          c25,           # Preferencia democracia
-         c05_01         # Confianza en el gobierno (para ACM)
+         c05_01         # Confianza en el gobierno
          )
 
 # En la primera linea creamos una nueva sub-base con la que trabajariamos
@@ -173,41 +173,115 @@ datos_acs <- elsoc_long_2016_2022.2 %>%
 # Con select y lo del interior de su () le indicamos que considere solo esas
 # variables para elaborar la sub-base
 
+# Todas estas variables son nominales u ordinales, siendo estas variables categoricas
+
 ```
 
-## 4.2 Limpieza de las variables
+## 4.2 Recodificación de variables
 
-- Se elimina los NA´s (Importante verificar como es que funcionan los NA´s o si realmente tiene)}
+```{r, eval=FALSE}
 
-- Con names(proc_data) vemos los nombres de las variables (columnas)
+datos_acs$educacion <- car::recode(datos_acs$m01,
+                                   "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
+datos_acs$educacion <- sjlabelled::set_labels(
+  datos_acs$educacion,
+  labels = c("Educación básica" = 1, "Educación media" = 2, "Educación superior" = 3))
+
+```
+Recodificamos la variable educación (m01) usando el comando recode de car
+
+::: {.callout-note}
+el uso de los dos, dos puntos (::) en car, es una forma de indicar que se ejecute una acción de una paquete, en este caso recode de car,
+esta forma de indicar una acción es comun cuando se tiene varios paquetes instalados debido a que algunos paquetes
+comparten codigos bajo el mismo nombre, pudiendo provocar errores con (::) indicamos que queremos realizar esa acción de ese paquete en
+especifico, indipendiente de que otro paquete tenga la misma función con el mismo nombre.
+:::
+
+Recodificamos la variable educación (m01), para que pase de 10 alternativas a 3; posteriormente usando **labels** le asignamos una
+etiqueta de valor para los numeros (1,2,3) de las 3 nuevas alternativas creadas con la recodificación y asi estas tengan nombres legibles; estas serian: 1- para la Educación básica; 2- para la Educación Media
+y 3- para la educación superior.
+
+Esto se debe a que la variable de educación (m01) del ELSOC en sus 17 alternativas de respuesta contempla desde sin educación hasta educación de postgrado. Pasando por intermedios como educación media incompleta o educación tecnica.
+
+Con c(1,2,3)=1 de la Educación basica por ejemplo agrupamos en la nueva alternativa 1, las categorias de respuesta o alternativas de: "sin educación basica"; "educación basica incompleta" y "educación basica completa".
+Asi podemos simplificar la variable educacional en tres grupos
+
+## 4.3 Transformación de valores perdidos a NA
+
+```{r, eval=FALSE}
+
+datos_acs <- datos_acs %>% sjlabelled::set_na(., na = c(-999, -888, -777, -666))
+
+datos_acs <- na.omit(datos_acs) # Eliminando NA, simplificamos el analisis
+                                # y se vuelve más simple trabajar con este
+
+str(datos_acs) # Con este podemos ver la estructura de la base de datos y como esta quedo
+               # despues del proceso
+
+```
+Con sjlabelled::set_na, asignamos que los valores de respuesta -999, -888, -777 y -666 sean considerados NA
+posteriomente con na.omit, los eliminamos de la base de datos
+
+::: {.callout-note}
+Las alternativas de respuesta como -999 y el resto de una base de datos, suelen ser empleadas para indicar que es un dato perdido
+por una categoria de respuesta de NS/NR (No sabe / No responde) y usualmente se suelen identificar asi justamente para facilitar su
+tratamiento como variables NA, en softwares de analisis estadisticos como Rstudios, como lo estamos realizando, en caso de no hacerlo
+el procedimiento se volvia un poco más complicado, por eso es un estandar.
+Como añadido, antes de eliminar los datos NA de una base de datos, se debe considerar cuantos datos se perderian del total
+na.omit los elimina de la base de datos directamente siempre que presente un NA en alguna alternativa de respuesta independiente de contar con respuesta en otras preguntas, por lo que realizar esto podria llevar a un sesgo de la muestra, de la base o del analisis, ademas de perder datos en otras variables.
+En caso de realizarlo siempre es bueno cerciorarse, de que solo se esta perdiendo idealmente entre menos de un 10% o 15% de los casos de la base.
+:::
 
 ---
 
-# 🧬 Recodificación de variables:
+# 5. 🧬 : Chi-cuadrado (χ²) y tablas de contingencia
+
+Para realizar el analisis de correspondencia un paso y requisito previo, es saber que las variables categoricas con las que estamos trabajando presentan un grado de asociación. Para eso debemos realizar el test de Hipotesis de Chi-cuadrado
+
+## 5.1 Chi-cuadrado (χ²) en Rstudios
 
 ```{r, eval=FALSE}
-proc_data$educacion <- car::recode(proc_data$educacion_ori,
-                                   "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
-proc_data$educacion <- sjlabelled::set_labels(
-  proc_data$educacion,
-  labels = c("Educación básica" = 1, "Educación media" = 2, "Educación superior" = 3))
+
+chi_result_1 <- chisq.test(table(datos_acs$m01, datos_acs$c25)) 
+
+# creamos un objeto en el enviroment de R que contenga la prueba de
+# Chi-cuadrado; en este caso lo realizamos con las variables de educación (m01) y
+# preferencia democracia (c25)
+
+stats.table_1 <- tidy(chi_result_1, conf_int = T)
+
+# tidy elaboramos otro objeto que contega los estadisticos del resultado del Chi-cuadrado 
+# en una tabla a la cual llamaremos a dicha tabla stats.table_1
+
+nice_table(stats.table_1)
+
+# Con nice_table podemos visualizar los estadisticos en una tabla
+
+ggchisqtest(chi_result_1)
+
+# Con ggchisqtest(chi_result_1) podemos visualizar el resultado del test de hipotesis de
+# Chi-cuadrado en una curva de distribución de Chi-cuadrado
+
+# Repetiremos el mismo proceso otra vez de la prueba de hipotesis de Chi.cuadrado, 
+# esta vez con las variables educación (m01) y confienza en el gobierno (c05_01)
+
+chi_result_2 <- chisq.test(table(datos_acs$m01, datos_acs$c05_01))
+
+stats.table_2 <- tidy(chi_result_2, conf_int = T)
+
+nice_table(stats.table_2)
+
+ggchisqtest(chi_result_2)
+
+```
+Cuando realizamos un test  de hipotesis de Chi-cuadrado, lo que estamos haciendo es comprobar si existe un grado de asociación entre ambas variables más **no podemos saber la dirección de la misma** como en una correlación, solo sabemos que ambas estan asociadas, pero no cual influye en cual.
+
+En una curva de distribución de Chi-cuadrado, existe un valor de (χ²) el cual esta delimitado por los grados de libertad (gl), dicho valor es conocido como Chi Critico o Valor Critico; si el valor que tienen ambas variables al momento de relacionarse (realizar el test) que seria la comparación entre los valores de las tablas de contingencia (tabla de valor observado y valor esperado) es mayor que el Chi Critico es que ambas variables estan asociadas.
 
 sjPlot::sjt.xtab(var.row = proc_data$educacion, var.col = proc_data$aut_demo,
                  show.row.prc = TRUE, show.col.prc = TRUE,
                  show.summary = FALSE, emph.total = TRUE, encoding = "UTF-8")
 
-```
-**La función car::recode() agrupa categorías originales de la variable educacion en tres niveles más generales:**
-
-Valores 1,2,3 → se recodifican como 1 (Educación básica).
-
-Valores 4,5 → se recodifican como 2 (Educación media).
-
-Valores 6,7,8,9,10 → se recodifican como 3 (Educación superior).
-
-El objetivo es simplificar la variable educacional en tres grupos.
-
-**La funcion sjlabelled::set_labels()en el fondo es poner etiquetas de valor para que los numeros (1,2,3) tengan nombres legibles.**
 
 ```{r, eval=FALSE}
 #sjmisc::frq(proc_data$educacion)
