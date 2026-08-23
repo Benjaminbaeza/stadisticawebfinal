@@ -100,7 +100,9 @@ pacman::p_load(tidyverse,    # Manipulación y visualización de datos
                nFactors,     # Util en analisis factoriales (para mas adelante!)
                ggbiplot,     # Util en analisis de componentes principales (para mas adelante!)
                ggrepel,      # complemento para ggplot2
-               sjlabelled)   # Manejo de etiquetas de variables
+               sjlabelled,   # Manejo de etiquetas de variables
+               flextable,    # Realizar otras tablas
+               gginference   # Realizar y visualizar test de hipotesis de Chi-cuadrado (χ²)
 ```
 
 ## 3.3 Configuración del entorno R
