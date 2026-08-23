@@ -1,73 +1,179 @@
 # 🎯 Objetivos del Práctico
 
-## Propósito General
+# 1. Propósito General
+
 Este práctico tiene como objetivo desarrollar competencias en el **análisis de asociación entre variables categóricas** mediante:
 
-1. **Construcción** de tablas de contingencia
-2. **Aplicación** de la prueba de independencia Chi-cuadrado (χ²)
-3. **Interpretación** de resultados estadísticos y sustantivos
-4. **Contraste** entre cálculo manual y automatizado
+A. **Construcción** de tablas de contingencia
+B. **Aplicación** de la prueba de hipotesis de Chi-cuadrado (χ²)
+C. **Interpretación** de los resultados estadísticos y sustantivos
+D. **Contraste** entre cálculo manual y automatizado.
+E. **Realización** de Analisis de Correspondencia Simple (ACS)
 
-## Contexto del Estudio
-Utilizaremos la **cuarta ola (2019) del Estudio Longitudinal Social de Chile (ELSOC)**, una encuesta panel representativa nacional, para analizar la relación entre **nivel educacional** y **preferencias político-democráticas**.
+::: {.callout-note}
+Realizaremos Analisis de Correspondencia Multiple (ACM) en el siguiente Practico N°3
+:::
+
+# 2. Contexto del Estudio
+
+La Base de Datos con la que nos dispondremos a trabajar, corresponde a la del **Estudio Longitudinal Social de Chile (ELSOC)**, más especificamete con su **cuarta ola** correspondiente a las observaciones realizadas en el año (2019); ELSOC es una encuesta panel representativa a nivel nacional, en este practico, nos dispondremos a analizar la relación entre el **nivel educacional** y las **preferencias político-democráticas**.
 
 ---
 
-# 🔧 Preparación del Entorno Analítico
+# 3. 🔧 Preparación del Entorno Analítico o de trabajo
 
-## 1.1 Instalación y Carga de Paquetes
+## 3.1 Fijar directorio 
 
-```{r librerias, eval=FALSE}
-# Carga de paquetes necesarios
-pacman::p_load(
-  tidyverse,      # Manipulación y visualización de datos
-  sjPlot,         # Tablas y gráficos para ciencias sociales
-  psych,          # Análisis psicométricos y correlaciones
-  DescTools,      # Funciones descriptivas avanzadas
-  broom,          # Organización de resultados en dataframes
-  sjlabelled,     # Manejo de etiquetas de variables
-  sjmisc          # Funciones auxiliares para análisis
-)
-```
-## 1.2 Configuración del entorno R
+Recordemos que para fijarlo, siempre tenemos tres opciones:
+
+**OPCIÓN 1** - La forma manual: Para realizarla vamos a la opción "Session" de Rstudios > le damos a la opción 
+"Set Working Directory" > ultima opción: "Choose Directory" > seleccionamos la carpeta en la que trabajaremos para fijarla.
+
+**OPCIÓN 2** - Usamos codigos de Rstudios: Para aquello debemos usar los siguientes codigos:
 
 ```{r, eval=FALSE}
-options(scipen = 999)    # Desactiva notación científica
+
+# Para fijarlo directamente debemos usar el comando "setwd" como esta puesto debajo
+# Para saber con que llenar los espacios del propio codigo, puedes ver la dirección de la carpeta
+# en la que quieres trabajar, clickando sobre el icono de esta.
+
+#los primeros 2 nombres, puedes dejarlos como lo deje lo que debes cambiar esta indicado con palabras
+
+# setwd("C:/Users/ El nombre de usuario / Nombre de la carpeta / Nombre de la subcarpeta en caso de ser necesario")
+
+# Puedes el comando "getwd", para comprobar si estas trabajando en la carpeta en la que indicaste
+
+# getwd()
+
+# Esta te deberia indicar en la consola algo similar a esto:
+
+"C:/Users/ El nombre de usuario / Nombre de la carpeta / Nombre de la subcarpeta en caso de ser necesario"
+
+# Si efectivamente sale asi o con la carpeta que querias esta configurado
+
+```
+
+**OPCIÓN 3** - Usa un proyecto de Rstudios: Para eso debes crear un proyecto.
+
+Para realizarlo ve a la opción **File** > Seleccionas la opción **New Proyect** > Seleccionas la opción **New Directory" > Y seleccionas la carpeta de tu proyecto o en la que quieras trabajar creando un New Proyect.
+Esta opción entrega la ventaja de que cada vez que abras el archivo de Rstudios, este fijara automaticamente dicha carpeta como directorio de trabajo y por ejemplo los avances o lo realizado en el enviroment, tambien se guardara.  
+
+## 3.2 Instalación y Carga de Paquetes
+
+```{r, eval=FALSE}
+
+# Recordemos que en caso de no tener instalado un paquete podemos ocupar el comando:
+
+install.packages("pacman") # Nombre del paquete siempre en entre comillas
+
+# Luego lo cargamos:
+
+library(pacman) # En este caso no es necesario usar comillas
+
+# Pacman es un paquete bastante util de R, ya que este tiene la caracteristica de
+# combinar los comandos de install.packages y library
+# por lo que en caso de colocar un paquete dentro de su parentesis, pacman lo cargara
+# automaticamente en caso de estar descargado o lo descargara en caso de no estarlo
+# y posteriormente lo descargara. 
+
+```
+::: {.callout-note}
+Para el ejemplo anterior, usamos install.packages y library con el paquete pacman 
+por que con este debemos realizarlo y ademas sirve para poner en practica dicha forma.
+Tambien es necesario recordar que en R y Rstudios solo es necesario instalar paquetes una vez
+estos quedaran guardados en nuestro PC, por lo que solo sera necesario cargarlo.
+:::
+
+```{r, eval=FALSE}
+
+pacman::p_load(tidyverse,    # Manipulación y visualización de datos
+               sjPlot,       # Tablas y gráficos para ciencias sociales
+               psych,        # Análisis psicométricos y correlaciones
+               DescTools,    # Funciones descriptivas avanzadas
+               ggplot2,      # Crear gráficos y visualizar datos
+               broom,        # Para hacer tablas data.frame 
+               rempsyc,      # Presentación de resultados
+               FactoMineR,   # Para distintos analisis multivariados
+               factoextra,   # Complementa al anterior visualizando resulados y mas
+               corrplot,     # Visualiza matrices de relación
+               dplyr,        # Seleccionar, filtrar, ordenar, crear y resumir datos
+               nFactors,     # Util en analisis factoriales (para mas adelante!)
+               ggbiplot,     # Util en analisis de componentes principales (para mas adelante!)
+               ggrepel,      # complemento para ggplot2
+               sjlabelled)   # Manejo de etiquetas de variables
+```
+
+## 3.3 Configuración del entorno R
+
+```{r, eval=FALSE}
+
+options(scipen = 999)    # Desactiva notación científica, en ocasiones activada
 rm(list = ls())          # Limpia el entorno de trabajo
 set.seed(123)            # Fija semilla para reproducibilidad
+
 ```
-# ⏳ Carga de la base de datos
+# 3.4 ⏳ Carga de la base de datos
 
-Luego vamos a cargar la base de datos directamente desde internet (En este caso la base de datos ELSOC esta alojada en Harvard Dataverse)
-
+Cargaremos la base de datos con la que vamos a trabajar, la del ELSOC.
+Para este caso la descargaremos directamente desde internet (En este caso la base de datos esta alojada en Harvard Dataverse)
 
 ```{r, eval=FALSE}
-#Cargamos la base de datos desde internet
+
+#Cargamos la base de datos desde internet con este comenado:
+
 load(url("https://dataverse.harvard.edu/api/access/datafile/7245118")) 
 
-dim(elsoc_long_2016_2022.2)
+# En este caso al estar en internet no es necesario utilizar otros codigos como:
+# read... (en el ... iria el formato de la base de datos
+# read es una función del paquete haven
+
 ```
-**Salida Esperada:**
+
+Apartir con la base ya cargada podemos **interpretar:** a partir del enviroment que la base contiene 18,035 casos (entrevistados) medidos en 750 variables a lo largo de diferentes olas.
+
+Pero tambien lo podriamos verificar de la siguiente forma:
 
 ```{r, eval=FALSE}
+
+dim(elsoc_long_2016_2022.2) # con este codigo podriamos observar las dimensiones y
+                            # variables de la base
+
+La salida que esperamos deberia ser esta:
+
 [1] 18035   750
+
 ```
-**Interpretación:** La base contiene 18,035 casos (entrevistados) medidos en 750 variables a lo largo de diferentes olas.
 
 ---
 
-# 🧹 Selección y Limpieza de Variables:
+# 4. 🧹 Selección y Limpieza de Variables:
+
+## 4.1 Selección de variables y selección de la ola
 
 ```{r, eval=FALSE}
-proc_data <- elsoc_long_2016_2022.2 %>% filter(ola=="4") %>% 
-  select(c29, # Confianza generalizada
-         m01# nivel educacional
+
+datos_acs <- elsoc_long_2016_2022.2 %>%
+  filter(ola == "4") %>%
+  select(m01,           # Nivel educacional
+         c25,           # Preferencia democracia
+         c05_01         # Confianza en el gobierno (para ACM)
          )
 
-proc_data <- proc_data %>% sjlabelled::set_na(., na = c(-999, -888, -777, -666))
-# Comprobar
-names(proc_data)
+# En la primera linea creamos una nueva sub-base con la que trabajariamos
+# esta contendria solo las variables con las que nos dispondriamos a trabajar
+# ademas esta sub-base se encuentra filtrada en la ola 4, las observaciones del
+# año 2019
+
+# Con filter(ola == "4") le estamos indicando a R que selecciones solo los casos
+# de la ola 4 del años 2019 para elaborar la nueva sub-base
+# de ahi que esta nueva sub-base cuente con menos observaciones
+
+# Con select y lo del interior de su () le indicamos que considere solo esas
+# variables para elaborar la sub-base
+
 ```
+
+## 4.2 Limpieza de las variables
 
 - Se elimina los NA´s (Importante verificar como es que funcionan los NA´s o si realmente tiene)}
 
