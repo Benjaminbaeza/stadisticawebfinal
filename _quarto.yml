@@ -21,7 +21,7 @@ website:
         menu:
           - text: "Práctico 1 Nociones basicas de Rstudios: Exploración y Preparación de Bases de Datos"
             href: Practicos/Practico1.qmd
-          - text: "Práctico 2: Chi-cuadrado; Tablas de contingencia y Analisis de Correspondecia Simple (ACS)
+          - text: "Práctico 2: Chi-cuadrado; Tablas de contingencia y Analisis de Correspondecia Simple (ACS)"
             href: Practicos/Practico2.qmd
 
                     
