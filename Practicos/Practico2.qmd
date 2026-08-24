@@ -34,20 +34,24 @@ Recordemos que para fijarlo, siempre tenemos tres opciones:
 ```{r, eval=FALSE}
 
 # Para fijarlo directamente debemos usar el comando "setwd" como esta puesto debajo
-# Para saber con que llenar los espacios del propio codigo, puedes ver la dirección de la carpeta
-# en la que quieres trabajar, clickando sobre el icono de esta.
+# Para saber con que llenar los espacios del propio codigo, puedes ver la dirección de la 
+# carpeta en la que quieres trabajar, clickando sobre el icono de esta.
 
-#los primeros 2 nombres, puedes dejarlos como lo deje lo que debes cambiar esta indicado con palabras
+#los primeros 2 nombres, puedes dejarlos como lo deje lo que debes cambiar esta indicado 
+# con palabras
 
-# setwd("C:/Users/ El nombre de usuario / Nombre de la carpeta / Nombre de la subcarpeta en caso de ser necesario")
+# setwd("C:/Users/ El nombre de usuario / Nombre de la carpeta / 
+# Nombre de la subcarpeta en caso de ser necesario")
 
-# Puedes el comando "getwd", para comprobar si estas trabajando en la carpeta en la que indicaste
+# Puedes el comando "getwd", para comprobar si estas trabajando en la carpeta en la que 
+# indicaste
 
 # getwd()
 
 # Esta te deberia indicar en la consola algo similar a esto:
 
-"C:/Users/ El nombre de usuario / Nombre de la carpeta / Nombre de la subcarpeta en caso de ser necesario"
+"C:/Users/ El nombre de usuario / Nombre de la carpeta 
+# / Nombre de la subcarpeta en caso de ser necesario"
 
 # Si efectivamente sale asi o con la carpeta que querias esta configurado
 
@@ -114,7 +118,7 @@ rm(list = ls())          # Limpia el entorno de trabajo
 set.seed(123)            # Fija semilla para reproducibilidad
 
 ```
-# 3.4 ⏳ Carga de la base de datos
+## 3.4 ⏳ Carga de la base de datos
 
 Cargaremos la base de datos con la que vamos a trabajar, la del ELSOC.
 Para este caso la descargaremos directamente desde internet (En este caso la base de datos esta alojada en Harvard Dataverse)
@@ -222,7 +226,6 @@ str(datos_acs) # Con este podemos ver la estructura de la base de datos y como e
 Con sjlabelled::set_na, asignamos que los valores de respuesta -999, -888, -777 y -666 sean considerados NA
 posteriomente con na.omit, los eliminamos de la base de datos
 
-::: {.callout-note}
 Las alternativas de respuesta como -999 y el resto de una base de datos, suelen ser empleadas para indicar que es un dato perdido
 por una categoria de respuesta de NS/NR (No sabe / No responde) y usualmente se suelen identificar asi justamente para facilitar su
 tratamiento como variables NA, en softwares de analisis estadisticos como Rstudios, como lo estamos realizando, en caso de no hacerlo
@@ -230,7 +233,7 @@ el procedimiento se volvia un poco más complicado, por eso es un estandar.
 Como añadido, antes de eliminar los datos NA de una base de datos, se debe considerar cuantos datos se perderian del total
 na.omit los elimina de la base de datos directamente siempre que presente un NA en alguna alternativa de respuesta independiente de contar con respuesta en otras preguntas, por lo que realizar esto podria llevar a un sesgo de la muestra, de la base o del analisis, ademas de perder datos en otras variables.
 En caso de realizarlo siempre es bueno cerciorarse, de que solo se esta perdiendo idealmente entre menos de un 10% o 15% de los casos de la base.
-:::
+
 
 ---
 
@@ -318,8 +321,9 @@ En R y Rstudio se elabora de la siguiente manera:
 
 tabla_contingencia <- table(datos_acs$m01, datos_acs$c25)
 
-# Con la funcion table podemos elaborar la tabla de contingencia, en este caso haremos la tabla
-# de contingencia de la variable de educacuón (m01) por preferencia democracia (c25)
+# Con la funcion table podemos elaborar la tabla de contingencia, en este caso haremos 
+# la tabla de contingencia de la variable de educacuón (m01) por 
+# preferencia democracia (c25)
 
 print(tabla_contingencia)
 
