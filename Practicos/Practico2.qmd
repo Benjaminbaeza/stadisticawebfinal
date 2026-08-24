@@ -263,7 +263,7 @@ ggchisqtest(chi_result_1)
 # Chi-cuadrado en una curva de distribución de Chi-cuadrado
 
 # Repetiremos el mismo proceso otra vez de la prueba de hipotesis de Chi.cuadrado, 
-# esta vez con las variables educación (m01) y confienza en el gobierno (c05_01)
+# esta vez con las variables educación (m01) y confianza en el gobierno (c05_01)
 
 chi_result_2 <- chisq.test(table(datos_acs$m01, datos_acs$c05_01))
 
@@ -278,34 +278,16 @@ Cuando realizamos un test  de hipotesis de Chi-cuadrado, lo que estamos haciendo
 
 En una curva de distribución de Chi-cuadrado, existe un valor de (χ²) el cual esta delimitado por los grados de libertad (gl), dicho valor es conocido como Chi Critico o Valor Critico; si el valor que tienen ambas variables al momento de relacionarse (realizar el test) que seria la comparación entre los valores de las tablas de contingencia (tabla de valor observado y valor esperado) es mayor que el Chi Critico es que ambas variables estan asociadas.
 
-sjPlot::sjt.xtab(var.row = proc_data$educacion, var.col = proc_data$aut_demo,
-                 show.row.prc = TRUE, show.col.prc = TRUE,
-                 show.summary = FALSE, emph.total = TRUE, encoding = "UTF-8")
+## 5.2 Tablas de contingencia
 
+Sabiendo que las variables estan asociadadasm podemos elaborar las tablas de contingencia
 
-```{r, eval=FALSE}
-#sjmisc::frq(proc_data$educacion)
+::: {.callout-note}
+La elaboración de tablas de contingencia, puede ser un paso previo a la elaboración del test de hipotesis de Chi-cuadrado, esto queda a criterio del investigador.
+:::
 
-Value |              Label |    N | Raw % | Valid % | Cum. %
-------------------------------------------------------------
-    1 |   Educación básica |  781 | 22.86 |   22.88 |  22.88
-    2 |    Educación media | 1432 | 41.91 |   41.96 |  64.84
-    3 | Educación superior | 1200 | 35.12 |   35.16 | 100.00
- <NA> |               <NA> |    4 |  0.12 |    <NA> |   <NA>
-```
-**La función frq() del paquete sjmisc muestra una tabla de frecuencias:**
-
-- Número de casos en cada categoría.
-
-- Porcentaje relativo.
-
-- Valores perdidos (NA) si los hay.
-
-# 🧮 Tabla de contingencia
-
-Definición: Una **tabla de contingencia** (o tabla cruzada) es una matriz que muestra la distribución conjunta de dos variables categóricas.
-
-**Componentes Esenciales:**
+Una **tabla de contingencia** (o tabla cruzada) es una matriz que nos muestra la distribución conjunta de dos variables categóricas.
+Y sus **Componentes Esenciales** serian:
 
 - **Frecuencias observadas:** Conteos en cada combinación de categorías
 
@@ -315,19 +297,7 @@ Definición: Una **tabla de contingencia** (o tabla cruzada) es una matriz que m
 
 - **Gran total:** Número total de casos válidos
 
-Veremos un ejemplo conm ss_salud y universitaria:
-
-```{r, eval=FALSE}
-sjPlot::sjt.xtab(var.row = proc_data$educacion, var.col = proc_data$c29, 
-                 show.summary = F, emph.total = T, encoding = "UTF-8")
-```
-**Salida Esperada:**
-
-<div class="table-container" style="overflow-x: auto; margin: 30px 0;"><table class="contingency-table" style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif;"> <caption style="caption-side: bottom; text-align: center; padding: 10px; font-style: italic; color: #666;"> <strong>Tabla 1:</strong> Distribución conjunta entre nivel educacional y preferencia por mecanismo de cambio constitucional (N = 3,032) </caption><thead> <tr style="background-color: #2c2c2c; color: white;"> <th style="border: 2px solid #444; padding: 12px; text-align: center; font-weight: bold;" rowspan="2">Nivel Educacional</th> <th style="border: 2px solid #444; padding: 12px; text-align: center; font-weight: bold;" colspan="4">Mecanismo de Cambio Constitucional</th> <th style="border: 2px solid #444; padding: 12px; text-align: center; font-weight: bold;" rowspan="2">Total por Educación</th> </tr> <tr style="background-color: #3a3a3a; color: white;"> <th style="border: 1px solid #555; padding: 10px; text-align: center;">Grupo de Expertos</th> <th style="border: 1px solid #555; padding: 10px; text-align: center;">Parlamento</th> <th style="border: 1px solid #555; padding: 10px; text-align: center;">Asamblea Constituyente</th> <th style="border: 1px solid #555; padding: 10px; text-align: center;">Total Mecanismo</th> </tr> </thead><tbody> <tr style="background-color: #f9f9f9;"> <td style="border: 1px solid #ddd; padding: 12px; font-weight: bold;">Educación Básica</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">138</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">30</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">446</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">614</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; background-color: #e8f4f8; font-weight: bold;">614</td> </tr><tr style="background-color: #fff;"> <td style="border: 1px solid #ddd; padding: 12px; font-weight: bold;">Educación Media</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">277</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">31</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">964</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">1,272</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; background-color: #e8f4f8; font-weight: bold;">1,272</td> </tr><tr style="background-color: #f9f9f9;"> <td style="border: 1px solid #ddd; padding: 12px; font-weight: bold;">Educación Superior</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">286</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">17</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center;">843</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; font-weight: bold;">1,146</td> <td style="border: 1px solid #ddd; padding: 12px; text-align: center; background-color: #e8f4f8; font-weight: bold;">1,146</td> </tr><tr style="background-color: #2c2c2c; color: white; font-weight: bold;"> <td style="border: 2px solid #444; padding: 12px; text-align: center;">Total General</td> <td style="border: 2px solid #444; padding: 12px; text-align: center;">701</td> <td style="border: 2px solid #444; padding: 12px; text-align: center;">78</td> <td style="border: 2px solid #444; padding: 12px; text-align: center;">2,253</td> <td style="border: 2px solid #444; padding: 12px; text-align: center;">3,032</td> <td style="border: 2px solid #444; padding: 12px; text-align: center; background-color: #1a5276; color: white;">3,032</td> </tr> </tbody> </table> </div>
-
----
-
-# Sumado a esto, tenemos:
+Sumado a lo anterior tenemos:
 
 **Frecuencias absolutas:** 
 
@@ -341,170 +311,183 @@ sjPlot::sjt.xtab(var.row = proc_data$educacion, var.col = proc_data$c29,
 
 - porcentaje total: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla
 
-Veamos cómo incorporar el porcentaje fila y columna en la tabla.
+
+En R y Rstudio se elabora de la siguiente manera:
 
 ```{r, eval=FALSE}
-sjPlot::sjt.xtab(var.row = proc_data$educacion, 
-                 var.col = proc_data$aut_demo, 
-                 show.summary = F, 
-                 emph.total = T, 
-                 show.row.prc = T, # porcentaje fila
-                 show.col.prc = T, # porcentaje columna
-                 encoding= "UTF-8")
+
+tabla_contingencia <- table(datos_acs$m01, datos_acs$c25)
+
+# Con la funcion table podemos elaborar la tabla de contingencia, en este caso haremos la tabla
+# de contingencia de la variable de educacuón (m01) por preferencia democracia (c25)
+
+print(tabla_contingencia)
+
+# Y con print la podemos visualizar en la consola de comandos de Rstudios 
+
+sjPlot::sjt.xtab(var.row = datos_acs$m01, var.col = datos_acs$c25,
+                 show.row.prc = TRUE, show.col.prc = TRUE)
+
+# Podemos verificar dicha tabla con sjPlot de forma opcional y la podemos visualizar en el
+# "Worksapce" de manera más visual
+
+# Con show.row.prc podemos ver los porcentajes que representan los caso de cada alternativa
+# proporcinalmente (TRUE o T) es necesario para emplear dicha opción o elemento
+
+# Con show.col.prc podemos hacer que cada proporción adquiera un color distinto para
+# distinguirlos más facil visualmente
+
+# crearemos otra tabla de contigencia entre la variable educacion (m01) por confianza en el 
+# gobierno (c05_01)
+
+tabla_contingencia_2 <- table(datos_acs$m01, datos_acs$c05_01)
+
+print(tabla_contingencia_2)
+
+sjPlot::sjt.xtab(var.row = datos_acs$m01, var.col = datos_acs$c05_01,
+                 show.row.prc = TRUE, show.col.prc = TRUE)
+
 ```
 
-<div class="table-container" style="overflow-x: auto; margin: 30px 0;">
+# 6. Analisis de Correspondencia Simple (ACS)
 
-<table style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif; font-size: 0.9em;">
-<thead>
-<tr style="background-color: #2c2c2c; color: white;">
-<th style="border: 1px solid #444; padding: 12px; text-align: center;">Nivel Educacional</th>
-<th style="border: 1px solid #444; padding: 12px; text-align: center;">Grupo Expertos<br><span style="font-size: 0.8em; color: #ccc;">N (%)</span></th>
-<th style="border: 1px solid #444; padding: 12px; text-align: center;">Parlamento<br><span style="font-size: 0.8em; color: #ccc;">N (%)</span></th>
-<th style="border: 1px solid #444; padding: 12px; text-align: center;">Asamblea<br><span style="font-size: 0.8em; color: #ccc;">N (%)</span></th>
-<th style="border: 1px solid #444; padding: 12px; text-align: center;">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="border: 1px solid #ddd; padding: 10px; font-weight: bold;">Educación Básica</td>
-<td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
-138<br>
-<span style="color: #1a73e8; font-size: 0.85em;">22.5%</span><br>
-<span style="color: #0d904f; font-size: 0.8em;">19.7%</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
-30<br>
-<span style="color: #1a73e8; font-size: 0.85em;">4.9%</span><br>
-<span style="color: #0d904f; font-size: 0.8em;">38.5%</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
-446<br>
-<span style="color: #1a73e8; font-size: 0.85em;">72.6%</span><br>
-<span style="color: #0d904f; font-size: 0.8em;">19.8%</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 10px; text-align: center; font-weight: bold; background-color: #f0f8ff;">
-614
-</td>
-</tr>
-<tr>
-<td style="border: 1px solid #ddd; padding: 10px; font-weight: bold;">Educación Media</td>
-<td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
-277<br>
-<span style="color: #1a73e8; font-size: 0.85em;">21.8%</span><br>
-<span style="color: #0d904f; font-size: 0.8em;">39.5%</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
-31<br>
-<span style="color: #1a73e8; font-size: 0.85em;">2.4%</span><br>
-<span style="color: #0d904f; font-size: 0.8em;">39.7%</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
-964<br>
-<span style="color: #1a73e8; font-size: 0.85em;">75.8%</span><br>
-<span style="color: #0d904f; font-size: 0.8em;">42.8%</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 10px; text-align: center; font-weight: bold; background-color: #f0f8ff;">
-1,272
-</td>
-</tr>
-<tr>
-<td style="border: 1px solid #ddd; padding: 10px; font-weight: bold;">Educación Superior</td>
-<td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
-286<br>
-<span style="color: #1a73e8; font-size: 0.85em;">25%</span><br>
-<span style="color: #0d904f; font-size: 0.8em;">40.8%</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
-17<br>
-<span style="color: #1a73e8; font-size: 0.85em;">1.5%</span><br>
-<span style="color: #0d904f; font-size: 0.8em;">21.8%</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 10px; text-align: center;">
-843<br>
-<span style="color: #1a73e8; font-size: 0.85em;">73.6%</span><br>
-<span style="color: #0d904f; font-size: 0.8em;">37.4%</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 10px; text-align: center; font-weight: bold; background-color: #f0f8ff;">
-1,146
-</td>
-</tr>
-<tr style="background-color: #2c2c2c; color: white; font-weight: bold;">
-<td style="border: 1px solid #444; padding: 10px;">Total General</td>
-<td style="border: 1px solid #444; padding: 10px; text-align: center;">
-701<br>
-<span style="color: #ccc; font-size: 0.85em;">23.1%</span><br>
-<span style="color: #ccc; font-size: 0.8em;">100%</span>
-</td>
-<td style="border: 1px solid #444; padding: 10px; text-align: center;">
-78<br>
-<span style="color: #ccc; font-size: 0.85em;">2.6%</span><br>
-<span style="color: #ccc; font-size: 0.8em;">100%</span>
-</td>
-<td style="border: 1px solid #444; padding: 10px; text-align: center;">
-2,253<br>
-<span style="color: #ccc; font-size: 0.85em;">74.3%</span><br>
-<span style="color: #ccc; font-size: 0.8em;">100%</span>
-</td>
-<td style="border: 1px solid #444; padding: 10px; text-align: center; background-color: #1a5276;">
-3,032
-</td>
-</tr>
-</tbody>
-</table>
+Con el Test de Hipotesis de Chi.cuadrado realizado y validado; ademas de tener las tablas de contingencia, es que podemos realizar el Analisis de Correspondencia.
 
-<div style="text-align: center; padding: 10px; color: #666; font-size: 0.85em;">
-<strong>Leyenda:</strong> 
-<span style="color: #000; font-weight: bold;">N</span> = Frecuencia absoluta | 
-<span style="color: #1a73e8;">🔵 Porcentaje fila</span> | 
-<span style="color: #0d904f;">🟢 Porcentaje columna</span>
-</div>
-</div>
+Como bien hemos visto en clases, el **Analisis de Correspondencia** es una técnica estadística que sirve para estudiar la **relación entre variables categóricas**. 
+Con esta ademas podemos representar graficamente dichas relaciones, de forma que podamos observar como dichas categorias o variables tienden a aparecer asociadas visualemente entre si.
+
+Un **Analisis de Correspondencia Simple (ACS)** lo solemos utilizar principalmente cuando se tienen dos variables categoricas y esta seria la aplicación de un analisis estadistico a la tabla de contingencia para posteriormente representarlo visualmente, en lo que se denomina un mapa de asociaciones.
+
+El **Analisis de Correspondencia Multiple (ACM)** (que veremos en futuros practicos) es una extensión del anterior y permite analizar más de dos variables categoricas de forma simultanea.
+
+## 6.1 Analisis de Correspondencia Simple (ACS) en Rstudios
 
 ::: {.callout-note}
-Los valores de la tabla de frecuencias de (781/1.432/1.200 + 4 NA) y la tabla de contingencia de 3.032 son ambos correctos.
-La diferencia en los 381 casos son por los valores perdidos de la variable c29.
+Como les comento en clases la Profesora Carolina, este tipo de analisis es bastente comun y popular, 
+en lo respectivo a los estudios sobre el habitus de Pierre Bourdieu, más especificamente por ejemplo los estudios
+sobre el gusto, permitiendo visualizar dichas relaciones de forma estadistica y considerando enfoques como la clase social o
+el nivel educativo.
 :::
----
 
-# 📊 Prueba Chi-cuadrado (X²): Cálculo e Interpretación
+Para realizar un Analisis de Correspondencia Simple (ACS) en Rstudios podemos realizarlo de la siguiente forma:
 
 ```{r, eval=FALSE}
-tabla <- matrix(c(138, 30, 446,
-                  277, 31, 964,
-                  286, 17, 843), nrow = 3, byrow = TRUE,
-                dimnames = list(Educacion = c("Básica","Media","Superior"),
-                                Mecanismo = c("Expertos","Parlamento","Asamblea")))
-```
 
-# Paso 2: frecuencias esperadas 
+# Utilizaremos la función CA() del paquete FactoMineR.
+# CA son las siglas de Analisis de Correspondencia en ingles
+# En este caso crearemos el analisis de correspondecia en Rstudios y
+# dejaremos su resultado como datos y valores en el apartado del Enviroment
+# La visualización del mismo en el "Workspace" sera en pasos de más adelante
+
+resultado_ca <- CA(tabla_contingencia, graph = FALSE)
+
+# De momento podemos ver sus resultados de la siguiente forma
+
+print(resultado_ca) # Para ver el resumen del resultado
+
+summary(resultado_ca) # En caso de querer ver más detalles
+
+```
+::: {.callout-note}
+En para este ejemplo estamos haciendo el Analisis de Correspondecia entre las variables educación (m01)
+con preferencia democratica (c25).
+En caso de querer realizarlo con la otra variable, repitan el mismo codigo realizado anteriormente
+(el de arriba de esta nota) cambiando la tabla_contingencia, por tabla_contingencia_2 y repitan los pasos
+siguientes.
+No olviden crear un objeto nuevo en el enviroment con un nombre distinto a resultado_ca,
+puede ser resultado_ca_2, en caso de no hacerlo se sobreescribiran los resultados de ambos analisis.
+:::
+
+Pero un Analisis de Correspondencia (AC) ya sea en su forma simple (ACS) o multiple (ACM) no solo nos entregan eso datos, tambien podemos disponer de más.
+
+## 6.2 Interpretación de resultados clave del Analisis de Correspondencia Simple (ACS)
+
+Podemos obtener su **Masa (o Mass)** : Esta representa la proporción que cada fila y cada columna aporta al total de la tabla. 
+Una masa alta indica una categoría con muchos casos.
+
+
 ```{r, eval=FALSE}
-E <- outer(rowSums(tabla), colSums(tabla)) / sum(tabla)
-round(E, 2)
-stopifnot(all(E >= 5))          # supuesto de la prueba: todas las esperadas >= 5
-```
 
-# Paso 3: chi-cuadrado manual
+# Para obtener la masa de filas y columnas debemos realizar lo siguiente
+
+masas_filas <- resultado_ca$call$marge.row
+
+masas_columnas <- resultado_ca$call$marge.col
+
+# en caso de querer obtener la masa con la otra variable, cambien el resultado de su ACS
+# asumiendo que lo realizaron como se menciono con anterioridad
+
+# Ahora las podemos visualizar de la siguiente forma con un mejor formato
+
+cat("\n📊 Masas de filas (proporción de cada categoría educacional):\n")
+print(round(masas_filas, 4))
+
+# Correr ambas lineas de codigo a la vez
+
+cat("\n📊 Masas de columnas (proporción de cada preferencia democrática):\n")
+print(round(masas_columnas, 4))
+
+# Pero ahora tambien podemos visualizarlo en un gráfico de masas en el "Workspace" 
+# para tener una mejor visualización
+
+barplot(masas_filas, 
+        main = "Masa por categoría educacional",
+        xlab = "Nivel educacional", 
+        ylab = "Proporción",
+        col = "steelblue")
+
+# parte este grafico se hizo con filas, en caso de querer obtener el de las columnas
+# cambien masas_filas por masas_columnas
+
+```
+Tambien podemos obtener otro resultado clave que en este caso es la **Inercia (Inertia).**
+La inercia mide la varianza total explicada por las dimensiones. Esta es un copcpeto análogo al concepto de varianza en un PCA (analisis de componentes principales) que veremos unidades más adelantes. 
+Una inercia total alta indica una fuerte asociación entre las variables.
+
+Podemos calcular u obtener la inercia en Rstudios de la siguiente manera:
+
 ```{r, eval=FALSE}
-contrib <- (tabla - E)^2 / E
-chi2 <- sum(contrib)
-gl   <- (nrow(tabla) - 1) * (ncol(tabla) - 1)
-p    <- pchisq(chi2, gl, lower.tail = FALSE)
-c(chi2 = chi2, gl = gl, p = p)          # 21.614 | 4 | 0.00024
-```
 
-# Paso 4: contraste con la función de R
+resultado_ca$eig # Con este codigo calculamos la inercia total y por dimensión
+
+```
+El aporte de la inercia a cada dimensión del modelo (contributions) nos **indica qué categorías contribuyen más a la construcción de cada dimensión.**
+
+Pero tambien podemos ver la contribución de las filas y las columnas a las dimensiones
+
 ```{r, eval=FALSE}
-chisq.test(tabla)
-```
 
-# Paso 5: TAMAÑO DE EFECTO (lo que falta para interpretar bien)
+resultado_ca$row$contrib # Contribución Fila
+
+resultado_ca$col$contrib # Contribución Columna
+
+```
+Ahora finalmente visualizaremos el Analsis de Correspondencia Simple (ACS)
+
 ```{r, eval=FALSE}
-V <- sqrt(chi2 / (sum(tabla) * (min(dim(tabla)) - 1)))
-V                                        # 0.060 -> asociación significativa pero MUY débil
-round(100 * contrib / chi2, 1)           # 59% del chi2 viene de Básica x Parlamento
-round(chisq.test(tabla)$stdres, 2)       # residuos estandarizados
+
+# Esta puede ser visualizada de una forma basica en la consola de forma basica
+
+plot(resultado_ca)
+
+# Pero tambien la podemos visualizar de otra forma más elabarada con el faquete factoextra
+
+fviz_ca_biplot(resultado_ca, repel = TRUE) 
+
+# Usamos repel para evitar la superposición de etiquetas
+
+# Dicha visualización del (ACS) tambien puede ser personalizada a nuestro gusto
+
+# Personalización
+
+fviz_ca_biplot(resultado_ca,
+               col.row = "blue",      # Color para las categorías de fila
+               col.col = "red",       # Color para categorías de columna
+               repel = TRUE,
+               title = "Mapa Perceptual - Nivel Educacional vs Preferencia Política")
+
 ```
 
-La asociación de V: 0.060 es significativa pero muy debil y el 59,1% del x2 proviene de una sola celda /correspondiente a Básica x Parlamento), con un 24,4% adicional en Superior x Parlamento.
+
+
 
