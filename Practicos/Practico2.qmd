@@ -348,7 +348,7 @@ sjPlot::sjt.xtab(var.row = datos_acs$m01, var.col = datos_acs$c05_01,
 
 ```
 
-# 6. Analisis de Correspondencia Simple (ACS)
+# 6. Resultados clave del Analisis de Correspondencia Simple (ACS)
 
 Con el Test de Hipotesis de Chi.cuadrado y ademas de con las tablas de contingencia, es que podemos realizar un Analisis de Correspondencia.
 
@@ -396,7 +396,7 @@ puede ser resultado_ca_2, en caso de no hacerlo se sobreescribiran los resultado
 
 Pero un Analisis de Correspondencia (AC) ya sea en su forma simple (ACS) o multiple (ACM) no solo nos entregan eso datos, tambien podemos disponer de más.
 
-## 6.2 Interpretación de resultados clave del Analisis de Correspondencia Simple (ACS)
+## 6.2 Elaboración de resultados clave (ACS)
 
 ### 6.2.1 Calculo de Masa
 
