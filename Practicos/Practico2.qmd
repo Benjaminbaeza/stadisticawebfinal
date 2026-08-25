@@ -1,22 +1,24 @@
-# 🎯 Objetivos del Práctico
-
 # 1. Propósito General
 
 Este práctico tiene como objetivo desarrollar competencias en el **análisis de asociación entre variables categóricas** mediante:
 
 A. **Construcción** de tablas de contingencia
 B. **Aplicación** de la prueba de hipotesis de Chi-cuadrado (χ²)
-C. **Interpretación** de los resultados estadísticos y sustantivos
-D. **Contraste** entre cálculo manual y automatizado.
-E. **Realización** de Analisis de Correspondencia Simple (ACS)
+C. **Realización** de Analisis de Correspondencia Simple (ACS)
+D. **Interpretación** de los resultados estadísticos
+E. **Elaboración** de resultados sustantivos a partir de la interpretación de los resultados anteriores
 
 ::: {.callout-note}
 Realizaremos Analisis de Correspondencia Multiple (ACM) en el siguiente Practico N°3
 :::
 
-# 2. Contexto del Estudio
+# 2. Contexto del Estudio 
 
-La Base de Datos con la que nos dispondremos a trabajar, corresponde a la del **Estudio Longitudinal Social de Chile (ELSOC)**, más especificamete con su **cuarta ola** correspondiente a las observaciones realizadas en el año (2019); ELSOC es una encuesta panel representativa a nivel nacional, en este practico, nos dispondremos a analizar la relación entre el **nivel educacional** y las **preferencias político-democráticas**.
+La Base de Datos con la que nos dispondremos a trabajar, corresponde a la del **Estudio Longitudinal Social de Chile (ELSOC)**, más especificamete con su **cuarta ola** correspondiente a las observaciones realizadas en el año (2019); ELSOC es una encuesta panel representativa a nivel nacional. 
+
+# 3. 🎯 Objetivos del Práctico
+
+En este practico, se les dispondran una serie de tres variables del ELSOC; a partir de estas se espera que efectuen el Test de Hipotesis de Chi-cuadrado con las variables en Rstudios; realicen la construcción de tablas de contingencia con dichas variables y por ultimo elaboren un Analisis de Correspondecia Simple (ACS) para establecer si es viable o recomendable la realización de un analisis de este tipo con dichas variables a partir de la interpretación de todos los resultados en su conjunto.
 
 ---
 
@@ -239,8 +241,6 @@ En caso de realizarlo siempre es bueno cerciorarse, de que solo se esta perdiend
 
 # 5. 🧬 : Chi-cuadrado (χ²) y tablas de contingencia
 
-Para realizar el analisis de correspondencia un paso y requisito previo, es saber que las variables categoricas con las que estamos trabajando presentan un grado de asociación. Para eso debemos realizar el test de Hipotesis de Chi-cuadrado
-
 ## 5.1 Chi-cuadrado (χ²) en Rstudios
 
 ```{r, eval=FALSE}
@@ -260,7 +260,7 @@ nice_table(stats.table_1)
 
 # Con nice_table podemos visualizar los estadisticos en una tabla
 
-ggchisqtest(chi_result_1)
+suppressWarnings(ggchisqtest(chi_result_1))
 
 # Con ggchisqtest(chi_result_1) podemos visualizar el resultado del test de hipotesis de
 # Chi-cuadrado en una curva de distribución de Chi-cuadrado
@@ -274,16 +274,11 @@ stats.table_2 <- tidy(chi_result_2, conf_int = T)
 
 nice_table(stats.table_2)
 
-ggchisqtest(chi_result_2)
+suppressWarnings(ggchisqtest(chi_result_2))
 
 ```
-Cuando realizamos un test  de hipotesis de Chi-cuadrado, lo que estamos haciendo es comprobar si existe un grado de asociación entre ambas variables más **no podemos saber la dirección de la misma** como en una correlación, solo sabemos que ambas estan asociadas, pero no cual influye en cual.
-
-En una curva de distribución de Chi-cuadrado, existe un valor de (χ²) el cual esta delimitado por los grados de libertad (gl), dicho valor es conocido como Chi Critico o Valor Critico; si el valor que tienen ambas variables al momento de relacionarse (realizar el test) que seria la comparación entre los valores de las tablas de contingencia (tabla de valor observado y valor esperado) es mayor que el Chi Critico es que ambas variables estan asociadas.
 
 ## 5.2 Tablas de contingencia
-
-Sabiendo que las variables estan asociadadasm podemos elaborar las tablas de contingencia
 
 ::: {.callout-note}
 La elaboración de tablas de contingencia, puede ser un paso previo a la elaboración del test de hipotesis de Chi-cuadrado, esto queda a criterio del investigador.
@@ -355,12 +350,9 @@ sjPlot::sjt.xtab(var.row = datos_acs$m01, var.col = datos_acs$c05_01,
 
 # 6. Analisis de Correspondencia Simple (ACS)
 
-Con el Test de Hipotesis de Chi.cuadrado realizado y validado; ademas de tener las tablas de contingencia, es que podemos realizar el Analisis de Correspondencia.
+Con el Test de Hipotesis de Chi.cuadrado y ademas de con las tablas de contingencia, es que podemos realizar un Analisis de Correspondencia.
 
-Como bien hemos visto en clases, el **Analisis de Correspondencia** es una técnica estadística que sirve para estudiar la **relación entre variables categóricas**. 
-Con esta ademas podemos representar graficamente dichas relaciones, de forma que podamos observar como dichas categorias o variables tienden a aparecer asociadas visualemente entre si.
-
-Un **Analisis de Correspondencia Simple (ACS)** lo solemos utilizar principalmente cuando se tienen dos variables categoricas y esta seria la aplicación de un analisis estadistico a la tabla de contingencia para posteriormente representarlo visualmente, en lo que se denomina un mapa de asociaciones.
+Un **Analisis de Correspondencia Simple (ACS)** lo solemos utilizar principalmente cuando se tienen dos variables categoricas y esta seria la aplicación de un analisis estadistico a la tabla de contingencia para posteriormente representarlo visualmente, en lo que se denomina un **mapa de asociaciones**.
 
 El **Analisis de Correspondencia Multiple (ACM)** (que veremos en futuros practicos) es una extensión del anterior y permite analizar más de dos variables categoricas de forma simultanea.
 
@@ -406,9 +398,9 @@ Pero un Analisis de Correspondencia (AC) ya sea en su forma simple (ACS) o multi
 
 ## 6.2 Interpretación de resultados clave del Analisis de Correspondencia Simple (ACS)
 
-Podemos obtener su **Masa (o Mass)** : Esta representa la proporción que cada fila y cada columna aporta al total de la tabla. 
-Una masa alta indica una categoría con muchos casos.
+### 6.2.1 Calculo de Masa
 
+La **Masa (o Mass)** representa la proporción que cada fila y cada columna aporta al total de la tabla. 
 
 ```{r, eval=FALSE}
 
@@ -444,9 +436,10 @@ barplot(masas_filas,
 # cambien masas_filas por masas_columnas
 
 ```
+
+### 6.2.2 Calculo de Inercia
+
 Tambien podemos obtener otro resultado clave que en este caso es la **Inercia (Inertia).**
-La inercia mide la varianza total explicada por las dimensiones. Esta es un copcpeto análogo al concepto de varianza en un PCA (analisis de componentes principales) que veremos unidades más adelantes. 
-Una inercia total alta indica una fuerte asociación entre las variables.
 
 Podemos calcular u obtener la inercia en Rstudios de la siguiente manera:
 
@@ -455,9 +448,7 @@ Podemos calcular u obtener la inercia en Rstudios de la siguiente manera:
 resultado_ca$eig # Con este codigo calculamos la inercia total y por dimensión
 
 ```
-El aporte de la inercia a cada dimensión del modelo (contributions) nos **indica qué categorías contribuyen más a la construcción de cada dimensión.**
-
-Pero tambien podemos ver la contribución de las filas y las columnas a las dimensiones
+Tambien podemos calcular la contribución de la inercia de las filas y las columnas a las dimensiones
 
 ```{r, eval=FALSE}
 
@@ -466,7 +457,10 @@ resultado_ca$row$contrib # Contribución Fila
 resultado_ca$col$contrib # Contribución Columna
 
 ```
-Ahora finalmente visualizaremos el Analsis de Correspondencia Simple (ACS)
+
+# 7. Analisis de Correspondencia Simple (ACS)
+
+Construiremos y visualizaremos el Analsis de Correspondencia Simple (ACS)
 
 ```{r, eval=FALSE}
 
@@ -492,6 +486,19 @@ fviz_ca_biplot(resultado_ca,
 
 ```
 
+# 8. Preguntas a responder 
+
+A partir de los resultados de los resultados del calculo de los pasos anteriores **respondan las siguiente preguntas:**
+
+1. A partir de los resultados del test de Chi-cuadrado (χ²) ¿Estan las variables asociadas?
+
+2. A partir de los resultados de las tablas de contingencia/s ¿como interpreta sus resultados?
+
+3. A partir de los resultados del calculo de la Masa y la Inercia ¿Como podria interpretar dichos datos?
+
+4. Interprte el resultadi del mapa de asociaciones del Analisis de Correspondencia Simple (ACS)
+
+5. A partir de todos los datos en su conjunto y considerando sus respuestas anteriores ¿Considera que es recomendable hacer un ACS con dichas variables?
 
 
 
