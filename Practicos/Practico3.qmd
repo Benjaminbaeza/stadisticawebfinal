@@ -283,6 +283,8 @@ plot.CA(ACS_3)
 
 ```
 
+# 7. Analisis de Correspondencia Múltiple
+
 ```{r, eval=FALSE}
 
 ACM_datos <- datos_acs %>%
