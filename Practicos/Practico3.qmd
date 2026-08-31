@@ -1,4 +1,4 @@
-# 🎯 Objetivos del Práctico
+# 1. 🎯 Objetivos del Práctico
 ## Propósito General
 Este práctico está dedicado al análisis de asociación entre variables categóricas mediante técnicas de reducción de dimensionalidad. Los objetivos son:
 
@@ -10,238 +10,311 @@ Este práctico está dedicado al análisis de asociación entre variables categ�
 
 4. **Visualizar** y comunicar las asociaciones entre categorías de manera efectiva.
 
-# 📝 Ejercicio a Desarrollar
-Pueden trabajar en grupos de 2 a 3 personas o de manera individual. Deben elegir UNO de los siguientes ejercicios, utilizando la base de datos ELSOC (u otra de su elección, si se especifica).
+# 2. Contexto del Practico
 
-### Opción 1: Análisis de Correspondencia Simple (ACS)
-Objetivo: Realizar la segunda parte del ejercicio propuesto por el profesor Kevin Carrasco (desde "Análisis de correspondencia simple"), utilizando la misma base de datos que en el Práctico 2. (https://estadisticaiv.netlify.app/practicos/03-content#an%C3%A1lisis-de-correspondencias-simple) 
+# 3. 🔧 Preparación del Entorno Analítico o Trabajo
 
-### Opción 2: Análisis de Correspondencia Simple (ACS) con Nuevas Variables
-Objetivo: Realizar un ACS con la misma base de datos, pero seleccionando otras variables (diferentes a las usadas en el Práctico 2 o 3).
+## 3.1. Fijación de directorio
 
-### Opción 3: Análisis de Correspondencia Múltiple (ACM)
-Objetivo: Realizar un ACM con la misma base de datos, incorporando al menos tres variables categóricas para explorar sus relaciones simultáneas.
 
-# 🔧 Preparación del Entorno Analítico
-## Carga de Paquetes
-Para este práctico necesitarás paquetes específicos para análisis de correspondencia.
+## 3.2. Configuración del entorno R
+
+
+## 3.3. Instalación y carga de paquetes
 
 ```{r, eval=FALSE}
-pacman::p_load(tidyverse, sjPlot, psych, DescTools, ggplot2,
-               broom, rempsyc, FactoMineR, factoextra, corrplot,
-               dplyr, nFactors, ggbiplot, ggrepel, sjlabelled)
+
+install.packages("pacman")
+library(pacman)
+
+pacman::p_load(
+  tidyverse,         # Manipulación de datos
+  sjPlot,            # Visualización de datos
+  haven,             # Bases de datos en distintos formatos
+  sjmisc,            # Funciones exploratorias
+  psych,             # Correlaciones
+  DescTools,         # Tablas
+  ggplot2,           # Gráficos
+  broom,             # Limpieza de resultados
+  gginference,       # Gráficos
+  FactoMineR,        # Análisis de correspondencia
+  factoextra,        # Visualización del ACM
+  rempsyc,           # Gráficos
+  flextable)         # Tablas
+
 ```
-## Carga y Preparación de la Base de Datos
-Carguen la base ELSOC y seleccionen las variables de interés.
+## 3.4. Carga de la Base de Datos
+
+Cargamos la base de datos de ELSOC; se puede descargar directamente en nuestro PC; usando el singuiente link: https://dataverse.harvard.edu/api/access/datafile/7245118 
 
 ```{r, eval=FALSE}
-# Cargar base ELSOC (ajustar ruta según corresponda)
+
+# En caso de descargarla en nuestro PC, la base del ELSOC, debe quedar 
+# en la carpeta de R en la que hayamos fijado el directorio (Paso 3.1)
+
+# O se carga directamente desde internet con el siguiente comando
+
 load(url("https://dataverse.harvard.edu/api/access/datafile/7245118"))
 
-# Filtrar ola y seleccionar variables (¡ejemplo con variables hipotéticas!)
+```
+
+# 4. 🧹 Selección y Limpieza de Variables:
+
+## 4.1. Selección de variables y filtrado por ola 4 (2019)
+
+```{r, eval=FALSE}
+
 datos_acs <- elsoc_long_2016_2022.2 %>%
   filter(ola == "4") %>%
-  select(m01,           # Nivel educacional
-         c25,           # Preferencia democracia
-         c05_01         # Confianza en el gobierno (para ACM)
-         )
+  select(
+    m01,       # Nivel educativo
+    c05_01,    # Confianza en el gobierno
+    c05_08,    # Confianza en el presidente
+    c15,       # Autoubicación izquierda-derecha
+    c28        # Acuerdo con cambiar Constitución
+  )
 
-# Recodificamos la variable m01 para facilitar su interpretación
+# Exploramos las variables y vemos algunos de sus descriptivos
+# (como por ejemplo proporción de las variables; valor porcentual;
+# total de variables; media y desviación estandar).
 
-proc_data$educacion <- car::recode(proc_data$m01,
-                                   "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
-proc_data$educacion <- sjlabelled::set_labels(
-  proc_data$educacion,
-  labels = c("Educación básica" = 1, "Educación media" = 2, "Educación superior" = 3))
+frq(datos_acs$m01)
 
-# Convertir códigos de valores perdidos a NA
-datos_acs <- datos_acs %>% sjlabelled::set_na(., na = c(-999, -888, -777, -666))
+frq(datos_acs$c05_01)
 
-# Eliminar casos con NA (para simplificar el análisis)
+frq(datos_acs$c05_08)
+
+frq(datos_acs$c15)
+
+frq(datos_acs$c28)
+
+```
+
+## 4.2. Recodificación de variables
+
+```{r, eval=FALSE}
+
+datos_acs$educacion <- car::recode(
+  datos_acs$m01,
+  "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
+
+datos_acs$educacion <- factor(
+  datos_acs$educacion,
+  levels = c(1, 2, 3),
+  labels = c("Educación básica", "Educación media", "Educación superior"))
+
+
+datos_acs$confianza_gob <- car::recode(
+  datos_acs$c05_01,
+  "c(1,2)=1; c(3)=2; c(4,5)=3")
+
+datos_acs$confianza_gob <- factor(
+  datos_acs$confianza_gob,
+  levels = c(1, 2, 3),
+  labels = c("Desconfianza en el gobierno", "Indiferente con el gobierno",
+             "Confianza en el gobierno"))
+
+datos_acs$confianza_presi <- car::recode(
+  datos_acs$c05_08,
+  "c(1,2)=1; c(3)=2; c(4,5)=3")
+
+datos_acs$confianza_presi <- factor(
+  datos_acs$confianza_presi,
+  levels = c(1, 2, 3),
+  labels = c("Desconfianza en el presidente", "Indiferencia con el presidente",
+             "Confianza en el presidente"))
+
+datos_acs$auto_pospol <- car::recode(
+  datos_acs$c15,
+  "c(0,1,2)=1; c(3,4)=2; c(5)=3; c(6,7)=4;
+   c(8,9,10)=5; c(11)=6; c(12)=7")
+
+datos_acs$auto_pospol <- factor(
+  datos_acs$auto_pospol,
+  levels = c(1, 2, 3, 4, 5, 6, 7),
+  labels = c("Izquierda", "Centro izquierda", "Centro", "Centro derecha",
+    "Derecha", "Independiente", "Apolitico"))
+
+datos_acs$Cambio_const <- car::recode(
+  datos_acs$c28,
+  "c(1,2)=1; c(3)=2; c(4,5)=3")
+
+datos_acs$Cambio_const <- factor(
+  datos_acs$Cambio_const,
+  levels = c(1, 2, 3),
+  labels = c("En desacuerdo con cambiar la constitución",
+    "Ni de acuerdo ni en desacuerdo con cambiar la constitución",
+    "De acuerdo con cambiar la constitución"))
+
+frq(datos_acs$educacion)
+frq(datos_acs$confianza_gob)
+frq(datos_acs$confianza_presi)
+frq(datos_acs$auto_pospol)
+frq(datos_acs$Cambio_const)
+
+```
+
+## 4.3. 4.3 Transformación de valores perdidos a NA
+
+```{r, eval=FALSE}
+
+datos_acs <- datos_acs %>%
+  sjlabelled::set_na(
+    na = c(-999, -888, -777, -666))
+
 datos_acs <- na.omit(datos_acs)
 
-# Ver estructura
-str(datos_acs)
-```
+frq(datos_acs$educacion)
+frq(datos_acs$confianza_gob)
+frq(datos_acs$confianza_presi)
+frq(datos_acs$auto_pospol)
+frq(datos_acs$Cambio_const)
 
-# 📊 Análisis de Correspondencia Simple (ACS)
-## Paso 1: Crear Tabla de Contingencia
-El ACS se aplica sobre una tabla de contingencia.
+```
+# 5.🧬 : Chi-cuadrado (χ²) y tablas de contingencia
+
+## 5.1. Chi-cuadrado (χ²)
 
 ```{r, eval=FALSE}
-# Crear tabla de contingencia
-tabla_contingencia <- table(datos_acs$m01, datos_acs$c25)
-print(tabla_contingencia)
 
-# Verificar con sjPlot (opcional)
-sjPlot::sjt.xtab(var.row = datos_acs$m01, var.col = datos_acs$c25,
-                 show.row.prc = TRUE, show.col.prc = TRUE)
+chi_result_1 <- chisq.test(
+  table(datos_acs$Cambio_const, datos_acs$educacion))
+
+stats.table_1 <- tidy(chi_result_1, conf_int = TRUE)
+
+nice_table(stats.table_1)
+
+suppressWarnings(ggchisqtest(chi_result_1))
+
+
+chi_result_2 <- chisq.test(
+  table(datos_acs$Cambio_const, datos_acs$confianza_presi))
+
+stats.table_2 <- tidy(chi_result_2, conf_int = TRUE)
+
+nice_table(stats.table_2)
+
+suppressWarnings(ggchisqtest(chi_result_2))
+
+
+chi_result_3 <- chisq.test(
+  table(datos_acs$Cambio_const, datos_acs$confianza_gob))
+
+stats.table_3 <- tidy(chi_result_3, conf_int = TRUE)
+
+nice_table(stats.table_3)
+
+suppressWarnings(ggchisqtest(chi_result_3))
+
+
+chi_result_4 <- chisq.test(
+  table(datos_acs$Cambio_const, datos_acs$auto_pospol))
+
+stats.table_4 <- tidy(chi_result_4, conf_int = TRUE)
+
+nice_table(stats.table_4)
+
+suppressWarnings(ggchisqtest(chi_result_4))
+
 ```
-## Paso 2: Realizar el ACS
-Utilizaremos la función CA() del paquete FactoMineR.
+
+## 5.2. Tablas de contingencia
 
 ```{r, eval=FALSE}
-# Realizar Análisis de Correspondencia Simple
-resultado_ca <- CA(tabla_contingencia, graph = FALSE)
 
-# Ver resumen del resultado
-print(resultado_ca)
-summary(resultado_ca) # Más detalles
+sjPlot::sjt.xtab(
+  var.row = datos_acs$confianza_presi,
+  var.col = datos_acs$Cambio_const,
+  show.summary = FALSE,
+  emph.total = TRUE,
+  show.row.prc = TRUE,
+  show.col.prc = TRUE,
+  encoding = "UTF-8")
+
+sjPlot::sjt.xtab(
+  var.row = datos_acs$confianza_gob,
+  var.col = datos_acs$Cambio_const,
+  show.summary = FALSE,
+  emph.total = TRUE,
+  show.row.prc = TRUE,
+  show.col.prc = TRUE,
+  encoding = "UTF-8")
+
+sjPlot::sjt.xtab(
+  var.row = datos_acs$auto_pospol,
+  var.col = datos_acs$Cambio_const,
+  show.summary = FALSE,
+  emph.total = TRUE,
+  show.row.prc = TRUE,
+  show.col.prc = TRUE,
+  encoding = "UTF-8")
+
 ```
-
-## Paso 3: Interpretación de Resultados Clave
-A continuación, se deben interpretar los siguientes elementos:
-
-📊 **Masa (Mass)** : Representa la proporción que cada fila y cada columna aporta al total de la tabla. Una masa alta indica una categoría con muchos casos.
+# 6. Analisis de Correspondencia Simple (ACS)
 
 ```{r, eval=FALSE}
-# Masa de filas y columnas
-masas_filas <- resultado_ca$call$marge.row
-masas_columnas <- resultado_ca$call$marge.col
 
-# Visualizar con mejor formato
-cat("\n📊 Masas de filas (proporción de cada categoría educacional):\n")
-print(round(masas_filas, 4))
+tabla_1 <- prop.table(
+  table(datos_acs$Cambio_const, datos_acs$confianza_presi))
 
-cat("\n📊 Masas de columnas (proporción de cada preferencia democrática):\n")
-print(round(masas_columnas, 4))
+ACS_1 <- CA(tabla_1, ncp = 2, graph = FALSE)
 
-# Gráfico de masas para mejor visualización
-barplot(masas_filas, 
-        main = "Masa por categoría educacional",
-        xlab = "Nivel educacional", 
-        ylab = "Proporción",
-        col = "steelblue")
+summary(ACS_1)
+
+plot.CA(ACS_1)
+
+tabla_2 <- prop.table(
+  table(datos_acs$Cambio_const, datos_acs$confianza_gob))
+
+ACS_2 <- CA(tabla_2, ncp = 2, graph = FALSE)
+
+summary(ACS_2)
+
+plot.CA(ACS_2)
+
+tabla_3 <- prop.table(
+  table(datos_acs$Cambio_const, datos_acs$auto_pospol))
+
+ACS_3 <- CA(tabla_3, ncp = 2, graph = FALSE)
+
+summary(ACS_3)
+
+plot.CA(ACS_3)
+
 ```
-⚖️ **Inercia (Inertia)** : Mide la varianza total explicada por las dimensiones. Es análogo al concepto de varianza en un PCA. Una inercia total alta indica una fuerte asociación entre las variables.
 
 ```{r, eval=FALSE}
-# Inercia total y por dimensión
-resultado_ca$eig
-```
-- Interpretar: ¿Qué porcentaje de la inercia total explica cada dimensión (usualmente las dos primeras)?
 
-📈 **Aporte de cada dimensión al modelo (Contributions):** Indica qué categorías contribuyen más a la construcción de cada dimensión.
+ACM_datos <- datos_acs %>%
+  select(Cambio_const,
+         auto_pospol,
+         confianza_gob,
+         confianza_presi)
+
+
+ACM <- FactoMineR::MCA(ACM_datos, graph = FALSE)
+
+summary(ACM)
+
+eig_val <- factoextra::get_eigenvalue(ACM)
+
+head(eig_val, 10)
+
+fviz_screeplot(ACM, addlabels = TRUE)
+
+```
 
 ```{r, eval=FALSE}
-# Contribuciones de filas y columnas a las dimensiones
-resultado_ca$row$contrib
-resultado_ca$col$contrib
-```
-Interpretar: ¿Qué categorías de fila y columna tienen mayor contribución a la Dimensión 1? ¿Y a la Dimensión 2?
 
-## Paso 4: Visualización: El Mapa Perceptual
-El mapa perceptual (o biplot) es la herramienta clave para interpretar las asociaciones.
+fviz_mca_var(ACM,
+  col.var = "contrib",
+  gradient.cols = c(
+    "#00AFBB",
+    "#E7B800",
+    "#FC4E07"
+  ), repel = TRUE, ggtheme = theme_minimal()
+)
 
-```{r, eval=FALSE}
-# Visualización básica
-plot(resultado_ca)
-
-# Visualización más elaborada con factoextra
-fviz_ca_biplot(resultado_ca, repel = TRUE) # repel evita superposición de etiquetas
-
-# Personalizar
-fviz_ca_biplot(resultado_ca,
-               col.row = "blue",      # Color para categorías de fila
-               col.col = "red",       # Color para categorías de columna
-               repel = TRUE,
-               title = "Mapa Perceptual - Nivel Educacional vs Preferencia Política")
-```
-## Interpretación del Mapa:
-
-- **Proximidad entre puntos de FILA:** Categorías de fila cercanas tienen perfiles similares en relación a las columnas.
-
-- **Proximidad entre puntos de COLUMNA:** Categorías de columna cercanas tienen perfiles similares en relación a las filas.
-
-- **Proximidad entre un punto de FILA y uno de COLUMNA:** Indica una asociación entre esas dos categorías específicas. Cuanto más cerca estén, más fuerte es la asociación.
-
-::: {.callout-note}
-El punto anterior no puede ser aplicable si se trata de un mapa simétrico, donde las distancias fila-columna no son directamente aplicables.
-En caso de querer realziarlo usen un **biplot asimétrico**
-:::
-
-# 🔬 Análisis de Correspondencia Múltiple (ACM)
-(Si el estudiante elige esta opción)
-
-## Paso 1: Preparar Datos para ACM
-El ACM trabaja directamente con un data frame que contiene las variables categóricas.
-
-```{r, eval=FALSE}
-# Seleccionar al menos 3 variables categóricas
-datos_acm <- datos_acs %>% select(m01, c25, d01_01) # Ejemplo
-
-# Asegurarse de que sean factores
-datos_acm$m01 <- as.factor(datos_acm$m01)
-datos_acm$c25 <- as.factor(datos_acm$c25)
-datos_acm$d01_01 <- as.factor(datos_acm$d01_01)
-```
-## Paso 2: Realizar el ACM
-Usamos la función MCA() de FactoMineR.
-
-```{r, eval=FALSE}
-# Realizar Análisis de Correspondencia Múltiple
-resultado_mca <- MCA(datos_acm, graph = FALSE)
-
-# Ver resumen
-summary(resultado_mca)
-```
-## Paso 3: Interpretación de Resultados Clave (ACM)
-- **Inercia y Valores Propios:** Similar al ACS, pero ahora la inercia total se distribuye en más dimensiones.
-
-```{r, eval=FALSE}
-resultado_mca$eig
 ```
 
-- **Contribuciones:** Identificar qué categorías (de todas las variables) contribuyen más a cada dimensión. 
-
-```{r, eval=FALSE}
-resultado_mca$var$contrib
-```
-
-- **Coordenadas:** Posición de cada categoría en el mapa. 
-
-```{r, eval=FALSE}
-resultado_mca$var$coord
-```
-
-## Paso 4: Visualización del ACM
-
-```{r, eval=FALSE}
-# Gráfico de categorías
-fviz_mca_var(resultado_mca, repel = TRUE, title = "ACM - Categorías de Variables")
-
-# Gráfico de individuos (si interesa)
-# fviz_mca_ind(resultado_mca, repel = TRUE)
-
-# Biplot de individuos y categorías
-fviz_mca_biplot(resultado_mca, repel = TRUE, title = "Mapa Perceptual - ACM")
-```
-
-**Interpretación del Mapa en ACM:**
-
-- Las categorías que aparecen cercanas entre sí en el mapa están asociadas; es decir, tienden a aparecer juntas en los mismos individuos.
-
-- La distancia desde el origen indica la "rareza" o particularidad de esa categoría. Categorías muy alejadas del origen tienen un perfil muy distintivo.
-
-# 📦 Entrega y Evaluación
-
-## Formato de Entrega
-
-Cada grupo/individuo deberá entregar un script de R (.R) o un archivo R Markdown (.Rmd) que incluya:
-
-1. Encabezado: Nombre de los integrantes, fecha y opción de ejercicio elegida (ACS o ACM).
-
-2. Código completo: Desde la carga de paquetes hasta las visualizaciones, bien comentado.
-
-3. Interpretación de resultados: Responder explícitamente a las preguntas guía:
-
-- **Asociación:** ¿Existe asociación entre las variables? ¿Cómo lo sabes (por inercia, por mapa)?
-
-- **Masa:** ¿Qué categorías tienen mayor y menor peso en el análisis?
-
-- **Inercia:** ¿Con cuánta varianza total contribuyen las dos primeras dimensiones? ¿Es suficiente?
-
-- **Aporte de dimensiones:** ¿Qué categorías contribuyen más a la Dimensión 1? ¿Y a la Dimensión 2?
-
-- **Mapa perceptual:** Describe los patrones de asociación que observas. ¿Qué categorías se asocian? ¿Hay alguna categoría con un perfil muy diferente?
 
