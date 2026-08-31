@@ -23,6 +23,9 @@ website:
             href: Practicos/Practico1.qmd
           - text: "Práctico 2: Chi-cuadrado; Tablas de contingencia y Analisis de Correspondecia Simple (ACS)"
             href: Practicos/Practico2.qmd
+          - text: "Práctico 3: Analisis de Correspondecia Múltiple (ACS)"
+            href: Practicos/Practico3.qmd
+            
 
                     
       - text: Ayudantia
