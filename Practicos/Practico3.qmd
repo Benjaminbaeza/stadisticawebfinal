@@ -173,7 +173,40 @@ frq(datos_acs$Cambio_const)
 ```
 # 5.🧬 : Chi-cuadrado (χ²) y tablas de contingencia
 
-## 5.1. Chi-cuadrado (χ²)
+## 5.1. Tablas de Contingencia
+
+```{r, eval=FALSE}
+
+sjPlot::sjt.xtab(
+  var.row = datos_acs$confianza_presi,
+  var.col = datos_acs$Cambio_const,
+  show.summary = FALSE,
+  emph.total = TRUE,
+  show.row.prc = TRUE,
+  show.col.prc = TRUE,
+  encoding = "UTF-8")
+
+sjPlot::sjt.xtab(
+  var.row = datos_acs$confianza_gob,
+  var.col = datos_acs$Cambio_const,
+  show.summary = FALSE,
+  emph.total = TRUE,
+  show.row.prc = TRUE,
+  show.col.prc = TRUE,
+  encoding = "UTF-8")
+
+sjPlot::sjt.xtab(
+  var.row = datos_acs$auto_pospol,
+  var.col = datos_acs$Cambio_const,
+  show.summary = FALSE,
+  emph.total = TRUE,
+  show.row.prc = TRUE,
+  show.col.prc = TRUE,
+  encoding = "UTF-8")
+
+```
+
+## 5.2. Chi-cuadrado (χ²)
 
 ```{r, eval=FALSE}
 
@@ -218,38 +251,6 @@ suppressWarnings(ggchisqtest(chi_result_4))
 
 ```
 
-## 5.2. Tablas de contingencia
-
-```{r, eval=FALSE}
-
-sjPlot::sjt.xtab(
-  var.row = datos_acs$confianza_presi,
-  var.col = datos_acs$Cambio_const,
-  show.summary = FALSE,
-  emph.total = TRUE,
-  show.row.prc = TRUE,
-  show.col.prc = TRUE,
-  encoding = "UTF-8")
-
-sjPlot::sjt.xtab(
-  var.row = datos_acs$confianza_gob,
-  var.col = datos_acs$Cambio_const,
-  show.summary = FALSE,
-  emph.total = TRUE,
-  show.row.prc = TRUE,
-  show.col.prc = TRUE,
-  encoding = "UTF-8")
-
-sjPlot::sjt.xtab(
-  var.row = datos_acs$auto_pospol,
-  var.col = datos_acs$Cambio_const,
-  show.summary = FALSE,
-  emph.total = TRUE,
-  show.row.prc = TRUE,
-  show.col.prc = TRUE,
-  encoding = "UTF-8")
-
-```
 # 6. Analisis de Correspondencia Simple (ACS)
 
 ```{r, eval=FALSE}
