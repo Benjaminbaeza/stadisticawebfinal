@@ -1,8 +1,9 @@
 # 1. 🎯 Objetivos del Práctico
 ## Propósito General
-Este práctico está dedicado al análisis de asociación entre variables categóricas mediante técnicas de reducción de dimensionalidad. Los objetivos son:
 
-1. **Aplicar** Análisis de Correspondencia Simple (ACS) para explorar la relación entre dos variables categóricas.
+Este práctico tiene como objetivo desarrollar competencias en el Análisis de Correspondencia Múltiple (ACM) mediante: 
+
+1. **Aplicación** del Análisis de Correspondencia Simple (ACS) para explorar la relación entre lsa diversas variables categóricas.
 
 2. **Aplicar** Análisis de Correspondencia Múltiple (ACM) para explorar relaciones entre tres o más variables categóricas.
 
@@ -12,13 +13,61 @@ Este práctico está dedicado al análisis de asociación entre variables categ�
 
 # 2. Contexto del Practico
 
+La Base de Datos con la que nos dispondremos a trabajar, corresponde a la del **Estudio Longitudinal Social de Chile (ELSOC)**, más especificamete con su **cuarta ola** correspondiente a las observaciones realizadas en el año (2019); ELSOC es una encuesta panel representativa a nivel nacional. 
+
+Por lo que en este practico, se les dispondran una serie de cinco variables del ELSOC; a partir de estas se espera que Analisis de Correspondecia Múltiple (ACS) para la realización de un analisis de este tipo con dichas variables y realizar una interpretación del mismo a partir de todos los resultados en su conjunto.
+
 # 3. 🔧 Preparación del Entorno Analítico o Trabajo
 
 ## 3.1. Fijación de directorio
 
+Recordemos que para fijarlo, siempre tenemos tres opciones:
+
+**OPCIÓN 1** - La forma manual: Para realizarla vamos a la opción "Session" de Rstudios > le damos a la opción 
+"Set Working Directory" > ultima opción: "Choose Directory" > seleccionamos la carpeta en la que trabajaremos para fijarla.
+
+**OPCIÓN 2** - Usamos codigos de Rstudios: Para aquello debemos usar los siguientes codigos:
+
+```{r, eval=FALSE}
+
+# Para fijarlo directamente debemos usar el comando "setwd" como esta puesto debajo
+# Para saber con que llenar los espacios del propio codigo, puedes ver la dirección de la 
+# carpeta en la que quieres trabajar, clickando sobre el icono de esta.
+
+#los primeros 2 nombres, puedes dejarlos como lo deje lo que debes cambiar esta indicado 
+# con palabras
+
+# setwd("C:/Users/ El nombre de usuario / Nombre de la carpeta / 
+# Nombre de la subcarpeta en caso de ser necesario")
+
+# Puedes el comando "getwd", para comprobar si estas trabajando en la carpeta en la que 
+# indicaste
+
+# getwd()
+
+# Esta te deberia indicar en la consola algo similar a esto:
+
+"C:/Users/ El nombre de usuario / Nombre de la carpeta 
+# / Nombre de la subcarpeta en caso de ser necesario"
+
+# Si efectivamente sale asi o con la carpeta que querias esta configurado
+
+```
+
+**OPCIÓN 3** - Usa un proyecto de Rstudios: Para eso debes crear un proyecto.
+
+Para realizarlo ve a la opción **File** > Seleccionas la opción **New Proyect** > Seleccionas la opción **New Directory" > Y seleccionas la carpeta de tu proyecto o en la que quieras trabajar creando un New Proyect.
+Esta opción entrega la ventaja de que cada vez que abras el archivo de Rstudios, este fijara automaticamente dicha carpeta como directorio de trabajo y por ejemplo los avances o lo realizado en el enviroment, tambien se guardara.  
 
 ## 3.2. Configuración del entorno R
 
+```{r, eval=FALSE}
+
+options(scipen = 999)    # Desactiva notación científica, en ocasiones activada
+rm(list = ls())          # Limpia el entorno de trabajo
+set.seed(123)            # Fija semilla para reproducibilidad
+
+```
 
 ## 3.3. Instalación y carga de paquetes
 
@@ -88,20 +137,41 @@ frq(datos_acs$c15)
 
 frq(datos_acs$c28)
 
+# Lo interesante de este punto es que sin nos fijamos, R nos indica
+# que las variables son numericas o "numeric", por lo que en el siguiente 
+# paso las transformaremos a variables cualitativas, en este caso del tipo
+# ordinal que serian "factor"
+
 ```
 
 ## 4.2. Recodificación de variables
 
 ```{r, eval=FALSE}
 
+# Con recode, podemos recodificar las variables que estamos trabajando, para
+# agrupar categorias de respuestas
+# En el caso de la variable m01 agrupamos sus 10 categorias de respuestas
+# en 3.
+
+# la misma logica se realizarian con el resto de variables
+
 datos_acs$educacion <- car::recode(
   datos_acs$m01,
   "c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3")
+
+# Con factor hacemos que la variable pase de numeric a factor
+# factor es la forma en que se leen variables ordinales
 
 datos_acs$educacion <- factor(
   datos_acs$educacion,
   levels = c(1, 2, 3),
   labels = c("Educación básica", "Educación media", "Educación superior"))
+
+# Algo importante y para saber que el comando se ejecuto correctamente
+# más alla de que nos indique ERROR, es que por cada variable recodificada
+# se creara una nueva a en la base de datos
+# por lo que realizado este paso deberiamos de tener 10 variables
+# 1 extra por cada variable recodificada
 
 
 datos_acs$confianza_gob <- car::recode(
@@ -152,11 +222,21 @@ frq(datos_acs$confianza_presi)
 frq(datos_acs$auto_pospol)
 frq(datos_acs$Cambio_const)
 
+# Cuando exploremos estas nuevas variables creadas podemos ver como
+# sus resultados son distintos a las variables originales
+# producto a que agrupamos varias categorias de respuestas.
+# tambien podemos ver que R, nos indica que estas no son "numeric"
+# sino que "Factor".
+# Pero siguen presentado valores perdidos
+
 ```
 
-## 4.3. 4.3 Transformación de valores perdidos a NA
+## 4.3.Transformación de valores perdidos a NA
 
 ```{r, eval=FALSE}
+
+# Con lo anterior transformaremos estos valores como -999 y otros a
+# NA
 
 datos_acs <- datos_acs %>%
   sjlabelled::set_na(
@@ -169,6 +249,11 @@ frq(datos_acs$confianza_gob)
 frq(datos_acs$confianza_presi)
 frq(datos_acs$auto_pospol)
 frq(datos_acs$Cambio_const)
+
+# Como podemos ver dichos valores como -999 ya no figuran, pero tampoco
+# habrian NA en los resultados productos a que estos fueron
+# omitidos de la base de datos, perdiendose algunas observaciones
+# 200 aproximadamente, equivalente a menos de un 10%
 
 ```
 # 5.🧬 : Chi-cuadrado (χ²) y tablas de contingencia
@@ -319,5 +404,9 @@ fviz_mca_var(ACM,
 )
 
 ```
+
+# 8. Ejercicio
+
+A partir de los valores y resultados observados del calculo del Análisis de Correspondencia Múltiple (ACM) y la visualización del mismo **Interprte el Analisis de Correspondencia Múltiple (ACM)**
 
 
