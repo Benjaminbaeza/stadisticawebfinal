@@ -1,110 +1,224 @@
 # 🎯 Objetivo del Ejercicio
 
-Este ejercicio tiene como objetivo aplicar técnicas de clustering jerárquico utilizando el método del centroide para identificar grupos (conglomerados) en una base de datos estandarizada. El análisis se basa en la distancia euclidiana al cuadrado como medida de disimilitud.
+El siguiente practico tiene como objetivo aplicar técnicas de clustering jerárquico utilizando el método del centroide para identificar grupos (conglomerados) en una base de datos con los datos base y posteriormente estandarizados. El análisis se basa en la distancia euclidiana al cuadrado como medida de disimilitud. Se menciona y presenta el método de Ward en su elaboración como metodo alterno.
 
 0,2 decimas para el Control 1 (**0,1 decima por script y 0,1 por interpretación**)
 
 **Interpretación al final del script**
 
 # 📝 Ejercicio a Desarrollar
-Sigan los siguientes pasos con una base de datos de su elección (preferiblemente la misma ELSOC u otra con variables numéricas):
+
+Siguiendo los siguientes pasos la base de datos del ELSOC, se realizara un Analisis de Conglomerados, al final se explica su interpretación:
 
 # 🔧 Paso 1: Preparación del Entorno
 
+## 1.1. Fijar de directorio
+
+Para este caso utilizaremos el metodo manual: Para realizarla vamos a la opción “Session” de Rstudios > le damos a la opción “Set Working Directory” > ultima opción: “Choose Directory” > seleccionamos la carpeta en la que trabajaremos para fijarla.
+
+Igualmente, siempre es necesario recordar que existen otras forma de fijar el directorio.
+
+Podemos fijarlo usandoo codigos de Rstudios:
+
 ```{r, eval=FALSE}
 
-## Cargar paquetes necesarios
+# Debemos usar el comando "setwd" como esta puesto debajo
+# Para saber con que llenar los espacios del propio codigo, puedes ver la dirección de la 
+# carpeta en la que quieres trabajar, clickando sobre el icono de esta.
+
+#los primeros 2 nombres, puedes dejarlos como lo deje.
+# lo que debes cambiar esta indicado 
+# con los numeros 1, 2 y 3
+
+# setwd("C:/Users/ 1- El nombre de usuario / 2- Nombre de la carpeta / 
+# 3- Nombre de la subcarpeta en caso de ser necesario")
+
+# Puedes el comando "getwd", para comprobar si estas trabajando en la carpeta en la que 
+# indicaste
+
+# getwd()
+
+# Esta te deberia indicar en la consola algo similar a esto:
+
+"C:/Users/ El nombre de usuario / Nombre de la carpeta 
+# / Nombre de la subcarpeta en caso de ser necesario"
+
+" Si coincide es que lo hiciste bien
+
+```
+
+Tambien podemos usar un proyecto de Rstudios, esto es especialmente util, para cuando trabajemos de forma constante en un mismo script ya sea durante un tiempo o durante multiples sesiones. 
+
+Para eso debemos crear un proyecto.
+
+Para realizarlo ve a la opción File > Seleccionas la opción New Proyect > Seleccionas la opción **New Directory” > Y seleccionas la carpeta de tu proyecto o en la que quieras trabajar creando un New Proyect. 
+
+Volviendo al punto de que se trabajara en un mismo script de forma constante por un tiempo indeterminado o en multiples sesiones; esta opción es util, porque tiene la ventaja de que cada vez que abras el archivo de Rstudios, este fijara automaticamente dicha carpeta como directorio de trabajo y por ejemplo los avances o lo realizado en el enviroment, tambien se guardara.
+
+## 1.2. Instalación y carga de paquetes 
+
+```{r, eval=FALSE}
+
+## Cargamos los paquetes necesarios para este practico
+
 pacman::p_load(
   tidyverse,      # Manipulación de datos
   factoextra,     # Visualización de clustering
   amap,           # Métodos de clustering
   cluster,        # Análisis de conglomerados
-  sjlabelled,
-  sjmisc
-)
+  sjlabelled,     # Trabajar con etiquetas de variables y valores
+  sjmisc)         # Manipular, describir y preparar datos
 
-## Configurar entorno
+## 1.3. Configurar entorno
 
-options(scipen = 999)
-set.seed(123)     # Para reproducibilidad
+options(scipen = 999) # Desactiva la notación cientifica de Rtudios
+                      # (por ejemplo esta suele estar activa en
+                      # Posit Cloud)
+
+set.seed(123)         # Para fijar reproducibilidad de lo que
+                      # hagamos y alguien lo quiera replicar,
+                      # sobre todo en lo referente a pruebas
+                      # estadisticas o manipulación de datos
 
 ```
 
+
 # 📊 Paso 2: Carga y Selección de Variables
-Seleccionen variables numéricas para el análisis de conglomerados.
+
+## 2.1. Cargamos la base de datos del ELSOC.
 
 ```{r, eval=FALSE}
 
 load(url("https://dataverse.harvard.edu/api/access/datafile/7245118"))
+# Descargamos desde internet la base de datos del ELSOC
+
+# Para quienes tengan problemas de internet en su PC del laboratorio
+# Pueden descargar la base de datos directamente con el siguiente Link
+
+https://dataverse.harvard.edu/api/access/datafile/7245118
+
+# Dejan la base de datos, en la carpeta de su proyecto y la cargan en 
+# Rstudios de la siguiente forma:
 
 load(ELSOC_Long_2016_2022_v1.00)
 
+```
+## 2.2. Selección de variables del ELSOC para el Analisis de Conglomerados.
+
+```{r, eval=FALSE}
+
 # Filtrar ola 4 y seleccionar variables numéricas
+
 datos_cluster <- elsoc_long_2016_2022.2 %>%
   filter(ola == "4") %>%
   select(m0_edad,    # Edad
-         m13,        # Ingreso
+         m13,        # Ingreso mensual entrevistado
          m01         # Nivel educacional)
 
-# Eliminar NA
+# Creamos asi nuestra sub-base de datos_cluster que solo tiene las variables con las
+# que trabajaremos, ademas a esta se les eliminaran los NA.
+# Con esta sub-base trabajaremos durante el resto del practico
+
+# ******NOTA******
+
+# La variable m13 de ingresos es un indicador directo
+# por lo que el monto indicado de esta, es el monto total de ingresos mensuales
+# del entrevistado; ELSOC tambien tiene otras variables que miden el ingreso
+# mensual por tramos m14 (16 tramos) y m14b (5 tramos).
+# para quienes tengan la duda, de porque trabajamos con la variable m13 por sobre
+# m14 o m14b, es porque estas dos variables, no se encuentran disponibles en la
+# Ola 4 (2019), no fueron preguntadas o en su momento no eran contempladas
+
+```
+
+::: {.callout-note}
+El Analisis de Conglomerados **permite el uso de variables cualitativas y cuantitativas**; de ahi que usemos la edad y el ingreso que son numericas y la educación como variable ordinal.
+:::
+
+### 2.2.1. Limpieza de Variables
+
+```{r, eval=FALSE}
+
+#  Transformamos los valores perdidos a NA
+
 datos_cluster <- datos_cluster %>%
   sjlabelled::set_na(
     na = c(-999, -888, -777, -666, 999999999))
 
+# Los eleminamos de la base
+
 datos_cluster <- na.omit(datos_cluster)
 
-# Ver estructura
-summary(datos_cluster)
+# Vemos la estructura de los datos resultantes
 
-dim(datos_cluster)
+summary(datos_cluster) # Podemos observar la medidas de tendencia central
+
+dim(datos_cluster) # Vemos las dimensiones; siendo el numero de observaciones
+                   # y variables
 
 ```
 
+::: {.callout-note}
+Los más observadores veran que indique el valor **999999999**, como valor perdido y por ende NA. 
+Esta observación corresponde a un dato de la variable m13, ingreso mensual, elimine dicha observación, por que en caso de mantenerse figuraria como un valor extremos, sesgando resultados, ademas el encuestado con el segundo mayor monto de ingresos era radicalmente inferior a dicho valor; ante la duda de ser un error de registro o una observación valida, opte por elimanrlo, decisión metodologíca.
+:::
+
 # ⚖️ Paso 3: Estandarización de Variables
+
 Es fundamental estandarizar las variables para que todas tengan la misma escala (media = 0, desviación estándar = 1).
 
 ```{r, eval=FALSE}
 
 # Estandarizar (normalizar) las variables
 
-Z <- scale(datos_cluster)
+Z <- scale(datos_cluster) # Z, corresponde al Puntaje Z, de estandarización
+                          # de variables; lo llamamos asi, porque ocuparemos
+                          # en diversas ocasiones a lo largo del practico
+                          # y asi, seria más facil de identificar
 
-# Verificar
-head(Z)
+# Verificamos el puntaje Z, para ver si resulto
 
-summary(Z)  # Media ~0, SD ~1
+head(Z) # Con este podemos observar los primeros casos 
+
+summary(Z)  # # Podemos observar la medidas de tendencia central del mismo
 
 ```
 
 # 📐 Paso 4: Calcular la Distancia Euclidiana
+
 Calculamos la matriz de distancias euclideanas entre todos los casos.
 
 ```{r, eval=FALSE}
 
 # Calcular distancia euclidiana
 
- <- dist(Z, method = "euclidean")
+d <- dist(Z, method = "euclidean")
 
 # Ver dimensión de la matriz de distancias
+
 print(d)
 
 ```
 
 # 🔲 Paso 5: Elevar al Cuadrado las Distancias
 
-
 ```{r, eval=FALSE}
 
-d2 <- d^2
+# Para elevarla al cuadrado, debemos usar el objeto d, anteriormente creado
+# que es nuestra distancia euclidiana y la elevamos al cuadrado (^2)
+
+d2 <- d^2 # creamos un nuevo objeto que seria la distancia euclidiana al cuadrado
+          # esta seria d2, la guardamos como un objeto porque tambien haremos uso
+          # de esta durante el practico
 
 ```
 # 🌲 Paso 6: Ejecutar el Análisis de Conglomerados (Método Centroide)
 
 ```{r, eval=FALSE}
 
-# Aplicar clustering jerárquico mediante el método centroide
+# Aplicamos el clustering jerárquico mediante el método centroide
 
-hc <- hclust(d2, method = "centroid")
+hc <- hclust(d2, method = "centroid") # ocupamos la distancia euclidiana al cuadrado 
 
 # Revisar información del objeto
 
@@ -112,15 +226,18 @@ names(hc)
 
 # Comprobar método utilizado
 
-hc$method
+hc$method # deberia decir "centroid"
 
 # Número de observaciones
 
-length(hc$order)
+length(hc$order) # deberia de ser 2021 que es el numero de observaciones
+                 # de la base con la que trabajamos
 
 ```
 
 #  Paso 7: Comparar realización con otro metodo: Ward
+
+En este apartado les enseño como realizarlo, más no se seguira trabajando con este durante el resto del practico
 
 ```{r, eval=FALSE}
 
@@ -128,18 +245,35 @@ hc_ward <- hclust(d, method = "ward.D2")
 
 hc_ward$method
 
+# Lo interesante de este metodo, es que es no necesita de por si
+# elevar la distancia euclidiana al cuadrado, este codigo ya lo
+# realiza de por si
+
 ```
 
 # 📈 Paso 7: Visualizar el Dendrograma
+
 El dendrograma muestra la jerarquía de los conglomerados.
 
 ```{r, eval=FALSE}
+
 # Visualizar dendrograma básico
+
 plot(hc, hang = -1, main = "Clustering jerárquico - Método Centroide")
 
 
-# Añadir rectángulos para cortar en k grupos (ejemplo k=4)
+# Añadir rectángulos para que nos indique como se forman los clusters
+# partir de la distribución de los grupos; en k grupos (ejemplo k=4)
+# indica 4 clusters
+
 rect.hclust(hc, k = 4, border = 2:5) # border = colores para cada grupo
+
+# ******NOTA******
+
+# Para quienes quieran ver como si visualizan los datos con otro numero
+# distinto de Clusters, deben de visualizar el dendrograma básico
+# nuevamente y realizar el comando de añardir los rectangulos
+# nuevamente, cambiando k = por el numero de Clusters de interes
 
 ```
 
@@ -159,30 +293,50 @@ fviz_dend(
   main = "Dendrograma - Método Centroide (k = 4)")
 
 ```
+::: {.callout-note}
+Este proceso puede tardar bastante (unos minutos) ya que Rstudios, le esta asignando un color de
+Cluster a cada observación individualmente y son 2021 observaciones.
+Si intentan seguir con el resto de pasos, no se realizaran por que Rstudios sigue
+realzando el paso anterior.
+De todas formas, en ayudantia se abordare esto de forma más extensa y en profundidad
+:::
 
 # ✂️ Paso 8: Asignar los casos a los Conglomerados
+
 Una vez decidido el número de grupos (k), asignamos cada caso a su conglomerado.
 
 ```{r, eval=FALSE}
 
 # Definir número de grupos
-k <- 4
+
+k <- 4 # En este caso 4
 
 # Cortar el árbol en 4 grupos
 
-grupos <- cutree(hc, k = k)
+grupos <- cutree(hc, k = k) # creamos el objeto que contenga el numero de
+                            # Clusters por el que fue cortado el Analisis
+                            # de Conglomerados por el metodo de centroide
 
-datos_cluster$grupo <- grupos
+datos_cluster$grupo <- grupos # Asiganos este objeto creado a la sub-base de datos
+                              # como una variable; si salio bien, debera de ver
+                              # que la sub-base paso de tener 3 variables a 4
+                              # y si la abren veran que la variable grupo tendra
+                              # valores de 1 a 4 en cada observación; el numero
+                              # indicara, a cual cluster pertenece cada caso
 
 ```
 
 # 9. cantidad de casos por conglomerados
 
-table(datos_cluster$grupo)
+```{r, eval=FALSE}
 
-prop.table(
-  table(datos_cluster$grupo)
-)
+table(datos_cluster$grupo) # Podemos crear una tabla que nos indica la cantidad de 
+                           # casos que conforma cada cluster
+
+prop.table(table(datos_cluster$grupo)) # Tambien podemos saber lo mismo, pero
+                                       # indicado en proporción
+
+```
 
 # 10. caracterización de conglomerados
 
