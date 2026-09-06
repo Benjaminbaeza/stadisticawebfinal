@@ -1,94 +1,133 @@
 # 🎯 Objetivo del Ejercicio
+
 Este ejercicio tiene como objetivo aplicar técnicas de clustering jerárquico utilizando el método del centroide para identificar grupos (conglomerados) en una base de datos estandarizada. El análisis se basa en la distancia euclidiana al cuadrado como medida de disimilitud.
 
-**Valor: 0,2 puntos para el Control 2**
+0,2 decimas para el Control 1 (**0,1 decima por script y 0,1 por interpretación**)
+
+**Interpretación al final del script**
 
 # 📝 Ejercicio a Desarrollar
 Sigan los siguientes pasos con una base de datos de su elección (preferiblemente la misma ELSOC u otra con variables numéricas):
 
 # 🔧 Paso 1: Preparación del Entorno
+
 ```{r, eval=FALSE}
+
 ## Cargar paquetes necesarios
 pacman::p_load(
   tidyverse,      # Manipulación de datos
   factoextra,     # Visualización de clustering
-  amap,           # Para hclust.centroide (método centroide)
-  cluster         # Análisis de conglomerados
+  amap,           # Métodos de clustering
+  cluster,        # Análisis de conglomerados
+  sjlabelled,
+  sjmisc
 )
 
 ## Configurar entorno
+
 options(scipen = 999)
 set.seed(123)     # Para reproducibilidad
+
 ```
 
 # 📊 Paso 2: Carga y Selección de Variables
 Seleccionen variables numéricas para el análisis de conglomerados.
 
-```{r librerias, eval=FALSE}
-# Ejemplo con ELSOC (adaptar a su base)
+```{r, eval=FALSE}
+
 load(url("https://dataverse.harvard.edu/api/access/datafile/7245118"))
+
+load(ELSOC_Long_2016_2022_v1.00)
 
 # Filtrar ola 4 y seleccionar variables numéricas
 datos_cluster <- elsoc_long_2016_2022.2 %>%
   filter(ola == "4") %>%
-  select(edad,    # Edad (numérica)
-         ingreso, # Ingreso (numérica)
-         m01 # Nivel educacional (ordinal, puede tratarse como numérica)
-         )
-# Eliminar NA
+  select(m0_edad,    # Edad
+         m13,        # Ingreso
+         m01         # Nivel educacional)
 
-datos_cluster <- datos_cluster %>% sjlabelled::set_na(., na = c(-999, -888, -777, -666))
+# Eliminar NA
+datos_cluster <- datos_cluster %>%
+  sjlabelled::set_na(
+    na = c(-999, -888, -777, -666, 999999999))
 
 datos_cluster <- na.omit(datos_cluster)
 
 # Ver estructura
 summary(datos_cluster)
+
+dim(datos_cluster)
+
 ```
 
 # ⚖️ Paso 3: Estandarización de Variables
 Es fundamental estandarizar las variables para que todas tengan la misma escala (media = 0, desviación estándar = 1).
 
 ```{r, eval=FALSE}
+
 # Estandarizar (normalizar) las variables
-data.scaled <- scale(datos_cluster)
+
+Z <- scale(datos_cluster)
 
 # Verificar
-head(data.scaled)
-summary(data.scaled)  # Media ~0, SD ~1
+head(Z)
+
+summary(Z)  # Media ~0, SD ~1
+
 ```
 
 # 📐 Paso 4: Calcular la Distancia Euclidiana
 Calculamos la matriz de distancias euclideanas entre todos los casos.
 
 ```{r, eval=FALSE}
+
 # Calcular distancia euclidiana
-d <- dist(data.scaled, method = "euclidean")
+
+ <- dist(Z, method = "euclidean")
 
 # Ver dimensión de la matriz de distancias
 print(d)
+
 ```
 
 # 🔲 Paso 5: Elevar al Cuadrado las Distancias
-Para el método del centroide (y el de Ward), en R, eleva las distancias al cuadrado automaticamente
+
 
 ```{r, eval=FALSE}
 
-hc_ward <- hclust(dist(Z, method = "euclidean"), method = "ward.D2")
+d2 <- d^2
 
 ```
-
 # 🌲 Paso 6: Ejecutar el Análisis de Conglomerados (Método Centroide)
 
 ```{r, eval=FALSE}
-# Ejecutar clustering jerárquico con método centroide
 
-d  <- dist(data.scaled, method = "euclidean")
-d2 <- d^2
+# Aplicar clustering jerárquico mediante el método centroide
+
 hc <- hclust(d2, method = "centroid")
 
-# Ver resultados básicos
+# Revisar información del objeto
+
 names(hc)
-hc$method  # Debería ser "centroid"
+
+# Comprobar método utilizado
+
+hc$method
+
+# Número de observaciones
+
+length(hc$order)
+
+```
+
+#  Paso 7: Comparar realización con otro metodo: Ward
+
+```{r, eval=FALSE}
+
+hc_ward <- hclust(d, method = "ward.D2")
+
+hc_ward$method
+
 ```
 
 # 📈 Paso 7: Visualizar el Dendrograma
@@ -96,45 +135,81 @@ El dendrograma muestra la jerarquía de los conglomerados.
 
 ```{r, eval=FALSE}
 # Visualizar dendrograma básico
-plot(hc, hang = -1, main = "Clustering por centroide (amap)")
+plot(hc, hang = -1, main = "Clustering jerárquico - Método Centroide")
+
 
 # Añadir rectángulos para cortar en k grupos (ejemplo k=4)
-rect.hclust(hc, k = 4, border = 2:5)  # border = colores para cada grupo
+rect.hclust(hc, k = 4, border = 2:5) # border = colores para cada grupo
+
 ```
 
 ## Visualización mejorada con factoextra:
 
 ```{r, eval=FALSE}
-# Dendrograma más profesional
-fviz_dend(hc, 
-          k = 4,                    # Cortar en 4 grupos
-          cex = 0.6,                 # Tamaño de etiquetas
-          color_labels_by_k = TRUE,  # Colorear etiquetas por grupo
-          rect = TRUE,               # Añadir rectángulos
-          rect_fill = TRUE,           # Rellenar rectángulos
-          main = "Dendrograma - Método Centroide (k=4)")
+
+# Dendrograma más profesional o estetico
+
+fviz_dend(
+  hc,
+  k = 4,
+  show_labels = FALSE,
+  color_labels_by_k = TRUE,
+  rect = TRUE,
+  rect_fill = TRUE,
+  main = "Dendrograma - Método Centroide (k = 4)")
+
 ```
 
-# ✂️ Paso 8: Asignar y Analizar los Conglomerados
+# ✂️ Paso 8: Asignar los casos a los Conglomerados
 Una vez decidido el número de grupos (k), asignamos cada caso a su conglomerado.
 
 ```{r, eval=FALSE}
-# Cortar el árbol en k grupos (ejemplo k=4)
+
+# Definir número de grupos
 k <- 4
+
+# Cortar el árbol en 4 grupos
+
 grupos <- cutree(hc, k = k)
 
-# Añadir los grupos a los datos originales
-across(-grupo, ~mean(.x, na.rm
-= TRUE))
+datos_cluster$grupo <- grupos
 
-# Ver cuántos casos por grupo
+```
+
+# 9. cantidad de casos por conglomerados
+
 table(datos_cluster$grupo)
 
-# Ver medias de las variables originales por grupo
+prop.table(
+  table(datos_cluster$grupo)
+)
+
+# 10. caracterización de conglomerados
+
 datos_cluster %>%
   group_by(grupo) %>%
-  summarise(across(where(is.numeric), mean, na.rm = TRUE))
-```
+  summarise(
+    across(
+      where(is.numeric),
+      ~ mean(.x, na.rm = TRUE)
+    )
+
+# 11. caracterización con datos estandarizados
+
+
+datos_z <- as.data.frame(Z)
+
+datos_z$grupo <- grupos
+
+datos_z %>%
+  group_by(grupo) %>%
+  summarise(
+    across(
+      where(is.numeric),
+      ~ mean(.x, na.rm = TRUE)
+    )
+  )
+
 
 # 📝 Paso 9: Interpretación de Resultados
 En el script, deben incluir una interpretación clara de los resultados:
