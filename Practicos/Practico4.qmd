@@ -326,7 +326,7 @@ datos_cluster$grupo <- grupos # Asiganos este objeto creado a la sub-base de dat
 
 ```
 
-# 10. cantidad de casos por conglomerados
+# Paso 10: cantidad de casos por conglomerados
 
 ```{r, eval=FALSE}
 
@@ -338,7 +338,7 @@ prop.table(table(datos_cluster$grupo)) # Tambien podemos saber lo mismo, pero
 
 ```
 
-# 11. caracterización de conglomerados
+# Paso 11: caracterización de conglomerados
 
 ```{r, eval=FALSE}
 
@@ -352,7 +352,7 @@ datos_cluster %>%
 
 ```
 
-# 12. caracterización con datos estandarizados
+# Paso 12: caracterización con datos estandarizados
 
 ```{r, eval=FALSE}
 
@@ -377,7 +377,7 @@ datos_z %>%
 
 ```
 
-# 📝 Paso 13. Ejercico de interpretación de resultados
+# 📝 Paso 13: Ejercico de interpretación de resultados
 
 A partir de los datos obtenidos del Analisis de Conglomerados y la caracterización de los Clusters, interprete los resultados (disponen como referencia las preguntas guias del apartado 9.1.):
 
@@ -397,7 +397,7 @@ A partir de los datos obtenidos del Analisis de Conglomerados y la caracterizaci
 
 **5.**: En base a su conocimiento ¿Creen que tienen sentido sustantivo (teórico/práctico) los grupos encontrados?
 
-# 14. Formato de Entrega
+# Paso 14: Formato de Entrega
 **Suban al buzón de tareas un script de R (.R) que contenga:**
 
 En el mensaje y es script **deben incluir**:
