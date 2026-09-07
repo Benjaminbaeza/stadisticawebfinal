@@ -340,61 +340,76 @@ prop.table(table(datos_cluster$grupo)) # Tambien podemos saber lo mismo, pero
 
 # 10. caracterización de conglomerados
 
+```{r, eval=FALSE}
+
 datos_cluster %>%
   group_by(grupo) %>%
-  summarise(
-    across(
-      where(is.numeric),
-      ~ mean(.x, na.rm = TRUE)
-    )
+  summarise(across(where(is.numeric),
+      ~ mean(.x, na.rm = TRUE))
+
+# Obtenemos las medias de cada variable agrupadas en función del conglomerado
+# al que pertenezcan.
+
+```
 
 # 11. caracterización con datos estandarizados
 
+```{r, eval=FALSE}
 
-datos_z <- as.data.frame(Z)
+# Tambien podemos obtener los valores de cada variable en relación
+# al coglomerado; con un valor estadarizado para todas, el puntaje Z
+# de esta forma la unidad de medida de las variables corresponderia
+# al mismo
 
-datos_z$grupo <- grupos
+datos_z <- as.data.frame(Z) # Creamos una nueva sub-base de datos a
+                            # partir del puntaje Z
+
+datos_z$grupo <- grupos # A dicha sub-base le agregamos los grupos de
+                        # Conglomerados que realizamos con anterioridad
 
 datos_z %>%
   group_by(grupo) %>%
-  summarise(
-    across(
-      where(is.numeric),
-      ~ mean(.x, na.rm = TRUE)
-    )
-  )
+  summarise(across(where(is.numeric),
+      ~ mean(.x, na.rm = TRUE)))
 
+# Obtenemos las medias de cada variable agrupadas en función del conglomerado
+# al que pertenezcan; pero esta vez con un puntaje estandarizado.
 
-# 📝 Paso 9: Interpretación de Resultados
-En el script, deben incluir una interpretación clara de los resultados:
-
-## 🔍 Preguntas guía para la interpretación:
-Número de grupos (k): ¿Por qué eligieron k=4? ¿Qué otros valores probaron? (Pueden usar el método del codo o el coeficiente de silueta para justificar)
-
-```{r, eval=FALSE}
-# Método del codo para ayudar a elegir k
-fviz_nbclust(data.scaled, hcut, method = "wss") +
-  geom_vline(xintercept = 4, linetype = 2, color = "red")
 ```
 
-**Caracterización de los grupos:** A partir de las medias por grupo (calculadas arriba), describan el perfil de cada conglomerado.
+# 📝 Paso 9. Ejercico de interpretación de resultados
 
-**Ejemplo:** "El Grupo 1 se caracteriza por personas jóvenes con ingresos medios-altos..."
+# A partir de los datos obtenidos del Analisis de Conglomerados y la caracterización de los Clusters, interprete los resultados (disponen como referencia las preguntas guias del apartado 9.1.):
 
-**Altura de corte:** ¿A qué altura cortaron en el dendrograma? ¿Qué significa esa altura en términos de disimilitud?
+** Recordar, en el script, deben incluir una interpretación clara de los resultados**:
 
-**Validación:** ¿Tienen sentido sustantivo (teórico/práctico) los grupos encontrados?
+## 9.1. 🔍 Preguntas de referencia para para la interpretación:
+
+** 1.**: ¿Que es lo que podemos concluir a partir de las medias de los grupo? 
+
+**2.**: Y considerando lo anterior ¿que perfil compondria cada conglomerado?
+
+**Ejemplo:** "El Grupo 1 se caracteriza por personas.... con ingresos...etc"
+
+**3.**: A que se deberia la disparidad en el numero de casos que compondrian cada conglomerado
+
+**4.**: Si cambiaramos el numero de Clusters, se verian modificados ¿la distibución de casos y los resultados? ¿por qué?
+
+**5.**: En base a su conocimiento ¿Creen que tienen sentido sustantivo (teórico/práctico) los grupos encontrados?
 
 # Formato de Entrega
 **Suban al buzón de tareas un script de R (.R) que contenga:**
 
-- Encabezado: Nombres de los integrantes del grupo (o indicar si es individual).
+En el mensaje y es script **deben incluir**:
 
-- Código completo (como el de arriba) con comentarios que expliquen cada paso.
+- Nombres de los integrantes del grupo (o indicar si es individual).
 
-- Interpretación final (como comentarios al final del script o en un bloque de texto) respondiendo a las preguntas guía del Paso 9.
+- Código completo (como el realizado en el practico). 
 
-## Criterios de Evaluación (0,2 puntos)
-✅ Código correcto y bien comentado (0,1 puntos)
+- Interpretación (como comentarios al final del script o en un bloque de texto) tomando como guias las preguntas del Paso 9.1.
+
+##  9.2. Criterios de Evaluación (0,2 puntos)
+
+✅ Código correcto  (0,1 puntos)
 
 ✅ Interpretación adecuada de los resultados (0,1 puntos)
