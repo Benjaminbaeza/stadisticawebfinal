@@ -397,7 +397,7 @@ datos_z %>%
 
 **5.**: En base a su conocimiento ¿Creen que tienen sentido sustantivo (teórico/práctico) los grupos encontrados?
 
-# Formato de Entrega
+# 14. Formato de Entrega
 **Suban al buzón de tareas un script de R (.R) que contenga:**
 
 En el mensaje y es script **deben incluir**:
@@ -408,7 +408,7 @@ En el mensaje y es script **deben incluir**:
 
 - Interpretación (como comentarios al final del script o en un bloque de texto) tomando como guias las preguntas del Paso 9.1.
 
-##  13.2. Criterios de Evaluación (0,2 puntos)
+##  14.1. Criterios de Evaluación (0,2 puntos)
 
 ✅ Código correcto  (0,1 puntos)
 
