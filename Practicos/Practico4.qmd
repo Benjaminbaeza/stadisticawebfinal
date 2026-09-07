@@ -251,7 +251,7 @@ hc_ward$method
 
 ```
 
-# 📈 Paso 7: Visualizar el Dendrograma
+# 📈 Paso 8: Visualizar el Dendrograma
 
 El dendrograma muestra la jerarquía de los conglomerados.
 
@@ -301,7 +301,7 @@ realzando el paso anterior.
 De todas formas, en ayudantia se abordare esto de forma más extensa y en profundidad
 :::
 
-# ✂️ Paso 8: Asignar los casos a los Conglomerados
+# ✂️ Paso 9: Asignar los casos a los Conglomerados
 
 Una vez decidido el número de grupos (k), asignamos cada caso a su conglomerado.
 
@@ -326,7 +326,7 @@ datos_cluster$grupo <- grupos # Asiganos este objeto creado a la sub-base de dat
 
 ```
 
-# 9. cantidad de casos por conglomerados
+# 10. cantidad de casos por conglomerados
 
 ```{r, eval=FALSE}
 
@@ -338,7 +338,7 @@ prop.table(table(datos_cluster$grupo)) # Tambien podemos saber lo mismo, pero
 
 ```
 
-# 10. caracterización de conglomerados
+# 11. caracterización de conglomerados
 
 ```{r, eval=FALSE}
 
@@ -352,7 +352,7 @@ datos_cluster %>%
 
 ```
 
-# 11. caracterización con datos estandarizados
+# 12. caracterización con datos estandarizados
 
 ```{r, eval=FALSE}
 
@@ -377,13 +377,13 @@ datos_z %>%
 
 ```
 
-# 📝 Paso 9. Ejercico de interpretación de resultados
+# 📝 Paso 13. Ejercico de interpretación de resultados
 
 # A partir de los datos obtenidos del Analisis de Conglomerados y la caracterización de los Clusters, interprete los resultados (disponen como referencia las preguntas guias del apartado 9.1.):
 
 ** Recordar, en el script, deben incluir una interpretación clara de los resultados**:
 
-## 9.1. 🔍 Preguntas de referencia para para la interpretación:
+## 13.1. 🔍 Preguntas de referencia para para la interpretación:
 
 ** 1.**: ¿Que es lo que podemos concluir a partir de las medias de los grupo? 
 
@@ -408,7 +408,7 @@ En el mensaje y es script **deben incluir**:
 
 - Interpretación (como comentarios al final del script o en un bloque de texto) tomando como guias las preguntas del Paso 9.1.
 
-##  9.2. Criterios de Evaluación (0,2 puntos)
+##  13.2. Criterios de Evaluación (0,2 puntos)
 
 ✅ Código correcto  (0,1 puntos)
 
