@@ -23,8 +23,10 @@ website:
             href: Practicos/Practico1.qmd
           - text: "Práctico 2: Chi-cuadrado; Tablas de contingencia y Analisis de Correspondecia Simple (ACS)"
             href: Practicos/Practico2.qmd
-          - text: "Práctico 3: Analisis de Correspondecia Múltiple (ACS)"
+          - text: "Práctico 3: Analisis de Correspondecia Múltiple (ACM)"
             href: Practicos/Practico3.qmd
+          - text: "Práctico 4: Introducción al Analisis de Conglomerados"
+            href: Practicos/Practico4.qmd
             
 
                     
