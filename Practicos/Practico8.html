@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>practico8 – Estadística IV</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-3e9b1289f5f353c49b617ce48ad2bc38.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Estadística IV</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../programa.html"> 
+<span class="menu-text">Programación</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-clases" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Clases</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-clases">    
+        <li>
+    <a class="dropdown-item" href="../Modulos/clase1.html">
+ <span class="dropdown-text">Modulo 1 · Presentación del curso</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-prácticos" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Prácticos</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-prácticos">    
+        <li>
+    <a class="dropdown-item" href="../Practicos/Practico1.html">
+ <span class="dropdown-text">Práctico 1 Nociones basicas de Rstudios: Exploración y Preparación de Bases de Datos</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Practicos/Practico2.html">
+ <span class="dropdown-text">Práctico 2: Chi-cuadrado; Tablas de contingencia y Analisis de Correspondecia Simple (ACS)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Practicos/Practico3.html">
+ <span class="dropdown-text">Práctico 3: Analisis de Correspondecia Múltiple (ACM)</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../Practicos/Practico4.html">
+ <span class="dropdown-text">Práctico 4: Introducción al Analisis de Conglomerados</span></a>
+  </li>  
+    </ul>
+  </li>
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-ayudantia" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">Ayudantia</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-ayudantia">    
+        <li>
+    <a class="dropdown-item" href="../Ayudantiass/Ayudantia1.html">
+ <span class="dropdown-text">Ayudantia</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">En esta página</h2>
+   
+  <ul>
+  <li><a href="#objetivos-del-análisis" id="toc-objetivos-del-análisis" class="nav-link active" data-scroll-target="#objetivos-del-análisis">🎯 Objetivos del Análisis</a></li>
+  <li><a href="#fundamentos-teóricos" id="toc-fundamentos-teóricos" class="nav-link" data-scroll-target="#fundamentos-teóricos">📚 Fundamentos Teóricos</a></li>
+  <li><a href="#aplicación-en-este-ejercicio" id="toc-aplicación-en-este-ejercicio" class="nav-link" data-scroll-target="#aplicación-en-este-ejercicio">Aplicación en este ejercicio:</a></li>
+  <li><a href="#instalación-y-carga-de-paquetes" id="toc-instalación-y-carga-de-paquetes" class="nav-link" data-scroll-target="#instalación-y-carga-de-paquetes">📦 1. Instalación y Carga de Paquetes</a></li>
+  <li><a href="#carga-de-la-base-de-datos" id="toc-carga-de-la-base-de-datos" class="nav-link" data-scroll-target="#carga-de-la-base-de-datos">📂 2. Carga de la Base de Datos</a></li>
+  <li><a href="#selección-de-variables" id="toc-selección-de-variables" class="nav-link" data-scroll-target="#selección-de-variables">🔍 3. Selección de Variables</a></li>
+  <li><a href="#matriz-de-correlaciones" id="toc-matriz-de-correlaciones" class="nav-link" data-scroll-target="#matriz-de-correlaciones">📊 4. Matriz de Correlaciones</a>
+  <ul class="collapse">
+  <li><a href="#salida-esperada" id="toc-salida-esperada" class="nav-link" data-scroll-target="#salida-esperada">Salida esperada:</a></li>
+  </ul></li>
+  <li><a href="#realizar-el-análisis-de-componentes-principales-pca" id="toc-realizar-el-análisis-de-componentes-principales-pca" class="nav-link" data-scroll-target="#realizar-el-análisis-de-componentes-principales-pca">📐 5. Realizar el Análisis de Componentes Principales (PCA)</a></li>
+  <li><a href="#interpretación-de-resultados" id="toc-interpretación-de-resultados" class="nav-link" data-scroll-target="#interpretación-de-resultados">📈 6. Interpretación de Resultados</a>
+  <ul class="collapse">
+  <li><a href="#cargas-factoriales-coordenadas" id="toc-cargas-factoriales-coordenadas" class="nav-link" data-scroll-target="#cargas-factoriales-coordenadas">6.1 Cargas factoriales (coordenadas)</a></li>
+  <li><a href="#varianza-explicada" id="toc-varianza-explicada" class="nav-link" data-scroll-target="#varianza-explicada">6.2 Varianza explicada</a></li>
+  </ul></li>
+  <li><a href="#visualización-de-variables-en-el-espacio-de-las-componentes" id="toc-visualización-de-variables-en-el-espacio-de-las-componentes" class="nav-link" data-scroll-target="#visualización-de-variables-en-el-espacio-de-las-componentes">🔍 7. Visualización de Variables en el Espacio de las Componentes</a></li>
+  <li><a href="#visualización-de-individuos" id="toc-visualización-de-individuos" class="nav-link" data-scroll-target="#visualización-de-individuos">👥 8. Visualización de Individuos</a></li>
+  <li><a href="#biplot-variables-e-individuos-juntos" id="toc-biplot-variables-e-individuos-juntos" class="nav-link" data-scroll-target="#biplot-variables-e-individuos-juntos">🔄 9. Biplot (Variables e Individuos Juntos)</a></li>
+  <li><a href="#selección-del-número-de-componentes" id="toc-selección-del-número-de-componentes" class="nav-link" data-scroll-target="#selección-del-número-de-componentes">📊 10. Selección del Número de Componentes</a>
+  <ul class="collapse">
+  <li><a href="#método-de-autovalores-1" id="toc-método-de-autovalores-1" class="nav-link" data-scroll-target="#método-de-autovalores-1">10.1 Método de autovalores &gt; 1</a></li>
+  <li><a href="#método-del-codo-scree-plot" id="toc-método-del-codo-scree-plot" class="nav-link" data-scroll-target="#método-del-codo-scree-plot">10.2 Método del codo (scree plot)</a></li>
+  <li><a href="#prueba-de-horn-parallel-analysis---método-más-preciso" id="toc-prueba-de-horn-parallel-analysis---método-más-preciso" class="nav-link" data-scroll-target="#prueba-de-horn-parallel-analysis---método-más-preciso">10.3 Prueba de Horn (Parallel Analysis) - MÉTODO MÁS PRECISO</a></li>
+  </ul></li>
+  <li><a href="#construcción-del-índice-de-cohesión-barrial" id="toc-construcción-del-índice-de-cohesión-barrial" class="nav-link" data-scroll-target="#construcción-del-índice-de-cohesión-barrial">🏗️ 11. Construcción del Índice de Cohesión Barrial</a>
+  <ul class="collapse">
+  <li><a href="#obtener-los-pesos-cargas-factoriales" id="toc-obtener-los-pesos-cargas-factoriales" class="nav-link" data-scroll-target="#obtener-los-pesos-cargas-factoriales">11.1 Obtener los pesos (cargas factoriales)</a></li>
+  <li><a href="#calcular-el-índice" id="toc-calcular-el-índice" class="nav-link" data-scroll-target="#calcular-el-índice">11.2 Calcular el índice</a></li>
+  <li><a href="#interpretación-del-índice" id="toc-interpretación-del-índice" class="nav-link" data-scroll-target="#interpretación-del-índice">11.3 Interpretación del índice</a></li>
+  </ul></li>
+  <li><a href="#interpretación-final-y-aplicaciones" id="toc-interpretación-final-y-aplicaciones" class="nav-link" data-scroll-target="#interpretación-final-y-aplicaciones">📝 12. Interpretación Final y Aplicaciones</a>
+  <ul class="collapse">
+  <li><a href="#resumen-de-hallazgos" id="toc-resumen-de-hallazgos" class="nav-link" data-scroll-target="#resumen-de-hallazgos">12.1 Resumen de hallazgos</a></li>
+  <li><a href="#aplicaciones-del-índice" id="toc-aplicaciones-del-índice" class="nav-link" data-scroll-target="#aplicaciones-del-índice">12.2 Aplicaciones del índice</a></li>
+  <li><a href="#ejemplo-de-código-para-análisis-posteriores" id="toc-ejemplo-de-código-para-análisis-posteriores" class="nav-link" data-scroll-target="#ejemplo-de-código-para-análisis-posteriores">12.3 Ejemplo de código para análisis posteriores</a></li>
+  </ul></li>
+  <li><a href="#exportar-resultados" id="toc-exportar-resultados" class="nav-link" data-scroll-target="#exportar-resultados">💾 13. Exportar Resultados</a></li>
+  <li><a href="#notas-metodológicas-importantes" id="toc-notas-metodológicas-importantes" class="nav-link" data-scroll-target="#notas-metodológicas-importantes">⚠️ Notas Metodológicas Importantes</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<section id="objetivos-del-análisis" class="level1">
+<h1>🎯 Objetivos del Análisis</h1>
+<p>Este ejercicio tiene como objetivos:</p>
+<ul>
+<li><p><strong>Realizar un Análisis de Componentes Principales (PCA)</strong> con el paquete FactoMineR utilizando variables de cohesión territorial de la encuesta ELSOC.</p></li>
+<li><p><strong>Interpretar</strong> los resultados del PCA: autovalores, cargas factoriales, varianza explicada.</p></li>
+<li><p><strong>Seleccionar</strong> el número óptimo de componentes mediante diferentes criterios (autovalores &gt; 1, gráfico de codo, prueba de Horn).</p></li>
+<li><p><strong>Construir</strong> un índice de cohesión barrial a partir de la primera componente principal.</p></li>
+<li><p><strong>Visualizar</strong> las relaciones entre variables y la distribución de casos.</p></li>
+</ul>
+</section>
+<section id="fundamentos-teóricos" class="level1">
+<h1>📚 Fundamentos Teóricos</h1>
+<p><strong>¿Qué es el Análisis de Componentes Principales (PCA)?</strong> El Análisis de Componentes Principales es una técnica de reducción de dimensionalidad que:</p>
+<ul>
+<li><p>Transforma un conjunto de variables correlacionadas en un nuevo conjunto de variables no correlacionadas llamadas componentes principales.</p></li>
+<li><p>La primera componente principal captura la máxima varianza posible de los datos.</p></li>
+<li><p>Las componentes siguientes capturan la varianza restante en orden decreciente.</p></li>
+</ul>
+</section>
+<section id="aplicación-en-este-ejercicio" class="level1">
+<h1>Aplicación en este ejercicio:</h1>
+<p>Construiremos un índice de cohesión barrial a partir de la primera componente principal, que resume 8 variables de percepción del barrio.</p>
+<div class="table-container" style="overflow-x: auto; margin: 30px 0;">
+<table style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif; font-size: 0.95em; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+<caption style="caption-side: top; text-align: center; padding: 12px; font-weight: bold; font-size: 1.1em; background-color: #f8f9fa; border: 1px solid #ddd; border-bottom: none;">
+📋 Tabla 1: Variables utilizadas - Módulo de cohesión territorial (ELSOC) - Escala Likert 1-5
+</caption>
+<thead>
+<tr style="background-color: #2c2c2c; color: white;">
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">
+Variable original
+</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">
+Nombre en el script
+</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">
+Descripción
+</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">
+Escala
+</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">
+t02_01
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">
+barrio_ideal
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+Este es el barrio ideal para mí
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span>
+</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">
+t02_02
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">
+integrado
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+Me siento integrado/a en este barrio
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span>
+</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">
+t02_03
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">
+identifico
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+Me identifico con la gente de este barrio
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span>
+</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">
+t02_04
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">
+parte_de_mi
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+Este barrio es parte de mí
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span>
+</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">
+t03_01
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">
+amigos
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+En este barrio es fácil hacer amigos
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span>
+</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">
+t03_02
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">
+sociable
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+La gente en este barrio es sociable
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span>
+</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">
+t03_03
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">
+cordialidad
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+La gente en este barrio es cordial
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span>
+</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">
+t03_04
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">
+colaboracion
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+La gente en este barrio es colaboradora
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span>
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr style="background-color: #f0f0f0; font-size: 0.85em;">
+<td colspan="4" style="border: 1px solid #ddd; padding: 12px; text-align: center; color: #555;">
+<strong>Nota:</strong> Todas las variables son de escala ordinal tipo Likert (1=Totalmente en desacuerdo a 5=Totalmente de acuerdo). Estas variables provienen del módulo de cohesión territorial de la encuesta ELSOC.
+</td>
+</tr>
+</tfoot>
+</table>
+<div style="text-align: center; padding: 8px; color: #666; font-size: 0.8em; border: 1px solid #ddd; border-top: none; background-color: #fafafa;">
+<p><strong>Elaboración propia</strong> basada en datos del Estudio Longitudinal Social de Chile (ELSOC) - COES</p>
+</div>
+</div>
+</section>
+<section id="instalación-y-carga-de-paquetes" class="level1">
+<h1>📦 1. Instalación y Carga de Paquetes</h1>
+<p><strong>¿Qué hacemos?</strong> Cargamos todas las librerías necesarias para el análisis.</p>
+<p><strong>¿Por qué?</strong> Necesitamos FactoMineR para el PCA, factoextra para visualizaciones, y paran para la prueba de Horn.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar paquetes necesarios</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">"pacman"</span>)) <span class="fu">install.packages</span>(<span class="st">"pacman"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  tidyverse,      </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  sjPlot,         </span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  psych,          </span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>  DescTools,      </span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>  broom,          </span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  rempsyc,        </span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>  FactoMineR,     </span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  factoextra,     </span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>  corrplot,       </span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  nFactors,       </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  ggrepel,        </span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  knitr,</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  writexl, </span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Limpiar R: desactivar notación científica</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">scipen =</span> <span class="dv">999</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="carga-de-la-base-de-datos" class="level1">
+<h1>📂 2. Carga de la Base de Datos</h1>
+<p><strong>¿Qué hacemos?</strong> Cargamos la encuesta ELSOC directamente desde Harvard Dataverse.</p>
+<p><strong>¿Por qué?</strong> La base está disponible públicamente y contiene las variables que necesitamos.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargar la encuesta ELSOC completa, posteriormente cuando se seleccionen las variables se seleccionaran los casos correspondientes al año 2019 (ola 4)</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">load</span>(<span class="fu">url</span>(<span class="st">"https://dataverse.harvard.edu/api/access/datafile/7245118"</span>))</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver dimensión de la base</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(elsoc_long_2016_2022<span class="fl">.2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Interpretación:</strong> La base contiene 18,035 casos (entrevistados) medidos en 750 variables a lo largo de diferentes olas.</p>
+</section>
+<section id="selección-de-variables" class="level1">
+<h1>🔍 3. Selección de Variables</h1>
+<p><strong>¿Qué hacemos?</strong> Seleccionamos 8 variables ordinales de escala Likert (1 a 4) del módulo de cohesión territorial.</p>
+<p><strong>¿Por qué?</strong> Estas variables miden diferentes dimensiones de la percepción del barrio y son adecuadas para PCA por estar en la misma escala.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filtrar ola 4 y seleccionar variables</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> elsoc_long_2016_2022<span class="fl">.2</span> <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">filter</span>(ola <span class="sc">==</span> <span class="st">"4"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">barrio_ideal =</span> t02_01, <span class="co"># Este es el barrio ideal para mí</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">integrado =</span> t02_02,     <span class="co"># Me siento integrado/a en este barrio</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">identifico =</span> t02_03,    <span class="co"># Me identifico con la gente de este barrio</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">parte_de_mi =</span> t02_04,   <span class="co"># Este barrio es parte de mí</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">amigos =</span> t03_01,        <span class="co"># En este barrio es fácil hacer amigos</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">sociable =</span> t03_02,      <span class="co"># La gente en este barrio es sociable</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">cordialidad =</span> t03_03,   <span class="co"># La gente en este barrio es cordial</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">colaboracion =</span> t03_04   <span class="co"># La gente en este barrio es colaboradora</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Definir valores perdidos (códigos comunes en ELSOC)</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  sjlabelled<span class="sc">::</span><span class="fu">set_na</span>(., <span class="at">na =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">999</span>, <span class="sc">-</span><span class="dv">888</span>, <span class="sc">-</span><span class="dv">777</span>, <span class="sc">-</span><span class="dv">666</span>))</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Convertir las variables a numéricas (eran ordinales)</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>proc_data <span class="ot">&lt;-</span> proc_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="fu">across</span>(<span class="fu">everything</span>(), <span class="sc">~</span> <span class="fu">as.numeric</span>(<span class="fu">as.character</span>(.))))</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver estructura</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(proc_data)</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(proc_data)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="matriz-de-correlaciones" class="level1">
+<h1>📊 4. Matriz de Correlaciones</h1>
+<p><strong>¿Qué hacemos?</strong> Calculamos la matriz de correlaciones entre las 8 variables.</p>
+<p><strong>¿Por qué?</strong> El PCA se basa en las correlaciones entre variables. Altas correlaciones indican que las variables comparten información y pueden resumirse en componentes.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular matriz de correlación (excluyendo NA)</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>matriz_cor <span class="ot">&lt;-</span> <span class="fu">cor</span>(<span class="fu">na.omit</span>(proc_data))</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(matriz_cor)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="salida-esperada" class="level2">
+<h2 class="anchored" data-anchor-id="salida-esperada">Salida esperada:</h2>
+<p><img src="Imagenesygraficos/prac8-1.png" class="img-fluid"></p>
+<p><strong>Interpretación:</strong></p>
+<ul>
+<li>Las correlaciones son positivas y moderadas a altas (entre 0.35 y 0.74)</li>
+</ul>
+<p><strong>Hay dos bloques de variables:</strong></p>
+<ul>
+<li><p>Bloque 1 (barrio_ideal, integrado, identifico, parte_de_mi): correlaciones muy altas entre sí (0.62-0.74)</p></li>
+<li><p>Bloque 2 (amigos, sociable, cordialidad, colaboracion): correlaciones altas entre sí (0.48-0.67)</p></li>
+</ul>
+<p><strong>Esto sugiere que podrían existir dos dimensiones subyacentes</strong></p>
+</section>
+</section>
+<section id="realizar-el-análisis-de-componentes-principales-pca" class="level1">
+<h1>📐 5. Realizar el Análisis de Componentes Principales (PCA)</h1>
+<p><strong>¿Qué hacemos?</strong> Aplicamos PCA con el paquete FactoMineR.</p>
+<p><strong>¿Por qué?</strong> FactoMineR proporciona una salida completa y bien estructurada para interpretar.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizar PCA (con datos sin NA)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">PCA</span>(<span class="fu">na.omit</span>(proc_data), <span class="at">scale.unit =</span> <span class="cn">TRUE</span>, <span class="at">graph =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="interpretación-de-resultados" class="level1">
+<h1>📈 6. Interpretación de Resultados</h1>
+<section id="cargas-factoriales-coordenadas" class="level2">
+<h2 class="anchored" data-anchor-id="cargas-factoriales-coordenadas">6.1 Cargas factoriales (coordenadas)</h2>
+<p><strong>¿Qué hacemos?</strong> Examinamos las cargas factoriales (correlaciones variables-componentes).</p>
+<p><strong>¿Por qué?</strong> Nos indican qué variables definen cada componente.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargas factoriales (coordenadas)</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>fit<span class="sc">$</span>var<span class="sc">$</span>coord</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><img src="Imagenesygraficos/fitvarcoord.png" class="img-fluid"></p>
+<p><strong>Interpretación de la tabla:</strong></p>
+<p>La tabla fit<span class="math inline">\(var\)</span>coord muestra las cargas factoriales, es decir, la correlación entre las variables originales y los componentes principales.</p>
+<p><strong>Dimensión 1 (58.5% de varianza):</strong></p>
+<ul>
+<li><p>Todas las cargas son positivas y altas (entre 0.67 y 0.83)</p></li>
+<li><p>Esto indica que la primera componente mide un factor general de cohesión barrial</p></li>
+<li><p>Las variables con mayor carga son: integrado (0.83), identifico (0.83), parte_de_mi (0.81)</p></li>
+</ul>
+<p><strong>Dimensión 2 (14.6% de varianza):</strong></p>
+<ul>
+<li><p>Cargas negativas para las variables de identificación directa con el barrio (barrio_ideal, integrado, identifico, parte_de_mi)</p></li>
+<li><p>Cargas positivas para las variables de relación con personas (amigos, sociable, cordialidad, colaboracion)</p></li>
+</ul>
+<p>Esta dimensión distingue entre dos tipos de vinculación con el barrio:</p>
+<ul>
+<li><p>Vinculación directa (con el lugar): puntajes negativos</p></li>
+<li><p>Vinculación social (con las personas): puntajes positivos</p></li>
+</ul>
+</section>
+<section id="varianza-explicada" class="level2">
+<h2 class="anchored" data-anchor-id="varianza-explicada">6.2 Varianza explicada</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Varianza explicada por componente</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fit<span class="sc">$</span>eig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><img src="Imagenesygraficos/autovaloresprac8.png" class="img-fluid"></p>
+<p><strong>Interpretación:</strong></p>
+<ul>
+<li><p>La primera componente explica 58.5% de la varianza total</p></li>
+<li><p>La segunda componente explica 14.6%</p></li>
+<li><p>Entre ambas explican 73% de la varianza</p></li>
+<li><p>A partir de la tercera componente, la contribución es marginal (&lt;7% cada una)</p></li>
+</ul>
+</section>
+</section>
+<section id="visualización-de-variables-en-el-espacio-de-las-componentes" class="level1">
+<h1>🔍 7. Visualización de Variables en el Espacio de las Componentes</h1>
+<p>¿Qué hacemos? Graficamos las variables en el plano de las dos primeras componentes.</p>
+<p>¿Por qué? Para visualizar las relaciones entre variables y las dimensiones subyacentes.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preparar datos para gráfico</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>datos.grafico2 <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(fit<span class="sc">$</span>var<span class="sc">$</span>coord[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de variables</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos.grafico2) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Dim<span class="fl">.1</span>, <span class="at">y =</span> Dim<span class="fl">.2</span>), <span class="at">colour =</span> <span class="st">"darkred"</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text_repel</span>(<span class="fu">aes</span>(<span class="at">x =</span> Dim<span class="fl">.1</span>, <span class="at">y =</span> Dim<span class="fl">.2</span>, <span class="at">label =</span> <span class="fu">rownames</span>(datos.grafico2)),</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>                  <span class="at">size =</span> <span class="dv">4</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>) <span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"darkgray"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"darkgray"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Dimensión 1 (58.5%)"</span>, </span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Dimensión 2 (14.6%)"</span>,</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Círculo de correlaciones - Variables de cohesión barrial"</span>) <span class="sc">+</span></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><img src="Imagenesygraficos/graficodoscomps.png" class="img-fluid"></p>
+<p>Interpretación del gráfico:</p>
+<p><strong>Este gráfico confirma lo observado en las tablas:</strong></p>
+<ul>
+<li><p>Eje horizontal (Dimensión 1): Todas las variables tienen coordenadas positivas, indicando que miden un factor común de cohesión barrial. Las variables más a la derecha (integrado, identifico, parte_de_mi) son las que más contribuyen a esta dimensión.</p></li>
+<li><p>Eje vertical (Dimensión 2): Separa claramente dos grupos:</p></li>
+<li><p>Grupo A (abajo): barrio_ideal, integrado, identifico, parte_de_mi - variables que miden identificación directa con el barrio (como lugar)</p></li>
+<li><p>Grupo B (arriba): amigos, sociable, cordialidad, colaboracion - variables que miden relaciones sociales en el barrio</p></li>
+</ul>
+<p><strong>Conclusión:</strong> Existen dos dimensiones en la percepción del barrio: una de apego al lugar y otra de vínculos comunitarios.</p>
+</section>
+<section id="visualización-de-individuos" class="level1">
+<h1>👥 8. Visualización de Individuos</h1>
+<p>¿Qué hacemos? Graficamos la posición de los individuos (encuestados) en el mismo espacio.</p>
+<p>¿Por qué? Para ver cómo se distribuyen las personas según sus puntuaciones en las componentes.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Preparar coordenadas de individuos</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>datos_grafico_ind <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(fit<span class="sc">$</span>ind<span class="sc">$</span>coord[, <span class="dv">1</span><span class="sc">:</span><span class="dv">2</span>])</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(datos_grafico_ind) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Dim.1"</span>, <span class="st">"Dim.2"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Gráfico de individuos</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(datos_grafico_ind) <span class="sc">+</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span> Dim<span class="fl">.1</span>, <span class="at">y =</span> Dim<span class="fl">.2</span>), <span class="at">colour =</span> <span class="st">"darkred"</span>, <span class="at">alpha =</span> <span class="fl">0.3</span>, <span class="at">size =</span> <span class="fl">0.8</span>) <span class="sc">+</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"darkgray"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">0</span>, <span class="at">colour =</span> <span class="st">"darkgray"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Dimensión 1 (58.5%)"</span>, </span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Dimensión 2 (14.6%)"</span>,</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Distribución de individuos en el espacio de las componentes"</span>) <span class="sc">+</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><img src="Imagenesygraficos/prac8-2.png" class="img-fluid"></p>
+<p><strong>Interpretación:</strong></p>
+<ul>
+<li><p>Cada punto es una persona encuestada.</p></li>
+<li><p>La nube de puntos se extiende principalmente a lo largo del eje horizontal (Dimensión 1)</p></li>
+<li><p>Hay personas con alta cohesión (derecha) y baja cohesión (izquierda)</p></li>
+<li><p>La Dimensión 2 separa a quienes se identifican más con el lugar (abajo) vs.&nbsp;con las personas (arriba)</p></li>
+</ul>
+</section>
+<section id="biplot-variables-e-individuos-juntos" class="level1">
+<h1>🔄 9. Biplot (Variables e Individuos Juntos)</h1>
+<p>¿Qué hacemos? Creamos un biplot que muestra simultáneamente variables e individuos.</p>
+<p>¿Por qué? Para visualizar la relación entre las características (variables) y los casos (personas).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Usamos prcomp para el biplot (compatible con ggbiplot)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>proc_data_pca <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(proc_data)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>fit_prcomp <span class="ot">&lt;-</span> <span class="fu">prcomp</span>(proc_data_pca, <span class="at">scale. =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Biplot</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggbiplot)  <span class="co"># Si no está instalado: install.packages("ggbiplot")</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggbiplot</span>(fit_prcomp, </span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>         <span class="at">obs.scale =</span> <span class="dv">1</span>, </span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>         <span class="at">var.scale =</span> <span class="dv">1</span>,</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>         <span class="at">alpha =</span> <span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">''</span>) <span class="sc">+</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">expand_limits</span>(<span class="at">x =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">8</span>, <span class="dv">4</span>), <span class="at">y =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">2.5</span>, <span class="fl">2.5</span>)) <span class="sc">+</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Dimensión 1 (58.65%)"</span>, </span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Dimensión 2 (14.6%)"</span>,</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Biplot - Individuos y variables de cohesión barrial"</span>) <span class="sc">+</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><img src="Imagenesygraficos/prac8-3.png" class="img-fluid"></p>
+<p><strong>Interpretación del biplot:</strong></p>
+<ul>
+<li><p>Las flechas representan las variables: su dirección indica cómo contribuyen a las componentes</p></li>
+<li><p>Los puntos son individuos: su posición indica sus puntuaciones en las componentes</p></li>
+<li><p>Individuos cercanos a una flecha tienen altos valores en esa variable</p></li>
+<li><p>La longitud de las flechas indica la calidad de representación de la variable</p></li>
+</ul>
+</section>
+<section id="selección-del-número-de-componentes" class="level1">
+<h1>📊 10. Selección del Número de Componentes</h1>
+<section id="método-de-autovalores-1" class="level2">
+<h2 class="anchored" data-anchor-id="método-de-autovalores-1">10.1 Método de autovalores &gt; 1</h2>
+<p>¿Qué hacemos? Seleccionamos componentes con autovalor (eigenvalue) mayor a 1.</p>
+<p>¿Por qué? Es un criterio clásico (regla de Kaiser): componentes con autovalor &gt; 1 explican más varianza que una variable original.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Autovalores</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>fit<span class="sc">$</span>eig</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Resultado:</strong></p>
+<ul>
+<li><p>Componente 1: 4.68 &gt; 1</p></li>
+<li><p>Componente 2: 1.17 &gt; 1</p></li>
+<li><p>Componente 3: 0.55 &lt; 1</p></li>
+</ul>
+<p><strong>Conclusión: Este criterio sugiere retener 2 componentes.</strong></p>
+</section>
+<section id="método-del-codo-scree-plot" class="level2">
+<h2 class="anchored" data-anchor-id="método-del-codo-scree-plot">10.2 Método del codo (scree plot)</h2>
+<p>¿Qué hacemos? Observamos el gráfico de sedimentación para identificar el punto de quiebre.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">fviz_eig</span>(fit, <span class="at">geom =</span> <span class="st">"line"</span>) <span class="sc">+</span> </span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_grey</span>() <span class="sc">+</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Scree plot - Método del codo"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><img src="Imagenesygraficos/prac8-4.png" class="img-fluid"></p>
+<p><strong>Interpretación:</strong> El gráfico muestra una caída pronunciada hasta la componente 2, luego se estabiliza. Esto sugiere retener 2 componentes.</p>
+</section>
+<section id="prueba-de-horn-parallel-analysis---método-más-preciso" class="level2">
+<h2 class="anchored" data-anchor-id="prueba-de-horn-parallel-analysis---método-más-preciso">10.3 Prueba de Horn (Parallel Analysis) - MÉTODO MÁS PRECISO</h2>
+<p>¿Qué hacemos? Usamos la función paran para realizar el análisis paralelo de Horn.</p>
+<p>¿Por qué? Este método compara los autovalores observados con los que se obtendrían por azar en datos aleatorios con la misma estructura. Es más robusto que los métodos anteriores.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(paran)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Realizar análisis paralelo (excluimos primera columna si es necesario)</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>psych<span class="sc">::</span><span class="fu">fa.parallel</span>(<span class="fu">na.omit</span>(proc_data), <span class="at">fa =</span> <span class="st">"pc"</span>, <span class="at">n.iter =</span> <span class="dv">500</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Interpretación de la prueba de Horn:</strong></p>
+<p>La prueba indica que ahi dos componentes que tienen un autovalor ajustado superior a 1.</p>
+<p>Decisión final: Para construir un índice de cohesión barrial, utilizaremos dos componente, que ya explican porcentaje de la varianza y captura el factor común de todas las variables.</p>
+</section>
+</section>
+<section id="construcción-del-índice-de-cohesión-barrial" class="level1">
+<h1>🏗️ 11. Construcción del Índice de Cohesión Barrial</h1>
+<p>¿Qué hacemos? Construimos un índice como combinación lineal de las variables originales ponderadas por sus cargas factoriales.</p>
+<p>¿Por qué? La primera componente principal es la mejor combinación lineal de las variables para resumir la información común.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Los signos de los componentes son indeterminantes; si el signo se invierte, el indice se interpreta al revés.</p>
+</div>
+</div>
+<section id="obtener-los-pesos-cargas-factoriales" class="level2">
+<h2 class="anchored" data-anchor-id="obtener-los-pesos-cargas-factoriales">11.1 Obtener los pesos (cargas factoriales)</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cargas factoriales de la primera componente</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>cargas_dim1 <span class="ot">&lt;-</span> fit<span class="sc">$</span>var<span class="sc">$</span>coord[, <span class="dv">1</span>]</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">round</span>(cargas_dim1, <span class="dv">2</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>Resultado:</strong></p>
+<div class="table-container" style="overflow-x: auto; margin: 30px 0;">
+<table style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif; font-size: 0.95em; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+<caption style="caption-side: top; text-align: center; padding: 12px; font-weight: bold; font-size: 1.1em; background-color: #f8f9fa; border: 1px solid #ddd; border-bottom: none;">
+📋 Tabla: Cargas factoriales de la primera componente (Factor de Cohesión Barrial)
+</caption>
+<thead>
+<tr style="background-color: #2c2c2c; color: white;">
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">
+Variable
+</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">
+Carga factorial
+</th>
+<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">
+Interpretación
+</th>
+</tr>
+</thead>
+<tbody>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">
+barrio_ideal
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #e8f4f8; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.77</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+Alta contribución al factor
+</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">
+integrado
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #d4edda; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.83</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+Muy alta contribución
+</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">
+identifico
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #d4edda; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.83</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+Muy alta contribución
+</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">
+parte_de_mi
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #d4edda; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.81</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+Muy alta contribución
+</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">
+amigos
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #fff3cd; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.72</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+Alta contribución
+</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">
+sociable
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #fff3cd; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.74</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+Alta contribución
+</td>
+</tr>
+<tr style="background-color: #f9f9f9;">
+<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">
+cordialidad
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #fff3cd; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.76</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+Alta contribución
+</td>
+</tr>
+<tr style="background-color: #ffffff;">
+<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">
+colaboracion
+</td>
+<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
+<span style="background-color: #f8d7da; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.67</span>
+</td>
+<td style="border: 1px solid #ddd; padding: 14px;">
+Contribución moderada-alta
+</td>
+</tr>
+</tbody>
+<tfoot>
+<tr style="background-color: #f0f0f0; font-size: 0.85em;">
+<td colspan="3" style="border: 1px solid #ddd; padding: 12px; text-align: center; color: #555;">
+<strong>Nota:</strong> Las cargas factoriales representan la correlación entre cada variable y la primera componente principal (Factor de Cohesión Barrial). Valores más altos indican mayor contribución al factor. La primera componente explica el <strong>58.5%</strong> de la varianza total.
+</td>
+</tr>
+</tfoot>
+</table>
+<div style="text-align: center; padding: 8px; color: #666; font-size: 0.8em; border: 1px solid #ddd; border-top: none; background-color: #fafafa;">
+<p><strong>Elaboración propia</strong> en base a análisis de componentes principales (PCA) con datos ELSOC</p>
+</div>
+</div>
+</section>
+<section id="calcular-el-índice" class="level2">
+<h2 class="anchored" data-anchor-id="calcular-el-índice">11.2 Calcular el índice</h2>
+<p>¿Qué hacemos? Creamos una nueva variable que es la suma ponderada de las 8 variables originales.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calcular índice de cohesión barrial</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>Indice_Cohesion_Barrial <span class="ot">&lt;-</span> <span class="fu">with</span>(proc_data, </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>                                 <span class="fl">0.745</span> <span class="sc">*</span> barrio_ideal <span class="sc">+</span> </span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>                                 <span class="fl">0.825</span> <span class="sc">*</span> integrado <span class="sc">+</span> </span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                                 <span class="fl">0.831</span> <span class="sc">*</span> identifico <span class="sc">+</span> </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                                 <span class="fl">0.807</span> <span class="sc">*</span> parte_de_mi <span class="sc">+</span> </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                                 <span class="fl">0.719</span> <span class="sc">*</span> amigos <span class="sc">+</span> </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                                 <span class="fl">0.744</span> <span class="sc">*</span> sociable <span class="sc">+</span> </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                                 <span class="fl">0.766</span> <span class="sc">*</span> cordialidad <span class="sc">+</span> </span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>                                 <span class="fl">0.676</span> <span class="sc">*</span> colaboracion)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Añadir a la base de datos</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>proc_data<span class="sc">$</span>Indice_Cohesion <span class="ot">&lt;-</span> Indice_Cohesion_Barrial</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Ver resumen del índice</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(proc_data<span class="sc">$</span>Indice_Cohesion)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>El índice saca contruido, se construyo multiplicando las cargas por las variables en su escala original, pero las cargas provienen de un PCA sobre variables estandarizadas. Para realizarlo de aquella forma o conciderandondo el PCA sobre las variables estandarizadas, se puede realizar el siguiente codigo.</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> FactoMineR<span class="sc">::</span><span class="fu">PCA</span>(<span class="fu">na.omit</span>(proc_data), <span class="at">scale.unit =</span> <span class="cn">TRUE</span>, <span class="at">graph =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>indice <span class="ot">&lt;-</span> fit<span class="sc">$</span>ind<span class="sc">$</span>coord[, <span class="dv">1</span>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="interpretación-del-índice" class="level2">
+<h2 class="anchored" data-anchor-id="interpretación-del-índice">11.3 Interpretación del índice</h2>
+<p><strong>Rango del índice:</strong></p>
+<p>Valor mínimo teórico: Si una persona responde 1 (mínimo) en todas las variables: 1 * (0.77 + 0.83 + 0.83 + 0.81 + 0.72 + 0.74 + 0.76 + 0.67) = 1 * 6.13 = 6.13</p>
+<p>Valor máximo teórico: Si una persona responde 4 (máximo) en todas las variables: 4 * 6.13 = 24.52</p>
+<p><strong>Interpretación:</strong></p>
+<ul>
+<li><p>Valores más altos: Mayor cohesión barrial percibida</p></li>
+<li><p>Valores más bajos: Menor cohesión barrial percibida</p></li>
+<li><p>El índice combina tanto el apego al lugar como las relaciones sociales</p></li>
+</ul>
+</section>
+</section>
+<section id="interpretación-final-y-aplicaciones" class="level1">
+<h1>📝 12. Interpretación Final y Aplicaciones</h1>
+<section id="resumen-de-hallazgos" class="level2">
+<h2 class="anchored" data-anchor-id="resumen-de-hallazgos">12.1 Resumen de hallazgos</h2>
+<p>Estructura factorial: Las 8 variables de cohesión barrial se resumen adecuadamente en una dimensión principal que explica el 58.5% de la varianza.</p>
+<p>Dimensiones subyacentes: Aunque existe una segunda dimensión que distingue entre apego al lugar y vínculos sociales, su contribución es limitada (14.6%) y el análisis paralelo sugiere retener solo la primera componente.</p>
+<p>Índice construido: El índice de cohesión barrial es una combinación ponderada que asigna mayor peso a:</p>
+<p>integrado y identifico (0.83 cada una)</p>
+<p>parte_de_mi (0.81)</p>
+<p>barrio_ideal (0.77)</p>
+</section>
+<section id="aplicaciones-del-índice" class="level2">
+<h2 class="anchored" data-anchor-id="aplicaciones-del-índice">12.2 Aplicaciones del índice</h2>
+<p>El índice creado puede utilizarse como variable dependiente o independiente en análisis posteriores:</p>
+<ul>
+<li><p>Modelos de regresión: ¿Qué factores (género, edad, nivel educacional, tipo de barrio) predicen mayores niveles de cohesión barrial?</p></li>
+<li><p>Análisis de correspondencia: ¿Cómo se relaciona la cohesión barrial con otras variables categóricas?</p></li>
+<li><p>Comparaciones: ¿Existen diferencias significativas en cohesión barrial entre comunas, regiones o tipos de barrio?</p></li>
+</ul>
+</section>
+<section id="ejemplo-de-código-para-análisis-posteriores" class="level2">
+<h2 class="anchored" data-anchor-id="ejemplo-de-código-para-análisis-posteriores">12.3 Ejemplo de código para análisis posteriores</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ejemplo: ¿Diferencias por género? (requiere tener variable de género)</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co"># proc_data$genero &lt;- elsoc_long_2016_2022.2$m01[elsoc_long_2016_2022.2$ola == "4"]</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a><span class="co"># # Boxplot por género</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(na.omit(proc_data), aes(x = genero, y = Indice_Cohesion, fill = genero)) +</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_boxplot() +</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="co">#   labs(title = "Cohesión barrial por género",</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a><span class="co">#        y = "Índice de Cohesión Barrial") +</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme_minimal() +</span></span>
+<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a><span class="co">#   theme(legend.position = "none")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+</section>
+<section id="exportar-resultados" class="level1">
+<h1>💾 13. Exportar Resultados</h1>
+<p>¿Qué hacemos? Guardamos los resultados para su uso posterior.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Exportar base con índice</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">write_xlsx</span>(</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">DatosConIndice =</span> proc_data,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">CargasFactoriales =</span> <span class="fu">as.data.frame</span>(fit<span class="sc">$</span>var<span class="sc">$</span>coord),</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">Autovalores =</span> <span class="fu">as.data.frame</span>(fit<span class="sc">$</span>eig)</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  ),</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="st">"resultados_pca_cohesion_barrial.xlsx"</span></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"✅ Resultados exportados a:"</span>, <span class="fu">file.path</span>(<span class="fu">getwd</span>(), <span class="st">"resultados_pca_cohesion_barrial.xlsx"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="notas-metodológicas-importantes" class="level1">
+<h1>⚠️ Notas Metodológicas Importantes</h1>
+<ol type="1">
+<li>Escalamiento de variables</li>
+</ol>
+<ul>
+<li><p>Se utilizó scale.unit = TRUE en PCA() para estandarizar las variables (media 0, desviación 1)</p></li>
+<li><p>Esto es necesario porque aunque todas son escala Likert 1-4, el método PCA se basa en correlaciones</p></li>
+</ul>
+<ol start="2" type="1">
+<li>Tratamiento de valores perdidos</li>
+</ol>
+<ul>
+<li><p>Se excluyeron casos con NA mediante na.omit() antes del PCA</p></li>
+<li><p>Esto es necesario porque el PCA no admite valores perdidos</p></li>
+</ul>
+<ol start="3" type="1">
+<li>Selección del número de componentes</li>
+</ol>
+<ul>
+<li><p>Se utilizaron tres criterios: autovalores &gt; 1, scree plot, y análisis paralelo de Horn</p></li>
+<li><p>El análisis paralelo es el más robusto y recomendado en la literatura</p></li>
+</ul>
+<ol start="4" type="1">
+<li>Construcción del índice</li>
+</ol>
+<ul>
+<li><p>Se usaron las cargas factoriales crudas (no rotadas) porque solo retenemos una componente</p></li>
+<li><p>El índice resultante es una variable continua apta para análisis paramétricos</p></li>
+</ul>
+<ol start="5" type="1">
+<li>Limitaciones</li>
+</ol>
+<ul>
+<li><p>El índice asume que las variables Likert pueden tratarse como numéricas (equidistancia entre categorías)</p></li>
+<li><p>La interpretación del índice depende de la calidad de las variables originales</p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/benjaminbaeza\.github\.io\/stadisticawebfinal\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

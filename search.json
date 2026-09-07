@@ -1,0 +1,1311 @@
+[
+  {
+    "objectID": "clases.html",
+    "href": "clases.html",
+    "title": "Clases",
+    "section": "",
+    "text": "En esta sección encontrarás el material correspondiente a cada sesión del curso. Las presentaciones pueden visualizarse directamente en el navegador."
+  },
+  {
+    "objectID": "Modulos/clase5.html",
+    "href": "Modulos/clase5.html",
+    "title": "Estadística IV",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 10 de septiembre"
+  },
+  {
+    "objectID": "Modulos/clase5.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase5.html#objetivos-de-la-sesión",
+    "title": "Estadística IV",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nRepasar los fundamentos del Análisis de Componentes Principales (PCA)\nAprender a decidir cuántos componentes principales seleccionar\nCrear un índice a partir del primer componente principal\nAplicar el PCA en R Studio con un caso práctico"
+  },
+  {
+    "objectID": "Modulos/clase5.html#presentación",
+    "href": "Modulos/clase5.html#presentación",
+    "title": "Estadística IV",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase5.html#lecturas-asociadas",
+    "href": "Modulos/clase5.html#lecturas-asociadas",
+    "title": "Estadística IV",
+    "section": "Lecturas Asociadas",
+    "text": "Lecturas Asociadas\n\nAldás, Joaquín y Uriel, Ezequiel (2017), Capítulo 11"
+  },
+  {
+    "objectID": "Modulos/clase9.html",
+    "href": "Modulos/clase9.html",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster)",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 22 de octubre"
+  },
+  {
+    "objectID": "Modulos/clase9.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase9.html#objetivos-de-la-sesión",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster)",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nComprender la lógica y usos del análisis de conglomerados\nDiferenciar métodos jerárquicos y no jerárquicos\nAplicar método del centroide en R con datos simulados\nRealizar ejercicio práctico con datos ELSOC"
+  },
+  {
+    "objectID": "Modulos/clase9.html#presentación",
+    "href": "Modulos/clase9.html#presentación",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster)",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase9.html#lecturas-asociadas",
+    "href": "Modulos/clase9.html#lecturas-asociadas",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster)",
+    "section": "Lecturas Asociadas",
+    "text": "Lecturas Asociadas\n\nCea D’ Ancona, M. A. Análisis multivariable. Capítulo 3 “Análisis de conglomerados”.\n\nAldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 3\nGiordani et al. An Introduction to Clustering with R. Parte 2 “Standard Clustering”."
+  },
+  {
+    "objectID": "Modulos/clase3.html",
+    "href": "Modulos/clase3.html",
+    "title": "Módulo 3 · Análisis de Correspondencias Simple (AC) y Múltiple (ACM)",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 27 de agosto"
+  },
+  {
+    "objectID": "Modulos/clase3.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase3.html#objetivos-de-la-sesión",
+    "title": "Módulo 3 · Análisis de Correspondencias Simple (AC) y Múltiple (ACM)",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nComprender la lógica del Análisis de Correspondencias (AC) y su diferencia con Chi-cuadrado\nAprender a construir e interpretar mapas perceptuales\nEntender los conceptos de inercia, masa y distancias χ²\nAplicar AC Simple y Múltiple (ACM) en R Studio con datos reales"
+  },
+  {
+    "objectID": "Modulos/clase3.html#presentación",
+    "href": "Modulos/clase3.html#presentación",
+    "title": "Módulo 3 · Análisis de Correspondencias Simple (AC) y Múltiple (ACM)",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase3.html#lectura-asociada",
+    "href": "Modulos/clase3.html#lectura-asociada",
+    "title": "Módulo 3 · Análisis de Correspondencias Simple (AC) y Múltiple (ACM)",
+    "section": "Lectura Asociada",
+    "text": "Lectura Asociada\n\nAldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 5 - “Correspondence Analysis”"
+  },
+  {
+    "objectID": "Modulos/clase2.html",
+    "href": "Modulos/clase2.html",
+    "title": "Módulo 2 · Análisis exploratorio",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 20 de agosto"
+  },
+  {
+    "objectID": "Modulos/clase2.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase2.html#objetivos-de-la-sesión",
+    "title": "Módulo 2 · Análisis exploratorio",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nIntroducción al análisis exploratorio\nTipos de variables"
+  },
+  {
+    "objectID": "Modulos/clase2.html#presentación",
+    "href": "Modulos/clase2.html#presentación",
+    "title": "Módulo 2 · Análisis exploratorio",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase2.html#lecturas-asociadas",
+    "href": "Modulos/clase2.html#lecturas-asociadas",
+    "title": "Módulo 2 · Análisis exploratorio",
+    "section": "Lecturas asociadas",
+    "text": "Lecturas asociadas\n\nAldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 5 - “Correspondence Analysis”"
+  },
+  {
+    "objectID": "Modulos/clase8.html",
+    "href": "Modulos/clase8.html",
+    "title": "Módulo 8 · Aplicación EFA y Trabajo Final",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 15 de octubre"
+  },
+  {
+    "objectID": "Modulos/clase8.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase8.html#objetivos-de-la-sesión",
+    "title": "Módulo 8 · Aplicación EFA y Trabajo Final",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nRepasar Análisis Factorial Exploratorio (EFA)\nAplicar EFA con ejemplo práctico de cohesión barrial\nAvanzar en la estructura del Trabajo Final\nEjercicios para Control 2"
+  },
+  {
+    "objectID": "Modulos/clase8.html#presentación",
+    "href": "Modulos/clase8.html#presentación",
+    "title": "Módulo 8 · Aplicación EFA y Trabajo Final",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase8.html#lecturas-asociadas",
+    "href": "Modulos/clase8.html#lecturas-asociadas",
+    "title": "Módulo 8 · Aplicación EFA y Trabajo Final",
+    "section": "Lecturas Asociadas",
+    "text": "Lecturas Asociadas\n\nAldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 12.\nCarrasco, Olivares y Nuñez (2024). Material de curso Estadística IV."
+  },
+  {
+    "objectID": "Modulos/clase10.html",
+    "href": "Modulos/clase10.html",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Métodos Jerárquicos",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 29 de octubre"
+  },
+  {
+    "objectID": "Modulos/clase10.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase10.html#objetivos-de-la-sesión",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Métodos Jerárquicos",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nComprender medidas de distancia y similitud en análisis de conglomerados\nDiferenciar algoritmos jerárquicos: centroide, vecino más cercano/lejano, Ward, etc.\nAplicar método de Ward en R con datos simulados\nRealizar ejercicio práctico con datos ELSOC"
+  },
+  {
+    "objectID": "Modulos/clase10.html#presentación",
+    "href": "Modulos/clase10.html#presentación",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Métodos Jerárquicos",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase10.html#lecturas-asociadas",
+    "href": "Modulos/clase10.html#lecturas-asociadas",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Métodos Jerárquicos",
+    "section": "Lecturas Asociadas",
+    "text": "Lecturas Asociadas\n\nCea D’ Ancona, M. A. Análisis multivariable. Capítulo 3 “Análisis de conglomerados”.\n\nAldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 3\nGiordani et al. An Introduction to Clustering with R. Parte 2 “Standard Clustering”."
+  },
+  {
+    "objectID": "Practicos/Practico2.html",
+    "href": "Practicos/Practico2.html",
+    "title": "1. Propósito General",
+    "section": "",
+    "text": "Este práctico tiene como objetivo desarrollar competencias en el análisis de asociación entre variables categóricas mediante:\nA. Construcción de tablas de contingencia B. Aplicación de la prueba de hipotesis de Chi-cuadrado (χ²) C. Realización de Analisis de Correspondencia Simple (ACS) D. Interpretación de los resultados estadísticos E. Elaboración de resultados sustantivos a partir de la interpretación de los resultados anteriores\n\n\n\n\n\n\nNote\n\n\n\nRealizaremos Analisis de Correspondencia Multiple (ACM) en el siguiente Practico N°3"
+  },
+  {
+    "objectID": "Practicos/Practico2.html#fijar-directorio",
+    "href": "Practicos/Practico2.html#fijar-directorio",
+    "title": "1. Propósito General",
+    "section": "3.1 Fijar directorio",
+    "text": "3.1 Fijar directorio\nRecordemos que para fijarlo, siempre tenemos tres opciones:\nOPCIÓN 1 - La forma manual: Para realizarla vamos a la opción “Session” de Rstudios &gt; le damos a la opción “Set Working Directory” &gt; ultima opción: “Choose Directory” &gt; seleccionamos la carpeta en la que trabajaremos para fijarla.\nOPCIÓN 2 - Usamos codigos de Rstudios: Para aquello debemos usar los siguientes codigos:\n\n# Para fijarlo directamente debemos usar el comando \"setwd\" como esta puesto debajo\n# Para saber con que llenar los espacios del propio codigo, puedes ver la dirección de la \n# carpeta en la que quieres trabajar, clickando sobre el icono de esta.\n\n#los primeros 2 nombres, puedes dejarlos como lo deje lo que debes cambiar esta indicado \n# con palabras\n\n# setwd(\"C:/Users/ El nombre de usuario / Nombre de la carpeta / \n# Nombre de la subcarpeta en caso de ser necesario\")\n\n# Puedes el comando \"getwd\", para comprobar si estas trabajando en la carpeta en la que \n# indicaste\n\n# getwd()\n\n# Esta te deberia indicar en la consola algo similar a esto:\n\n\"C:/Users/ El nombre de usuario / Nombre de la carpeta \n# / Nombre de la subcarpeta en caso de ser necesario\"\n\n# Si efectivamente sale asi o con la carpeta que querias esta configurado\n\nOPCIÓN 3 - Usa un proyecto de Rstudios: Para eso debes crear un proyecto.\nPara realizarlo ve a la opción File &gt; Seleccionas la opción New Proyect &gt; Seleccionas la opción **New Directory” &gt; Y seleccionas la carpeta de tu proyecto o en la que quieras trabajar creando un New Proyect. Esta opción entrega la ventaja de que cada vez que abras el archivo de Rstudios, este fijara automaticamente dicha carpeta como directorio de trabajo y por ejemplo los avances o lo realizado en el enviroment, tambien se guardara."
+  },
+  {
+    "objectID": "Practicos/Practico2.html#instalación-y-carga-de-paquetes",
+    "href": "Practicos/Practico2.html#instalación-y-carga-de-paquetes",
+    "title": "1. Propósito General",
+    "section": "3.2 Instalación y Carga de Paquetes",
+    "text": "3.2 Instalación y Carga de Paquetes\n\n# Recordemos que en caso de no tener instalado un paquete podemos ocupar el comando:\n\ninstall.packages(\"pacman\") # Nombre del paquete siempre en entre comillas\n\n# Luego lo cargamos:\n\nlibrary(pacman) # En este caso no es necesario usar comillas\n\n# Pacman es un paquete bastante util de R, ya que este tiene la caracteristica de\n# combinar los comandos de install.packages y library\n# por lo que en caso de colocar un paquete dentro de su parentesis, pacman lo cargara\n# automaticamente en caso de estar descargado o lo descargara en caso de no estarlo\n# y posteriormente lo descargara. \n\n\n\n\n\n\n\nNote\n\n\n\nPara el ejemplo anterior, usamos install.packages y library con el paquete pacman por que con este debemos realizarlo y ademas sirve para poner en practica dicha forma. Tambien es necesario recordar que en R y Rstudios solo es necesario instalar paquetes una vez estos quedaran guardados en nuestro PC, por lo que solo sera necesario cargarlo.\n\n\n\npacman::p_load(tidyverse,    # Manipulación y visualización de datos\n               sjPlot,       # Tablas y gráficos para ciencias sociales\n               psych,        # Análisis psicométricos y correlaciones\n               DescTools,    # Funciones descriptivas avanzadas\n               ggplot2,      # Crear gráficos y visualizar datos\n               broom,        # Para hacer tablas data.frame \n               rempsyc,      # Presentación de resultados\n               FactoMineR,   # Para distintos analisis multivariados\n               factoextra,   # Complementa al anterior visualizando resulados y mas\n               corrplot,     # Visualiza matrices de relación\n               dplyr,        # Seleccionar, filtrar, ordenar, crear y resumir datos\n               nFactors,     # Util en analisis factoriales (para mas adelante!)\n               ggbiplot,     # Util en analisis de componentes principales (para mas adelante!)\n               ggrepel,      # complemento para ggplot2\n               sjlabelled,   # Manejo de etiquetas de variables\n               flextable,    # Realizar otras tablas\n               gginference   # Realizar y visualizar test de hipotesis de Chi-cuadrado (χ²))"
+  },
+  {
+    "objectID": "Practicos/Practico2.html#configuración-del-entorno-r",
+    "href": "Practicos/Practico2.html#configuración-del-entorno-r",
+    "title": "1. Propósito General",
+    "section": "3.3 Configuración del entorno R",
+    "text": "3.3 Configuración del entorno R\n\noptions(scipen = 999)    # Desactiva notación científica, en ocasiones activada\nrm(list = ls())          # Limpia el entorno de trabajo\nset.seed(123)            # Fija semilla para reproducibilidad"
+  },
+  {
+    "objectID": "Practicos/Practico2.html#carga-de-la-base-de-datos",
+    "href": "Practicos/Practico2.html#carga-de-la-base-de-datos",
+    "title": "1. Propósito General",
+    "section": "3.4 ⏳ Carga de la base de datos",
+    "text": "3.4 ⏳ Carga de la base de datos\nCargaremos la base de datos con la que vamos a trabajar, la del ELSOC. Para este caso la descargaremos directamente desde internet (En este caso la base de datos esta alojada en Harvard Dataverse)\n\n#Cargamos la base de datos desde internet con este comenado:\n\nload(url(\"https://dataverse.harvard.edu/api/access/datafile/7245118\")) \n\n# En este caso al estar en internet no es necesario utilizar otros codigos como:\n# read... (en el ... iria el formato de la base de datos\n# read es una función del paquete haven\n\nApartir con la base ya cargada podemos interpretar: a partir del enviroment que la base contiene 18,035 casos (entrevistados) medidos en 750 variables a lo largo de diferentes olas.\nPero tambien lo podriamos verificar de la siguiente forma:\n\ndim(elsoc_long_2016_2022.2) # con este codigo podriamos observar las dimensiones y\n                            # variables de la base\n\nLa salida que esperamos deberia ser esta:\n\n[1] 18035   750"
+  },
+  {
+    "objectID": "Practicos/Practico2.html#selección-de-variables-y-selección-de-la-ola",
+    "href": "Practicos/Practico2.html#selección-de-variables-y-selección-de-la-ola",
+    "title": "1. Propósito General",
+    "section": "4.1 Selección de variables y selección de la ola",
+    "text": "4.1 Selección de variables y selección de la ola\n\ndatos_acs &lt;- elsoc_long_2016_2022.2 %&gt;%\n  filter(ola == \"4\") %&gt;%\n  select(m01,           # Nivel educacional\n         c25,           # Preferencia democracia\n         c05_01         # Confianza en el gobierno\n         )\n\n# En la primera linea creamos una nueva sub-base con la que trabajariamos\n# esta contendria solo las variables con las que nos dispondriamos a trabajar\n# ademas esta sub-base se encuentra filtrada en la ola 4, las observaciones del\n# año 2019\n\n# Con filter(ola == \"4\") le estamos indicando a R que selecciones solo los casos\n# de la ola 4 del años 2019 para elaborar la nueva sub-base\n# de ahi que esta nueva sub-base cuente con menos observaciones\n\n# Con select y lo del interior de su () le indicamos que considere solo esas\n# variables para elaborar la sub-base\n\n# Todas estas variables son nominales u ordinales, siendo estas variables categoricas"
+  },
+  {
+    "objectID": "Practicos/Practico2.html#recodificación-de-variables",
+    "href": "Practicos/Practico2.html#recodificación-de-variables",
+    "title": "1. Propósito General",
+    "section": "4.2 Recodificación de variables",
+    "text": "4.2 Recodificación de variables\n\ndatos_acs$educacion &lt;- car::recode(datos_acs$m01,\n                                   \"c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3\")\ndatos_acs$educacion &lt;- sjlabelled::set_labels(\n  datos_acs$educacion,\n  labels = c(\"Educación básica\" = 1, \"Educación media\" = 2, \"Educación superior\" = 3))\n\nRecodificamos la variable educación (m01) usando el comando recode de car\n\n\n\n\n\n\nNote\n\n\n\nel uso de los dos, dos puntos (::) en car, es una forma de indicar que se ejecute una acción de una paquete, en este caso recode de car, esta forma de indicar una acción es comun cuando se tiene varios paquetes instalados debido a que algunos paquetes comparten codigos bajo el mismo nombre, pudiendo provocar errores con (::) indicamos que queremos realizar esa acción de ese paquete en especifico, indipendiente de que otro paquete tenga la misma función con el mismo nombre.\n\n\nRecodificamos la variable educación (m01), para que pase de 10 alternativas a 3; posteriormente usando labels le asignamos una etiqueta de valor para los numeros (1,2,3) de las 3 nuevas alternativas creadas con la recodificación y asi estas tengan nombres legibles; estas serian: 1- para la Educación básica; 2- para la Educación Media y 3- para la educación superior.\nEsto se debe a que la variable de educación (m01) del ELSOC en sus 17 alternativas de respuesta contempla desde sin educación hasta educación de postgrado. Pasando por intermedios como educación media incompleta o educación tecnica.\nCon c(1,2,3)=1 de la Educación basica por ejemplo agrupamos en la nueva alternativa 1, las categorias de respuesta o alternativas de: “sin educación basica”; “educación basica incompleta” y “educación basica completa”. Asi podemos simplificar la variable educacional en tres grupos"
+  },
+  {
+    "objectID": "Practicos/Practico2.html#transformación-de-valores-perdidos-a-na",
+    "href": "Practicos/Practico2.html#transformación-de-valores-perdidos-a-na",
+    "title": "1. Propósito General",
+    "section": "4.3 Transformación de valores perdidos a NA",
+    "text": "4.3 Transformación de valores perdidos a NA\n\ndatos_acs &lt;- datos_acs %&gt;% sjlabelled::set_na(., na = c(-999, -888, -777, -666))\n\ndatos_acs &lt;- na.omit(datos_acs) # Eliminando NA, simplificamos el analisis\n                                # y se vuelve más simple trabajar con este\n\nstr(datos_acs) # Con este podemos ver la estructura de la base de datos y como esta quedo\n               # despues del proceso\n\nCon sjlabelled::set_na, asignamos que los valores de respuesta -999, -888, -777 y -666 sean considerados NA posteriomente con na.omit, los eliminamos de la base de datos\nLas alternativas de respuesta como -999 y el resto de una base de datos, suelen ser empleadas para indicar que es un dato perdido por una categoria de respuesta de NS/NR (No sabe / No responde) y usualmente se suelen identificar asi justamente para facilitar su tratamiento como variables NA, en softwares de analisis estadisticos como Rstudios, como lo estamos realizando, en caso de no hacerlo el procedimiento se volvia un poco más complicado, por eso es un estandar. Como añadido, antes de eliminar los datos NA de una base de datos, se debe considerar cuantos datos se perderian del total na.omit los elimina de la base de datos directamente siempre que presente un NA en alguna alternativa de respuesta independiente de contar con respuesta en otras preguntas, por lo que realizar esto podria llevar a un sesgo de la muestra, de la base o del analisis, ademas de perder datos en otras variables. En caso de realizarlo siempre es bueno cerciorarse, de que solo se esta perdiendo idealmente entre menos de un 10% o 15% de los casos de la base."
+  },
+  {
+    "objectID": "Practicos/Practico2.html#chi-cuadrado-χ²-en-rstudios",
+    "href": "Practicos/Practico2.html#chi-cuadrado-χ²-en-rstudios",
+    "title": "1. Propósito General",
+    "section": "5.1 Chi-cuadrado (χ²) en Rstudios",
+    "text": "5.1 Chi-cuadrado (χ²) en Rstudios\n\nchi_result_1 &lt;- chisq.test(table(datos_acs$m01, datos_acs$c25)) \n\n# creamos un objeto en el enviroment de R que contenga la prueba de\n# Chi-cuadrado; en este caso lo realizamos con las variables de educación (m01) y\n# preferencia democracia (c25)\n\nstats.table_1 &lt;- tidy(chi_result_1, conf_int = T)\n\n# tidy elaboramos otro objeto que contega los estadisticos del resultado del Chi-cuadrado \n# en una tabla a la cual llamaremos a dicha tabla stats.table_1\n\nnice_table(stats.table_1)\n\n# Con nice_table podemos visualizar los estadisticos en una tabla\n\nsuppressWarnings(ggchisqtest(chi_result_1))\n\n# Con ggchisqtest(chi_result_1) podemos visualizar el resultado del test de hipotesis de\n# Chi-cuadrado en una curva de distribución de Chi-cuadrado\n\n# Repetiremos el mismo proceso otra vez de la prueba de hipotesis de Chi.cuadrado, \n# esta vez con las variables educación (m01) y confianza en el gobierno (c05_01)\n\nchi_result_2 &lt;- chisq.test(table(datos_acs$m01, datos_acs$c05_01))\n\nstats.table_2 &lt;- tidy(chi_result_2, conf_int = T)\n\nnice_table(stats.table_2)\n\nsuppressWarnings(ggchisqtest(chi_result_2))"
+  },
+  {
+    "objectID": "Practicos/Practico2.html#tablas-de-contingencia",
+    "href": "Practicos/Practico2.html#tablas-de-contingencia",
+    "title": "1. Propósito General",
+    "section": "5.2 Tablas de contingencia",
+    "text": "5.2 Tablas de contingencia\n\n\n\n\n\n\nNote\n\n\n\nLa elaboración de tablas de contingencia, puede ser un paso previo a la elaboración del test de hipotesis de Chi-cuadrado, esto queda a criterio del investigador.\n\n\nUna tabla de contingencia (o tabla cruzada) es una matriz que nos muestra la distribución conjunta de dos variables categóricas. Y sus Componentes Esenciales serian:\n\nFrecuencias observadas: Conteos en cada combinación de categorías\nMarginales de fila: Totales por categoría de la variable X\nMarginales de columna: Totales por categoría de la variable Y\nGran total: Número total de casos válidos\n\nSumado a lo anterior tenemos:\nFrecuencias absolutas:\n\nnúmeros que aparencen en la tabla (ya sean conjuntas o marginales)\n\nFrecuencias relativas:\n\nporcentaje fila: % que cada frecuencia conjunta representa sobre la marginal de su fila\nporcentaje columna: % que cada frecuencia conjunta representa sobre la marginal de su columna\nporcentaje total: % que cada frecuencia conjunta representa sobre el número total de casos de la tabla\n\nEn R y Rstudio se elabora de la siguiente manera:\n\ntabla_contingencia &lt;- table(datos_acs$m01, datos_acs$c25)\n\n# Con la funcion table podemos elaborar la tabla de contingencia, en este caso haremos \n# la tabla de contingencia de la variable de educacuón (m01) por \n# preferencia democracia (c25)\n\nprint(tabla_contingencia)\n\n# Y con print la podemos visualizar en la consola de comandos de Rstudios \n\nsjPlot::sjt.xtab(var.row = datos_acs$m01, var.col = datos_acs$c25,\n                 show.row.prc = TRUE, show.col.prc = TRUE)\n\n# Podemos verificar dicha tabla con sjPlot de forma opcional y la podemos visualizar en el\n# \"Worksapce\" de manera más visual\n\n# Con show.row.prc podemos ver los porcentajes que representan los caso de cada alternativa\n# proporcinalmente (TRUE o T) es necesario para emplear dicha opción o elemento\n\n# Con show.col.prc podemos hacer que cada proporción adquiera un color distinto para\n# distinguirlos más facil visualmente\n\n# crearemos otra tabla de contigencia entre la variable educacion (m01) por confianza en el \n# gobierno (c05_01)\n\ntabla_contingencia_2 &lt;- table(datos_acs$m01, datos_acs$c05_01)\n\nprint(tabla_contingencia_2)\n\nsjPlot::sjt.xtab(var.row = datos_acs$m01, var.col = datos_acs$c05_01,\n                 show.row.prc = TRUE, show.col.prc = TRUE)"
+  },
+  {
+    "objectID": "Practicos/Practico2.html#analisis-de-correspondencia-simple-acs-en-rstudios",
+    "href": "Practicos/Practico2.html#analisis-de-correspondencia-simple-acs-en-rstudios",
+    "title": "1. Propósito General",
+    "section": "6.1 Analisis de Correspondencia Simple (ACS) en Rstudios",
+    "text": "6.1 Analisis de Correspondencia Simple (ACS) en Rstudios\n\n\n\n\n\n\nNote\n\n\n\nComo les comento en clases la Profesora Carolina, este tipo de analisis es bastente comun y popular, en lo respectivo a los estudios sobre el habitus de Pierre Bourdieu, más especificamente por ejemplo los estudios sobre el gusto, permitiendo visualizar dichas relaciones de forma estadistica y considerando enfoques como la clase social o el nivel educativo.\n\n\nPara realizar un Analisis de Correspondencia Simple (ACS) en Rstudios podemos realizarlo de la siguiente forma:\n\n# Utilizaremos la función CA() del paquete FactoMineR.\n# CA son las siglas de Analisis de Correspondencia en ingles\n# En este caso crearemos el analisis de correspondecia en Rstudios y\n# dejaremos su resultado como datos y valores en el apartado del Enviroment\n# La visualización del mismo en el \"Workspace\" sera en pasos de más adelante\n\nresultado_ca &lt;- CA(tabla_contingencia, graph = FALSE)\n\n# De momento podemos ver sus resultados de la siguiente forma\n\nprint(resultado_ca) # Para ver el resumen del resultado\n\nsummary(resultado_ca) # En caso de querer ver más detalles\n\n\n\n\n\n\n\nNote\n\n\n\nEn para este ejemplo estamos haciendo el Analisis de Correspondecia entre las variables educación (m01) con preferencia democratica (c25). En caso de querer realizarlo con la otra variable, repitan el mismo codigo realizado anteriormente (el de arriba de esta nota) cambiando la tabla_contingencia, por tabla_contingencia_2 y repitan los pasos siguientes. No olviden crear un objeto nuevo en el enviroment con un nombre distinto a resultado_ca, puede ser resultado_ca_2, en caso de no hacerlo se sobreescribiran los resultados de ambos analisis.\n\n\nPero un Analisis de Correspondencia (AC) ya sea en su forma simple (ACS) o multiple (ACM) no solo nos entregan eso datos, tambien podemos disponer de más."
+  },
+  {
+    "objectID": "Practicos/Practico2.html#elaboración-de-resultados-clave-acs",
+    "href": "Practicos/Practico2.html#elaboración-de-resultados-clave-acs",
+    "title": "1. Propósito General",
+    "section": "6.2 Elaboración de resultados clave (ACS)",
+    "text": "6.2 Elaboración de resultados clave (ACS)\n\n6.2.1 Calculo de Masa\nLa Masa (o Mass) representa la proporción que cada fila y cada columna aporta al total de la tabla.\n\n# Para obtener la masa de filas y columnas debemos realizar lo siguiente\n\nmasas_filas &lt;- resultado_ca$call$marge.row\n\nmasas_columnas &lt;- resultado_ca$call$marge.col\n\n# en caso de querer obtener la masa con la otra variable, cambien el resultado de su ACS\n# asumiendo que lo realizaron como se menciono con anterioridad\n\n# Ahora las podemos visualizar de la siguiente forma con un mejor formato\n\ncat(\"\\n📊 Masas de filas (proporción de cada categoría educacional):\\n\")\nprint(round(masas_filas, 4))\n\n# Correr ambas lineas de codigo a la vez\n\ncat(\"\\n📊 Masas de columnas (proporción de cada preferencia democrática):\\n\")\nprint(round(masas_columnas, 4))\n\n# Pero ahora tambien podemos visualizarlo en un gráfico de masas en el \"Workspace\" \n# para tener una mejor visualización\n\nbarplot(masas_filas, \n        main = \"Masa por categoría educacional\",\n        xlab = \"Nivel educacional\", \n        ylab = \"Proporción\",\n        col = \"steelblue\")\n\n# parte este grafico se hizo con filas, en caso de querer obtener el de las columnas\n# cambien masas_filas por masas_columnas\n\n\n\n6.2.2 Calculo de Inercia\nTambien podemos obtener otro resultado clave que en este caso es la Inercia (Inertia).\nPodemos calcular u obtener la inercia en Rstudios de la siguiente manera:\n\nresultado_ca$eig # Con este codigo calculamos la inercia total y por dimensión\n\nTambien podemos calcular la contribución de la inercia de las filas y las columnas a las dimensiones\n\nresultado_ca$row$contrib # Contribución Fila\n\nresultado_ca$col$contrib # Contribución Columna"
+  },
+  {
+    "objectID": "Practicos/Practico8.html",
+    "href": "Practicos/Practico8.html",
+    "title": "🎯 Objetivos del Análisis",
+    "section": "",
+    "text": "Este ejercicio tiene como objetivos:\n\nRealizar un Análisis de Componentes Principales (PCA) con el paquete FactoMineR utilizando variables de cohesión territorial de la encuesta ELSOC.\nInterpretar los resultados del PCA: autovalores, cargas factoriales, varianza explicada.\nSeleccionar el número óptimo de componentes mediante diferentes criterios (autovalores &gt; 1, gráfico de codo, prueba de Horn).\nConstruir un índice de cohesión barrial a partir de la primera componente principal.\nVisualizar las relaciones entre variables y la distribución de casos."
+  },
+  {
+    "objectID": "Practicos/Practico8.html#salida-esperada",
+    "href": "Practicos/Practico8.html#salida-esperada",
+    "title": "🎯 Objetivos del Análisis",
+    "section": "Salida esperada:",
+    "text": "Salida esperada:\n\nInterpretación:\n\nLas correlaciones son positivas y moderadas a altas (entre 0.35 y 0.74)\n\nHay dos bloques de variables:\n\nBloque 1 (barrio_ideal, integrado, identifico, parte_de_mi): correlaciones muy altas entre sí (0.62-0.74)\nBloque 2 (amigos, sociable, cordialidad, colaboracion): correlaciones altas entre sí (0.48-0.67)\n\nEsto sugiere que podrían existir dos dimensiones subyacentes"
+  },
+  {
+    "objectID": "Practicos/Practico8.html#cargas-factoriales-coordenadas",
+    "href": "Practicos/Practico8.html#cargas-factoriales-coordenadas",
+    "title": "🎯 Objetivos del Análisis",
+    "section": "6.1 Cargas factoriales (coordenadas)",
+    "text": "6.1 Cargas factoriales (coordenadas)\n¿Qué hacemos? Examinamos las cargas factoriales (correlaciones variables-componentes).\n¿Por qué? Nos indican qué variables definen cada componente.\n\n# Cargas factoriales (coordenadas)\nfit$var$coord\n\n\nInterpretación de la tabla:\nLa tabla fit\\(var\\)coord muestra las cargas factoriales, es decir, la correlación entre las variables originales y los componentes principales.\nDimensión 1 (58.5% de varianza):\n\nTodas las cargas son positivas y altas (entre 0.67 y 0.83)\nEsto indica que la primera componente mide un factor general de cohesión barrial\nLas variables con mayor carga son: integrado (0.83), identifico (0.83), parte_de_mi (0.81)\n\nDimensión 2 (14.6% de varianza):\n\nCargas negativas para las variables de identificación directa con el barrio (barrio_ideal, integrado, identifico, parte_de_mi)\nCargas positivas para las variables de relación con personas (amigos, sociable, cordialidad, colaboracion)\n\nEsta dimensión distingue entre dos tipos de vinculación con el barrio:\n\nVinculación directa (con el lugar): puntajes negativos\nVinculación social (con las personas): puntajes positivos"
+  },
+  {
+    "objectID": "Practicos/Practico8.html#varianza-explicada",
+    "href": "Practicos/Practico8.html#varianza-explicada",
+    "title": "🎯 Objetivos del Análisis",
+    "section": "6.2 Varianza explicada",
+    "text": "6.2 Varianza explicada\n\n# Varianza explicada por componente\nfit$eig\n\n\nInterpretación:\n\nLa primera componente explica 58.5% de la varianza total\nLa segunda componente explica 14.6%\nEntre ambas explican 73% de la varianza\nA partir de la tercera componente, la contribución es marginal (&lt;7% cada una)"
+  },
+  {
+    "objectID": "Practicos/Practico8.html#método-de-autovalores-1",
+    "href": "Practicos/Practico8.html#método-de-autovalores-1",
+    "title": "🎯 Objetivos del Análisis",
+    "section": "10.1 Método de autovalores > 1",
+    "text": "10.1 Método de autovalores &gt; 1\n¿Qué hacemos? Seleccionamos componentes con autovalor (eigenvalue) mayor a 1.\n¿Por qué? Es un criterio clásico (regla de Kaiser): componentes con autovalor &gt; 1 explican más varianza que una variable original.\n\n# Autovalores\nfit$eig\n\nResultado:\n\nComponente 1: 4.68 &gt; 1\nComponente 2: 1.17 &gt; 1\nComponente 3: 0.55 &lt; 1\n\nConclusión: Este criterio sugiere retener 2 componentes."
+  },
+  {
+    "objectID": "Practicos/Practico8.html#método-del-codo-scree-plot",
+    "href": "Practicos/Practico8.html#método-del-codo-scree-plot",
+    "title": "🎯 Objetivos del Análisis",
+    "section": "10.2 Método del codo (scree plot)",
+    "text": "10.2 Método del codo (scree plot)\n¿Qué hacemos? Observamos el gráfico de sedimentación para identificar el punto de quiebre.\n\nfviz_eig(fit, geom = \"line\") + \n  theme_grey() +\n  labs(title = \"Scree plot - Método del codo\")\n\n\nInterpretación: El gráfico muestra una caída pronunciada hasta la componente 2, luego se estabiliza. Esto sugiere retener 2 componentes."
+  },
+  {
+    "objectID": "Practicos/Practico8.html#prueba-de-horn-parallel-analysis---método-más-preciso",
+    "href": "Practicos/Practico8.html#prueba-de-horn-parallel-analysis---método-más-preciso",
+    "title": "🎯 Objetivos del Análisis",
+    "section": "10.3 Prueba de Horn (Parallel Analysis) - MÉTODO MÁS PRECISO",
+    "text": "10.3 Prueba de Horn (Parallel Analysis) - MÉTODO MÁS PRECISO\n¿Qué hacemos? Usamos la función paran para realizar el análisis paralelo de Horn.\n¿Por qué? Este método compara los autovalores observados con los que se obtendrían por azar en datos aleatorios con la misma estructura. Es más robusto que los métodos anteriores.\n\nlibrary(paran)\n\n# Realizar análisis paralelo (excluimos primera columna si es necesario)\npsych::fa.parallel(na.omit(proc_data), fa = \"pc\", n.iter = 500)\n\nInterpretación de la prueba de Horn:\nLa prueba indica que ahi dos componentes que tienen un autovalor ajustado superior a 1.\nDecisión final: Para construir un índice de cohesión barrial, utilizaremos dos componente, que ya explican porcentaje de la varianza y captura el factor común de todas las variables."
+  },
+  {
+    "objectID": "Practicos/Practico8.html#obtener-los-pesos-cargas-factoriales",
+    "href": "Practicos/Practico8.html#obtener-los-pesos-cargas-factoriales",
+    "title": "🎯 Objetivos del Análisis",
+    "section": "11.1 Obtener los pesos (cargas factoriales)",
+    "text": "11.1 Obtener los pesos (cargas factoriales)\n\n# Cargas factoriales de la primera componente\ncargas_dim1 &lt;- fit$var$coord[, 1]\nprint(round(cargas_dim1, 2))\n\nResultado:\n\n\n\n📋 Tabla: Cargas factoriales de la primera componente (Factor de Cohesión Barrial)\n\n\n\n\nVariable\n\n\nCarga factorial\n\n\nInterpretación\n\n\n\n\n\n\nbarrio_ideal\n\n\n0.77\n\n\nAlta contribución al factor\n\n\n\n\nintegrado\n\n\n0.83\n\n\nMuy alta contribución\n\n\n\n\nidentifico\n\n\n0.83\n\n\nMuy alta contribución\n\n\n\n\nparte_de_mi\n\n\n0.81\n\n\nMuy alta contribución\n\n\n\n\namigos\n\n\n0.72\n\n\nAlta contribución\n\n\n\n\nsociable\n\n\n0.74\n\n\nAlta contribución\n\n\n\n\ncordialidad\n\n\n0.76\n\n\nAlta contribución\n\n\n\n\ncolaboracion\n\n\n0.67\n\n\nContribución moderada-alta\n\n\n\n\n\n\nNota: Las cargas factoriales representan la correlación entre cada variable y la primera componente principal (Factor de Cohesión Barrial). Valores más altos indican mayor contribución al factor. La primera componente explica el 58.5% de la varianza total.\n\n\n\n\n\nElaboración propia en base a análisis de componentes principales (PCA) con datos ELSOC"
+  },
+  {
+    "objectID": "Practicos/Practico8.html#calcular-el-índice",
+    "href": "Practicos/Practico8.html#calcular-el-índice",
+    "title": "🎯 Objetivos del Análisis",
+    "section": "11.2 Calcular el índice",
+    "text": "11.2 Calcular el índice\n¿Qué hacemos? Creamos una nueva variable que es la suma ponderada de las 8 variables originales.\n\n# Calcular índice de cohesión barrial\nIndice_Cohesion_Barrial &lt;- with(proc_data, \n                                 0.745 * barrio_ideal + \n                                 0.825 * integrado + \n                                 0.831 * identifico + \n                                 0.807 * parte_de_mi + \n                                 0.719 * amigos + \n                                 0.744 * sociable + \n                                 0.766 * cordialidad + \n                                 0.676 * colaboracion)\n\n# Añadir a la base de datos\nproc_data$Indice_Cohesion &lt;- Indice_Cohesion_Barrial\n\n# Ver resumen del índice\nsummary(proc_data$Indice_Cohesion)\n\n\n\n\n\n\n\nNote\n\n\n\nEl índice saca contruido, se construyo multiplicando las cargas por las variables en su escala original, pero las cargas provienen de un PCA sobre variables estandarizadas. Para realizarlo de aquella forma o conciderandondo el PCA sobre las variables estandarizadas, se puede realizar el siguiente codigo.\n\n\n\nfit &lt;- FactoMineR::PCA(na.omit(proc_data), scale.unit = TRUE, graph = FALSE)\nindice &lt;- fit$ind$coord[, 1]"
+  },
+  {
+    "objectID": "Practicos/Practico8.html#interpretación-del-índice",
+    "href": "Practicos/Practico8.html#interpretación-del-índice",
+    "title": "🎯 Objetivos del Análisis",
+    "section": "11.3 Interpretación del índice",
+    "text": "11.3 Interpretación del índice\nRango del índice:\nValor mínimo teórico: Si una persona responde 1 (mínimo) en todas las variables: 1 * (0.77 + 0.83 + 0.83 + 0.81 + 0.72 + 0.74 + 0.76 + 0.67) = 1 * 6.13 = 6.13\nValor máximo teórico: Si una persona responde 4 (máximo) en todas las variables: 4 * 6.13 = 24.52\nInterpretación:\n\nValores más altos: Mayor cohesión barrial percibida\nValores más bajos: Menor cohesión barrial percibida\nEl índice combina tanto el apego al lugar como las relaciones sociales"
+  },
+  {
+    "objectID": "Practicos/Practico8.html#resumen-de-hallazgos",
+    "href": "Practicos/Practico8.html#resumen-de-hallazgos",
+    "title": "🎯 Objetivos del Análisis",
+    "section": "12.1 Resumen de hallazgos",
+    "text": "12.1 Resumen de hallazgos\nEstructura factorial: Las 8 variables de cohesión barrial se resumen adecuadamente en una dimensión principal que explica el 58.5% de la varianza.\nDimensiones subyacentes: Aunque existe una segunda dimensión que distingue entre apego al lugar y vínculos sociales, su contribución es limitada (14.6%) y el análisis paralelo sugiere retener solo la primera componente.\nÍndice construido: El índice de cohesión barrial es una combinación ponderada que asigna mayor peso a:\nintegrado y identifico (0.83 cada una)\nparte_de_mi (0.81)\nbarrio_ideal (0.77)"
+  },
+  {
+    "objectID": "Practicos/Practico8.html#aplicaciones-del-índice",
+    "href": "Practicos/Practico8.html#aplicaciones-del-índice",
+    "title": "🎯 Objetivos del Análisis",
+    "section": "12.2 Aplicaciones del índice",
+    "text": "12.2 Aplicaciones del índice\nEl índice creado puede utilizarse como variable dependiente o independiente en análisis posteriores:\n\nModelos de regresión: ¿Qué factores (género, edad, nivel educacional, tipo de barrio) predicen mayores niveles de cohesión barrial?\nAnálisis de correspondencia: ¿Cómo se relaciona la cohesión barrial con otras variables categóricas?\nComparaciones: ¿Existen diferencias significativas en cohesión barrial entre comunas, regiones o tipos de barrio?"
+  },
+  {
+    "objectID": "Practicos/Practico8.html#ejemplo-de-código-para-análisis-posteriores",
+    "href": "Practicos/Practico8.html#ejemplo-de-código-para-análisis-posteriores",
+    "title": "🎯 Objetivos del Análisis",
+    "section": "12.3 Ejemplo de código para análisis posteriores",
+    "text": "12.3 Ejemplo de código para análisis posteriores\n\n# Ejemplo: ¿Diferencias por género? (requiere tener variable de género)\n# proc_data$genero &lt;- elsoc_long_2016_2022.2$m01[elsoc_long_2016_2022.2$ola == \"4\"]\n# \n# # Boxplot por género\n# ggplot(na.omit(proc_data), aes(x = genero, y = Indice_Cohesion, fill = genero)) +\n#   geom_boxplot() +\n#   labs(title = \"Cohesión barrial por género\",\n#        y = \"Índice de Cohesión Barrial\") +\n#   theme_minimal() +\n#   theme(legend.position = \"none\")"
+  },
+  {
+    "objectID": "Practicos/Practico1.html",
+    "href": "Practicos/Practico1.html",
+    "title": "🎯 Objetivos del Práctico",
+    "section": "",
+    "text": "Este práctico introductorio tiene como objetivo desarrollar competencias fundamentales para el manejo y exploración inicial de bases de datos, sentando las bases para análisis estadísticos posteriores.\nMediante el trabajo en grupo, los estudiantes aprenderán a:\n\nSeleccionar y explorar una base de datos, comprendiendo su estructura y contenido.\nIdentificar y tratar problemas comunes como valores perdidos y casos atípicos (outliers).\nClasificar variables según su escala de medición (nominal, ordinal, continua, de razón).\nRecodificar variables para facilitar su análisis posterior.\nFormular preguntas de investigación relevantes a partir de los datos disponibles.\nRealizar un análisis descriptivo inicial mediante tablas de frecuencia y tablas de contingencia."
+  },
+  {
+    "objectID": "Practicos/Practico1.html#propósito-general",
+    "href": "Practicos/Practico1.html#propósito-general",
+    "title": "🎯 Objetivos del Práctico",
+    "section": "",
+    "text": "Este práctico introductorio tiene como objetivo desarrollar competencias fundamentales para el manejo y exploración inicial de bases de datos, sentando las bases para análisis estadísticos posteriores.\nMediante el trabajo en grupo, los estudiantes aprenderán a:\n\nSeleccionar y explorar una base de datos, comprendiendo su estructura y contenido.\nIdentificar y tratar problemas comunes como valores perdidos y casos atípicos (outliers).\nClasificar variables según su escala de medición (nominal, ordinal, continua, de razón).\nRecodificar variables para facilitar su análisis posterior.\nFormular preguntas de investigación relevantes a partir de los datos disponibles.\nRealizar un análisis descriptivo inicial mediante tablas de frecuencia y tablas de contingencia."
+  },
+  {
+    "objectID": "Practicos/Practico1.html#carga-de-paquetes",
+    "href": "Practicos/Practico1.html#carga-de-paquetes",
+    "title": "🎯 Objetivos del Práctico",
+    "section": "2.1 Carga de Paquetes",
+    "text": "2.1 Carga de Paquetes\nPara este práctico necesitarás paquetes específicos para explorar la base de datos, pero en un futuro, se requeriran otro ripos de paquetes para realizar los distintos tipos de análisis.\n\n# Para instalar paquetes usamos el comando de (install.packages(\"\"))\n\ninstall.packages(\"tidyverse\") # Para este caso instalaremos el paquete \"tidyverse\" el cual \nes una colección \n# de paquetes, conteniendo otros como \"dplyr\" y/o \"haven\"\n\n# Para llamar paquetes usamos el comando (library (\"\"))\n\n# Para este caso particular seria:\n\nlibrary(tidyverse) # Nota para cargar o llamar paquetes no es necesario que el nombre \n# del paquete contenga comillas como en el caso de (install.packages(\"\"))\n\n# Paquete opcional \"pacman\"\n\ninstall.packages(\"pacman\")   # En el caso particular de \"pacman\", este facilita y agiliza \n# la lectura de los paquetes a utilizar en R, ya que \"pacman\" instala paquetes y los carga a la vez\n\npacman::p_load(tidyverse, haven, sjPlot, psych, skimr, labelled, car)"
+  },
+  {
+    "objectID": "Practicos/Practico1.html#paso-2.2-preparación-y-limpiza-del-entorno-de-trabajo",
+    "href": "Practicos/Practico1.html#paso-2.2-preparación-y-limpiza-del-entorno-de-trabajo",
+    "title": "🎯 Objetivos del Práctico",
+    "section": "Paso 2.2: Preparación y limpiza del entorno de trabajo",
+    "text": "Paso 2.2: Preparación y limpiza del entorno de trabajo\n\n# Antes de comenzar a trabajar siempre es recomendable o sugerible\n# limpiar nuestro entorno de trabajo\n\nrm(list = ls()) # Con este comando borramos todo el Environment\ngc()\n\n# En caso de querer borrar algo especifico o en concreto se debe realizar de la siguiente forma:\n# rm(nombre de lo que queramos borrar)\n\n# Tambien debemos fijar nuestro directorio de trabajo, para eso tenemos dos opciones:\n\n# OPCIÓN 1 - Forma manual: Vamos a la opción Session de Rstudios &gt; Le damos a la opción \n# \"Set Working Directory\" &gt; Ultima opción: \"Choose Directory\".\n\n# OPCIÓN 2 - Uso de codigos: Para aquello debemos usar el siguiente codigo: \n# setwd(\"C:/Users/ Tu Usuario / Documents / MiProyecto o Carpeta \")\n\n# Para optener los datos a llenar en las barras de arriba se cuentan con los siguientes otros\n# Codigos: \n\ngetwd() # Para comprobar donde se esta trabajando\n\nlist.files() # Para ver los archivos del directorio"
+  },
+  {
+    "objectID": "Practicos/Practico1.html#paso-2.3-selección-de-variables",
+    "href": "Practicos/Practico1.html#paso-2.3-selección-de-variables",
+    "title": "🎯 Objetivos del Práctico",
+    "section": "Paso 2.3: Selección de variables",
+    "text": "Paso 2.3: Selección de variables\n\n# Ahora antes de comenzar a explorar las variables, requerimos cargar la base de datos \n# del ENUSC, año 2024\n\ndatos &lt;- read_sav(\"ENUSC2024.sav\")\n\n# Tambien se puede adecuar según el directorio donde tiene cargada la base de datos\n\nlibrary(labelled)\n\n# Con los siguientes codigos podemos explorar la misma\n\nlook_for(datos) # Con look_for podemos ver todas las variables con sus etiquetas\n                # de toda la base de datos\n\nlook_for(datos, \"rps\") # Con una variación del codigo mismo (agregando \", rps\" por\n                       # ejemplo) podemos ver una variable especifica \n\nlook_for(datos, \"robo\") # El condigo en si tambien nos perimite ver variables que \n                        # contengan una palabra\n\n# Las variables con las que trabajaremos serán a continuación las siguientes:\n# - edad: Edad en tramo\n# - sexo: Sexo del encuestado\n# - delincuencia: Percepción aumento delincuencia en el país (P_AUMENTO_PAIS)\n# - robo: Robo a Persona en la Calle en últimos 12 meses (SCREEN_INT_RPS_N)\n\nCon lo anterior: Respondan\n¿Cuántos casos y variables tiene la base?\n¿A partir de las variables que trabajamos y otras que pudieron observar qué tipo de variables encuentran (numéricas, categóricas, etc.)?"
+  },
+  {
+    "objectID": "Practicos/Practico1.html#verificación-de-variables",
+    "href": "Practicos/Practico1.html#verificación-de-variables",
+    "title": "🎯 Objetivos del Práctico",
+    "section": "2.4: Verificación de variables",
+    "text": "2.4: Verificación de variables\n\ncat(\"=== VERIFICACIÓN DE COLUMNAS ===\\n\\n\")\n\n# Ver todas las columnas\ncat(\"Total de columnas:\", ncol(datos), \"\\n\\n\")\n\n# Procederemos a crear una versión limpia de la base de datos transformando datos en numericos)\n\ndatos_limpio &lt;- datos %&gt;%\n  mutate(\n    rps = as.numeric(as.character(rps)),\n    rvi = as.numeric(as.character(rvi)),\n    rfv = as.numeric(as.character(rfv)),\n    pad = as.numeric(as.character(pad)),\n    padb = as.numeric(as.character(padb)),\n    edad = as.numeric(as.character(edad)),\n    sexo = as.numeric(as.character(sexo))\n  ) %&gt;%\n  filter(rowSums(!is.na(.)) &gt; 0)"
+  },
+  {
+    "objectID": "Practicos/Practico1.html#paso-4.1-exploración-basica",
+    "href": "Practicos/Practico1.html#paso-4.1-exploración-basica",
+    "title": "🎯 Objetivos del Práctico",
+    "section": "Paso 4.1: Exploración basica",
+    "text": "Paso 4.1: Exploración basica\n\ncat(\"\\n=== EXPLORACIÓN DEL DATASET ===\\n\")\nglimpse(datos)"
+  },
+  {
+    "objectID": "Practicos/Practico1.html#paso-4.2-estadísticos-descriptivos",
+    "href": "Practicos/Practico1.html#paso-4.2-estadísticos-descriptivos",
+    "title": "🎯 Objetivos del Práctico",
+    "section": "Paso 4.2: Estadísticos Descriptivos",
+    "text": "Paso 4.2: Estadísticos Descriptivos\n\ncat(\"\\n=== ESTADÍSTICOS RPS ===\\n\")\ndescribe(datos$rps)"
+  },
+  {
+    "objectID": "Practicos/Practico1.html#paso-4.3-variables-categóricas-solo-las-que-existen",
+    "href": "Practicos/Practico1.html#paso-4.3-variables-categóricas-solo-las-que-existen",
+    "title": "🎯 Objetivos del Práctico",
+    "section": "Paso 4.3: Variables categóricas (Solo las que existen)",
+    "text": "Paso 4.3: Variables categóricas (Solo las que existen)\n\ncat(\"\\n=== VARIABLES CATEGÓRICAS DISPONIBLES ===\\n\")\n\n# Mostrar algunas columnas disponibles\n  \ncat(\"\\nEjemplos de variables disponibles:\\n\")\nprint(head(colnames(datos), 30))"
+  },
+  {
+    "objectID": "Practicos/Practico1.html#paso-5.1-visualizaciones",
+    "href": "Practicos/Practico1.html#paso-5.1-visualizaciones",
+    "title": "🎯 Objetivos del Práctico",
+    "section": "Paso 5.1: Visualizaciones",
+    "text": "Paso 5.1: Visualizaciones\n\ncat(\"\\n=== GENERANDO GRÁFICOS ===\\n\")\n\n# Histograma RPS\np1 &lt;- datos %&gt;%\n  filter(!is.na(rps)) %&gt;%\n  ggplot(aes(x = rps)) +\n  geom_histogram(binwidth = 1, fill = \"steelblue\", color = \"black\", alpha = 0.7) +\n  labs(\n    title = \"Distribución de Robo a Persona en la Calle (RPS)\",\n    x = \"Número de incidentes\",\n    y = \"Frecuencia\"\n  ) +\n  theme_minimal()\n\nprint(p1)"
+  },
+  {
+    "objectID": "Practicos/Practico7.html",
+    "href": "Practicos/Practico7.html",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "Este script realiza un análisis de conglomerados para identificar perfiles de confianza institucional en América Latina utilizando datos del Latinobarómetro. Las variables miden confianza en cuatro instituciones en escala Likert (1-4):\nVariable Institución P34NI.BB Confianza en los empresarios P34NI.BE Confianza en los partidos políticos P34NI.BD Confianza en el Congreso Nacional P34NI.BC Confianza en el Poder Judicial\nEnfoque metodológico:\n\nEscalas Likert tratadas como numéricas (1-4)\nDistancias euclidianas para medir similitud\nMétodo de Ward para clustering jerárquico\nK-means para validación y asignación de clusters\nPCA para visualización en 2 dimensiones"
+  },
+  {
+    "objectID": "Practicos/Practico7.html#instalación-y-carga-de-paquetes",
+    "href": "Practicos/Practico7.html#instalación-y-carga-de-paquetes",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "📦 1. Instalación y Carga de Paquetes",
+    "text": "📦 1. Instalación y Carga de Paquetes\n¿Qué hacemos? Cargamos todas las librerías necesarias.\n¿Por qué? Cada paquete aporta funciones específicas para distintas etapas del análisis.\n\n# Instalar paquetes (solo primera vez)\ninstall.packages(c(\"readxl\", \"dplyr\", \"writexl\", \"cluster\", \n                   \"tidyr\", \"tidyverse\", \"ggplot2\"))\n\n# Cargar paquetes\nlibrary(readxl)      # Lectura de Excel\nlibrary(dplyr)       # Manipulación de datos\nlibrary(writexl)     # Exportar a Excel\nlibrary(cluster)     # Análisis de conglomerados\nlibrary(tidyr)       # Reestructuración de datos\nlibrary(tidyverse)   # Conjunto de paquetes\nlibrary(ggplot2)     # Visualizaciones\n\n# Configurar opciones\noptions(scipen = 999)  # Evitar notación científica\nset.seed(123)          # Fijar semilla para reproducibilidad"
+  },
+  {
+    "objectID": "Practicos/Practico7.html#carga-de-datos",
+    "href": "Practicos/Practico7.html#carga-de-datos",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "📂 2. Carga de Datos",
+    "text": "📂 2. Carga de Datos\n¿Qué hacemos? Importamos la base de datos del Latinobarómetro.\n¿Por qué? Necesitamos los datos en R para poder procesarlos.\n\n# Cargar la base (¡CAMBIAR A TU RUTA!)\nlb &lt;- read_excel(\"aca se debe insertar la ruta desde ell PC hasta el archivo o la URL que aloje la base de datos)\n\n# Ver cuántos casos tiene la base\nn_total &lt;- nrow(lb)\ncat(\"Total de casos en la base original:\", n_total, \"\\n\")\n\n# Exploración inicial\nglimpse(lb)\nsummary(lb)\n\nInterpretación: La base contiene r n_total casos. Debemos verificar que las variables de interés estén presentes y sean del tipo correcto."
+  },
+  {
+    "objectID": "Practicos/Practico7.html#definir-etiquetas-para-las-variables",
+    "href": "Practicos/Practico7.html#definir-etiquetas-para-las-variables",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "🏷️ 3. Definir Etiquetas para las Variables",
+    "text": "🏷️ 3. Definir Etiquetas para las Variables\n¿Qué hacemos? Creamos un vector con nombres descriptivos para las variables.\n¿Por qué? Es más fácil interpretar “Confianza en empresarios” que “P34NI.BB”.\n\n# Definir etiquetas legibles\nnuevas_labels &lt;- c(\n  \"P34NI.BB\" = \"Confianza en los empresarios\",\n  \"P34NI.BE\" = \"Confianza en los partidos políticos\",\n  \"P34NI.BD\" = \"Confianza en el Congreso Nacional\",\n  \"P34NI.BC\" = \"Confianza en el Poder Judicial\"\n)\n\nprint(nuevas_labels)"
+  },
+  {
+    "objectID": "Practicos/Practico7.html#asegurar-tipo-numérico",
+    "href": "Practicos/Practico7.html#asegurar-tipo-numérico",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "🔢 4. Asegurar Tipo Numérico",
+    "text": "🔢 4. Asegurar Tipo Numérico\n¿Qué hacemos? Convertimos las variables Likert a numéricas.\n¿Por qué? Aunque son ordinales, para clustering las trataremos como numéricas (1-4). Esto es común cuando las categorías tienen un orden claro y equidistancia asumida.\n\n# Identificar columnas que son variables Likert\nlikert_cols &lt;- intersect(names(lb), names(nuevas_labels))\ncat(\"Variables Likert identificadas:\", paste(likert_cols, collapse = \", \"), \"\\n\")\n\n# Convertir a numéricas (parse_number extrae el número aunque venga como texto)\nlb &lt;- lb %&gt;%\n  mutate(across(all_of(likert_cols), ~ parse_number(as.character(.x))))\n\n# Verificar\nsummary(lb[, likert_cols])\n\nInterpretación: Ahora las variables tienen valores entre 1 y 4 (o NA si hay perdidos)."
+  },
+  {
+    "objectID": "Practicos/Practico7.html#selección-y-limpieza",
+    "href": "Practicos/Practico7.html#selección-y-limpieza",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "🧹 5. Selección y Limpieza",
+    "text": "🧹 5. Selección y Limpieza\n¿Qué hacemos? Seleccionamos solo variables numéricas y eliminamos casos con NA.\n¿Por qué? El clustering requiere datos completos (sin valores perdidos).\n\n# Seleccionar solo columnas numéricas\nnum_cols &lt;- names(lb)[sapply(lb, is.numeric)]\ncat(\"Variables numéricas disponibles:\", paste(num_cols, collapse = \", \"), \"\\n\")\n\n# Eliminar filas con NA en esas variables\nlb_limpio &lt;- lb %&gt;% \n  select(all_of(num_cols)) %&gt;% \n  drop_na()\n\n# Ver cuántos casos se perdieron\ncat(\"Casos después de limpiar NA:\", nrow(lb_limpio), \"\\n\")\ncat(\"Casos eliminados:\", n_total - nrow(lb_limpio), \n    \"(\", round(100 * (n_total - nrow(lb_limpio))/n_total, 1), \"%)\\n\")\n\nInterpretación: Hemos perdido algunos casos con NA, pero ahora tenemos una matriz completa para el clustering."
+  },
+  {
+    "objectID": "Practicos/Practico7.html#preparar-matriz-para-clustering",
+    "href": "Practicos/Practico7.html#preparar-matriz-para-clustering",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "🔢 6. Preparar Matriz para Clustering",
+    "text": "🔢 6. Preparar Matriz para Clustering\n¿Qué hacemos? Convertimos los datos limpios a matriz.\n¿Por qué? La mayoría de funciones de clustering trabajan con matrices.\n\n# Convertir a matriz\nX &lt;- as.matrix(lb_limpio)\n\n# Ver dimensiones\ndim(X)\n\n# Renombrar columnas con etiquetas legibles (opcional)\ncolnames(X) &lt;- ifelse(colnames(X) %in% names(nuevas_labels),\n                      nuevas_labels[colnames(X)],\n                      colnames(X))\n\n# Ver primeras filas\nhead(X)"
+  },
+  {
+    "objectID": "Practicos/Practico7.html#determinar-número-de-clústeres-método-del-codo",
+    "href": "Practicos/Practico7.html#determinar-número-de-clústeres-método-del-codo",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "📊 7. Determinar Número de Clústeres (Método del Codo)",
+    "text": "📊 7. Determinar Número de Clústeres (Método del Codo)\n¿Qué hacemos? Usamos k-means para evaluar diferentes números de clusters y graficamos la suma de cuadrados intra-cluster.\n¿Por qué? El método del codo nos ayuda a elegir k: buscamos el punto donde la curva deja de caer bruscamente.\n\n# Evaluar k de 1 a 10\nk.max &lt;- 10\nwss &lt;- sapply(1:k.max, function(k) {\n  km &lt;- kmeans(X, centers = k, nstart = 25, iter.max = 100)\n  km$tot.withinss  # Suma de cuadrados intra-cluster\n})\n\n# Graficar\nplot(1:k.max, wss, \n     type = \"b\", \n     pch = 19, \n     col = \"blue\",\n     xlab = \"Número de clusters (k)\", \n     ylab = \"Suma de cuadrados intra-cluster\",\n     main = \"Método del Codo para elegir k\")\n\n# Añadir línea en el posible codo\nabline(v = 2, col = \"red\", lty = 2, lwd = 2)  # Cambiar según el gráfico\nabline(v = 3, col = \"red\", lty = 2, lwd = 2)\n\nInterpretación: Buscamos el punto donde la disminución de WSS se estabiliza (forma de codo). En este caso, k=2 o k=3 son candidatos."
+  },
+  {
+    "objectID": "Practicos/Practico7.html#calcular-matriz-de-distancias",
+    "href": "Practicos/Practico7.html#calcular-matriz-de-distancias",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "📏 8. Calcular Matriz de Distancias",
+    "text": "📏 8. Calcular Matriz de Distancias\n¿Qué hacemos? Calculamos la matriz de distancias euclidianas entre todos los casos.\n¿Por qué? Necesitamos esta matriz para el clustering jerárquico.\n\n# Calcular distancias euclidianas\ndist_euclidea &lt;- dist(X, method = \"euclidean\")\n\n# Ver estructura\nstr(dist_euclidea)\n\n# Distancias entre primeros 5 casos\nas.matrix(dist_euclidea)[1:5, 1:5]"
+  },
+  {
+    "objectID": "Practicos/Practico7.html#clustering-jerárquico-con-método-de-ward",
+    "href": "Practicos/Practico7.html#clustering-jerárquico-con-método-de-ward",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "🌲 9. Clustering Jerárquico con Método de Ward",
+    "text": "🌲 9. Clustering Jerárquico con Método de Ward\n¿Qué hacemos? Aplicamos clustering jerárquico con el método de Ward.D2.\n¿Por qué? Ward.D2 recibe distancias simples y las eleva internamente al cuadrado y minimiza la varianza intra-cluster.\n\n# Clustering jerárquico con Ward.D2\nhc &lt;- hclust(dist_euclidea, method = \"ward.D2\")\n\n# Visualizar dendrograma\nplot(hc, \n     hang = -1, \n     main = \"Dendrograma - Método de Ward\",\n     xlab = \"Casos\", \n     ylab = \"Altura (distancia)\")"
+  },
+  {
+    "objectID": "Practicos/Practico7.html#elegir-número-de-clústeres-k",
+    "href": "Practicos/Practico7.html#elegir-número-de-clústeres-k",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "✂️ 10. Elegir Número de Clústeres (k)",
+    "text": "✂️ 10. Elegir Número de Clústeres (k)\n¿Qué hacemos? Decidimos k basado en el método del codo y la interpretabilidad.\n\n# Elegir k (ajustar según análisis)\nK &lt;- 2  # Cambiar a 3 si corresponde\n\n# Cortar el dendrograma\nclusters_hc &lt;- cutree(hc, k = K)\n\n# Ver distribución\ncat(\"Distribución de clusters (k =\", K, \"):\\n\")\nprint(table(clusters_hc))"
+  },
+  {
+    "objectID": "Practicos/Practico7.html#k-means-para-asignación-óptima",
+    "href": "Practicos/Practico7.html#k-means-para-asignación-óptima",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "🔄 11. K-means para Asignación Óptima",
+    "text": "🔄 11. K-means para Asignación Óptima\n¿Qué hacemos? Usamos k-means para refinar la asignación de clusters.\n¿Por qué? K-means optimiza la asignación minimizando la distancia a los centroides, complementando el análisis jerárquico.\n\n# K-means con el mismo k\nset.seed(123)  # Para reproducibilidad\nkm &lt;- kmeans(X, centers = K, nstart = 50, iter.max = 100)\n\n# Asignaciones\nclusters_km &lt;- factor(km$cluster)\n\n# Comparar con clustering jerárquico\ntabla_comparacion &lt;- table(Hierárquico = clusters_hc, Kmeans = clusters_km)\nprint(tabla_comparacion)\n\n# Usaremos los clusters de k-means para el resto del análisis"
+  },
+  {
+    "objectID": "Practicos/Practico7.html#anexar-clústeres-a-los-datos",
+    "href": "Practicos/Practico7.html#anexar-clústeres-a-los-datos",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "📋 12. Anexar Clústeres a los Datos",
+    "text": "📋 12. Anexar Clústeres a los Datos\n¿Qué hacemos? Agregamos la columna de cluster a nuestros datos.\n\n# Crear data frame con resultados\nresultados_km &lt;- as.data.frame(lb_limpio)\nresultados_km$Cluster &lt;- clusters_km\n\n# Ver primeras filas\nhead(resultados_km)\n\n# Distribución final\ntable(resultados_km$Cluster)"
+  },
+  {
+    "objectID": "Practicos/Practico7.html#caracterización-de-los-clústeres",
+    "href": "Practicos/Practico7.html#caracterización-de-los-clústeres",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "📈 13. Caracterización de los Clústeres",
+    "text": "📈 13. Caracterización de los Clústeres\n¿Qué hacemos? Calculamos los promedios de cada variable por cluster para entender los perfiles.\n\n# Variables de interés (las originales)\nvars_interes &lt;- names(nuevas_labels)[names(nuevas_labels) %in% colnames(resultados_km)]\n\n# Calcular medias por cluster\nresumen_km &lt;- resultados_km %&gt;%\n  group_by(Cluster) %&gt;%\n  summarise(\n    across(all_of(vars_interes),\n           ~ mean(as.numeric(.x), na.rm = TRUE),\n           .names = \"{.col}\"),\n    n = n(),\n    .groups = \"drop\"\n  )\n\n# Renombrar con etiquetas legibles\nfor (i in seq_along(vars_interes)) {\n  old_name &lt;- vars_interes[i]\n  new_name &lt;- nuevas_labels[old_name]\n  if (!is.na(new_name) && new_name != old_name) {\n    colnames(resumen_km)[colnames(resumen_km) == old_name] &lt;- new_name\n  }\n}\n\n# Mostrar resultados\nprint(resumen_km)\n\n# Tamaños de cluster\ncat(\"\\nTamaños de cluster:\\n\")\nprint(table(clusters_km))\n\nInterpretación de los perfiles: (completar según resultados)\n\nCluster 1: [ej. Baja confianza en todas las instituciones]\nCluster 2: [ej. Confianza moderada, más alta en empresarios]\nCluster 3: [si aplica, etc.]"
+  },
+  {
+    "objectID": "Practicos/Practico7.html#visualización-con-pca",
+    "href": "Practicos/Practico7.html#visualización-con-pca",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "🎨 14. Visualización con PCA",
+    "text": "🎨 14. Visualización con PCA\n¿Qué hacemos? Reducimos dimensionalidad con PCA para visualizar los clusters en 2D.\n¿Por qué? Es difícil visualizar clusters en 4 dimensiones. PCA nos da una “vista satelital”."
+  },
+  {
+    "objectID": "Practicos/Practico7.html#realizar-pca",
+    "href": "Practicos/Practico7.html#realizar-pca",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "14.1 Realizar PCA",
+    "text": "14.1 Realizar PCA\n\n# PCA con escalamiento (recomendado para Likert)\npca &lt;- prcomp(X, center = TRUE, scale. = TRUE)\n\n# Ver resumen\nsummary(pca)\n\n# Varianza explicada\nvarianza_explicada &lt;- (pca$sdev^2) / sum(pca$sdev^2)\ncat(\"Varianza explicada:\\n\")\nfor (i in 1:4) {\n  cat(\"PC\", i, \": \", round(100 * varianza_explicada[i], 1), \"%\\n\", sep = \"\")\n}"
+  },
+  {
+    "objectID": "Practicos/Practico7.html#preparar-datos-para-graficar",
+    "href": "Practicos/Practico7.html#preparar-datos-para-graficar",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "14.2 Preparar datos para graficar",
+    "text": "14.2 Preparar datos para graficar\n\n# Extraer puntajes de las primeras dos componentes\nscores &lt;- as.data.frame(pca$x[, 1:2])\nnames(scores) &lt;- c(\"PC1\", \"PC2\")\nscores$Cluster &lt;- clusters_km\n\n# Calcular centroides por cluster en el espacio PCA\ncentroides &lt;- scores %&gt;%\n  group_by(Cluster) %&gt;%\n  summarise(PC1 = mean(PC1), PC2 = mean(PC2), .groups = \"drop\")\n\n# Título con varianza explicada\ntit &lt;- sprintf(\"PCA: Confianza institucional (PC1: %.1f%%, PC2: %.1f%%) – coloreado por clúster\",\n               100 * varianza_explicada[1], 100 * varianza_explicada[2])"
+  },
+  {
+    "objectID": "Practicos/Practico7.html#graficar",
+    "href": "Practicos/Practico7.html#graficar",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "14.3 Graficar",
+    "text": "14.3 Graficar\n\n# Gráfico PCA con clusters\nggplot(scores, aes(x = PC1, y = PC2, color = Cluster)) +\n  # Puntos de casos\n  geom_point(alpha = 0.7, size = 2) +\n  # Elipses de confianza (95%)\n  stat_ellipse(type = \"t\", linewidth = 0.8, alpha = 0.5) +\n  # Centroides\n  geom_point(data = centroides, \n             aes(x = PC1, y = PC2, color = Cluster),\n             size = 6, shape = 18, show.legend = FALSE) +\n  # Etiquetas de centroides\n  geom_text(data = centroides,\n            aes(x = PC1, y = PC2, label = paste(\"Cluster\", Cluster)),\n            vjust = -1, size = 4, fontface = \"bold\") +\n  # Título y etiquetas\n  labs(title = tit,\n       x = paste0(\"PC1 (\", round(100 * varianza_explicada[1], 1), \"%)\"),\n       y = paste0(\"PC2 (\", round(100 * varianza_explicada[2], 1), \"%)\"),\n       color = \"Cluster\") +\n  # Tema\n  theme_minimal(base_size = 12) +\n  theme(legend.position = \"bottom\",\n        plot.title = element_text(hjust = 0.5, face = \"bold\"))\n\nInterpretación del PCA:\nPC1 (eje horizontal): [ej. Contraste entre confianza general vs desconfianza]\nPC2 (eje vertical): [ej. Contraste entre confianza en instituciones políticas vs económicas]\nSeparación de clusters: [ej. Los clusters se separan claramente en PC1]"
+  },
+  {
+    "objectID": "Practicos/Practico7.html#exportar-resultados",
+    "href": "Practicos/Practico7.html#exportar-resultados",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "💾 16. Exportar Resultados",
+    "text": "💾 16. Exportar Resultados\n¿Qué hacemos? Guardamos los resultados en archivos Excel.\n\n# Preparar lista de resultados\nresultados_exportar &lt;- list(\n  DatosConCluster = resultados_km,           # Datos originales + cluster\n  PerfilesCluster = resumen_km,               # Medias por cluster\n  Tamaños = as.data.frame(table(clusters_km)) # Distribución\n)\n\n# Exportar a Excel\nwrite_xlsx(resultados_exportar, \"resultados_cluster_confianza.xlsx\")\n\ncat(\"\\n✅ Resultados exportados a:\", file.path(getwd(), \"resultados_cluster_confianza.xlsx\"))"
+  },
+  {
+    "objectID": "Practicos/Practico7.html#visualizaciones-adicionales",
+    "href": "Practicos/Practico7.html#visualizaciones-adicionales",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "📊 17. Visualizaciones Adicionales",
+    "text": "📊 17. Visualizaciones Adicionales"
+  },
+  {
+    "objectID": "Practicos/Practico7.html#notas-metodológicas-importantes",
+    "href": "Practicos/Practico7.html#notas-metodológicas-importantes",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "⚠️ Notas Metodológicas Importantes",
+    "text": "⚠️ Notas Metodológicas Importantes\n\nTratamiento de escalas Likert Se trataron como numéricas asumiendo equidistancia entre categorías\n\nAlternativa: usar distancia de Gower para variables mixtas\n\nEstandarización En el clustering usamos datos sin estandarizar (las escalas ya son comparables: 1-4)\n\nEn PCA sí estandarizamos (scale. = TRUE) para dar igual peso a todas\n\nValidación cruzada Comparamos Ward (jerárquico) con k-means (particional)\n\nLa alta concordancia entre métodos valida la solución\n\nLimitaciones Análisis sensible a outliers\n\nLa elección de k tiene un componente subjetivo\nSe asume independencia de observaciones"
+  },
+  {
+    "objectID": "Practicos/Practico12.html",
+    "href": "Practicos/Practico12.html",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "Este ejercicio tiene como objetivo identificar las dimensiones subyacentes (factores latentes) que explican las percepciones de cohesión territorial en Chile, utilizando 8 variables del módulo de cohesión barrial de la encuesta ELSOC.\n\n\nHipótesis teórica: Se espera encontrar dos dimensiones:\n\nDimensión 1: Pertenencia/Identidad (vinculación afectiva con el barrio)\nDimensión 2: Sociabilidad (relaciones con los vecinos)"
+  },
+  {
+    "objectID": "Practicos/Practico12.html#interpretación-de-la-matriz-de-correlaciones",
+    "href": "Practicos/Practico12.html#interpretación-de-la-matriz-de-correlaciones",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "Interpretación de la matriz de correlaciones:",
+    "text": "Interpretación de la matriz de correlaciones:\nValores de correlación cercanos a 1 = existe correlación, valores cercanos a 0 = no existe correlación.\n\nbarrio_ideal con integrado 0.70 Quienes consideran su barrio ideal, tienden a sentirse integrados.\nidentifico con integrado 0.74 Quienes se identifican con su barrio, tienden a sentirse integrados.\nsociable con cordialidad 0.67 Quienes perciben gente sociable, también la perciben cordial.\namigos con sociable 0.65 Quienes hacen amigos fácilmente, perciben gente sociable."
+  },
+  {
+    "objectID": "Practicos/Practico12.html#observaciones-clave",
+    "href": "Practicos/Practico12.html#observaciones-clave",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "Observaciones clave:",
+    "text": "Observaciones clave:\nHay dos bloques de variables con altas correlaciones intra-bloque:\n\nBloque 1 (identidad): barrio_ideal, integrado, identifico, parte_de_mi\nBloque 2 (sociabilidad): amigos, sociable, cordialidad, colaboracion\n\nEsto sugiere que el EFA podría identificar dos factores latentes"
+  },
+  {
+    "objectID": "Practicos/Practico12.html#kmo-kaiser-meyer-olkin",
+    "href": "Practicos/Practico12.html#kmo-kaiser-meyer-olkin",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "5.1 KMO (Kaiser-Meyer-Olkin)",
+    "text": "5.1 KMO (Kaiser-Meyer-Olkin)\nMide si las correlaciones parciales entre variables son pequeñas. Varía entre 0 y 1:\n\n\n0.9: Excelente\n\n\n0.8: Bueno\n\n\n0.7: Aceptable\n\n&lt; 0.5: Inaceptable"
+  },
+  {
+    "objectID": "Practicos/Practico12.html#interpretación",
+    "href": "Practicos/Practico12.html#interpretación",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "Interpretación:",
+    "text": "Interpretación:\n\nOverall MSA = 0.9 → adecuación excelente para AFE\nNinguna variable individual tiene MSA &lt; 0.5 → todas las variables pueden mantenerse"
+  },
+  {
+    "objectID": "Practicos/Practico12.html#prueba-de-esfericidad-de-bartlett",
+    "href": "Practicos/Practico12.html#prueba-de-esfericidad-de-bartlett",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "5.2 Prueba de esfericidad de Bartlett",
+    "text": "5.2 Prueba de esfericidad de Bartlett\nEvalúa si la matriz de correlaciones es una matriz identidad. Buscamos p &lt; 0.05 para rechazar H0.\n\n# Prueba de Bartlett\ncortest.bartlett(corMat, n =\n3417\n)\n\nResultado esperado:\n\nInterpretación: p = 0 &lt; 0.05 → rechazamos H0. Las variables están correlacionadas y la matriz es apta para AFE."
+  },
+  {
+    "objectID": "Practicos/Practico12.html#scree-plot-gráfico-de-sedimentación",
+    "href": "Practicos/Practico12.html#scree-plot-gráfico-de-sedimentación",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "6.1 Scree plot (gráfico de sedimentación)",
+    "text": "6.1 Scree plot (gráfico de sedimentación)\n\n# Scree plot\nscree(proc_data %&gt;% select(barrio_ideal:colaboracion))\n\n\n\nFigura 1: Scree plot mostrando la caída de autovalores\nInterpretación: El gráfico muestra una caída pronunciada después del segundo factor. También se observa un punto de inflexión en el tercer factor, pero la caída más clara es en el segundo."
+  },
+  {
+    "objectID": "Practicos/Practico12.html#análisis-paralelo-de-horn-método-más-robusto",
+    "href": "Practicos/Practico12.html#análisis-paralelo-de-horn-método-más-robusto",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "6.2 Análisis paralelo de Horn (método más robusto)",
+    "text": "6.2 Análisis paralelo de Horn (método más robusto)\n\n# Análisis paralelo\nfa.parallel(corMat, n.obs = nrow(proc_data))\n\n\nFigura 2: Análisis paralelo de Horn - Comparación de autovalores observados vs. aleatorios\nResultado esperado:\n\n## Parallel analysis suggests that the number of factors = 2 and the number of components = 2\n\nInterpretación: El análisis paralelo (más robusto que el scree plot) sugiere retener 2 factores. Nos quedamos con este resultado por ser más confiable."
+  },
+  {
+    "objectID": "Practicos/Practico12.html#método-de-ejes-principales-principal-axis---pa",
+    "href": "Practicos/Practico12.html#método-de-ejes-principales-principal-axis---pa",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "7.1 Método de Ejes Principales (Principal Axis - PA)",
+    "text": "7.1 Método de Ejes Principales (Principal Axis - PA)\n\n# Extracción con ejes principales\nfac_pa &lt;- proc_data %&gt;% \n  select(barrio_ideal:colaboracion) %&gt;% \n  fa(nfactors = 2, fm = \"pa\")\n\nprint(fac_pa, digits = 2)"
+  },
+  {
+    "objectID": "Practicos/Practico12.html#método-de-máxima-verosimilitud-maximum-likelihood---ml",
+    "href": "Practicos/Practico12.html#método-de-máxima-verosimilitud-maximum-likelihood---ml",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "7.2 Método de Máxima Verosimilitud (Maximum Likelihood - ML)",
+    "text": "7.2 Método de Máxima Verosimilitud (Maximum Likelihood - ML)\n\n# Extracción con máxima verosimilitud\nfac_ml &lt;- proc_data %&gt;% \n  select(barrio_ideal:colaboracion) %&gt;% \n  fa(nfactors = 2, fm = \"ml\")\n\nprint(fac_ml, digits = 2)\n\n\nInterpretación de los resultados:\nInterpretación:\n\nFactor PA1 correlaciona alto con barrio_ideal, integrado, identifico y parte_de_mi\nFactor PA2 correlaciona alto con amigos, sociales, cordialidad y colaboración.\n\nLa matriz de correlación entre los factores muestra una correlación de 0,64 que es alta, por lo que se sugiere una rotación oblicua. Esto también es de suponer porque las variables originales miden cosas cercanas entre sí (en la teoría)"
+  },
+  {
+    "objectID": "Practicos/Practico12.html#renombramos-los-factores-para-darle-más-sentido-a-la-interpretación",
+    "href": "Practicos/Practico12.html#renombramos-los-factores-para-darle-más-sentido-a-la-interpretación",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "9.1 Renombramos los factores para darle más sentido a la interpretación",
+    "text": "9.1 Renombramos los factores para darle más sentido a la interpretación\n\ncolnames(fac_ml$loadings) &lt;- c(\"pertenencia\",\"sociabilidad\")\ncolnames(fac_ml$scores) &lt;- c(\"pertenencia\",\"sociabilidad\")"
+  },
+  {
+    "objectID": "Practicos/Practico12.html#combinar-con-los-datos-originales",
+    "href": "Practicos/Practico12.html#combinar-con-los-datos-originales",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "9.2 Combinar con los datos originales",
+    "text": "9.2 Combinar con los datos originales\n\nproc_data_scores &lt;- cbind(proc_data, fac_ml$scores)"
+  },
+  {
+    "objectID": "Practicos/Practico12.html#vemos-los-valores-para-los-primeros-10-casos",
+    "href": "Practicos/Practico12.html#vemos-los-valores-para-los-primeros-10-casos",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "9.3 Vemos los valores para los primeros 10 casos:",
+    "text": "9.3 Vemos los valores para los primeros 10 casos:\n\nhead(proc_data_scores[, c(\"pertenencia\",\"sociabilidad\")], 10\n\nSalidad Esperada:"
+  },
+  {
+    "objectID": "Practicos/Practico10.html",
+    "href": "Practicos/Practico10.html",
+    "title": "🎯 Propuesta de Investigación Sociológica",
+    "section": "",
+    "text": "Pregunta de Investigación ¿Existen diferentes perfiles de chilenos en sus actitudes hacia la inmigración, y cómo se caracterizan estos grupos en términos de agrado, confianza y percepciones de amenaza?"
+  },
+  {
+    "objectID": "Practicos/Practico10.html#resultados",
+    "href": "Practicos/Practico10.html#resultados",
+    "title": "🎯 Propuesta de Investigación Sociológica",
+    "section": "Resultados:",
+    "text": "Resultados:\n\n\n\n\n📋 Tabla 2: Distribución de casos por cluster\n\n\n\n\nCluster\n\n\nFrecuencia (n)\n\n\nPorcentaje (%)\n\n\nInterpretación\n\n\n\n\n\n\nCluster 1\n\n\n52\n\n\n52%\n\n\nMayoría absoluta\n\n\n\n\nCluster 2\n\n\n39\n\n\n39%\n\n\nGrupo significativo\n\n\n\n\nCluster 3\n\n\n8\n\n\n8%\n\n\nMinoría\n\n\n\n\nCluster 4\n\n\n1\n\n\n1%\n\n\nCaso extremo / atípico\n\n\n\n\n\n\nNota: Distribución basada en muestra de 100 casos. El Cluster 4 (1%) corresponde a un caso atípico con postura extremadamente pro-integración.\n\n\n\n\n\nElaboración propia en base a análisis de conglomerados con método del centroide (k=4)"
+  },
+  {
+    "objectID": "Practicos/Practico10.html#tabla-2-distribución-de-casos-por-cluster",
+    "href": "Practicos/Practico10.html#tabla-2-distribución-de-casos-por-cluster",
+    "title": "🎯 Propuesta de Investigación Sociológica",
+    "section": "📋 Tabla 2: Distribución de casos por cluster",
+    "text": "📋 Tabla 2: Distribución de casos por cluster"
+  },
+  {
+    "objectID": "Practicos/Practico10.html#tabla-3-perfil-de-medias-por-cluster-escala-1-5",
+    "href": "Practicos/Practico10.html#tabla-3-perfil-de-medias-por-cluster-escala-1-5",
+    "title": "🎯 Propuesta de Investigación Sociológica",
+    "section": "📋 Tabla 3: Perfil de medias por cluster (escala 1-5)",
+    "text": "📋 Tabla 3: Perfil de medias por cluster (escala 1-5)"
+  },
+  {
+    "objectID": "Practicos/Practico10.html#respuesta-a-la-pregunta-de-investigación",
+    "href": "Practicos/Practico10.html#respuesta-a-la-pregunta-de-investigación",
+    "title": "🎯 Propuesta de Investigación Sociológica",
+    "section": "Respuesta a la pregunta de investigación:",
+    "text": "Respuesta a la pregunta de investigación:\n¿Existen diferentes perfiles de chilenos en sus actitudes hacia la inmigración?\n\nSí, se identificaron 4 perfiles claramente diferenciados, que van desde el rechazo absoluto hasta la integración plena, pasando por posiciones intermedias. La mayoría de la población se concentra en dos grandes grupos: los críticos (52%) y los tolerantes moderados (39%).\n\nImplicaciones sociológicas: - El debate migratorio en Chile está polarizado pero con un centro significativo\n\nLas preocupaciones económicas (desempleo) son más transversales que las identitarias\nLa confianza y el agrado hacia inmigrantes están fuertemente asociados (clusters 2 y 4)\nLas políticas de integración deberían diferenciar mensajes según el perfil: para el Cluster 1, abordar preocupaciones económicas; para el Cluster 2, reforzar actitudes positivas"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Estadística IV",
+    "section": "",
+    "text": "Curso orientado a la introducción de técnicas de análisis exploratorio de datos utilizadas en la investigación social, con énfasis en la interpretación sustantiva de resultados estadísticos y su aplicación empírica mediante software especializado."
+  },
+  {
+    "objectID": "index.html#información-general-del-curso",
+    "href": "index.html#información-general-del-curso",
+    "title": "Estadística IV",
+    "section": "Información general del curso",
+    "text": "Información general del curso\n\n\n\nEquipo docente\nProfesora\nCarolina Aguilera\n📧 caguilera@uahurtado.cl\nAyudante\nMiguel Tognarelli 📧 mtognarellimu@gmail.com / mtognare@alumnos.uahurtado.cl\n\n\n\nDatos del curso\n\nDía: Miércoles\n\nPeriodo: Agosto – Diciembre 2026\n\nHorario: 10:00 - 12:50\n\nSala: A63\nModalidad: Presencial"
+  },
+  {
+    "objectID": "index.html#antes-de-comenzar",
+    "href": "index.html#antes-de-comenzar",
+    "title": "Estadística IV",
+    "section": "Antes de comenzar",
+    "text": "Antes de comenzar\nPara seguir adecuadamente el curso necesitarás:\n\nInstalar R\nInstalar RStudio\nConocimientos básicos de estadística descriptiva\n\nRevisa la sección Recursos para guías de instalación y materiales complementarios.\n\n\n\n\n\n\nTipContacto\n\n\n\nPara consultas académicas o administrativas, escribe a\ncaguilera@uahurtado.cl"
+  },
+  {
+    "objectID": "Practicos/Practico3.html",
+    "href": "Practicos/Practico3.html",
+    "title": "1. 🎯 Objetivos del Práctico",
+    "section": "",
+    "text": "Este práctico tiene como objetivo desarrollar competencias en el Análisis de Correspondencia Múltiple (ACM) mediante:\n\nAplicación del Análisis de Correspondencia Simple (ACS) para explorar la relación entre lsa diversas variables categóricas.\nAplicar Análisis de Correspondencia Múltiple (ACM) para explorar relaciones entre tres o más variables categóricas.\nInterpretar los resultados fundamentales: masa, inercia, contribuciones y mapa perceptual.\nVisualizar y comunicar las asociaciones entre categorías de manera efectiva."
+  },
+  {
+    "objectID": "Practicos/Practico3.html#propósito-general",
+    "href": "Practicos/Practico3.html#propósito-general",
+    "title": "1. 🎯 Objetivos del Práctico",
+    "section": "",
+    "text": "Este práctico tiene como objetivo desarrollar competencias en el Análisis de Correspondencia Múltiple (ACM) mediante:\n\nAplicación del Análisis de Correspondencia Simple (ACS) para explorar la relación entre lsa diversas variables categóricas.\nAplicar Análisis de Correspondencia Múltiple (ACM) para explorar relaciones entre tres o más variables categóricas.\nInterpretar los resultados fundamentales: masa, inercia, contribuciones y mapa perceptual.\nVisualizar y comunicar las asociaciones entre categorías de manera efectiva."
+  },
+  {
+    "objectID": "Practicos/Practico3.html#fijación-de-directorio",
+    "href": "Practicos/Practico3.html#fijación-de-directorio",
+    "title": "1. 🎯 Objetivos del Práctico",
+    "section": "3.1. Fijación de directorio",
+    "text": "3.1. Fijación de directorio\nRecordemos que para fijarlo, siempre tenemos tres opciones:\nOPCIÓN 1 - La forma manual: Para realizarla vamos a la opción “Session” de Rstudios &gt; le damos a la opción “Set Working Directory” &gt; ultima opción: “Choose Directory” &gt; seleccionamos la carpeta en la que trabajaremos para fijarla.\nOPCIÓN 2 - Usamos codigos de Rstudios: Para aquello debemos usar los siguientes codigos:\n\n# Para fijarlo directamente debemos usar el comando \"setwd\" como esta puesto debajo\n# Para saber con que llenar los espacios del propio codigo, puedes ver la dirección de la \n# carpeta en la que quieres trabajar, clickando sobre el icono de esta.\n\n#los primeros 2 nombres, puedes dejarlos como lo deje lo que debes cambiar esta indicado \n# con palabras\n\n# setwd(\"C:/Users/ El nombre de usuario / Nombre de la carpeta / \n# Nombre de la subcarpeta en caso de ser necesario\")\n\n# Puedes el comando \"getwd\", para comprobar si estas trabajando en la carpeta en la que \n# indicaste\n\n# getwd()\n\n# Esta te deberia indicar en la consola algo similar a esto:\n\n\"C:/Users/ El nombre de usuario / Nombre de la carpeta \n# / Nombre de la subcarpeta en caso de ser necesario\"\n\n# Si efectivamente sale asi o con la carpeta que querias esta configurado\n\nOPCIÓN 3 - Usa un proyecto de Rstudios: Para eso debes crear un proyecto.\nPara realizarlo ve a la opción File &gt; Seleccionas la opción New Proyect &gt; Seleccionas la opción **New Directory” &gt; Y seleccionas la carpeta de tu proyecto o en la que quieras trabajar creando un New Proyect. Esta opción entrega la ventaja de que cada vez que abras el archivo de Rstudios, este fijara automaticamente dicha carpeta como directorio de trabajo y por ejemplo los avances o lo realizado en el enviroment, tambien se guardara."
+  },
+  {
+    "objectID": "Practicos/Practico3.html#configuración-del-entorno-r",
+    "href": "Practicos/Practico3.html#configuración-del-entorno-r",
+    "title": "1. 🎯 Objetivos del Práctico",
+    "section": "3.2. Configuración del entorno R",
+    "text": "3.2. Configuración del entorno R\n\noptions(scipen = 999)    # Desactiva notación científica, en ocasiones activada\nrm(list = ls())          # Limpia el entorno de trabajo\nset.seed(123)            # Fija semilla para reproducibilidad"
+  },
+  {
+    "objectID": "Practicos/Practico3.html#instalación-y-carga-de-paquetes",
+    "href": "Practicos/Practico3.html#instalación-y-carga-de-paquetes",
+    "title": "1. 🎯 Objetivos del Práctico",
+    "section": "3.3. Instalación y carga de paquetes",
+    "text": "3.3. Instalación y carga de paquetes\n\ninstall.packages(\"pacman\")\nlibrary(pacman)\n\npacman::p_load(\n  tidyverse,         # Manipulación de datos\n  sjPlot,            # Visualización de datos\n  haven,             # Bases de datos en distintos formatos\n  sjmisc,            # Funciones exploratorias\n  psych,             # Correlaciones\n  DescTools,         # Tablas\n  ggplot2,           # Gráficos\n  broom,             # Limpieza de resultados\n  gginference,       # Gráficos\n  FactoMineR,        # Análisis de correspondencia\n  factoextra,        # Visualización del ACM\n  rempsyc,           # Gráficos\n  flextable)         # Tablas"
+  },
+  {
+    "objectID": "Practicos/Practico3.html#carga-de-la-base-de-datos",
+    "href": "Practicos/Practico3.html#carga-de-la-base-de-datos",
+    "title": "1. 🎯 Objetivos del Práctico",
+    "section": "3.4. Carga de la Base de Datos",
+    "text": "3.4. Carga de la Base de Datos\nCargamos la base de datos de ELSOC; se puede descargar directamente en nuestro PC; usando el singuiente link: https://dataverse.harvard.edu/api/access/datafile/7245118\n\n# En caso de descargarla en nuestro PC, la base del ELSOC, debe quedar \n# en la carpeta de R en la que hayamos fijado el directorio (Paso 3.1)\n\n# O se carga directamente desde internet con el siguiente comando\n\nload(url(\"https://dataverse.harvard.edu/api/access/datafile/7245118\"))"
+  },
+  {
+    "objectID": "Practicos/Practico3.html#selección-de-variables-y-filtrado-por-ola-4-2019",
+    "href": "Practicos/Practico3.html#selección-de-variables-y-filtrado-por-ola-4-2019",
+    "title": "1. 🎯 Objetivos del Práctico",
+    "section": "4.1. Selección de variables y filtrado por ola 4 (2019)",
+    "text": "4.1. Selección de variables y filtrado por ola 4 (2019)\n\ndatos_acs &lt;- elsoc_long_2016_2022.2 %&gt;%\n  filter(ola == \"4\") %&gt;%\n  select(\n    m01,       # Nivel educativo\n    c05_01,    # Confianza en el gobierno\n    c05_08,    # Confianza en el presidente\n    c15,       # Autoubicación izquierda-derecha\n    c28        # Acuerdo con cambiar Constitución\n  )\n\n# Exploramos las variables y vemos algunos de sus descriptivos\n# (como por ejemplo proporción de las variables; valor porcentual;\n# total de variables; media y desviación estandar).\n\nfrq(datos_acs$m01)\n\nfrq(datos_acs$c05_01)\n\nfrq(datos_acs$c05_08)\n\nfrq(datos_acs$c15)\n\nfrq(datos_acs$c28)\n\n# Lo interesante de este punto es que sin nos fijamos, R nos indica\n# que las variables son numericas o \"numeric\", por lo que en el siguiente \n# paso las transformaremos a variables cualitativas, en este caso del tipo\n# ordinal que serian \"factor\""
+  },
+  {
+    "objectID": "Practicos/Practico3.html#recodificación-de-variables",
+    "href": "Practicos/Practico3.html#recodificación-de-variables",
+    "title": "1. 🎯 Objetivos del Práctico",
+    "section": "4.2. Recodificación de variables",
+    "text": "4.2. Recodificación de variables\n\n# Con recode, podemos recodificar las variables que estamos trabajando, para\n# agrupar categorias de respuestas\n# En el caso de la variable m01 agrupamos sus 10 categorias de respuestas\n# en 3.\n\n# la misma logica se realizarian con el resto de variables\n\ndatos_acs$educacion &lt;- car::recode(\n  datos_acs$m01,\n  \"c(1,2,3)=1; c(4,5)=2; c(6,7,8,9,10)=3\")\n\n# Con factor hacemos que la variable pase de numeric a factor\n# factor es la forma en que se leen variables ordinales\n\ndatos_acs$educacion &lt;- factor(\n  datos_acs$educacion,\n  levels = c(1, 2, 3),\n  labels = c(\"Educación básica\", \"Educación media\", \"Educación superior\"))\n\n# Algo importante y para saber que el comando se ejecuto correctamente\n# más alla de que nos indique ERROR, es que por cada variable recodificada\n# se creara una nueva a en la base de datos\n# por lo que realizado este paso deberiamos de tener 10 variables\n# 1 extra por cada variable recodificada\n\n\ndatos_acs$confianza_gob &lt;- car::recode(\n  datos_acs$c05_01,\n  \"c(1,2)=1; c(3)=2; c(4,5)=3\")\n\ndatos_acs$confianza_gob &lt;- factor(\n  datos_acs$confianza_gob,\n  levels = c(1, 2, 3),\n  labels = c(\"Desconfianza en el gobierno\", \"Indiferente con el gobierno\",\n             \"Confianza en el gobierno\"))\n\ndatos_acs$confianza_presi &lt;- car::recode(\n  datos_acs$c05_08,\n  \"c(1,2)=1; c(3)=2; c(4,5)=3\")\n\ndatos_acs$confianza_presi &lt;- factor(\n  datos_acs$confianza_presi,\n  levels = c(1, 2, 3),\n  labels = c(\"Desconfianza en el presidente\", \"Indiferencia con el presidente\",\n             \"Confianza en el presidente\"))\n\ndatos_acs$auto_pospol &lt;- car::recode(\n  datos_acs$c15,\n  \"c(0,1,2)=1; c(3,4)=2; c(5)=3; c(6,7)=4;\n   c(8,9,10)=5; c(11)=6; c(12)=7\")\n\ndatos_acs$auto_pospol &lt;- factor(\n  datos_acs$auto_pospol,\n  levels = c(1, 2, 3, 4, 5, 6, 7),\n  labels = c(\"Izquierda\", \"Centro izquierda\", \"Centro\", \"Centro derecha\",\n    \"Derecha\", \"Independiente\", \"Apolitico\"))\n\ndatos_acs$Cambio_const &lt;- car::recode(\n  datos_acs$c28,\n  \"c(1,2)=1; c(3)=2; c(4,5)=3\")\n\ndatos_acs$Cambio_const &lt;- factor(\n  datos_acs$Cambio_const,\n  levels = c(1, 2, 3),\n  labels = c(\"En desacuerdo con cambiar la constitución\",\n    \"Ni de acuerdo ni en desacuerdo con cambiar la constitución\",\n    \"De acuerdo con cambiar la constitución\"))\n\nfrq(datos_acs$educacion)\nfrq(datos_acs$confianza_gob)\nfrq(datos_acs$confianza_presi)\nfrq(datos_acs$auto_pospol)\nfrq(datos_acs$Cambio_const)\n\n# Cuando exploremos estas nuevas variables creadas podemos ver como\n# sus resultados son distintos a las variables originales\n# producto a que agrupamos varias categorias de respuestas.\n# tambien podemos ver que R, nos indica que estas no son \"numeric\"\n# sino que \"Factor\".\n# Pero siguen presentado valores perdidos"
+  },
+  {
+    "objectID": "Practicos/Practico3.html#transformación-de-valores-perdidos-a-na",
+    "href": "Practicos/Practico3.html#transformación-de-valores-perdidos-a-na",
+    "title": "1. 🎯 Objetivos del Práctico",
+    "section": "4.3.Transformación de valores perdidos a NA",
+    "text": "4.3.Transformación de valores perdidos a NA\n\n# Con lo anterior transformaremos estos valores como -999 y otros a\n# NA\n\ndatos_acs &lt;- datos_acs %&gt;%\n  sjlabelled::set_na(\n    na = c(-999, -888, -777, -666))\n\ndatos_acs &lt;- na.omit(datos_acs)\n\nfrq(datos_acs$educacion)\nfrq(datos_acs$confianza_gob)\nfrq(datos_acs$confianza_presi)\nfrq(datos_acs$auto_pospol)\nfrq(datos_acs$Cambio_const)\n\n# Como podemos ver dichos valores como -999 ya no figuran, pero tampoco\n# habrian NA en los resultados productos a que estos fueron\n# omitidos de la base de datos, perdiendose algunas observaciones\n# 200 aproximadamente, equivalente a menos de un 10%"
+  },
+  {
+    "objectID": "Practicos/Practico3.html#tablas-de-contingencia",
+    "href": "Practicos/Practico3.html#tablas-de-contingencia",
+    "title": "1. 🎯 Objetivos del Práctico",
+    "section": "5.1. Tablas de Contingencia",
+    "text": "5.1. Tablas de Contingencia\n\nsjPlot::sjt.xtab(\n  var.row = datos_acs$confianza_presi,\n  var.col = datos_acs$Cambio_const,\n  show.summary = FALSE,\n  emph.total = TRUE,\n  show.row.prc = TRUE,\n  show.col.prc = TRUE,\n  encoding = \"UTF-8\")\n\nsjPlot::sjt.xtab(\n  var.row = datos_acs$confianza_gob,\n  var.col = datos_acs$Cambio_const,\n  show.summary = FALSE,\n  emph.total = TRUE,\n  show.row.prc = TRUE,\n  show.col.prc = TRUE,\n  encoding = \"UTF-8\")\n\nsjPlot::sjt.xtab(\n  var.row = datos_acs$auto_pospol,\n  var.col = datos_acs$Cambio_const,\n  show.summary = FALSE,\n  emph.total = TRUE,\n  show.row.prc = TRUE,\n  show.col.prc = TRUE,\n  encoding = \"UTF-8\")"
+  },
+  {
+    "objectID": "Practicos/Practico3.html#chi-cuadrado-χ²",
+    "href": "Practicos/Practico3.html#chi-cuadrado-χ²",
+    "title": "1. 🎯 Objetivos del Práctico",
+    "section": "5.2. Chi-cuadrado (χ²)",
+    "text": "5.2. Chi-cuadrado (χ²)\n\nchi_result_1 &lt;- chisq.test(\n  table(datos_acs$Cambio_const, datos_acs$educacion))\n\nstats.table_1 &lt;- tidy(chi_result_1, conf_int = TRUE)\n\nnice_table(stats.table_1)\n\nsuppressWarnings(ggchisqtest(chi_result_1))\n\n\nchi_result_2 &lt;- chisq.test(\n  table(datos_acs$Cambio_const, datos_acs$confianza_presi))\n\nstats.table_2 &lt;- tidy(chi_result_2, conf_int = TRUE)\n\nnice_table(stats.table_2)\n\nsuppressWarnings(ggchisqtest(chi_result_2))\n\n\nchi_result_3 &lt;- chisq.test(\n  table(datos_acs$Cambio_const, datos_acs$confianza_gob))\n\nstats.table_3 &lt;- tidy(chi_result_3, conf_int = TRUE)\n\nnice_table(stats.table_3)\n\nsuppressWarnings(ggchisqtest(chi_result_3))\n\n\nchi_result_4 &lt;- chisq.test(\n  table(datos_acs$Cambio_const, datos_acs$auto_pospol))\n\nstats.table_4 &lt;- tidy(chi_result_4, conf_int = TRUE)\n\nnice_table(stats.table_4)\n\nsuppressWarnings(ggchisqtest(chi_result_4))"
+  },
+  {
+    "objectID": "Practicos/Practico6.html",
+    "href": "Practicos/Practico6.html",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "El análisis de conglomerados (clustering) es una técnica exploratoria que busca agrupar casos (personas, países, etc.) en grupos homogéneos llamados clústeres. Los casos dentro de un mismo clúster son similares entre sí, mientras que casos de diferentes clústeres son diferentes.\n\n\n\nDistancia de Jaccard: Ideal para variables categóricas (transformadas a binarias)\nEnlace promedio (UPGMA): Método de clustering que usa el promedio de distancias entre grupos\nDatos del Latinobarómetro: Para identificar perfiles sociológicos basados en:\nIngresos (Deciles)\nEducación (Básico a Postgrado)\nEdad (Tramos etarios)\nPosición política (Izquierda, Centro, Derecha)"
+  },
+  {
+    "objectID": "Practicos/Practico6.html#qué-es-el-enlace-promedio-upgma",
+    "href": "Practicos/Practico6.html#qué-es-el-enlace-promedio-upgma",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "¿Qué es el enlace promedio (UPGMA)?",
+    "text": "¿Qué es el enlace promedio (UPGMA)?\nUPGMA significa Unweighted Pair Group Method with Arithmetic Mean. Es un método de clustering que:\n\nCalcula la distancia entre dos clusters como el promedio de todas las distancias entre pares de puntos de cada cluster\nTiende a producir clusters más equilibrados que otros métodos\nEs menos sensible a valores atípicos que el enlace simple o completo"
+  },
+  {
+    "objectID": "Practicos/Practico6.html#método-de-la-silueta",
+    "href": "Practicos/Practico6.html#método-de-la-silueta",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "Método de la silueta:",
+    "text": "Método de la silueta:\nMide qué tan bien clasificado está cada caso\n\nValores cercanos a 1: bien clasificado\nValores cercanos a 0: en el borde entre clusters\nValores negativos: mal clasificado (quizás en cluster equivocado)\n\n\n# Calcular silueta para diferentes números de clusters\nfviz_nbclust(\n  X,                         # Matriz de datos binarios\n  FUN = hcut,                 # Función de clustering (jerárquico)\n  method = \"silhouette\",      # Usar método de silueta\n  diss = dist_jaccard,         # Usar nuestra matriz de distancia\n  k.max = 10                   # Evaluar de 2 a 10 clusters\n) +\n  geom_vline(xintercept = linetype = 2, color = \"red\") +\n  labs(title = \"Método Silhouette para elegir número de clusters\",\n       subtitle = \"Mayor valor = mejor calidad de clustering\",\n       x = \"Número de clusters (k)\",\n       y = \"Ancho promedio de silueta\") +\n  theme_minimal()\n\nInterpretación:\n\nEl gráfico muestra el promedio de silueta para cada k\nValores más altos indican mejor estructura de clustering\nLa línea roja marca k=5 como posible candidato\nDebemos equilibrar: alto valor de silueta y clusters interpretables"
+  },
+  {
+    "objectID": "Practicos/Practico6.html#perfiles-a-partir-de-la-matriz-de-dummies",
+    "href": "Practicos/Practico6.html#perfiles-a-partir-de-la-matriz-de-dummies",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "12.1 Perfiles a partir de la matriz de dummies",
+    "text": "12.1 Perfiles a partir de la matriz de dummies\n\n# Calcular proporciones por cluster (a partir de dummies)\nresumen &lt;- aggregate(X, by = list(cluster = clusters), FUN = mean)\n\n# Convertir a porcentajes (multiplicar por 100)\nresumen_pct &lt;- resumen\nfor (j in 2:ncol(resumen_pct)) {\n  resumen_pct[, j] &lt;- round(100 * resumen_pct[, j], 1)\n}\n\n# Ver resultado\nprint(resumen_pct)\n\n# Para mejor visualización, transponer\nresumen_t &lt;- as.data.frame(t(resumen_pct[, -1]))\ncolnames(resumen_t) &lt;- paste(\"Cluster\", 1:k_elegido)\nprint(round(resumen_t, 1))"
+  },
+  {
+    "objectID": "Practicos/Practico6.html#tablas-de-contingencia-con-janitor",
+    "href": "Practicos/Practico6.html#tablas-de-contingencia-con-janitor",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "12.2 Tablas de contingencia con janitor",
+    "text": "12.2 Tablas de contingencia con janitor\n\n# Variables a analizar\nvars_cat &lt;- c(\"ingresos\", \"educacion\", \"edad\", \"eje_politico\")\n\n# Crear tablas de proporciones por cluster\ntabs_cat &lt;- setNames(\n  lapply(vars_cat, function(v){\n    datos_cluster |&gt;\n      tabyl(cluster, .data[[v]]) |&gt;           # Tabla cruzada\n      adorn_totals(\"row\") |&gt;                    # Total por fila\n      adorn_percentages(\"row\") |&gt;               # Convertir a porcentajes por fila\n      adorn_pct_formatting(digits = 1) |&gt;       # Formatear porcentajes\n      adorn_ns()                                 # Mostrar también frecuencias absolutas\n  }),\n  vars_cat\n)\n\n# Ver cada tabla\ncat(\"\\n📊 EDUCACIÓN por cluster:\\n\")\nprint(tabs_cat$educacion)\n\ncat(\"\\n📊 INGRESOS por cluster:\\n\")\nprint(tabs_cat$ingresos)\n\ncat(\"\\n📊 EDAD por cluster:\\n\")\nprint(tabs_cat$edad)\n\ncat(\"\\n📊 EJE POLÍTICO por cluster:\\n\")\nprint(tabs_cat$eje_politico)"
+  },
+  {
+    "objectID": "Practicos/Practico6.html#análisis-detallado",
+    "href": "Practicos/Practico6.html#análisis-detallado",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "12.3 Análisis detallado",
+    "text": "12.3 Análisis detallado\n\n# Función para crear tabla de proporciones clara\ntabla_proporciones &lt;- function(var_name) {\n  prop &lt;- prop.table(table(datos_cluster$cluster, datos_cluster[[var_name]]), 1) * 100\n  prop_df &lt;- as.data.frame.matrix(round(prop, 1))\n  prop_df$Cluster &lt;- rownames(prop_df)\n  prop_df &lt;- prop_df[, c(\"Cluster\", colnames(prop_df)[-ncol(prop_df)])]\n  return(prop_df)\n}\n\n# Tablas para cada variable\nprop_educ &lt;- tabla_proporciones(\"educacion\")\nprop_ingresos &lt;- tabla_proporciones(\"ingresos\")\nprop_edad &lt;- tabla_proporciones(\"edad\")\nprop_eje &lt;- tabla_proporciones(\"eje_politico\")\n\nprint(\"Educación por cluster:\")\nprint(prop_educ)\n\nprint(\"Ingresos por cluster:\")\nprint(prop_ingresos)\n\nprint(\"Edad por cluster:\")\nprint(prop_edad)\n\nprint(\"Eje político por cluster:\")\nprint(prop_eje)"
+  },
+  {
+    "objectID": "Practicos/Practico6.html#notas-y-advertencias-importantes",
+    "href": "Practicos/Practico6.html#notas-y-advertencias-importantes",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "⚠️ Notas y Advertencias Importantes",
+    "text": "⚠️ Notas y Advertencias Importantes\n1. Sobre la distancia de Jaccard\n\nSolo funciona con datos binarios (0/1)\nNo es sensible a dobles ceros (a diferencia de otras distancias)\nEs ideal para variables categóricas\n\n2. Sobre la estandarización\n\nPara Jaccard no se estandariza, porque ya trabajamos con 0/1\nSi usaras variables numéricas continuas, ahí sí necesitarías estandarizar\n\n3. Sobre la elección de k\n\nNo hay una respuesta “correcta” única\nCombinar criterios estadísticos (silhouette) con interpretabilidad teórica\nDocumentar siempre la justificación\n\n4. Sobre la interpretación\n\nLos clusters son construcciones del algoritmo, no realidades objetivas\nSiempre preguntarse: ¿tienen sentido estos grupos?\nValidar con teoría o conocimiento del dominio"
+  },
+  {
+    "objectID": "Practicos/Practico11.html",
+    "href": "Practicos/Practico11.html",
+    "title": "🎯 Sobre este ejercicio",
+    "section": "",
+    "text": "Este ejercicio corresponde al Control 2 y tiene un valor de 0,2 puntos. Consiste en diseñar una propuesta de investigación sociológica que pueda ser respondida utilizando al menos uno de los siguientes métodos multivariantes:\n\nAnálisis de Correspondencias (Simple o Múltiple)\nAnálisis de Componentes Principales (PCA)\nAnálisis Factorial Exploratorio (AFE)\n\n\n\n\nPregunta de investigación (clara, precisa y abordable con los datos)\nDimensiones del análisis y posibles variables (qué conceptos medir y con qué ítems)\nBase de datos y módulos (dónde obtener los datos)\nPropuesta de modelo justificada (qué método usar y por qué)"
+  },
+  {
+    "objectID": "Practicos/Practico11.html#la-propuesta-debe-incluir-cuatro-elementos-fundamentales",
+    "href": "Practicos/Practico11.html#la-propuesta-debe-incluir-cuatro-elementos-fundamentales",
+    "title": "🎯 Sobre este ejercicio",
+    "section": "",
+    "text": "Pregunta de investigación (clara, precisa y abordable con los datos)\nDimensiones del análisis y posibles variables (qué conceptos medir y con qué ítems)\nBase de datos y módulos (dónde obtener los datos)\nPropuesta de modelo justificada (qué método usar y por qué)"
+  },
+  {
+    "objectID": "Practicos/Practico11.html#análisis-de-componentes-principales-pca",
+    "href": "Practicos/Practico11.html#análisis-de-componentes-principales-pca",
+    "title": "🎯 Sobre este ejercicio",
+    "section": "1. Análisis de Componentes Principales (PCA)",
+    "text": "1. Análisis de Componentes Principales (PCA)\n¿Qué hace? - Reduce un conjunto de variables correlacionadas a un número menor de componentes (combinaciones lineales) que retienen la máxima varianza posible.\n¿Cuándo usarlo?\n\nCuando las variables son numéricas continuas (o escalas Likert tratadas como continuas)\nCuando el objetivo es reducir dimensionalidad para construir un índice\nCuando no interesa identificar “factores latentes” sino resumir información\n\n\nEjemplo en esta investigación:\nPodría usarse para crear un índice de actitud hacia inmigrantes combinando r09, r12_01, r12_02, r16 en una sola variable que resuma la “apertura”.\n\nVentajas: Simple, no asume estructura latente, útil para predicción.\nLimitación: No identifica factores no observados (solo combina los observados)."
+  },
+  {
+    "objectID": "Practicos/Practico11.html#análisis-factorial-exploratorio-afe",
+    "href": "Practicos/Practico11.html#análisis-factorial-exploratorio-afe",
+    "title": "🎯 Sobre este ejercicio",
+    "section": "2. Análisis Factorial Exploratorio (AFE)",
+    "text": "2. Análisis Factorial Exploratorio (AFE)\n¿Qué hace? - Identifica factores latentes (no observados) que explican las correlaciones entre las variables. Asume que las variables observadas son manifestaciones de constructos subyacentes.\n¿Cuándo usarlo?\n\nCuando se busca entender la estructura subyacente de los datos\nCuando hay teoría previa sobre dimensiones que podrían existir (ej. “apertura” y “amenaza”)\nCuando se espera que las variables midan constructos no directamente observables\n\n\nEjemplo en esta investigación:\nIdeal para confirmar si las actitudes hacia inmigrantes se organizan en dos dimensiones: una de apertura positiva (r09, r12_01, r12_02, r16) y otra de amenaza (r12_03, r12_04).\n\nVentajas: Identifica estructura latente, permite rotación para mejor interpretación.\nLimitación: Requiere decisiones subjetivas (número de factores, tipo de rotación)."
+  },
+  {
+    "objectID": "Practicos/Practico11.html#análisis-de-correspondencias-acs-acm",
+    "href": "Practicos/Practico11.html#análisis-de-correspondencias-acs-acm",
+    "title": "🎯 Sobre este ejercicio",
+    "section": "3. Análisis de Correspondencias (ACS / ACM)",
+    "text": "3. Análisis de Correspondencias (ACS / ACM)\n¿Qué hace? - Analiza la asociación entre variables categóricas. ACS para dos variables, ACM para tres o más. Representa las categorías en un mapa perceptual donde la proximidad indica asociación.\n¿Cuándo usarlo?\n\nCuando las variables son categóricas (nominales u ordinales)\nCuando se quiere visualizar asociaciones entre categorías\nCuando se busca identificar perfiles (combinaciones de categorías)\n\n\nEjemplo en esta investigación:\nSe podría usar ACM para explorar la asociación entre:\n-Actitud hacia inmigrantes (recodificada en: Baja / Media / Alta)\n\nNivel educacional (Básica / Media / Superior)\nPosición política (Izquierda / Centro / Derecha)\nSexo (Hombre / Mujer)\n\n\n\nVentajas: No asume linealidad, visualización intuitiva, maneja variables categóricas.\nLimitación: No identifica dimensiones latentes como el AFE, solo asociaciones entre categorías.\n\n\n\n\n📊 Propuesta metodológica para la investigación\n\n\n\n\nObjetivo\n\n\nMétodo Recomendado\n\n\nJustificación\n\n\n\n\n\n\nIdentificar dimensiones subyacentes en actitudes hacia inmigrantes\n\n\nAFE\n\n\nPermite confirmar si existe estructura bifactorial (apertura vs. amenaza)\n\n\n\n\nRelacionar esas dimensiones con variables sociodemográficas\n\n\nACM\n\n\nLas variables sociodemográficas son categóricas; ACM visualiza perfiles\n\n\n\n\n\n\nNota: AFE = Análisis Factorial Exploratorio; ACM = Análisis de Correspondencias Múltiple. Ambos métodos se complementan para abordar los dos objetivos planteados.\n\n\n\n\n\nElaboración propia en base a los análisis realizados en prácticos anteriores"
+  },
+  {
+    "objectID": "Practicos/Practico11.html#estrategia-alternativa",
+    "href": "Practicos/Practico11.html#estrategia-alternativa",
+    "title": "🎯 Sobre este ejercicio",
+    "section": "Estrategia alternativa:",
+    "text": "Estrategia alternativa:\nSi se prefiere un enfoque más simple, se puede usar PCA para construir un índice de actitud y luego correlacionarlo con las variables sociodemográficas."
+  },
+  {
+    "objectID": "Practicos/Practico5.html",
+    "href": "Practicos/Practico5.html",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "Este script realiza un análisis de conglomerados jerárquico utilizando datos del Latinobarómetro para identificar patrones de confianza institucional en América Latina. Se emplea el método de Ward con distancia euclidiana sobre variables estandarizadas.\n\n\nLimpiar entorno (opcional) rm(list = ls())\n\n# Cargar paquetes necesarios\nlibrary(readxl)      # Lectura de archivos Excel\nlibrary(dplyr)       # Manipulación de datos\nlibrary(writexl)     # Exportar a Excel\nlibrary(cluster)     # Análisis de conglomerados\nlibrary(tidyr)       # Reestructuración de datos\nlibrary(readr)       # parse_number() para convertir texto a número\nlibrary(ggplot2)     # Visualizaciones (opcional)\n\n# Configurar opciones\noptions(scipen = 999)  # Evitar notación científica\nset.seed(123)          # Para reproducibilidad\n\n\n\n\n\n# Cargar base de datos (AJUSTA LA RUTA)\nlb &lt;- read_xlsx(\"/ruta/a/tu/archivo/latinobarometro_subset_4vars.xlsx\")\n\n# Ver estructura de los datos\nglimpse(lb)\nsummary(lb)\n\n\n\n\n\n# 3.1 Identificar variables de interés (confianza en instituciones)\nvars_items &lt;- intersect(names(lb), c(\"P34NI.BB\", \"P34NI.BE\", \"P34NI.BD\", \"P34NI.BC\"))\n\n# 3.2 Asegurar que sean numéricas (a veces vienen como texto)\nlb &lt;- lb %&gt;%\n  mutate(across(all_of(vars_items), \n                ~ suppressWarnings(readr::parse_number(as.character(.x)))))\n\n# 3.3 Verificar que ahora sean numéricas\nsapply(lb[, vars_items], class)\n\n\n\n\n\n# 4.1 Identificar todas las columnas numéricas\nnum_cols &lt;- names(lb)[sapply(lb, is.numeric)]\n\n# 4.2 Si no hay numéricas, usar las variables de interés\nif (length(num_cols) == 0 && length(vars_items) &gt; 0) {\n  num_cols &lt;- vars_items\n}\n\n# 4.3 Excluir variables que no deben influir en el cluster (ej. PAIS_NOMBRE)\nvar_excluir &lt;- \"PAIS_NOMBRE\"\nvars_para_cluster &lt;- setdiff(num_cols, var_excluir)\n\n# Mostrar variables que se usarán\nprint(vars_para_cluster)\n\n\n\n\n\n\n\nNote\n\n\n\nEl objeto vars_items corre sobre todas las columnas numéricas de la plantilla y tambien considera otras variables que debieron ser excluidas. Es a partir de aquello que se opto por crear el objeto vars_para_cluster\n\n\n\n\n\n\n# Eliminar filas con NA en las variables de clustering\nlb_limpio &lt;- lb %&gt;% \n  drop_na(all_of(vars_para_cluster))\n\n# Ver cuántos casos se perdieron\ncat(\"Casos originales:\", nrow(lb), \"\\n\")\ncat(\"Casos sin NA:\", nrow(lb_limpio), \"\\n\")\n\n\n\n\n\n# Usar PAIS_NOMBRE como etiqueta si existe\nif (\"PAIS_NOMBRE\" %in% names(lb_limpio)) {\n  etiquetas &lt;- lb_limpio$PAIS_NOMBRE\n} else {\n  etiquetas &lt;- paste0(\"Caso_\", seq_len(nrow(lb_limpio)))\n}\n\n\n\n\n\n# 7.1 Calcular matriz de distancias euclidianas\nD &lt;- dist(Z, method = \"euclidean\")\n\n# 7.2 Aplicar método de Ward (con distancias al cuadrado)\nhc_ward &lt;- hclust(dist(Z, method = \"euclidean\"), method = \"ward.D2\")\n\n# 7.3 Ver alturas de fusión\nhc$height\nhc$merge\n\n\n\n\n\n# Crear una tabla legible con cada paso de fusión\nout &lt;- data.frame(\n  paso   = seq_along(hc$height),\n  merge1 = hc$merge[,1],\n  merge2 = hc$merge[,2],\n  height = round(hc$height, 3)\n)\nprint(out)\n\n\n\n\n\n# Guardar parámetros gráficos originales\nop &lt;- par(no.readonly = TRUE)\n\n# Ajustar márgenes\npar(mar = c(8, 4, 4, 2))\n\n# Dendrograma básico\nplot(hc,\n     labels = as.character(etiquetas),\n     main = \"Dendrograma - Clustering Jerárquico (Ward.D2)\",\n     xlab = \"\", \n     sub = \"\",\n     cex = 0.7,\n     hang = -1)\n\n# DEFINIR NÚMERO DE CLUSTERS (k)\nK &lt;- 4  # &lt;-- CAMBIA SEGÚN TU ANÁLISIS\n\n# Añadir rectángulos\nrect.hclust(hc, k = K, border = 2:(K+1))\n\n# Restaurar parámetros\npar(op)\n\n\n\n\n\n# Cortar el dendrograma en K grupos\nclusters &lt;- cutree(hc, k = K)\n\n# Distribución de casos por cluster\ntable(clusters)\n\n\n\n\n\n# Añadir columna de cluster al data frame\nlb_resultado &lt;- lb_limpio %&gt;%\n  mutate(Cluster = clusters)\n\n# Ver primeras filas\nhead(lb_resultado %&gt;% select(PAIS_NOMBRE, all_of(vars_items), Cluster))\n\n\n\n\n\n# 13.1 Medias por cluster\nresumen_means &lt;- lb_resultado %&gt;%\n  group_by(Cluster) %&gt;%\n  summarise(\n    across(all_of(vars_items), \n           ~ mean(.x, na.rm = TRUE), \n           .names = \"{.col}_mean\"),\n    n_casos = n(),\n    .groups = \"drop\"\n  )\nprint(resumen_means)\n\n# 13.1 Renombrar variables para mejor interpretación\nlb_resultado_nombres &lt;- lb_resultado %&gt;%\n  rename(\n    Confianza_empresarios = `P34NI.BB`,\n    Confianza_partidos    = `P34NI.BE`,\n    Confianza_congreso    = `P34NI.BD`,\n    Confianza_poder_jud   = `P34NI.BC`\n  )\n\n# 13.2 Tabla cruzada: País vs Cluster\nif (\"PAIS_NOMBRE\" %in% names(lb_resultado)) {\n  tabla_pais_cluster &lt;- table(lb_resultado$PAIS_NOMBRE, lb_resultado$Cluster)\n  print(tabla_pais_cluster)\n  \n  # Porcentajes por país\n  pct_fila &lt;- round(prop.table(tabla_pais_cluster, margin = 1) * 100, 1)\n  print(pct_fila)\n}\n\n\n\n\n\n# 14.1 Tamaño de clusters\nbarplot(table(lb_resultado$Cluster),\n        main = paste(\"Tamaño de clústeres (k =\", K, \")\"),\n        xlab = \"Clúster\", \n        ylab = \"Frecuencia\",\n        col = 2:(K+1))\n\n# 14.2 Perfiles de clusters (gráfico de líneas)\nperfiles &lt;- lb_resultado_nombres %&gt;%\n  group_by(Cluster) %&gt;%\n  summarise(\n    across(Confianza_empresarios:Confianza_poder_jud, mean, na.rm = TRUE)\n  ) %&gt;%\n  pivot_longer(cols = -Cluster, \n               names_to = \"Variable\", \n               values_to = \"Media\")\n\n# Gráfico con ggplot2\nggplot(perfiles, aes(x = Variable, y = Media, \n                     group = Cluster, color = as.factor(Cluster))) +\n  geom_line(size = 1) +\n  geom_point(size = 3) +\n  labs(title = \"Perfil de medias por cluster\",\n       x = \"Variable\", \n       y = \"Media\",\n       color = \"Cluster\") +\n  theme_minimal() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))\n\n\n\n\n\n# Exportar a Excel (varias hojas)\nwrite_xlsx(\n  list(\n    DatosConCluster = lb_resultado,\n    MediasPorCluster = resumen_means,\n    Conteo = data.frame(Cluster = 1:K, \n                        Frecuencia = as.vector(table(clusters)))\n  ),\n  \"latinobarometro_clusters_resultado.xlsx\"\n)\n\ncat(\"✅ Resultados exportados a 'latinobarometro_clusters_resultado.xlsx'\\n\")\n\n\n\n\nCompletar según los resultados obtenidos:\n\n# 1. NÚMERO DE CLUSTERS (k)\n# ¿Por qué se eligió k = 4?\n\n# 2. PERFILES DE CADA CLUSTER\n# Cluster 1: [Alta confianza en todas las instituciones]\n# Cluster 2: [Baja confianza generalizada]\n# Cluster 3: [Confianza selectiva - ej. alta en justicia, baja en partidos]\n# Cluster 4: [Perfil mixto...]\n\n# 3. DISTRIBUCIÓN GEOGRÁFICA\n# ¿Qué países predominan en cada cluster?\n\n# 4. CONCLUSIONES\n# ¿Qué patrones de confianza institucional existen en Latinoamérica?\n# ¿Hay diferencias regionales significativas?\n\nℹ️ Notas Importantes Estandarización: Es fundamental porque las variables originales pueden tener escalas diferentes.\nNúmero de clusters (k): No hay una única respuesta correcta. Debe justificarse según el dendrograma, el método del codo o criterios sustantivos.\nInterpretación: El análisis de cluster es una herramienta exploratoria. Los resultados deben tener sentido teórico."
+  },
+  {
+    "objectID": "Practicos/Practico5.html#configuración-inicial-y-paquetes",
+    "href": "Practicos/Practico5.html#configuración-inicial-y-paquetes",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "Limpiar entorno (opcional) rm(list = ls())\n\n# Cargar paquetes necesarios\nlibrary(readxl)      # Lectura de archivos Excel\nlibrary(dplyr)       # Manipulación de datos\nlibrary(writexl)     # Exportar a Excel\nlibrary(cluster)     # Análisis de conglomerados\nlibrary(tidyr)       # Reestructuración de datos\nlibrary(readr)       # parse_number() para convertir texto a número\nlibrary(ggplot2)     # Visualizaciones (opcional)\n\n# Configurar opciones\noptions(scipen = 999)  # Evitar notación científica\nset.seed(123)          # Para reproducibilidad"
+  },
+  {
+    "objectID": "Practicos/Practico5.html#carga-de-datos",
+    "href": "Practicos/Practico5.html#carga-de-datos",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "# Cargar base de datos (AJUSTA LA RUTA)\nlb &lt;- read_xlsx(\"/ruta/a/tu/archivo/latinobarometro_subset_4vars.xlsx\")\n\n# Ver estructura de los datos\nglimpse(lb)\nsummary(lb)"
+  },
+  {
+    "objectID": "Practicos/Practico5.html#limpieza-y-preparación-de-variables",
+    "href": "Practicos/Practico5.html#limpieza-y-preparación-de-variables",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "# 3.1 Identificar variables de interés (confianza en instituciones)\nvars_items &lt;- intersect(names(lb), c(\"P34NI.BB\", \"P34NI.BE\", \"P34NI.BD\", \"P34NI.BC\"))\n\n# 3.2 Asegurar que sean numéricas (a veces vienen como texto)\nlb &lt;- lb %&gt;%\n  mutate(across(all_of(vars_items), \n                ~ suppressWarnings(readr::parse_number(as.character(.x)))))\n\n# 3.3 Verificar que ahora sean numéricas\nsapply(lb[, vars_items], class)"
+  },
+  {
+    "objectID": "Practicos/Practico5.html#selección-de-variables-para-el-cluster",
+    "href": "Practicos/Practico5.html#selección-de-variables-para-el-cluster",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "# 4.1 Identificar todas las columnas numéricas\nnum_cols &lt;- names(lb)[sapply(lb, is.numeric)]\n\n# 4.2 Si no hay numéricas, usar las variables de interés\nif (length(num_cols) == 0 && length(vars_items) &gt; 0) {\n  num_cols &lt;- vars_items\n}\n\n# 4.3 Excluir variables que no deben influir en el cluster (ej. PAIS_NOMBRE)\nvar_excluir &lt;- \"PAIS_NOMBRE\"\nvars_para_cluster &lt;- setdiff(num_cols, var_excluir)\n\n# Mostrar variables que se usarán\nprint(vars_para_cluster)\n\n\n\n\n\n\n\nNote\n\n\n\nEl objeto vars_items corre sobre todas las columnas numéricas de la plantilla y tambien considera otras variables que debieron ser excluidas. Es a partir de aquello que se opto por crear el objeto vars_para_cluster"
+  },
+  {
+    "objectID": "Practicos/Practico5.html#filtrar-casos-completos-sin-na",
+    "href": "Practicos/Practico5.html#filtrar-casos-completos-sin-na",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "# Eliminar filas con NA en las variables de clustering\nlb_limpio &lt;- lb %&gt;% \n  drop_na(all_of(vars_para_cluster))\n\n# Ver cuántos casos se perdieron\ncat(\"Casos originales:\", nrow(lb), \"\\n\")\ncat(\"Casos sin NA:\", nrow(lb_limpio), \"\\n\")"
+  },
+  {
+    "objectID": "Practicos/Practico5.html#etiquetas-para-identificar-casos",
+    "href": "Practicos/Practico5.html#etiquetas-para-identificar-casos",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "# Usar PAIS_NOMBRE como etiqueta si existe\nif (\"PAIS_NOMBRE\" %in% names(lb_limpio)) {\n  etiquetas &lt;- lb_limpio$PAIS_NOMBRE\n} else {\n  etiquetas &lt;- paste0(\"Caso_\", seq_len(nrow(lb_limpio)))\n}"
+  },
+  {
+    "objectID": "Practicos/Practico5.html#cálculo-de-distancias-y-clustering",
+    "href": "Practicos/Practico5.html#cálculo-de-distancias-y-clustering",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "# 7.1 Calcular matriz de distancias euclidianas\nD &lt;- dist(Z, method = \"euclidean\")\n\n# 7.2 Aplicar método de Ward (con distancias al cuadrado)\nhc_ward &lt;- hclust(dist(Z, method = \"euclidean\"), method = \"ward.D2\")\n\n# 7.3 Ver alturas de fusión\nhc$height\nhc$merge"
+  },
+  {
+    "objectID": "Practicos/Practico5.html#tabla-del-proceso-de-clustering",
+    "href": "Practicos/Practico5.html#tabla-del-proceso-de-clustering",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "# Crear una tabla legible con cada paso de fusión\nout &lt;- data.frame(\n  paso   = seq_along(hc$height),\n  merge1 = hc$merge[,1],\n  merge2 = hc$merge[,2],\n  height = round(hc$height, 3)\n)\nprint(out)"
+  },
+  {
+    "objectID": "Practicos/Practico5.html#visualización-del-dendrograma",
+    "href": "Practicos/Practico5.html#visualización-del-dendrograma",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "# Guardar parámetros gráficos originales\nop &lt;- par(no.readonly = TRUE)\n\n# Ajustar márgenes\npar(mar = c(8, 4, 4, 2))\n\n# Dendrograma básico\nplot(hc,\n     labels = as.character(etiquetas),\n     main = \"Dendrograma - Clustering Jerárquico (Ward.D2)\",\n     xlab = \"\", \n     sub = \"\",\n     cex = 0.7,\n     hang = -1)\n\n# DEFINIR NÚMERO DE CLUSTERS (k)\nK &lt;- 4  # &lt;-- CAMBIA SEGÚN TU ANÁLISIS\n\n# Añadir rectángulos\nrect.hclust(hc, k = K, border = 2:(K+1))\n\n# Restaurar parámetros\npar(op)"
+  },
+  {
+    "objectID": "Practicos/Practico5.html#cortar-el-árbol-y-asignar-clústeres",
+    "href": "Practicos/Practico5.html#cortar-el-árbol-y-asignar-clústeres",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "# Cortar el dendrograma en K grupos\nclusters &lt;- cutree(hc, k = K)\n\n# Distribución de casos por cluster\ntable(clusters)"
+  },
+  {
+    "objectID": "Practicos/Practico5.html#anexar-clústeres-a-los-datos",
+    "href": "Practicos/Practico5.html#anexar-clústeres-a-los-datos",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "# Añadir columna de cluster al data frame\nlb_resultado &lt;- lb_limpio %&gt;%\n  mutate(Cluster = clusters)\n\n# Ver primeras filas\nhead(lb_resultado %&gt;% select(PAIS_NOMBRE, all_of(vars_items), Cluster))"
+  },
+  {
+    "objectID": "Practicos/Practico5.html#caracterización-de-los-clústeres",
+    "href": "Practicos/Practico5.html#caracterización-de-los-clústeres",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "# 13.1 Medias por cluster\nresumen_means &lt;- lb_resultado %&gt;%\n  group_by(Cluster) %&gt;%\n  summarise(\n    across(all_of(vars_items), \n           ~ mean(.x, na.rm = TRUE), \n           .names = \"{.col}_mean\"),\n    n_casos = n(),\n    .groups = \"drop\"\n  )\nprint(resumen_means)\n\n# 13.1 Renombrar variables para mejor interpretación\nlb_resultado_nombres &lt;- lb_resultado %&gt;%\n  rename(\n    Confianza_empresarios = `P34NI.BB`,\n    Confianza_partidos    = `P34NI.BE`,\n    Confianza_congreso    = `P34NI.BD`,\n    Confianza_poder_jud   = `P34NI.BC`\n  )\n\n# 13.2 Tabla cruzada: País vs Cluster\nif (\"PAIS_NOMBRE\" %in% names(lb_resultado)) {\n  tabla_pais_cluster &lt;- table(lb_resultado$PAIS_NOMBRE, lb_resultado$Cluster)\n  print(tabla_pais_cluster)\n  \n  # Porcentajes por país\n  pct_fila &lt;- round(prop.table(tabla_pais_cluster, margin = 1) * 100, 1)\n  print(pct_fila)\n}"
+  },
+  {
+    "objectID": "Practicos/Practico5.html#visualizaciones-adicionales",
+    "href": "Practicos/Practico5.html#visualizaciones-adicionales",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "# 14.1 Tamaño de clusters\nbarplot(table(lb_resultado$Cluster),\n        main = paste(\"Tamaño de clústeres (k =\", K, \")\"),\n        xlab = \"Clúster\", \n        ylab = \"Frecuencia\",\n        col = 2:(K+1))\n\n# 14.2 Perfiles de clusters (gráfico de líneas)\nperfiles &lt;- lb_resultado_nombres %&gt;%\n  group_by(Cluster) %&gt;%\n  summarise(\n    across(Confianza_empresarios:Confianza_poder_jud, mean, na.rm = TRUE)\n  ) %&gt;%\n  pivot_longer(cols = -Cluster, \n               names_to = \"Variable\", \n               values_to = \"Media\")\n\n# Gráfico con ggplot2\nggplot(perfiles, aes(x = Variable, y = Media, \n                     group = Cluster, color = as.factor(Cluster))) +\n  geom_line(size = 1) +\n  geom_point(size = 3) +\n  labs(title = \"Perfil de medias por cluster\",\n       x = \"Variable\", \n       y = \"Media\",\n       color = \"Cluster\") +\n  theme_minimal() +\n  theme(axis.text.x = element_text(angle = 45, hjust = 1))"
+  },
+  {
+    "objectID": "Practicos/Practico5.html#exportar-resultados",
+    "href": "Practicos/Practico5.html#exportar-resultados",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "# Exportar a Excel (varias hojas)\nwrite_xlsx(\n  list(\n    DatosConCluster = lb_resultado,\n    MediasPorCluster = resumen_means,\n    Conteo = data.frame(Cluster = 1:K, \n                        Frecuencia = as.vector(table(clusters)))\n  ),\n  \"latinobarometro_clusters_resultado.xlsx\"\n)\n\ncat(\"✅ Resultados exportados a 'latinobarometro_clusters_resultado.xlsx'\\n\")"
+  },
+  {
+    "objectID": "Practicos/Practico5.html#interpretación-de-resultados",
+    "href": "Practicos/Practico5.html#interpretación-de-resultados",
+    "title": "🎯 Objetivo del Análisis",
+    "section": "",
+    "text": "Completar según los resultados obtenidos:\n\n# 1. NÚMERO DE CLUSTERS (k)\n# ¿Por qué se eligió k = 4?\n\n# 2. PERFILES DE CADA CLUSTER\n# Cluster 1: [Alta confianza en todas las instituciones]\n# Cluster 2: [Baja confianza generalizada]\n# Cluster 3: [Confianza selectiva - ej. alta en justicia, baja en partidos]\n# Cluster 4: [Perfil mixto...]\n\n# 3. DISTRIBUCIÓN GEOGRÁFICA\n# ¿Qué países predominan en cada cluster?\n\n# 4. CONCLUSIONES\n# ¿Qué patrones de confianza institucional existen en Latinoamérica?\n# ¿Hay diferencias regionales significativas?\n\nℹ️ Notas Importantes Estandarización: Es fundamental porque las variables originales pueden tener escalas diferentes.\nNúmero de clusters (k): No hay una única respuesta correcta. Debe justificarse según el dendrograma, el método del codo o criterios sustantivos.\nInterpretación: El análisis de cluster es una herramienta exploratoria. Los resultados deben tener sentido teórico."
+  },
+  {
+    "objectID": "Practicos/Practico9.html",
+    "href": "Practicos/Practico9.html",
+    "title": "🎯 Objetivos",
+    "section": "",
+    "text": "Realizar AFE con 4 variables de actitudes hacia inmigrantes (ELSOC)\nDeterminar estructura factorial subyacente\nCalcular puntajes factoriales para análisis posteriores"
+  },
+  {
+    "objectID": "Practicos/Practico9.html#figura-1-matriz-de-correlaciones",
+    "href": "Practicos/Practico9.html#figura-1-matriz-de-correlaciones",
+    "title": "🎯 Objetivos",
+    "section": "Figura 1: Matriz de correlaciones",
+    "text": "Figura 1: Matriz de correlaciones\nInterpretación:\n\nr12_01 y r12_02: correlación muy alta (+0.95) → mismo constructo\nr12_03 y r12_04: correlación alta (+0.63) → mismo constructo\n\nEntre ambos grupos: correlaciones negativas → dos dimensiones opuestas"
+  },
+  {
+    "objectID": "Practicos/Practico9.html#figura-2-scree-plot",
+    "href": "Practicos/Practico9.html#figura-2-scree-plot",
+    "title": "🎯 Objetivos",
+    "section": "Figura 2: Scree plot",
+    "text": "Figura 2: Scree plot\n\n# Análisis paralelo\nfa.parallel(datos_afe, fa = \"fa\", n.obs = nrow(datos_afe))"
+  },
+  {
+    "objectID": "Practicos/Practico9.html#figura-3-análisis-paralelo-de-horn",
+    "href": "Practicos/Practico9.html#figura-3-análisis-paralelo-de-horn",
+    "title": "🎯 Objetivos",
+    "section": "Figura 3: Análisis paralelo de Horn",
+    "text": "Figura 3: Análisis paralelo de Horn\nConclusión: Ambos métodos indican 2 factores"
+  },
+  {
+    "objectID": "Practicos/Practico9.html#ejes-principales-pa",
+    "href": "Practicos/Practico9.html#ejes-principales-pa",
+    "title": "🎯 Objetivos",
+    "section": "6.1 Ejes principales (PA)",
+    "text": "6.1 Ejes principales (PA)\n\nfac_pa &lt;- datos_afe %&gt;%\n  select(r12_01, r12_02, r12_03, r12_04) %&gt;%\n  fa(nfactors = 2, fm = \"pa\", rotate = \"none\")\n\nprint(fac_pa, digits = 2, sort = TRUE)"
+  },
+  {
+    "objectID": "Practicos/Practico9.html#máxima-verosimilitud-ml",
+    "href": "Practicos/Practico9.html#máxima-verosimilitud-ml",
+    "title": "🎯 Objetivos",
+    "section": "6.2 Máxima verosimilitud (ML)",
+    "text": "6.2 Máxima verosimilitud (ML)\n\nfac_ml &lt;- datos_afe %&gt;%\n  select(r12_01, r12_02, r12_03, r12_04) %&gt;%\n  fa(nfactors = 2, fm = \"ml\", rotate = \"none\")\n\nprint(fac_ml, digits = 2, sort = TRUE))"
+  },
+  {
+    "objectID": "Practicos/Practico9.html#varimax-ortogonal",
+    "href": "Practicos/Practico9.html#varimax-ortogonal",
+    "title": "🎯 Objetivos",
+    "section": "7.1 Varimax (ortogonal)",
+    "text": "7.1 Varimax (ortogonal)\n\nfac_varimax &lt;- datos_Afe %&gt;%\n  select(r12_01, r12_02, r12_03, r12_04) %&gt;%\n  fa(nfactors = 2, fm = \"ml\", rotate = \"varimax\")\n\nprint(fac_varimax, digits = 2, sort = TRUE)"
+  },
+  {
+    "objectID": "Practicos/Practico9.html#promax-oblicua",
+    "href": "Practicos/Practico9.html#promax-oblicua",
+    "title": "🎯 Objetivos",
+    "section": "7.2 Promax (oblicua)",
+    "text": "7.2 Promax (oblicua)\n\nfac_promax &lt;- datos_afe %&gt;%\n  select(r12_01, r12_02, r12_03, r12_04) %&gt;%\n  fa(nfactors = 2, fm = \"ml\", rotate = \"promax\")\n\nprint(fac_promax, digits = 2, sort = TRUE)\n\nfa.diagram(fac_promax)"
+  },
+  {
+    "objectID": "Practicos/Practico4.html",
+    "href": "Practicos/Practico4.html",
+    "title": "🎯 Objetivo del Ejercicio",
+    "section": "",
+    "text": "El siguiente practico tiene como objetivo aplicar técnicas de clustering jerárquico utilizando el método del centroide para identificar grupos (conglomerados) en una base de datos con los datos base y posteriormente estandarizados. El análisis se basa en la distancia euclidiana al cuadrado como medida de disimilitud. Se menciona y presenta el método de Ward en su elaboración como metodo alterno.\n0,2 decimas para el Control 1 (0,1 decima por script y 0,1 por interpretación)\nInterpretación al final del script"
+  },
+  {
+    "objectID": "Practicos/Practico4.html#fijar-de-directorio",
+    "href": "Practicos/Practico4.html#fijar-de-directorio",
+    "title": "🎯 Objetivo del Ejercicio",
+    "section": "1.1. Fijar de directorio",
+    "text": "1.1. Fijar de directorio\nPara este caso utilizaremos el metodo manual: Para realizarla vamos a la opción “Session” de Rstudios &gt; le damos a la opción “Set Working Directory” &gt; ultima opción: “Choose Directory” &gt; seleccionamos la carpeta en la que trabajaremos para fijarla.\nIgualmente, siempre es necesario recordar que existen otras forma de fijar el directorio.\nPodemos fijarlo usandoo codigos de Rstudios:\n\n# Debemos usar el comando \"setwd\" como esta puesto debajo\n# Para saber con que llenar los espacios del propio codigo, puedes ver la dirección de la \n# carpeta en la que quieres trabajar, clickando sobre el icono de esta.\n\n#los primeros 2 nombres, puedes dejarlos como lo deje.\n# lo que debes cambiar esta indicado \n# con los numeros 1, 2 y 3\n\n# setwd(\"C:/Users/ 1- El nombre de usuario / 2- Nombre de la carpeta / \n# 3- Nombre de la subcarpeta en caso de ser necesario\")\n\n# Puedes el comando \"getwd\", para comprobar si estas trabajando en la carpeta en la que \n# indicaste\n\n# getwd()\n\n# Esta te deberia indicar en la consola algo similar a esto:\n\n\"C:/Users/ El nombre de usuario / Nombre de la carpeta \n# / Nombre de la subcarpeta en caso de ser necesario\"\n\n\" Si coincide es que lo hiciste bien\n\nTambien podemos usar un proyecto de Rstudios, esto es especialmente util, para cuando trabajemos de forma constante en un mismo script ya sea durante un tiempo o durante multiples sesiones.\nPara eso debemos crear un proyecto.\nPara realizarlo ve a la opción File &gt; Seleccionas la opción New Proyect &gt; Seleccionas la opción **New Directory” &gt; Y seleccionas la carpeta de tu proyecto o en la que quieras trabajar creando un New Proyect.\nVolviendo al punto de que se trabajara en un mismo script de forma constante por un tiempo indeterminado o en multiples sesiones; esta opción es util, porque tiene la ventaja de que cada vez que abras el archivo de Rstudios, este fijara automaticamente dicha carpeta como directorio de trabajo y por ejemplo los avances o lo realizado en el enviroment, tambien se guardara."
+  },
+  {
+    "objectID": "Practicos/Practico4.html#instalación-y-carga-de-paquetes",
+    "href": "Practicos/Practico4.html#instalación-y-carga-de-paquetes",
+    "title": "🎯 Objetivo del Ejercicio",
+    "section": "1.2. Instalación y carga de paquetes",
+    "text": "1.2. Instalación y carga de paquetes\n\n## Cargamos los paquetes necesarios para este practico\n\npacman::p_load(\n  tidyverse,      # Manipulación de datos\n  factoextra,     # Visualización de clustering\n  amap,           # Métodos de clustering\n  cluster,        # Análisis de conglomerados\n  sjlabelled,     # Trabajar con etiquetas de variables y valores\n  sjmisc)         # Manipular, describir y preparar datos\n\n## 1.3. Configurar entorno\n\noptions(scipen = 999) # Desactiva la notación cientifica de Rtudios\n                      # (por ejemplo esta suele estar activa en\n                      # Posit Cloud)\n\nset.seed(123)         # Para fijar reproducibilidad de lo que\n                      # hagamos y alguien lo quiera replicar,\n                      # sobre todo en lo referente a pruebas\n                      # estadisticas o manipulación de datos"
+  },
+  {
+    "objectID": "Practicos/Practico4.html#cargamos-la-base-de-datos-del-elsoc.",
+    "href": "Practicos/Practico4.html#cargamos-la-base-de-datos-del-elsoc.",
+    "title": "🎯 Objetivo del Ejercicio",
+    "section": "2.1. Cargamos la base de datos del ELSOC.",
+    "text": "2.1. Cargamos la base de datos del ELSOC.\n\nload(url(\"https://dataverse.harvard.edu/api/access/datafile/7245118\"))\n# Descargamos desde internet la base de datos del ELSOC\n\n# Para quienes tengan problemas de internet en su PC del laboratorio\n# Pueden descargar la base de datos directamente con el siguiente Link\n\nhttps://dataverse.harvard.edu/api/access/datafile/7245118\n\n# Dejan la base de datos, en la carpeta de su proyecto y la cargan en \n# Rstudios de la siguiente forma:\n\nload(ELSOC_Long_2016_2022_v1.00)"
+  },
+  {
+    "objectID": "Practicos/Practico4.html#selección-de-variables-del-elsoc-para-el-analisis-de-conglomerados.",
+    "href": "Practicos/Practico4.html#selección-de-variables-del-elsoc-para-el-analisis-de-conglomerados.",
+    "title": "🎯 Objetivo del Ejercicio",
+    "section": "2.2. Selección de variables del ELSOC para el Analisis de Conglomerados.",
+    "text": "2.2. Selección de variables del ELSOC para el Analisis de Conglomerados.\n\n# Filtrar ola 4 y seleccionar variables numéricas\n\ndatos_cluster &lt;- elsoc_long_2016_2022.2 %&gt;%\n  filter(ola == \"4\") %&gt;%\n  select(m0_edad,    # Edad\n         m13,        # Ingreso mensual entrevistado\n         m01         # Nivel educacional)\n\n# Creamos asi nuestra sub-base de datos_cluster que solo tiene las variables con las\n# que trabajaremos, ademas a esta se les eliminaran los NA.\n# Con esta sub-base trabajaremos durante el resto del practico\n\n# ******NOTA******\n\n# La variable m13 de ingresos es un indicador directo\n# por lo que el monto indicado de esta, es el monto total de ingresos mensuales\n# del entrevistado; ELSOC tambien tiene otras variables que miden el ingreso\n# mensual por tramos m14 (16 tramos) y m14b (5 tramos).\n# para quienes tengan la duda, de porque trabajamos con la variable m13 por sobre\n# m14 o m14b, es porque estas dos variables, no se encuentran disponibles en la\n# Ola 4 (2019), no fueron preguntadas o en su momento no eran contempladas\n\n\n\n\n\n\n\nNote\n\n\n\nEl Analisis de Conglomerados permite el uso de variables cualitativas y cuantitativas; de ahi que usemos la edad y el ingreso que son numericas y la educación como variable ordinal.\n\n\n\n2.2.1. Limpieza de Variables\n\n#  Transformamos los valores perdidos a NA\n\ndatos_cluster &lt;- datos_cluster %&gt;%\n  sjlabelled::set_na(\n    na = c(-999, -888, -777, -666, 999999999))\n\n# Los eleminamos de la base\n\ndatos_cluster &lt;- na.omit(datos_cluster)\n\n# Vemos la estructura de los datos resultantes\n\nsummary(datos_cluster) # Podemos observar la medidas de tendencia central\n\ndim(datos_cluster) # Vemos las dimensiones; siendo el numero de observaciones\n                   # y variables\n\n\n\n\n\n\n\nNote\n\n\n\nLos más observadores veran que indique el valor 999999999, como valor perdido y por ende NA. Esta observación corresponde a un dato de la variable m13, ingreso mensual, elimine dicha observación, por que en caso de mantenerse figuraria como un valor extremos, sesgando resultados, ademas el encuestado con el segundo mayor monto de ingresos era radicalmente inferior a dicho valor; ante la duda de ser un error de registro o una observación valida, opte por elimanrlo, decisión metodologíca."
+  },
+  {
+    "objectID": "Practicos/Practico4.html#visualización-mejorada-con-factoextra",
+    "href": "Practicos/Practico4.html#visualización-mejorada-con-factoextra",
+    "title": "🎯 Objetivo del Ejercicio",
+    "section": "Visualización mejorada con factoextra:",
+    "text": "Visualización mejorada con factoextra:\n\n# Dendrograma más profesional o estetico\n\nfviz_dend(\n  hc,\n  k = 4,\n  show_labels = FALSE,\n  color_labels_by_k = TRUE,\n  rect = TRUE,\n  rect_fill = TRUE,\n  main = \"Dendrograma - Método Centroide (k = 4)\")\n\n\n\n\n\n\n\nNote\n\n\n\nEste proceso puede tardar bastante (unos minutos) ya que Rstudios, le esta asignando un color de Cluster a cada observación individualmente y son 2021 observaciones. Si intentan seguir con el resto de pasos, no se realizaran por que Rstudios sigue realzando el paso anterior. De todas formas, en ayudantia se abordare esto de forma más extensa y en profundidad"
+  },
+  {
+    "objectID": "Practicos/Practico4.html#preguntas-de-referencia-para-para-la-interpretación",
+    "href": "Practicos/Practico4.html#preguntas-de-referencia-para-para-la-interpretación",
+    "title": "🎯 Objetivo del Ejercicio",
+    "section": "13.1. 🔍 Preguntas de referencia para para la interpretación:",
+    "text": "13.1. 🔍 Preguntas de referencia para para la interpretación:\n** 1.**: ¿Que es lo que podemos concluir a partir de las medias de los grupo?\n2.: Y considerando lo anterior ¿que perfil compondria cada conglomerado?\nEjemplo: “El Grupo 1 se caracteriza por personas…. con ingresos…etc”\n3.: A que se deberia la disparidad en el numero de casos que compondrian cada conglomerado\n4.: Si cambiaramos el numero de Clusters, se verian modificados ¿la distibución de casos y los resultados? ¿por qué?\n5.: En base a su conocimiento ¿Creen que tienen sentido sustantivo (teórico/práctico) los grupos encontrados?"
+  },
+  {
+    "objectID": "Practicos/Practico4.html#criterios-de-evaluación-02-puntos",
+    "href": "Practicos/Practico4.html#criterios-de-evaluación-02-puntos",
+    "title": "🎯 Objetivo del Ejercicio",
+    "section": "14.1. Criterios de Evaluación (0,2 puntos)",
+    "text": "14.1. Criterios de Evaluación (0,2 puntos)\n✅ Código correcto (0,1 puntos)\n✅ Interpretación adecuada de los resultados (0,1 puntos)"
+  },
+  {
+    "objectID": "programa.html#i.-propósitos-de-aprendizaje",
+    "href": "programa.html#i.-propósitos-de-aprendizaje",
+    "title": "Programa Estadistica IV",
+    "section": "I. Propósitos de aprendizaje",
+    "text": "I. Propósitos de aprendizaje\nAl término de esta actividad curricular, las y los estudiantes serán capaces de:\n\nIdentificar las diferencias claves entre las técnicas de análisis exploratorio.\nInterpretar la información derivada de software estadísticos de cada técnica.\nAplicar las diferentes técnicas de análisis exploratorio a problemas de investigación social."
+  },
+  {
+    "objectID": "programa.html#ii.-estructura-general-del-curso",
+    "href": "programa.html#ii.-estructura-general-del-curso",
+    "title": "Programa Estadistica IV",
+    "section": "II. Estructura general del curso",
+    "text": "II. Estructura general del curso\nEl curso se organiza en tres unidades:\n\nUnidad I: Análisis de Correspondencias simple y múltiple.\nUnidad II: Análisis Factorial y Componentes Principales.\nUnidad III: Análisis de Conglomerados."
+  },
+  {
+    "objectID": "programa.html#iii.-contenidos",
+    "href": "programa.html#iii.-contenidos",
+    "title": "Programa Estadistica IV",
+    "section": "III. Contenidos",
+    "text": "III. Contenidos\n\nUNIDAD I. Análisis de variables observadas categóricas\nAnálisis de Correspondencias simple y múltiple\n\nAspectos previos al Análisis de Correspondencias: la prueba Chi-cuadrado.\nObjetivos del Análisis de Correspondencias.\nConstrucción de mapas perceptuales: media ponderada, masa, perfiles, vértices, distancias Chi-cuadrado e inercia.\nReducción de dimensionalidad y escalamiento óptimo: cómo construir mapas perceptuales bidimensionales\nTransformación de mapas simétricos en mapas asimétricos.\nImplementación de la técnica y análisis de resultados en software estadísticos.\n\n\n\n\nUNIDAD II. Análisis exploratorio de variables latentes\nAnálisis Factorial y Análisis de Componentes Principales\n\nAspectos previos: correlación y regresión lineal de mínimos cuadrados ordinarios (MCO).\nAproximaciones a la técnica: Diferencias entre análisis de variables reflectivas y de variables formativas; diferencias entre Análisis de Componentes Principales y Análisis de Factor Común (o “Análisis Factorial”); diferencias entre análisis exploratorio y análisis confirmatorio\nForma de operación del análisis de componentes principales (ACP): procedimiento de extrasión componentes; criterios para escoger el número de componentes adecuados; anáñisis de la matriz factorial; rotación de componentes y tipos de rotación disponibles; interpretación y evaluación del modelo final; cálculo de puntuaciones factoriales.\nImplementación de la técnica e interpretación de resultados en software estadísticos\nAplicación prática (construcción de escalas): el ACP como técnica para chequear la dimensionalidad de una escala; chqqueo de la validez de una escala (Alfa de Cronbach).\n\n\n\n\nUNIDAD III. Análisis exploratorio de variables observadas\nAnálisis de conglomerados\n\nObjetico de la técnica: clasificación en ciencias sociales.\nEl análisis de conglomerados como técnica: definición de supuestos; elección de variables, de la medición de similitud entre objetos y del método de conglomeración; definición del número adecuado de grupos, caracterización y validación de dichos grupos.\nImplementación y análisis de resultados en software estadísticos."
+  },
+  {
+    "objectID": "programa.html#iii.-metodología",
+    "href": "programa.html#iii.-metodología",
+    "title": "Programa Estadistica IV",
+    "section": "III. Metodología",
+    "text": "III. Metodología\nEl curso se desarrollará de manera presencial, combinando clases expositivas y prácticas en donde se revisarán los elementos teóricos basicos de cada técnica estadistica, así como su aplicación en la investigación empírica y la interpretación de sus resultados.\nEl curso cuenta también con sesiones de ayudantía en donde se reforzarán los contenidos aprendidos en clase, se trabajara el uso de software estadísticos y se prepararán para los controles y el trabajo final. La definición del horario de ayudantía se realizara la primera semana de clases. —"
+  },
+  {
+    "objectID": "programa.html#iv.-evaluación-de-aprendizajes",
+    "href": "programa.html#iv.-evaluación-de-aprendizajes",
+    "title": "Programa Estadistica IV",
+    "section": "IV. Evaluación de aprendizajes",
+    "text": "IV. Evaluación de aprendizajes\nDurante el semestre se realizarán distintas actividades evaluadas, que incluyen instacias individuales y en pareja:\n\n2 Controles de la materia asociada a cada una de las técnicas de análisis explooratorio (Unidades I - III): 35% de Ponderación cada uno\n\nTrabajo final (Presentación oral): 30% de Ponderación\n\nExamen final: 40% de Ponderación\n\n\n\n\n\n\n\nNote\n\n\n\nPara eximirse del examen se requiere una nota igual o superior a 5,5.\nPara presentarse a exmen se requiere una nota promedio igual o superior a 3,5 y un 70% de asistencia al curso.\nDe forma excepcional, podrán presentarse solo a examen de repetición (segunda oportunidad) quienes tengan una asistencia minima de 50%, siempre y cuando se cumpla con el promedio de notas para dar examem, es decir notas parciales igual o superior a 3,5."
+  },
+  {
+    "objectID": "programa.html#v.-calendarización-de-actividades",
+    "href": "programa.html#v.-calendarización-de-actividades",
+    "title": "Programa Estadistica IV",
+    "section": "V. Calendarización de actividades",
+    "text": "V. Calendarización de actividades\n\n\n\nSesión\nFecha\nContenidos principales\n\n\n\n\n1\n13.08\nIntroducción y repaso de conceptos\n\n\n2\n20.08\nChi-cuadrado y AC simple\n\n\n3\n27.08\nAC múltiple\n\n\n4\n03.09\nACP\n\n\n6\n24.09\nControl 1\n\n\n11\n22.10\nAnálisis de conglomerados\n\n\n14\n12.11\nControl 2\n\n\n15\n21.11\nEntrega trabajo final\n\n\n—\n03.12\nExamen"
+  },
+  {
+    "objectID": "programa.html#vi.-recursos-pedagógicos",
+    "href": "programa.html#vi.-recursos-pedagógicos",
+    "title": "Programa Estadistica IV",
+    "section": "VI. Recursos pedagógicos",
+    "text": "VI. Recursos pedagógicos\n\nBibliografía básica\n\nCea D’Ancona, M. A. Análisis multivariable. Editorial Síntesis.\nGreenacre, M. La práctica del análisis de correspondencias. Fundación BBVA.\nHair et al. Análisis multivariante. Pearson.\n\n\n\nBibliografía complementaria\n\nAldás & Uriel. Análisis multivariante aplicado con R.\nField, A. Discovering Statistics Using R."
+  },
+  {
+    "objectID": "Modulos/clase4.html",
+    "href": "Modulos/clase4.html",
+    "title": "Módulo 4 · Análisis de Componentes Principales (PCA)",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 3 de septiembre"
+  },
+  {
+    "objectID": "Modulos/clase4.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase4.html#objetivos-de-la-sesión",
+    "title": "Módulo 4 · Análisis de Componentes Principales (PCA)",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nComprender la lógica geométrica del Análisis de Componentes Principales (PCA)\nAprender a calcular e interpretar autovalores y autovectores\nGenerar e interpretar gráficos de componentes principales en R Studio\nAplicar PCA para reducción de dimensionalidad en datos de investigación social"
+  },
+  {
+    "objectID": "Modulos/clase4.html#presentación",
+    "href": "Modulos/clase4.html#presentación",
+    "title": "Módulo 4 · Análisis de Componentes Principales (PCA)",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase4.html#lecturas-asociadas",
+    "href": "Modulos/clase4.html#lecturas-asociadas",
+    "title": "Módulo 4 · Análisis de Componentes Principales (PCA)",
+    "section": "Lecturas Asociadas",
+    "text": "Lecturas Asociadas\n\nAldás, Joaquín y Uriel, Ezequiel (2017), Capítulo 11"
+  },
+  {
+    "objectID": "Modulos/clase7.html",
+    "href": "Modulos/clase7.html",
+    "title": "Módulo 7 · Repaso PCA y EFA",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 8 de octubre"
+  },
+  {
+    "objectID": "Modulos/clase7.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase7.html#objetivos-de-la-sesión",
+    "title": "Módulo 7 · Repaso PCA y EFA",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nRepasar prueba Chi cuadrado\nRepasar Análisis de Componentes Principales (PCA)\nComprender las diferencias entre PCA y EFA\nAplicar EFA con un ejemplo práctico de cohesión barrial"
+  },
+  {
+    "objectID": "Modulos/clase7.html#presentación",
+    "href": "Modulos/clase7.html#presentación",
+    "title": "Módulo 7 · Repaso PCA y EFA",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase7.html#lecturas-asociadas",
+    "href": "Modulos/clase7.html#lecturas-asociadas",
+    "title": "Módulo 7 · Repaso PCA y EFA",
+    "section": "Lecturas Asociadas",
+    "text": "Lecturas Asociadas\n\nAldás, Joaquín y Uriel, Ezequiel (2017). Capítulos 11 y 12.\nField. Discovering statistics using R. Capítulo 17 “Exploratory factor analysis”."
+  },
+  {
+    "objectID": "Modulos/clase6.html",
+    "href": "Modulos/clase6.html",
+    "title": "Módulo 6 · Análisis Factorial Exploratorio (EFA) - Parte 1",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 1 de octubre"
+  },
+  {
+    "objectID": "Modulos/clase6.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase6.html#objetivos-de-la-sesión",
+    "title": "Módulo 6 · Análisis Factorial Exploratorio (EFA) - Parte 1",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nComprender los fundamentos del Análisis Factorial Exploratorio (EFA)\nDiferenciar entre PCA y EFA\nAprender los pasos para realizar un EFA\nAplicar EFA en R Studio con un caso práctico de confianza institucional"
+  },
+  {
+    "objectID": "Modulos/clase6.html#presentación",
+    "href": "Modulos/clase6.html#presentación",
+    "title": "Módulo 6 · Análisis Factorial Exploratorio (EFA) - Parte 1",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase6.html#lecturas-asociadas",
+    "href": "Modulos/clase6.html#lecturas-asociadas",
+    "title": "Módulo 6 · Análisis Factorial Exploratorio (EFA) - Parte 1",
+    "section": "Lecturas Asociadas",
+    "text": "Lecturas Asociadas\n\nAldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 12.\nCea D’Ancona, M. A. Capítulo 5.\nField. Discovering statistics using R. Capítulo 17 “Exploratory factor analysis”.\nLloret-Segura, et al. “El análisis factorial exploratorio de los ítems: una guía práctica, revisada y actualizada.”"
+  },
+  {
+    "objectID": "Modulos/clase11.html",
+    "href": "Modulos/clase11.html",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Parte 3: Número de Clusters y Métodos No Jerárquicos",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 5 de noviembre"
+  },
+  {
+    "objectID": "Modulos/clase11.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase11.html#objetivos-de-la-sesión",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Parte 3: Número de Clusters y Métodos No Jerárquicos",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\n\nAprender métodos para determinar el número óptimo de conglomerados\nComprender y aplicar algoritmos no jerárquicos (k-means)\nAnalizar ejemplos con variables categóricas y continuas\nIntegrar enfoques jerárquicos y no jerárquicos"
+  },
+  {
+    "objectID": "Modulos/clase11.html#presentación",
+    "href": "Modulos/clase11.html#presentación",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Parte 3: Número de Clusters y Métodos No Jerárquicos",
+    "section": "Presentación",
+    "text": "Presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase11.html#determinación-del-número-de-clusters",
+    "href": "Modulos/clase11.html#determinación-del-número-de-clusters",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Parte 3: Número de Clusters y Métodos No Jerárquicos",
+    "section": "Determinación del número de clusters",
+    "text": "Determinación del número de clusters\n\nMétodos principales:\n\nMétodo del codo (elbow method): Busca el punto donde aumentar clusters ya no reduce significativamente la variación interna (WSS)\nMétodo del silhouette: Maximiza el promedio del índice de silhouette (mide ajuste de observaciones a su cluster)\nGap statistic: Compara dispersión real con esperada bajo distribución aleatoria"
+  },
+  {
+    "objectID": "Modulos/clase11.html#lecturas-asociadas",
+    "href": "Modulos/clase11.html#lecturas-asociadas",
+    "title": "Módulo 2 · Análisis de Conglomerados (Cluster) - Parte 3: Número de Clusters y Métodos No Jerárquicos",
+    "section": "Lecturas Asociadas",
+    "text": "Lecturas Asociadas\n\nCea D’ Ancona, M. A. Análisis multivariable. Capítulo 3 “Análisis de conglomerados”.\n\nAldás, Joaquín y Uriel, Ezequiel (2017). Capítulo 3\nGiordani et al. An Introduction to Clustering with R. Parte 2 “Standard Clustering”."
+  },
+  {
+    "objectID": "Modulos/clase1.html",
+    "href": "Modulos/clase1.html",
+    "title": "Módulo 1 · Presentación del curso",
+    "section": "",
+    "text": "Note\n\n\n\nFecha: martes 13 de agosto"
+  },
+  {
+    "objectID": "Modulos/clase1.html#objetivos-de-la-sesión",
+    "href": "Modulos/clase1.html#objetivos-de-la-sesión",
+    "title": "Módulo 1 · Presentación del curso",
+    "section": "Objetivos de la sesión",
+    "text": "Objetivos de la sesión\nEn esta clase se espera que el estudiantado sea capaz de:\n\nConocer la estructura general del curso.\nComprender los objetivos de aprendizaje.\nFamiliarizarse con la dinámica de trabajo y evaluaciones."
+  },
+  {
+    "objectID": "Modulos/clase1.html#documento-de-presentación",
+    "href": "Modulos/clase1.html#documento-de-presentación",
+    "title": "Módulo 1 · Presentación del curso",
+    "section": "Documento de presentación",
+    "text": "Documento de presentación\n📄 Ver presentación (PDF)"
+  },
+  {
+    "objectID": "Modulos/clase1.html#lecturas-asociadas",
+    "href": "Modulos/clase1.html#lecturas-asociadas",
+    "title": "Módulo 1 · Presentación del curso",
+    "section": "Lecturas asociadas",
+    "text": "Lecturas asociadas\n\nLectura 1: Introducción al análisis exploratorio.\nLectura 2: Uso de R en investigación social."
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  }
+]
