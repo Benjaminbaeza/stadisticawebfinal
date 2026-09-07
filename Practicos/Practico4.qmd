@@ -379,7 +379,7 @@ datos_z %>%
 
 # 📝 Paso 13. Ejercico de interpretación de resultados
 
-# A partir de los datos obtenidos del Analisis de Conglomerados y la caracterización de los Clusters, interprete los resultados (disponen como referencia las preguntas guias del apartado 9.1.):
+A partir de los datos obtenidos del Analisis de Conglomerados y la caracterización de los Clusters, interprete los resultados (disponen como referencia las preguntas guias del apartado 9.1.):
 
 ** Recordar, en el script, deben incluir una interpretación clara de los resultados**:
 
