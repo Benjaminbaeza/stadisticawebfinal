@@ -113,7 +113,7 @@ datos_cluster <- elsoc_long_2016_2022.2 %>%
   filter(ola == "4") %>%
   select(m0_edad,    # Edad
          m13,        # Ingreso mensual entrevistado
-         m01         # Nivel educacional)
+         m01)         # Nivel educacional
 
 # Creamos asi nuestra sub-base de datos_cluster que solo tiene las variables con las
 # que trabajaremos, ademas a esta se les eliminaran los NA.
