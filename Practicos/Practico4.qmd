@@ -480,7 +480,7 @@ datos_z_ward %>%
 
 ```
 
-# 📝 Paso 13: Ejercico de interpretación de resultados
+# Paso 13: Ejercico de interpretación de resultados
 
 A partir de los datos obtenidos de los distintos métodos de Analisis de Conglomerados y la caracterización de sus Clusters, interprete los resultados (disponen como referencia las preguntas guias del apartado 13.1.):
 
