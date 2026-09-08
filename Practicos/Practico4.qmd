@@ -1,16 +1,14 @@
-# 🎯 Objetivo del Ejercicio
+# **Objetivo del Ejercicio**
 
-El siguiente practico tiene como objetivo aplicar técnicas de clustering jerárquico utilizando el método del centroide para identificar grupos (conglomerados) en una base de datos con los datos base y posteriormente estandarizados. El análisis se basa en la distancia euclidiana al cuadrado como medida de disimilitud. Se menciona y presenta el método de Ward en su elaboración como metodo alterno.
+El siguiente practico tiene como objetivo aplicar técnicas de clustering jerárquico utilizando el método del centroide y el método de ward para identificar grupos (conglomerados) en la base de datos del ELSOC con las variables en su forma de datos base y estandarizados y ver las diferencias entre ambos métodos. El análisis se basa en la distancia euclidiana al cuadrado como medida de disimilitud.
+Al final de practico se encuentran unas preguntas de referencia para elaborar una interepretación del mismo.
 
-0,2 decimas para el Control 1 (**0,1 decima por script y 0,1 por interpretación**)
 
-**Interpretación al final del script**
+# Ejercicio a Desarrollar
 
-# 📝 Ejercicio a Desarrollar
+Siguiendo los siguientes pasos la base de datos del ELSOC, se realizara un Analisis de Conglomerados en base a dos metodos, el de centroide y el de ward, se espera que con la elaboración de ambos métodos, se entienda la logica detras del analisis mismo comprendan las diferencias entre estos y se realice una interpretación en base a sus resultados.
 
-Siguiendo los siguientes pasos la base de datos del ELSOC, se realizara un Analisis de Conglomerados, al final se explica su interpretación:
-
-# 🔧 Paso 1: Preparación del Entorno
+# Paso 1: Preparación del Entorno
 
 ## 1.1. Fijar de directorio
 
@@ -83,7 +81,7 @@ set.seed(123)         # Para fijar reproducibilidad de lo que
 ```
 
 
-# 📊 Paso 2: Carga y Selección de Variables
+# Paso 2: Carga y Selección de Variables
 
 ## 2.1. Cargamos la base de datos del ELSOC.
 
@@ -163,7 +161,7 @@ Los más observadores veran que indique el valor **999999999**, como valor perdi
 Esta observación corresponde a un dato de la variable m13, ingreso mensual, elimine dicha observación, por que en caso de mantenerse figuraria como un valor extremos, sesgando resultados, ademas el encuestado con el segundo mayor monto de ingresos era radicalmente inferior a dicho valor; ante la duda de ser un error de registro o una observación valida, opte por elimanrlo, decisión metodologíca.
 :::
 
-# ⚖️ Paso 3: Estandarización de Variables
+# Paso 3: Estandarización de Variables
 
 Es fundamental estandarizar las variables para que todas tengan la misma escala (media = 0, desviación estándar = 1).
 
@@ -184,7 +182,7 @@ summary(Z)  # # Podemos observar la medidas de tendencia central del mismo
 
 ```
 
-# 📐 Paso 4: Calcular la Distancia Euclidiana
+# Paso 4: Calcular la Distancia Euclidiana
 
 Calculamos la matriz de distancias euclideanas entre todos los casos.
 
@@ -200,7 +198,7 @@ print(d)
 
 ```
 
-# 🔲 Paso 5: Elevar al Cuadrado las Distancias
+# Paso 5: Elevar al Cuadrado las Distancias
 
 ```{r, eval=FALSE}
 
@@ -212,7 +210,7 @@ d2 <- d^2 # creamos un nuevo objeto que seria la distancia euclidiana al cuadrad
           # de esta durante el practico
 
 ```
-# 🌲 Paso 6: Ejecutar el Análisis de Conglomerados (Método Centroide)
+# Paso 6: Ejecutar el Análisis de Conglomerados (Método Centroide)
 
 ```{r, eval=FALSE}
 
@@ -235,7 +233,7 @@ length(hc$order) # deberia de ser 2021 que es el numero de observaciones
 
 ```
 
-#  Paso 7: Comparar realización con otro metodo: Ward
+#  Paso 7: Ejecutar el Análisis de Conglomerados (Método Ward)
 
 En este apartado les enseño como realizarlo, más no se seguira trabajando con este durante el resto del practico
 
@@ -243,7 +241,14 @@ En este apartado les enseño como realizarlo, más no se seguira trabajando con 
 
 hc_ward <- hclust(d, method = "ward.D2")
 
-hc_ward$method
+# Comprobar método utilizado
+
+hc_ward$method # Deberia decir "ward.D2"
+
+length(hc_ward$order) # deberia de ser 2021 que es el numero de observaciones
+                      # de la base con la que trabajamos al igual que
+                      # centroid y la sub-base de datos
+
 
 # Lo interesante de este metodo, es que es no necesita de por si
 # elevar la distancia euclidiana al cuadrado, este codigo ya lo
@@ -251,13 +256,15 @@ hc_ward$method
 
 ```
 
-# 📈 Paso 8: Visualizar el Dendrograma
+# Paso 8: Visualizar el Dendrograma
 
 El dendrograma muestra la jerarquía de los conglomerados.
 
 ```{r, eval=FALSE}
 
 # Visualizar dendrograma básico
+
+# Dendrograma básico del metodo del centroide
 
 plot(hc, hang = -1, main = "Clustering jerárquico - Método Centroide")
 
@@ -267,6 +274,21 @@ plot(hc, hang = -1, main = "Clustering jerárquico - Método Centroide")
 # indica 4 clusters
 
 rect.hclust(hc, k = 4, border = 2:5) # border = colores para cada grupo
+
+#  Dendrograma básico del metodo de ward
+
+  plot(hc_ward,labels = FALSE, hang = -1,
+    main = "Dendrograma - Método de Ward", xlab = "",
+      sub = "", ylab = "Distancia")
+
+# Añadimos rectágulos para que nos indique como se forman los clusters
+# en este metodo
+
+rect.hclust(
+  hc,
+  k = 4,
+  border = 2:5
+)
 
 # ******NOTA******
 
@@ -281,7 +303,8 @@ rect.hclust(hc, k = 4, border = 2:5) # border = colores para cada grupo
 
 ```{r, eval=FALSE}
 
-# Dendrograma más profesional o estetico
+# Dendrograma más profesional o estetico para el método de
+# centroide
 
 fviz_dend(
   hc,
@@ -292,6 +315,19 @@ fviz_dend(
   rect_fill = TRUE,
   main = "Dendrograma - Método Centroide (k = 4)")
 
+# Dendrograma más profesional o estetico para el método de
+# ward
+
+   fviz_dend(
+      hc_ward,
+      k = 4,
+      show_labels = FALSE,
+      color_labels_by_k = TRUE,
+      rect = TRUE,
+      rect_fill = TRUE,
+      main = "Dendrograma - Método de Ward (k = 4)"
+    )
+
 ```
 ::: {.callout-note}
 Este proceso puede tardar bastante (unos minutos) ya que Rstudios, le esta asignando un color de
@@ -301,7 +337,7 @@ realzando el paso anterior.
 De todas formas, en ayudantia se abordare esto de forma más extensa y en profundidad
 :::
 
-# ✂️ Paso 9: Asignar los casos a los Conglomerados
+# Paso 9: Asignar los casos a los Conglomerados de ambos metodos
 
 Una vez decidido el número de grupos (k), asignamos cada caso a su conglomerado.
 
@@ -309,20 +345,37 @@ Una vez decidido el número de grupos (k), asignamos cada caso a su conglomerado
 
 # Definir número de grupos
 
-k <- 4 # En este caso 4
+k <- 4 # En este caso 4 y es general para ambos métodos
 
-# Cortar el árbol en 4 grupos
+# Cortar el árbol en 4 grupos para el método de centroide
 
 grupos <- cutree(hc, k = k) # creamos el objeto que contenga el numero de
                             # Clusters por el que fue cortado el Analisis
                             # de Conglomerados por el metodo de centroide
 
-datos_cluster$grupo <- grupos # Asiganos este objeto creado a la sub-base de datos
-                              # como una variable; si salio bien, debera de ver
-                              # que la sub-base paso de tener 3 variables a 4
-                              # y si la abren veran que la variable grupo tendra
-                              # valores de 1 a 4 en cada observación; el numero
-                              # indicara, a cual cluster pertenece cada caso
+# Cortar el árbol en 4 grupos para el método de ward
+
+grupos_ward <- cutree(hc_ward,k = k) # creamos el objeto que contenga el 
+                                     # numero de Clusters por el que fue 
+                                     # cortado el Analisis de Conglomerados 
+                                     # por el metodo de ward, en este caso
+                                     # lo llamamos grupos_ward para evitar
+                                     # sobre escribir los grupos
+
+datos_cluster$grupo <- grupos 
+
+# Asignamos este objeto creado a la sub-base de datos como una variable; si 
+# salio bien, debera de ver que la sub-base paso de tener 3 variables a 4
+# y si la abren veran que la variable grupo tendra valores de 1 a 4 en cada 
+# observación; el numero indicara, a cual cluster pertenece cada caso
+
+datos_cluster$grupo_ward <- grupos_ward 
+
+# Asignamos este objeto creado a la sub-base como una variable; si salio bien, 
+# como el paso anterior, esta vez la sub-base deberia tener 5 variables y 
+# si la abren veran que esta variable igualmente tendra valores de 1 a 4 en 
+# cada observación; numero que nos indicara igualmente a cual cluster 
+# pertenece cada caso
 
 ```
 
@@ -331,10 +384,19 @@ datos_cluster$grupo <- grupos # Asiganos este objeto creado a la sub-base de dat
 ```{r, eval=FALSE}
 
 table(datos_cluster$grupo) # Podemos crear una tabla que nos indica la cantidad de 
-                           # casos que conforma cada cluster
+                           # casos que conforma cada cluster segun método de
+                           # centroide
 
 prop.table(table(datos_cluster$grupo)) # Tambien podemos saber lo mismo, pero
                                        # indicado en proporción
+
+   
+table(datos_cluster$grupo_ward) # Podemos crear una tabla que nos indica la 
+                                # cantidad de casos que conforma cada 
+                                # cluster segun método de ward
+
+ prop.table(table(datos_cluster$grupo_ward)) # Tambien podemos saber la proporción
+                                             # para el método de ward
 
 ```
 
@@ -342,13 +404,24 @@ prop.table(table(datos_cluster$grupo)) # Tambien podemos saber lo mismo, pero
 
 ```{r, eval=FALSE}
 
+# Obtenemos la caracterización de medias de cada variable con su valor
+# original agrupadas en función del método y del conglomerado
+# al que pertenezcan.
+
+# Método Centroide
+
 datos_cluster %>%
   group_by(grupo) %>%
   summarise(across(where(is.numeric),
       ~ mean(.x, na.rm = TRUE))
 
-# Obtenemos las medias de cada variable agrupadas en función del conglomerado
-# al que pertenezcan.
+# Método Ward
+
+  datos_cluster %>%
+      group_by(grupo_ward) %>%
+      summarise(across(where(is.numeric),
+          ~ mean(.x, na.rm = TRUE))
+
 
 ```
 
@@ -356,8 +429,8 @@ datos_cluster %>%
 
 ```{r, eval=FALSE}
 
-# Tambien podemos obtener los valores de cada variable en relación
-# al coglomerado; con un valor estadarizado para todas, el puntaje Z
+# Tambien podemos obtener la caracterización de las medias con su valor 
+# estadarizado para todas, el puntaje Z, segun el conglomerado
 # de esta forma la unidad de medida de las variables corresponderia
 # al mismo
 
@@ -365,48 +438,83 @@ datos_z <- as.data.frame(Z) # Creamos una nueva sub-base de datos a
                             # partir del puntaje Z
 
 datos_z$grupo <- grupos # A dicha sub-base le agregamos los grupos de
-                        # Conglomerados que realizamos con anterioridad
+                        # Conglomerados con el método de centroide
+
+datos_z_ward <- as.data.frame(Z) # creamos otra sub-base para facilitar
+                                 # el analisis
+
+datos_z_ward$grupo_ward <- grupos_war # Y a esta tambien le agregamos
+                                      # los grupos de Conglomerados
+                                      # con el método ward
+
+# Centroide
 
 datos_z %>%
   group_by(grupo) %>%
   summarise(across(where(is.numeric),
       ~ mean(.x, na.rm = TRUE)))
 
-# Obtenemos las medias de cada variable agrupadas en función del conglomerado
-# al que pertenezcan; pero esta vez con un puntaje estandarizado.
+# Ward
+
+datos_z_ward %>%
+      group_by(grupo_ward) %>%
+      summarise(across(where(is.numeric),
+          ~ mean(.x, na.rm = TRUE)))
+    
+
+# Obtenemos las medias de cada variable agrupadas en función del método de
+# analisi de conglomerados que realizamos pero esta vez con un 
+# puntaje estandarizado.
+
+```
+
+## 12.1. **EXTRA** Comparación entre métodos
+
+```{r, eval=FALSE}
+
+ table(Centroide = datos_cluster$grupo,
+      Ward = datos_cluster$grupo_ward)
+
+# Podemos generar una tabla que compare los resultados de cada método
+# en función de los cluster generados y su distribución
 
 ```
 
 # 📝 Paso 13: Ejercico de interpretación de resultados
 
-A partir de los datos obtenidos del Analisis de Conglomerados y la caracterización de los Clusters, interprete los resultados (disponen como referencia las preguntas guias del apartado 9.1.):
+A partir de los datos obtenidos de los distintos métodos de Analisis de Conglomerados y la caracterización de sus Clusters, interprete los resultados (disponen como referencia las preguntas guias del apartado 13.1.):
 
-** Recordar, en el script, deben incluir una interpretación clara de los resultados**:
+** Recordar, la interpretación puede ir al final del script**:
 
-## 13.1. 🔍 Preguntas de referencia para para la interpretación:
+## 13.1. Preguntas de referencia para para la interpretación:
 
-** 1.**: ¿Que es lo que podemos concluir a partir de las medias de los grupo? 
+**1.**: ¿A que se deberia la disparidad en el numero de casos que compondrian cada conglomerado, segun el método que realizamos?
 
-**2.**: Y considerando lo anterior ¿que perfil compondria cada conglomerado?
+**2.**: ¿Comparando ambos métodos cual resultaria más idoneo? ¿por qué?
 
-**Ejemplo:** "El Grupo 1 se caracteriza por personas.... con ingresos...etc"
+**3.**: En base a su conocimiento ¿Creen que tienen sentido sustantivo (teórico/práctico) los grupos encontrados segun el método?
 
-**3.**: A que se deberia la disparidad en el numero de casos que compondrian cada conglomerado
+**4.**: ¿Que es lo que podemos concluir a partir de las medias de las variables de los distintos grupos generados?
 
-**4.**: Si cambiaramos el numero de Clusters, se verian modificados ¿la distibución de casos y los resultados? ¿por qué?
+**5.**: A partir de uno de los distintos métodos de analisis de conglomerados describa ¿que perfiles se estarian componiendo?
 
-**5.**: En base a su conocimiento ¿Creen que tienen sentido sustantivo (teórico/práctico) los grupos encontrados?
+**Ejemplo:** "En el método de centroide o ward; el Grupo 1 se caracteriza por personas.... con ingresos...etc"
+
+**6.**: Si cambiaramos el numero de Clusters, en ambos métodos ¿se verian modificados la distibución de casos y los resultados? ¿por qué?
+
+::: {.callout-note}
+Estas preguntas son de referencia para encaminar su analisis, no es necesario que las respondan todas
+:::
 
 # Paso 14: Formato de Entrega
-**Suban al buzón de tareas un script de R (.R) que contenga:**
 
-En el mensaje y es script **deben incluir**:
+**Subir al buzón de tareas un script de R (.R), este y el mensaje que escriban deben contener:**
 
 - Nombres de los integrantes del grupo (o indicar si es individual).
 
 - Código completo (como el realizado en el practico). 
 
-- Interpretación (como comentarios al final del script o en un bloque de texto) tomando como guias las preguntas del Paso 9.1.
+- Interpretación (como comentarios al final del script o en un bloque de texto) tomando como guias las preguntas del Paso 13.1.
 
 ##  14.1. Criterios de Evaluación (0,2 puntos)
 
