@@ -73,11 +73,6 @@ options(scipen = 999) # Desactiva la notación cientifica de Rtudios
                       # (por ejemplo esta suele estar activa en
                       # Posit Cloud)
 
-set.seed(123)         # Para fijar reproducibilidad de lo que
-                      # hagamos y alguien lo quiera replicar,
-                      # sobre todo en lo referente a pruebas
-                      # estadisticas o manipulación de datos
-
 ```
 
 
@@ -133,7 +128,21 @@ datos_cluster <- elsoc_long_2016_2022.2 %>%
 El Analisis de Conglomerados **permite el uso de variables cualitativas y cuantitativas**; de ahi que usemos la edad y el ingreso que son numericas y la educación como variable ordinal.
 :::
 
-### 2.2.1. Limpieza de Variables
+### 2.2.1. Sub muestra aleatorizada
+
+```{r, eval=FALSE}
+
+set.seed(123)  # Para fijar reproducibilidad de lo que
+               # hagamos y alguien lo quiera replicar,
+               # sobre todo en lo referente a pruebas
+               # estadisticas o manipulación de datos
+
+
+datos_cluster <- datos_cluster[sample(nrow(datos_cluster), 200),]
+
+```
+
+### 2.2.2. Limpieza de Variables
 
 ```{r, eval=FALSE}
 
