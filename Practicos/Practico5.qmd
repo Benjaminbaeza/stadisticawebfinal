@@ -136,5 +136,122 @@ datos_cluster_NJ <- na.omit(datos_cluster_NJ)
 
 ```
 
+# Paso 4: Estandarización de las variables
+
+```{r, eval=FALSE}
+
+datos_CNJ_std <- scale(datos_cluster_NJ)
+
+summary(datos_CNJ_std)
+
+```
+
+# Paso 5: Analisis de Conglomerados No Jerarquico (Exploración y clasificación de los casos)
+
+## 5.1. Definición de Clusters
+
+```{r, eval=FALSE}
+
+k = 3
+
+set.seed(123)
+
+modelo_kmean <- kmeans(datos_CNJ_std,
+                       centers = k,
+                       nstart = 25)
 
 
+```
+
+## 5.2. Exploración de los Clusters
+
+```{r, eval=FALSE}
+
+modelo_kmean
+
+modelo_kmean$size
+
+modelo_kmean$centers
+
+```
+
+
+## 5.3. Integración de los clusters a la sub-base de datos
+
+```{r, eval=FALSE}
+
+datos_cluster_NJ$cluster <- modelo_kmean$cluster
+
+```
+
+## 5.4. Datos descriptivos de los clusters (y clasificación de estos a partir de sus resultados)
+
+```{r, eval=FALSE}
+
+table(datos_cluster_NJ$cluster)
+
+aggregate(datos_cluster_NJ[, 1:4],
+          by = list(Cluster = datos_cluster_NJ$cluster),
+          FUN = mean)
+
+```
+
+# EXTRA 1 - Determinación del numero de clusters (**Análisis de Silueta**) 
+
+```{r, eval=FALSE}
+
+sil <- silhouette(modelo_kmean$cluster,
+                  dist(datos_CNJ_std))
+
+plot(sil)
+
+mean(sil[, 3])
+
+set.seed(123)
+
+k2 <- kmeans(datos_CNJ_std, centers = 2, nstart = 25)
+k3 <- kmeans(datos_CNJ_std, centers = 3, nstart = 25)
+k4 <- kmeans(datos_CNJ_std, centers = 4, nstart = 25)
+k5 <- kmeans(datos_CNJ_std, centers = 5, nstart = 25)
+
+k2$tot.withinss
+k3$tot.withinss
+k4$tot.withinss
+k5$tot.withinss
+
+sil2 <- silhouette(k2$cluster, dist(datos_CNJ_std))
+sil3 <- silhouette(k3$cluster, dist(datos_CNJ_std))
+sil4 <- silhouette(k4$cluster, dist(datos_CNJ_std))
+sil5 <- silhouette(k5$cluster, dist(datos_CNJ_std))
+
+mean(sil2[, 3])
+mean(sil3[, 3])
+mean(sil4[, 3])
+mean(sil5[, 3])
+
+```
+
+# EXTRA 2 - Determinación del numero de clusters (**Método del codo**) 
+
+```{r, eval=FALSE}
+
+wss <- numeric(10)
+
+set.seed(123)
+
+for (k in 1:10) {
+  modelos_k <- kmeans(datos_CNJ_std,
+                   centers = i,
+                   nstart = 25)
+  
+  wss[i] <- modelos_k$tot.withinss
+}
+
+plot(1:10,
+     wss,
+     type = "b",
+     xlab = "Número de conglomerados",
+     ylab = "Suma de cuadrados dentro de los grupos",
+     main = "Método del codo")
+
+```
