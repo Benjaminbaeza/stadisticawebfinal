@@ -1,16 +1,21 @@
 # Objetivo del ejercicio
 
+En el presente tiene como objetivo que los estudiantes **realicen un Analisis de Conglomerados No Jerárquico** con la base de datos de ELSOC; se espera que con la realización de este, los estudiantes **logren comprender su forma de proceder y interpretar su resultados a partir de los datos obtenidos**. Se agrega como elemento extra, formas de determinar el numero de clusters con el que proceder, por via del uso del **analisis de siluetas** y el **método del codo**
+Se espera que con el desarrollo del mismo, se entienda la diferencia entre un Analisis de Conglomerados Jerarquico (el cual se emplea de forma explotaria para determinar un numero de clusters determinado para una serie de variables, practico anterior) con el Analisis de Conglomerados No Jerarquico, el cual opera con un numero de clusters predeterminado. 
+
 # Ejercicio a desarrollar
+
+Siguiendo los siguientes pasos en la base de datos del ELSOC, se realizara un Analisis de Conglomerados No Jerarquico, en donde con las variables correspondientes al módulo de **Conflicto Social** se elaboraran o categorizaran tres clusters o perfiles en lo referente a la **Aversión al conflito**.
 
 # Paso 1: Preparación del entorno
 
 ## 1.1. Fijación de directorio
 
-Para este caso utilizaremos el metodo manual: Para realizarla vamos a la opción “Session” de Rstudios > le damos a la opción “Set Working Directory” > ultima opción: “Choose Directory” > seleccionamos la carpeta en la que trabajaremos para fijarla.
+Para este caso utilizaremos el metodo manual que venimos realizando desde praticos anteriores: Para realizarlo vamos a la opción “Session” de Rstudios > le damos a la opción “Set Working Directory” > ultima opción: “Choose Directory” > seleccionamos la carpeta en la que trabajaremos para fijarla.
 
-Igualmente, siempre es necesario recordar que existen otras forma de fijar el directorio.
+Igualmente, siempre es bueno recordar que existen otras forma de fijar el directorio.
 
-Podemos fijarlo usandoo codigos de Rstudios:
+Podemos fijarlo usando codigos de Rstudios:
 
 ```{r, eval=FALSE}
 # Debemos usar el comando "setwd" como esta puesto debajo
@@ -38,7 +43,7 @@ Podemos fijarlo usandoo codigos de Rstudios:
 
 ```
 
-Tambien podemos usar un proyecto de Rstudios, esto es especialmente util, para cuando trabajemos de forma constante en un mismo script ya sea durante un tiempo o durante multiples sesiones.
+O tambien podemos usar un proyecto de Rstudios, el cual es especialmente util, para cuando trabajemos de forma constante en un mismo script ya sea durante un tiempo o durante multiples sesiones.
 
 Para eso debemos crear un proyecto.
 
