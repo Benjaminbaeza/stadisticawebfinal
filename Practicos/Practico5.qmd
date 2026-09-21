@@ -1,279 +1,140 @@
-# 🎯 Objetivo del Análisis
-Este script realiza un análisis de conglomerados jerárquico utilizando datos del **Latinobarómetro** para identificar patrones de confianza institucional en América Latina. Se emplea el método de Ward con distancia euclidiana sobre variables estandarizadas.
+# Objetivo del ejercicio
 
-## 📦 1. Configuración Inicial y Paquetes
-**Limpiar entorno (opcional)**
-**rm(list = ls())**
+# Ejercicio a desarrollar
+
+# Paso 1: Preparación del entorno
+
+## 1.1. Fijación de directorio
+
+Para este caso utilizaremos el metodo manual: Para realizarla vamos a la opción “Session” de Rstudios > le damos a la opción “Set Working Directory” > ultima opción: “Choose Directory” > seleccionamos la carpeta en la que trabajaremos para fijarla.
+
+Igualmente, siempre es necesario recordar que existen otras forma de fijar el directorio.
+
+Podemos fijarlo usandoo codigos de Rstudios:
 
 ```{r, eval=FALSE}
-# Cargar paquetes necesarios
-library(readxl)      # Lectura de archivos Excel
-library(dplyr)       # Manipulación de datos
-library(writexl)     # Exportar a Excel
-library(cluster)     # Análisis de conglomerados
-library(tidyr)       # Reestructuración de datos
-library(readr)       # parse_number() para convertir texto a número
-library(ggplot2)     # Visualizaciones (opcional)
+# Debemos usar el comando "setwd" como esta puesto debajo
+# Para saber con que llenar los espacios del propio codigo, puedes ver la dirección de la 
+# carpeta en la que quieres trabajar, clickando sobre el icono de esta.
 
-# Configurar opciones
-options(scipen = 999)  # Evitar notación científica
-set.seed(123)          # Para reproducibilidad
-```
+#los primeros 2 nombres, puedes dejarlos como lo deje.
+# lo que debes cambiar esta indicado 
+# con los numeros 1, 2 y 3
 
-## 📂 2. Carga de Datos
-```{r, eval=FALSE}
-# Cargar base de datos (AJUSTA LA RUTA)
-lb <- read_xlsx("/ruta/a/tu/archivo/latinobarometro_subset_4vars.xlsx")
+# setwd("C:/Users/ 1- El nombre de usuario / 2- Nombre de la carpeta / 
+# 3- Nombre de la subcarpeta en caso de ser necesario")
 
-# Ver estructura de los datos
-glimpse(lb)
-summary(lb)
-```
+# Puedes el comando "getwd", para comprobar si estas trabajando en la carpeta en la que 
+# indicaste
 
-## 🧹 3. Limpieza y Preparación de Variables
-```{r, eval=FALSE}
-# 3.1 Identificar variables de interés (confianza en instituciones)
-vars_items <- intersect(names(lb), c("P34NI.BB", "P34NI.BE", "P34NI.BD", "P34NI.BC"))
+# getwd()
 
-# 3.2 Asegurar que sean numéricas (a veces vienen como texto)
-lb <- lb %>%
-  mutate(across(all_of(vars_items), 
-                ~ suppressWarnings(readr::parse_number(as.character(.x)))))
+# Esta te deberia indicar en la consola algo similar a esto:
 
-# 3.3 Verificar que ahora sean numéricas
-sapply(lb[, vars_items], class)
+"C:/Users/ El nombre de usuario / Nombre de la carpeta 
+# / Nombre de la subcarpeta en caso de ser necesario"
+
+" Si coincide es que lo hiciste bien
 
 ```
 
-## 🔍 4. Selección de Variables para el Cluster
+Tambien podemos usar un proyecto de Rstudios, esto es especialmente util, para cuando trabajemos de forma constante en un mismo script ya sea durante un tiempo o durante multiples sesiones.
+
+Para eso debemos crear un proyecto.
+
+Para realizarlo ve a la opción File > Seleccionas la opción New Proyect > Seleccionas la opción **New Directory” > Y seleccionas la carpeta de tu proyecto o en la que quieras trabajar creando un New Proyect.
+
+Volviendo al punto de que se trabajara en un mismo script de forma constante por un tiempo indeterminado o en multiples sesiones; esta opción es util, porque tiene la ventaja de que cada vez que abras el archivo de Rstudios, este fijara automaticamente dicha carpeta como directorio de trabajo y por ejemplo los avances o lo realizado en el enviroment, tambien se guardara.
+
+## 1.2. Instalación y carga de paquetes
 
 ```{r, eval=FALSE}
-# 4.1 Identificar todas las columnas numéricas
-num_cols <- names(lb)[sapply(lb, is.numeric)]
+## Cargamos los paquetes necesarios para este practico
 
-# 4.2 Si no hay numéricas, usar las variables de interés
-if (length(num_cols) == 0 && length(vars_items) > 0) {
-  num_cols <- vars_items
-}
+install.packages("pacman")
+library(pacman)
 
-# 4.3 Excluir variables que no deben influir en el cluster (ej. PAIS_NOMBRE)
-var_excluir <- "PAIS_NOMBRE"
-vars_para_cluster <- setdiff(num_cols, var_excluir)
+pacman::p_load(
+  dplyr,
+  sjlabelled,
+  haven,
+  sjmsic,
+  cluster)        
 
-# Mostrar variables que se usarán
-print(vars_para_cluster)
-```
-::: {.callout-note}
-El objeto vars_items corre sobre todas las columnas numéricas de la plantilla y tambien considera otras variables que debieron ser excluidas.
-Es a partir de aquello que se opto por crear el objeto vars_para_cluster
-:::
-
-## 🧪 5. Filtrar Casos Completos (Sin NA)
-
-```{r, eval=FALSE}
-# Eliminar filas con NA en las variables de clustering
-lb_limpio <- lb %>% 
-  drop_na(all_of(vars_para_cluster))
-
-# Ver cuántos casos se perdieron
-cat("Casos originales:", nrow(lb), "\n")
-cat("Casos sin NA:", nrow(lb_limpio), "\n")
 ```
 
-## 🏷️ 6. Etiquetas para Identificar Casos
+## 1.3. Configurar entorno
+
 ```{r, eval=FALSE}
-# Usar PAIS_NOMBRE como etiqueta si existe
-if ("PAIS_NOMBRE" %in% names(lb_limpio)) {
-  etiquetas <- lb_limpio$PAIS_NOMBRE
-} else {
-  etiquetas <- paste0("Caso_", seq_len(nrow(lb_limpio)))
-}
+options(scipen = 999) # Desactiva la notación cientifica de Rtudios
+                      # (por ejemplo esta suele estar activa en
+                      # Posit Cloud)
 ```
 
-## 📐 7. Cálculo de Distancias y Clustering
+# Paso 2: Carga y selección de variables
+
+## 2.1. Cargamos la base de datos del ELSOC
 
 ```{r, eval=FALSE}
-# 7.1 Calcular matriz de distancias euclidianas
-D <- dist(Z, method = "euclidean")
 
-# 7.2 Aplicar método de Ward (con distancias al cuadrado)
-hc_ward <- hclust(dist(Z, method = "euclidean"), method = "ward.D2")
+load(url("https://dataverse.harvard.edu/api/access/datafile/7245118"))
+# Descargamos desde internet la base de datos del ELSOC
 
-# 7.3 Ver alturas de fusión
-hc$height
-hc$merge
+# Para quienes tengan problemas de internet en su PC del laboratorio
+# Pueden descargar la base de datos directamente con el siguiente Link
+
+https://dataverse.harvard.edu/api/access/datafile/7245118
+
+# Dejan la base de datos, en la carpeta de su proyecto y la cargan en 
+# Rstudios de la siguiente forma:
+
+load(ELSOC_Long_2016_2022_v1.00)
+
 ```
 
-## 📊 8. Tabla del Proceso de Clustering
+## 2.2. Selección de variables del ELSOC para el Analisis de Conglomerados No Jerarquico
+
 ```{r, eval=FALSE}
-# Crear una tabla legible con cada paso de fusión
-out <- data.frame(
-  paso   = seq_along(hc$height),
-  merge1 = hc$merge[,1],
-  merge2 = hc$merge[,2],
-  height = round(hc$height, 3)
-)
-print(out)
+# Filtrarmos por la ola 1 (2016) y seleccionamos las variables 
+# con las que trabajaremos
+
+datos_cluster_NJ <- elsoc_long_2016_2022.2 %>%
+  filter(ola == "1") %>%
+  select(f02_01,    
+         f02_02,        
+         f02_03,
+         f02_04)     
+
+# Creamos asi nuestra sub-base de datos_cluster que solo tiene las variables con las
+# que trabajaremos, ademas a esta les eliminaremos los NA dentro de los
+# siguientes pasos.
+# Con esta sub-base trabajaremos durante el resto del practico
+
 ```
 
+# Paso 3: Exploración y limpieza de las variables
 
-## 🌲 9. Visualización del Dendrograma
+## 3.1. Exploración inicial de las variables
+
 ```{r, eval=FALSE}
-# Guardar parámetros gráficos originales
-op <- par(no.readonly = TRUE)
 
-# Ajustar márgenes
-par(mar = c(8, 4, 4, 2))
+summary(datos_cluster_NJ)
 
-# Dendrograma básico
-plot(hc,
-     labels = as.character(etiquetas),
-     main = "Dendrograma - Clustering Jerárquico (Ward.D2)",
-     xlab = "", 
-     sub = "",
-     cex = 0.7,
-     hang = -1)
+lapply(datos_cluster_NJ, table, useNA = "ifany")
 
-# DEFINIR NÚMERO DE CLUSTERS (k)
-K <- 4  # <-- CAMBIA SEGÚN TU ANÁLISIS
-
-# Añadir rectángulos
-rect.hclust(hc, k = K, border = 2:(K+1))
-
-# Restaurar parámetros
-par(op)
 ```
 
+## 3.2. Limpieza de Variables
 
-## ✂️ 10. Cortar el Árbol y Asignar Clústeres
 ```{r, eval=FALSE}
-# Cortar el dendrograma en K grupos
-clusters <- cutree(hc, k = K)
 
-# Distribución de casos por cluster
-table(clusters)
+datos_cluster_NJ <- datos_cluster_NJ %>%
+  sjlabelled::set_na(
+    na = c(-999, -888, -777, -666))
+
+datos_cluster_NJ <- na.omit(datos_cluster_NJ)
+
 ```
 
 
-## 📋 11. Anexar Clústeres a los Datos
-```{r, eval=FALSE}
-# Añadir columna de cluster al data frame
-lb_resultado <- lb_limpio %>%
-  mutate(Cluster = clusters)
 
-# Ver primeras filas
-head(lb_resultado %>% select(PAIS_NOMBRE, all_of(vars_items), Cluster))
-```
-
-## 📈 12. Caracterización de los Clústeres
-```{r, eval=FALSE}
-# 13.1 Medias por cluster
-resumen_means <- lb_resultado %>%
-  group_by(Cluster) %>%
-  summarise(
-    across(all_of(vars_items), 
-           ~ mean(.x, na.rm = TRUE), 
-           .names = "{.col}_mean"),
-    n_casos = n(),
-    .groups = "drop"
-  )
-print(resumen_means)
-
-# 13.1 Renombrar variables para mejor interpretación
-lb_resultado_nombres <- lb_resultado %>%
-  rename(
-    Confianza_empresarios = `P34NI.BB`,
-    Confianza_partidos    = `P34NI.BE`,
-    Confianza_congreso    = `P34NI.BD`,
-    Confianza_poder_jud   = `P34NI.BC`
-  )
-
-# 13.2 Tabla cruzada: País vs Cluster
-if ("PAIS_NOMBRE" %in% names(lb_resultado)) {
-  tabla_pais_cluster <- table(lb_resultado$PAIS_NOMBRE, lb_resultado$Cluster)
-  print(tabla_pais_cluster)
-  
-  # Porcentajes por país
-  pct_fila <- round(prop.table(tabla_pais_cluster, margin = 1) * 100, 1)
-  print(pct_fila)
-}
-```
-
-## 📊 14. Visualizaciones Adicionales
-```{r, eval=FALSE}
-# 14.1 Tamaño de clusters
-barplot(table(lb_resultado$Cluster),
-        main = paste("Tamaño de clústeres (k =", K, ")"),
-        xlab = "Clúster", 
-        ylab = "Frecuencia",
-        col = 2:(K+1))
-
-# 14.2 Perfiles de clusters (gráfico de líneas)
-perfiles <- lb_resultado_nombres %>%
-  group_by(Cluster) %>%
-  summarise(
-    across(Confianza_empresarios:Confianza_poder_jud, mean, na.rm = TRUE)
-  ) %>%
-  pivot_longer(cols = -Cluster, 
-               names_to = "Variable", 
-               values_to = "Media")
-
-# Gráfico con ggplot2
-ggplot(perfiles, aes(x = Variable, y = Media, 
-                     group = Cluster, color = as.factor(Cluster))) +
-  geom_line(size = 1) +
-  geom_point(size = 3) +
-  labs(title = "Perfil de medias por cluster",
-       x = "Variable", 
-       y = "Media",
-       color = "Cluster") +
-  theme_minimal() +
-  theme(axis.text.x = element_text(angle = 45, hjust = 1))
-```
-
-
-## 💾 15. Exportar Resultados
-
-```{r, eval=FALSE}
-# Exportar a Excel (varias hojas)
-write_xlsx(
-  list(
-    DatosConCluster = lb_resultado,
-    MediasPorCluster = resumen_means,
-    Conteo = data.frame(Cluster = 1:K, 
-                        Frecuencia = as.vector(table(clusters)))
-  ),
-  "latinobarometro_clusters_resultado.xlsx"
-)
-
-cat("✅ Resultados exportados a 'latinobarometro_clusters_resultado.xlsx'\n")
-```
-
-
-## 📝 16. Interpretación de Resultados
-Completar según los resultados obtenidos:
-
-```{r, eval=FALSE}
-# 1. NÚMERO DE CLUSTERS (k)
-# ¿Por qué se eligió k = 4?
-
-# 2. PERFILES DE CADA CLUSTER
-# Cluster 1: [Alta confianza en todas las instituciones]
-# Cluster 2: [Baja confianza generalizada]
-# Cluster 3: [Confianza selectiva - ej. alta en justicia, baja en partidos]
-# Cluster 4: [Perfil mixto...]
-
-# 3. DISTRIBUCIÓN GEOGRÁFICA
-# ¿Qué países predominan en cada cluster?
-
-# 4. CONCLUSIONES
-# ¿Qué patrones de confianza institucional existen en Latinoamérica?
-# ¿Hay diferencias regionales significativas?
-```
-
-ℹ️ Notas Importantes
-**Estandarización:** Es fundamental porque las variables originales pueden tener escalas diferentes.
-
-**Número de clusters (k):** No hay una única respuesta correcta. Debe justificarse según el dendrograma, el método del codo o criterios sustantivos.
-
-**Interpretación:** El análisis de cluster es una herramienta exploratoria. Los resultados deben tener sentido teórico.
