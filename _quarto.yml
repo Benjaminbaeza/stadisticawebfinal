@@ -25,8 +25,10 @@ website:
             href: Practicos/Practico2.qmd
           - text: "Práctico 3: Analisis de Correspondecia Múltiple (ACM)"
             href: Practicos/Practico3.qmd
-          - text: "Práctico 4: Introducción al Analisis de Conglomerados"
+          - text: "Práctico 4: Introducción al Analisis de Conglomerados (Método Jerárquico)"
             href: Practicos/Practico4.qmd
+          - text: "Practico 5: Introducción al Analisis de Conglomerados (Método No Jerárquico)"
+            href: Practicos/Practico5.qmd
             
 
                     
