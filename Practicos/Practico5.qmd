@@ -7,6 +7,13 @@ Se espera que con el desarrollo del mismo, se entienda la diferencia entre un An
 
 Siguiendo los siguientes pasos en la base de datos del ELSOC, se realizara un Analisis de Conglomerados No Jerarquico, en donde con las variables correspondientes al módulo de **Conflicto Social** se elaboraran o categorizaran tres clusters o perfiles en lo referente a la **Aversión al conflito**.
 
+Dichas variables del módulo Conlficto social seran: 
+
+**f02_01**: Si discrepo con otros prefiero no discutir
+**f02_02**: Dificultad para expresar mi opinión si difiere del resto    
+**f02_03**: Siento que el conflicto es algo negativo
+**f02_04**: Siento que en los conflictos alguien saldrá perjudicado 
+
 # Paso 1: Preparación del entorno
 
 ## 1.1. Fijación de directorio
@@ -56,15 +63,20 @@ Volviendo al punto de que se trabajara en un mismo script de forma constante por
 ```{r, eval=FALSE}
 ## Cargamos los paquetes necesarios para este practico
 
-install.packages("pacman")
-library(pacman)
+install.packages("pacman") # Instalamos el paquete pacman en
+                           # caso que no este instalado
+
+library(pacman) # Con library lo cargamos para su uso    
+
+# Recordemos que pacman, carga paquetes que este descargados previamente
+#y descarga directamente los que no esten descargados
 
 pacman::p_load(
-  dplyr,
-  sjlabelled,
-  haven,
-  sjmsic,
-  cluster)        
+  dplyr,           # Para manipular y transformar datos
+  sjlabelled,      # Para trabajar etiquetas (labels)
+  haven,           # Importar y exportar bases desde otros programas
+  sjmisc,          # Trabaja y transforma datos junto con sjlabelled
+  cluster)         # Para hacer analisis de conglomerados
 
 ```
 
@@ -103,17 +115,21 @@ load(ELSOC_Long_2016_2022_v1.00)
 # Filtrarmos por la ola 1 (2016) y seleccionamos las variables 
 # con las que trabajaremos
 
+# La razón por la que en este caso usamos la Ola 1 correspondiente al 2016,
+# es porque las variables se encuentran disponibles para esta Ola
+
 datos_cluster_NJ <- elsoc_long_2016_2022.2 %>%
   filter(ola == "1") %>%
-  select(f02_01,    
-         f02_02,        
-         f02_03,
-         f02_04)     
+  select(f02_01,    # Variable: Si discrepo con otros prefiero no discutir
+         f02_02,    # Variable: Dificultad para expresar mi opinión si difiere del resto    
+         f02_03,    # Variable: Siento que el conflicto es algo negativo
+         f02_04)    # Variable: Siento que en los conflictos alguien saldrá perjudicado 
 
-# Creamos asi nuestra sub-base de datos_cluster que solo tiene las variables con las
-# que trabajaremos, ademas a esta les eliminaremos los NA dentro de los
-# siguientes pasos.
-# Con esta sub-base trabajaremos durante el resto del practico
+# Creamos asi nuestra sub-base de datos_cluster_NJ; NJ siglas de
+# No Jerarquico
+# el cual solo tendra las variables con las que trabajaremos, 
+# ademas a esta les eliminaremos los NA dentro de los siguientes pasos.
+# Con esta sub-base trabajaremos en su mayoria durante el resto del practico
 
 ```
 
@@ -123,9 +139,15 @@ datos_cluster_NJ <- elsoc_long_2016_2022.2 %>%
 
 ```{r, eval=FALSE}
 
-summary(datos_cluster_NJ)
+summary(datos_cluster_NJ) # Con summary podemos ver las medidas de tendencia 
+                          # central de las variables de la sub-base de datos
 
-lapply(datos_cluster_NJ, table, useNA = "ifany")
+lapply(datos_cluster_NJ, table, useNA = "ifany") # Creamos una tabla que nos
+                                                 # permite ver la distribución
+                                                 # de los valores de la variable
+
+# Podemos observar que algunos datos observados corresponden a -999; -888; -777
+# y -666; variables que posteriormente recodificaremos como NA
 
 ```
 
