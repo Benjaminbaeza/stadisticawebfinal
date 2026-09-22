@@ -159,7 +159,11 @@ datos_cluster_NJ <- datos_cluster_NJ %>%
   sjlabelled::set_na(
     na = c(-999, -888, -777, -666))
 
+# marcamos -999, -888, -777 y -666 como NA, casos perdidos
+
 datos_cluster_NJ <- na.omit(datos_cluster_NJ)
+
+# Y los borramos de la base
 
 ```
 
@@ -167,9 +171,19 @@ datos_cluster_NJ <- na.omit(datos_cluster_NJ)
 
 ```{r, eval=FALSE}
 
-datos_CNJ_std <- scale(datos_cluster_NJ)
+datos_CNJ_std <- scale(datos_cluster_NJ) # Creamos un sub-base
+                                         # con los datos estandarizados
+                                         # como pertenecen a al mismo
+                                         # modulo esto no deberia de ser
+                                         # necesario, pero para los siguientes
+                                         # paso es obligatorio, ademas en caso
+                                         # que tengamos otras variables con 
+                                         # distintas unidades de medida, es
+                                         # necesario para que se puedan interpretar
+                                         # de la misma forma
 
 summary(datos_CNJ_std)
+
 
 ```
 
@@ -179,14 +193,19 @@ summary(datos_CNJ_std)
 
 ```{r, eval=FALSE}
 
-k = 3
+k = 3 # k es el numero de cluster con el que trabajaremos, siendo 3
 
-set.seed(123)
+set.seed(123) # Con este nos aseguramos que el resultado sea reproducible
 
 modelo_kmean <- kmeans(datos_CNJ_std,
                        centers = k,
                        nstart = 25)
 
+# Con modelo_kmean realizamos la base de analisis de conglomerados no
+# jerarquico.
+# k es el numero de clusters que anteriormente indicamos
+# nstart son en numero de configuraciones iniciales con el que queremos
+# partir
 
 ```
 
@@ -194,11 +213,24 @@ modelo_kmean <- kmeans(datos_CNJ_std,
 
 ```{r, eval=FALSE}
 
-modelo_kmean
+modelo_kmean # Nos entrega información general de cada conglomerado
+             # como sus tamaños, centros, suma de cuadrados y
+             # proporción de varianza explicada
 
-modelo_kmean$size
+modelo_kmean$size # Con este codigo podemos ver solamente los tamaños 
 
-modelo_kmean$centers
+modelo_kmean$centers # Con este podemos examinar el centro de los comglomerados
+                     # elemento más importante para la interpretación del 
+                     # ejercicio
+
+# Valores negativos: por debajo del promedio
+# valores cercanos al 0: alrededor o cercanos al promedio
+# valores positivos: por encima del promedio
+
+# ***NOTA***
+
+# Estos resultados son con los valores estandarizados, para verlos con su
+# valor en escala original realizar el siguiente paso
 
 ```
 
@@ -207,7 +239,10 @@ modelo_kmean$centers
 
 ```{r, eval=FALSE}
 
-datos_cluster_NJ$cluster <- modelo_kmean$cluster
+datos_cluster_NJ$cluster <- modelo_kmean$cluster # integramos los conglomerados
+                                                 # a la base de datos
+                                                 # si funciona deberiamos de tener
+                                                 # una quinta variable
 
 ```
 
@@ -215,31 +250,59 @@ datos_cluster_NJ$cluster <- modelo_kmean$cluster
 
 ```{r, eval=FALSE}
 
-table(datos_cluster_NJ$cluster)
+table(datos_cluster_NJ$cluster) # con este codigo podemos ver cuantos
+                                # casos componene cada conglomerado
 
 aggregate(datos_cluster_NJ[, 1:4],
           by = list(Cluster = datos_cluster_NJ$cluster),
           FUN = mean)
 
+# Y con este codigo podemos interpretar los resultados de los grupos o clusters
+# usando su escala original sin estandarizar
+
 ```
 
 # EXTRA 1 - Determinación del numero de clusters (**Análisis de Silueta**) 
 
+Como hablamos en clase y vimos en el practico anterior, el metodo jerarquico nos permite observar cuantos clusters se forman a partir de los datos pero existen otras formas de comprobar el numero de clusters que se forman y cual de estos es el más factible o pertinente a realizae; funciona como otra forma de justificar porque seleccionamos un numero de clusters concreto
+
 ```{r, eval=FALSE}
+
+# El metodo de la silueta es uno de los metodos más utilizados
 
 sil <- silhouette(modelo_kmean$cluster,
                   dist(datos_CNJ_std))
 
+# creamos un objeto cuya abreviación es sil de silueta
+
 plot(sil)
+
+# si lo graficamos obtenemos la anchura promedio de la silueta 
+# que nos permite evaluar qué tan bien separados están los grupos.
 
 mean(sil[, 3])
 
-set.seed(123)
+# tambien podemos calcular su valor, 
+# un valor más alto indica, en términos generales, una mejor separación 
+# de los casos entre conglomerados.
 
+# Ahora probaremos con otro numero de coglomerados
+
+set.seed(123) # aseguramos que los datos sean replicables
+
+# Dos conglomerados
 k2 <- kmeans(datos_CNJ_std, centers = 2, nstart = 25)
+
+# Tres conglomerados
 k3 <- kmeans(datos_CNJ_std, centers = 3, nstart = 25)
+
+# Cuantro conglomerados
 k4 <- kmeans(datos_CNJ_std, centers = 4, nstart = 25)
+
+# Cinco conglomerados
 k5 <- kmeans(datos_CNJ_std, centers = 5, nstart = 25)
+
+# Con este codigo podemos comparar la suma de sus cuadrados interna
 
 k2$tot.withinss
 k3$tot.withinss
@@ -251,6 +314,9 @@ sil3 <- silhouette(k3$cluster, dist(datos_CNJ_std))
 sil4 <- silhouette(k4$cluster, dist(datos_CNJ_std))
 sil5 <- silhouette(k5$cluster, dist(datos_CNJ_std))
 
+# Podemos observar el valor de cada uno de estos de forma
+# separada
+
 mean(sil2[, 3])
 mean(sil3[, 3])
 mean(sil4[, 3])
@@ -260,7 +326,12 @@ mean(sil5[, 3])
 
 # EXTRA 2 - Determinación del numero de clusters (**Método del codo**) 
 
+Con el metodo de la silueta podemos observar que la suma de cuadrados disminuye a medida que aumentamos el número de clusters, por lo que no basta con escoger simplemente el valor más bajo. 
+Podemos utilizar el método del codo de esta apartado para observar dónde deja de existir una mejora importante.
+
 ```{r, eval=FALSE}
+
+# Realizamos el método del codo
 
 wss <- numeric(10)
 
@@ -274,6 +345,9 @@ for (k in 1:10) {
   wss[i] <- modelos_k$tot.withinss
 }
 
+# Y graficado podemos buscar el punto donde agregar más conglomerados 
+# empieza a producir una mejora relativamente pequeña.
+
 plot(1:10,
      wss,
      type = "b",
@@ -282,3 +356,30 @@ plot(1:10,
      main = "Método del codo")
 
 ```
+
+# Paso 6: Ejercico de interpretación de resultados
+
+A partir de los datos obtenidos de Analisis de Conglomerado No Jerarquico y la caracterización de sus Clusters, responda las siguientes dos preguntas:
+** Recordar, la interpretación puede ir al final del script**:
+
+**1.**: A partir de los resultados de métodos de Analisis de Conglomerados No Jerarquico describa ¿que perfiles estarian componiendo los clusters?
+
+**Ejemplo:** el Grupo 1 se caracteriza por personas que prefieren no discutir....etc"
+
+**2.**: Considerando el método de siluetas y el método del codo ¿porque un mayor o menor numero de conglomerados pueden producir variaciones que podrian ser mejores o peores en los resultados?
+
+# Paso 7: Formato de Entrega
+
+**Subir al buzón de tareas un script de R (.R), este y el mensaje que escriban deben contener:**
+
+- Nombres de los integrantes del grupo (o indicar si es individual).
+
+- Código completo (como el realizado en el practico). 
+
+- Interpretación (como comentarios al final del script o en un bloque de texto) tomando como guias las preguntas del Paso 13.1.
+
+##  7.1. Criterios de Evaluación (0,2 puntos)
+
+**Código correcto**  (0,1 puntos)
+
+**Interpretación adecuada de los resultados** (0,1 puntos)
