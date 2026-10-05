@@ -196,6 +196,9 @@ Dependiendo de manual de referencia o los critetirios metodologicos que se ocupe
 (2) 0.6 a 0.7 correlación media o moderada
 (3) 0.8 o más correlación alta
 
+Medimos el grado de correlación entre las variables para determinar si es que estan relacionadas entre si; y si se estima razonable continuar con el uso de las mismas o se debiarian excluir.
+Por ejemplo para elaborar un indice como haremos ya hacia el final del practico, requerimos que todas las variables tengan algun grado de correlación para la elaboración del mismo.
+
 # Paso 5: Analisis Paralelo
 
 El analisis Paralelo es una tecnica que solemos utilizar ya sea antes o como parte de la interpretación para decidir cuantos componentes principales conviene conservar 
