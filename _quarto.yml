@@ -29,7 +29,8 @@ website:
             href: Practicos/Practico4.qmd
           - text: "Practico 5: Introducción al Analisis de Conglomerados (Método No Jerárquico)"
             href: Practicos/Practico5.qmd
-            
+          - text: "Práctico 6: Introducción al Analisis de Componentes Principales (ACP) 1"
+            href: Practicos/Practico6.qmd
 
                     
       - text: Ayudantia
