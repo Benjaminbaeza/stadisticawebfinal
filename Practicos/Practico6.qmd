@@ -1,24 +1,23 @@
 # Objetivo del ejercicio
 
-el ACP (o PCA por sus siglas en ingles) es una técnica estadistica que permite **reducir el número de variables** de un conjunto de datos, conservado la mayor cantidad posible de información.
+El ACP (o PCA por sus siglas en ingles) es una técnica estadistica que permite **reducir el número de variables** de un conjunto de datos, conservado la mayor cantidad posible de información.
 
 En el presente practico, se tiene como objetivo que los y las estudiantes realicew un Análisis de Componentes Principales con el fin de que comprendan o se familiaricen no solo con su realización, sino que a su vez con su comprensión a partir de sus datos y por ende con su interpretación, para aquello se les enseñara a realizar el ACP de dos formas distintas por medio de las posibilidades que permite el software de Rstudio. Tambien se introduciran las nociones basicas de como elaborar un indice, en Rstudio, en su forma basica (sin indicadores o escala).
 
 # Ejercicio a desarrollar
 
-Siguiendo los siguientes pasos en la base de datos del ELSOC, se realizara un Analisis de Componentes Principales; a partir de las variables correspondientes al módulo de **Cohesión Barrial** y **Sociabilidad Barrial** siendo 8 eb total, se realizara el ACP, con el fin de reducir el conjunto de datos, manteniendo la mayor cantidad de información posible. a Su vez de forma posterior, se espera que se elabore un indice de
+Siguiendo los siguientes pasos en la base de datos del ELSOC, se realizara un Analisis de Componentes Principales; a partir de las variables correspondientes al módulo de **Cohesión Barrial** y **Sociabilidad Barrial** siendo 8 variables en total, se realizara el ACP, con el fin de reducir el conjunto de datos, manteniendo la mayor cantidad de información posible. a Su vez de forma posterior, se espera que se elabore un indice de Cohesión Barrial.
 
 
 # 1. Paso 1: Preparación del entorno
 
 ## 1.1. Fijación de directorio
 
-Para este caso utilizaremos el metodo manual que venimos realizando desde praticos anteriores: Para realizarlo vamos a la opción “Session” de Rstudios > le damos a la opción “Set Working Directory” > ultima opción: “Choose Directory” > seleccionamos la carpeta en la que trabajaremos para fijarla.
+Para este caso y como venimos realizando en los practicos anteriores, utilizaremos el metodo manual que venimos realizando desde praticos anteriores: Para realizarlo vamos a la opción “Session” de Rstudios > le damos a la opción “Set Working Directory” > ultima opción: “Choose Directory” > seleccionamos la carpeta en la que trabajaremos para fijarla.
 
 Igualmente, siempre es bueno recordar que existen otras forma de fijar el directorio.
 
 Podemos fijarlo usando codigos de Rstudios:
-
 
 ```{r, eval=FALSE}
 
@@ -50,8 +49,8 @@ Podemos fijarlo usando codigos de Rstudios:
 
 ```{r, eval=FALSE}
 
-install.packages("pacman")
-library(pacman)
+install.packages("pacman") # Instalamos Pacman en caso que no lo hayamos descargado
+library(pacman) # y lo cargamos para su uso durante esta sección
 
 # Cargamos paquetes
 pacman::p_load(
@@ -69,7 +68,7 @@ pacman::p_load(
   nFactors,       # Análisis factorial
   ggbiplot,       # Biplots para PCA
   paran,          # Análisis paralelo
-  ggrepel)         # Etiquetas en gráficos
+  ggrepel)        # Etiquetas en gráficos
 
 ```
 
@@ -80,6 +79,10 @@ pacman::p_load(
 options(scipen = 999) # Desactiva la notación cientifica de Rtudios
                       # (por ejemplo esta suele estar activa en
                       # Posit Cloud)
+
+rm(list = ls())          # Limpiamos el entorno de trabajo
+
+set.seed(123)            # Fijamos semilla para reproducibilidad
 
 ```
 
@@ -118,7 +121,10 @@ proc_data <- elsoc_long_2016_2022.2 %>%
                 sociable     = t03_02,   # La gente en este barrio es sociable
                 cordialidad  = t03_03,   # La gente en este barrio es cordial
                 colaboracion = t03_04)   # La gente en este barrio es colaboradora
- 
+
+# Como se puede observar, volvemos a considerar los casos correspondientes a la Ola 4
+# cuyos casos corresponde al año 2019
+
 ```
 
 # Paso 3: Tratamiento de variables
@@ -130,12 +136,17 @@ proc_data <- elsoc_long_2016_2022.2 %>%
 proc_data <- proc_data %>%
   sjlabelled::set_na(.,na = c(-999, -888, -777, -666))
 
+# Recordemos que -999, -888. -777 y -666, corresponden a datos perdidos
+# como variables de NS/NR (No sabe/No responde)
 
 ```
 
+## 3.2 Convertimos las variables a tipo numerico
+
 ```{r, eval=FALSE}
 
-## 3.2 Convertimos las variables a tipo numerico
+# Esto se realiza en este caso porque el ACP, trabaja con variables de tipo
+# Cuantitativas o numericas
 
 proc_data <- proc_data %>%
   mutate(across(everything(),
@@ -147,10 +158,17 @@ proc_data <- proc_data %>%
 
 ```{r, eval=FALSE}
 
+# Usualmente cuando hemos eleminado NA, de las bases o sub-bases de datos
+# hemos solido utilizar na.omit()
+# para esta vez, lo realizaremos de una forma diferente, con drop_na()
+# En caso de errores o dificultades en el script al momento de correr
+# dicho codigo consideresn utilizar na.omit()
+
 proc_data_pca <- proc_data %>%
   drop_na()
 
 # Comprobamos las dimensiones de la base utilizada
+
 dim(proc_data_pca)
 
 ```
@@ -161,16 +179,26 @@ dim(proc_data_pca)
 
 ```{r, eval=FALSE}
 
-matriz_cor <- cor(proc_data_pca)
+matriz_cor <- cor(proc_data_pca) # cor, es el apócope/acortamiento/abreviación
+                                 # de la palabra correlation; correlación en
+                                 # ingles
 
-matriz_cor
+matriz_cor # Se le indicamos R que corra el objeto creado, nos permitira
+           # observar en la consola, la correlación entre las variables
 
-# Podemos visualizar la matriz de correlaciones de forma grafica
+# Podemos visualizar la matriz de correlaciones de una forma grafica
 corrplot(matriz_cor, method = "number")
 
 ```
+Las correlaciones oscilan entre valores correspondientes al 1 y -1; donde 1 es correlación positiva (Ambas variables suben si sube el valor de una) y -1 es correlación negativa (Mientras una variable sube, la otra baja). 
+Dependiendo de manual de referencia o los critetirios metodologicos que se ocupen; la correlaciones se conciben de la siguiente forma: 
+(1) 0.3 a 0.5 correlación leve
+(2) 0.6 a 0.7 correlación media o moderada
+(3) 0.8 o más correlación alta
 
 # Paso 5: Analisis Paralelo
+
+El analisis Paralelo es una tecnica que solemos utilizar ya sea antes o como parte de la interpretación para decidir cuantos componentes principales conviene conservar 
 
 ```{r, eval=FALSE}
 
@@ -185,6 +213,9 @@ paran(proc_data_pca,
 
 ```{r, eval=FALSE}
 
+# En primera instacia podemos utilizar la función PCA (siglas en ingles de ACP)
+# del paquete factorminer, para elaborar el analisis de componentes principales
+
 fit <- PCA(
   proc_data_pca,
   scale.unit = TRUE,
@@ -197,13 +228,13 @@ fit <- PCA(
 
 ```{r, eval=FALSE}
 
-fit$eig # autovalores y varianza explicada
+fit$eig # obtenemos autovalores y varianza explicada
 
-fit$var$coord # coordenadas de las variables
+fit$var$coord # obtenemos las coordenadas de las variables
 
-fit$var$contrib # contribución de las variables
+fit$var$contrib # obtenemos la contribución de las variables
 
-fit$var$cos2 # calidad representación de las variables
+fit$var$cos2 # obtenemos la calidad representación de las variables
 
 ```
 
@@ -212,6 +243,9 @@ fit$var$cos2 # calidad representación de las variables
 # 8.1 Grafico de sedimentación
 
 ```{r, eval=FALSE}
+
+# El grafico de sedimentación es otra forma de visualización para
+# determinar cuantos componentes principales conviene conservar
 
 fviz_eig(fit, geom = "line") + theme_grey()
 
@@ -243,7 +277,7 @@ ggplot(datos.grafico2) + geom_point(aes(
 
 ```
 
-# 8.3 Gradico de individuos
+# 8.3 Grafico de individuos
 
 ```{r, eval=FALSE}
 
@@ -350,7 +384,12 @@ Indice_Cohesion_Barrial <- with(proc_data,
   0.76 * cordialidad +
   0.67 * colaboracion)
 
+# ***NOTA*** Los valores aplicados por los cuales se esta multiplicando las 
+# variables del indice correspondente a la propia cordenada de la variable
+# los valores fueron aproximados.
+
 # Visualizar el índice
+
 head(Indice_Cohesion_Barrial)
 
 summary(Indice_Cohesion_Barrial)
