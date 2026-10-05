@@ -1,8 +1,13 @@
 # Objetivo del ejercicio
 
-El análisis de conglomerados (clustering) es una técnica exploratoria que busca agrupar casos (personas, países, etc.) en grupos homogéneos llamados clústeres. Los casos dentro de un mismo clúster son similares entre sí, mientras que casos de diferentes clústeres son diferentes.
+el ACP (o PCA por sus siglas en ingles) es una técnica estadistica que permite **reducir el número de variables** de un conjunto de datos, conservado la mayor cantidad posible de información.
+
+En el presente practico, se tiene como objetivo que los y las estudiantes realicew un Análisis de Componentes Principales con el fin de que comprendan o se familiaricen no solo con su realización, sino que a su vez con su comprensión a partir de sus datos y por ende con su interpretación, para aquello se les enseñara a realizar el ACP de dos formas distintas por medio de las posibilidades que permite el software de Rstudio. Tambien se introduciran las nociones basicas de como elaborar un indice, en Rstudio, en su forma basica (sin indicadores o escala).
 
 # Ejercicio a desarrollar
+
+Siguiendo los siguientes pasos en la base de datos del ELSOC, se realizara un Analisis de Componentes Principales; a partir de las variables correspondientes al módulo de **Cohesión Barrial** y **Sociabilidad Barrial** siendo 8 eb total, se realizara el ACP, con el fin de reducir el conjunto de datos, manteniendo la mayor cantidad de información posible. a Su vez de forma posterior, se espera que se elabore un indice de
+
 
 # 1. Paso 1: Preparación del entorno
 
