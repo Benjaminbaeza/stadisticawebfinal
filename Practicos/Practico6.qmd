@@ -2,7 +2,7 @@
 
 El ACP (o PCA por sus siglas en ingles) es una técnica estadistica que permite **reducir el número de variables** de un conjunto de datos, conservado la mayor cantidad posible de información.
 
-En el presente practico, se tiene como objetivo que los y las estudiantes realicew un Análisis de Componentes Principales con el fin de que comprendan o se familiaricen no solo con su realización, sino que a su vez con su comprensión a partir de sus datos y por ende con su interpretación, para aquello se les enseñara a realizar el ACP de dos formas distintas por medio de las posibilidades que permite el software de Rstudio. Tambien se introduciran las nociones basicas de como elaborar un indice, en Rstudio, en su forma basica (sin indicadores o escala).
+En el presente practico, se tiene como objetivo que los y las estudiantes realicen un Análisis de Componentes Principales con el fin de que comprendan o se familiaricen no solo con su realización, sino que a su vez con su comprensión a partir de sus datos y por ende con su interpretación, para aquello se les enseñara a realizar el ACP de dos formas distintas por medio de las posibilidades que permite el software de Rstudio. Tambien se introduciran las nociones basicas de como elaborar un indice, en Rstudio, en su forma basica (sin indicadores o escala).
 
 # Ejercicio a desarrollar
 
