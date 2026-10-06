@@ -401,7 +401,18 @@ summary(Indice_Cohesion_Barrial)
 
 # Paso 10: Ejercico de interpretación de resultados
 
+A partir de los datos obtenidos de Analisis de Componentes principales, responda las siguientes cinco preguntas:
+** Recordar, la interpretación puede ir al final del script**:
 
+**1.**: ¿Cuántas dimensiones o componentes principales deberían conservarse? e indique qué porcentaje de la varianza explica cada una
+
+**2.**: ¿De que forma cambiarian la distribución de resultados en caso de aumentar o disminiuir el numero de componentes?
+
+**3.**: A partir de los resultados del ACP, ¿es posible identificar diferentes dimensiones de la cohesión barrial?
+
+**4.**: ¿Como podriamos interpretar en indice de cohesión barrial a partir de su visualización general?
+
+**5.**: ¿Y que nos podria indicar el indice en caso de variar o presentar datos distitntos ligado a un caso en especifico?
 
 ## Paso 10.1 Formato de Entrega
 
