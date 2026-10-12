@@ -31,6 +31,8 @@ website:
             href: Practicos/Practico5.qmd
           - text: "Práctico 6: Introducción al Analisis de Componentes Principales (ACP) 1"
             href: Practicos/Practico6.qmd
+          - texot: "Practico 7: Analisis de Componentes Principales (ACP) Ejercicio 2"
+            href: Practicos/Practico7.qmd
 
                     
       - text: Ayudantia
