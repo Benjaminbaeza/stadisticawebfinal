@@ -423,17 +423,14 @@ print(grafico_acp)
 # Paso 8: Ejercico de interpretación de resultados
 
 A partir de los datos obtenidos de Analisis de Componentes principales, responda las siguientes cinco preguntas:
-** Recordar, la interpretación puede ir al final del script**:
+** Recuerden la interpretación puede ir al final del script**:
 
-**1.**: ¿Cuántas dimensiones o componentes principales deberían conservarse? e indique qué porcentaje de la varianza explica cada una
 
-**2.**: ¿De que forma cambiarian la distribución de resultados en caso de aumentar o disminiuir el numero de componentes?
+**1.**: ¿Cuántos componentes principales deberían conservarse a partir de los resultados del ACP y qué porcentaje de la varianza total explica cada uno? ¿Qué criterios, como los autovalores y el gráfico de sedimentación, permitirían justificar esta decisión?
 
-**3.**: A partir de los resultados del ACP, ¿es posible identificar diferentes dimensiones de la cohesión barrial?
+**2.**: ¿Qué diferencias se producirían en la interpretación de las emociones estudiadas si se conservaran más o menos componentes principales? ¿Cómo cambiarían la varianza explicada y la representación de las variables en el espacio factorial?
 
-**4.**: ¿Como podriamos interpretar en indice de cohesión barrial a partir de su visualización general?
-
-**5.**: ¿Y que nos podria indicar el indice en caso de variar o presentar datos distitntos ligado a un caso en especifico?
+**3.**: A partir de las cargas factoriales, las contribuciones y los cosenos cuadrados (cos2), ¿es posible identificar dimensiones diferenciadas de las emociones frente a las protestas sociales de 2019? ¿Cómo podrían interpretarse estas dimensiones según los resultados obtenidos?
 
 ## Paso 8.1 Formato de Entrega
 
