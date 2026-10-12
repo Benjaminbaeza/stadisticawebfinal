@@ -1,13 +1,52 @@
-# 🎯 Objetivo del Análisis
+# Objetivo del Análisis
+
+El ACP (o PCA por sus siglas en ingles) es una técnica estadistica, como se menciono en el practico anterior, con este podriamos **reducir el número de variables** de un conjunto de datos, conservado la mayor cantidad posible de información.
+
+En este presente practico, se tiene como objetivo que los y las estudiantes realicen otro ejercicio de Análisis de Componentes Principales con el fin de que sigan comprendiendo y familiarizandose con el metodo; para aquello se realizara otro ACP, manteniendo el formato de dos formas distintas de elaborarlo por medio de las posibilidades que permite el software de Rstudio. Este pracito incluye como complemento visualizaciones referente a los componentes principales.
+
+# Ejercicio a desarrollar
+
+Siguiendo los siguientes pasos en la base de datos del ELSOC, se realizara un Analisis de Componentes Principales; a partir de las variables correspondientes al módulo de **Ciudadania** y asociados a los conceptos de **rabia** y **miedo** siendo 8 variables en total. 
+Se realizara el ACP, con el fin de reducir el conjunto de datos, manteniendo la mayor cantidad de información posible y se realizaran distintos graficos para aportar con su visualización y comprensión.
+
+# 1. Paso 1: Preparación del entorno
+
+## 1.1. Fijación de directorio
+
+Para este caso y como venimos realizando en los practicos anteriores, utilizaremos el metodo manual que venimos realizando desde praticos anteriores: Para realizarlo vamos a la opción “Session” de Rstudios > le damos a la opción “Set Working Directory” > ultima opción: “Choose Directory” > seleccionamos la carpeta en la que trabajaremos para fijarla.
+
+Igualmente, siempre es bueno recordar que existen otras forma de fijar el directorio.
+
+Podemos fijarlo usando codigos de Rstudios:
 
 ```{r, eval=FALSE}
 
-options(scipen = 999)
+# Debemos usar el comando "setwd" como esta puesto debajo
+# Para saber con que llenar los espacios del propio codigo, puedes ver la dirección de la 
+# carpeta en la que quieres trabajar, clickando sobre el icono de esta.
 
-load(url("https://dataverse.harvard.edu/api/access/datafile/7245118"))
+#los primeros 2 nombres, puedes dejarlos como lo deje.
+# lo que debes cambiar esta indicado 
+# con los numeros 1, 2 y 3
+
+# setwd("C:/Users/ 1- El nombre de usuario / 2- Nombre de la carpeta / 
+# 3- Nombre de la subcarpeta en caso de ser necesario")
+
+# Puedes el comando "getwd", para comprobar si estas trabajando en la carpeta en la que 
+# indicaste
+
+# getwd()
+
+# Esta te deberia indicar en la consola algo similar a esto:
+
+"C:/Users/ El nombre de usuario / Nombre de la carpeta 
+# / Nombre de la subcarpeta en caso de ser necesario"
+
+" Si coincide es que lo hiciste bien
 
 ```
 
+## 1.2. Instalación y carga de paquetes
 
 ```{r, eval=FALSE}
 
@@ -31,22 +70,73 @@ pacman::p_load(
 
 ```
 
+## 1.3. Configurar entorno
+
 ```{r, eval=FALSE}
+
+options(scipen = 999) # Desactiva la notación cientifica de Rtudios
+                      # (por ejemplo esta suele estar activa en
+                      # Posit Cloud)
+
+rm(list = ls())          # Limpiamos el entorno de trabajo
+
+set.seed(123)            # Fijamos semilla para reproducibilidad
+
+```
+
+# Paso 2: Carga y selección de variables
+
+## 2.1. Cargamos la base de datos del ELSOC
+
+```{r, eval=FALSE}
+
+load(url("https://dataverse.harvard.edu/api/access/datafile/7245118"))
+# Descargamos desde internet la base de datos del ELSOC
+
+# Para quienes tengan problemas de internet en su PC del laboratorio
+# Pueden descargar la base de datos directamente con el siguiente Link
+
+https://dataverse.harvard.edu/api/access/datafile/7245118
+
+# Dejan la base de datos, en la carpeta de su proyecto y la cargan en 
+# Rstudios de la siguiente forma:
+
+load(ELSOC_Long_2016_2022_v1.00)
+
+```
+
+## 2.2. Selección de variables del ELSOC para el Analsis de Componentes Principales
+
+```{r, eval=FALSE}
+
+# Seleccionamos las 8 variables y con esta creamos la sub-base con la que
+# comenzaremos a trabajar, llamada proc_data
 
 proc_data <- elsoc_long_2016_2022.2 %>%
   dplyr::filter(ola == "4") %>%
   dplyr::select(
-    rabia_desigualdad = c41_01,
-    rabia_costo_vida = c41_02,
-    rabia_manifestantes = c41_03,
-    rabia_fuerzas_seguridad = c41_04,
-    miedo_desigualdad = c42_01,
-    miedo_costo_vida = c42_02,
-    miedo_manifestantes = c42_03,
-    miedo_fuerzas_seguridad = c42_04)
+    rabia_desigualdad = c41_01, # Rabia ante los niveles de desigualdad en Chile
+    rabia_costo_vida = c41_02,  # Rabia ante el costo de la vida en Chile
+    rabia_manifestantes = c41_03,  # Rabia ante los manifestantes violentos
+    rabia_fuerzas_seguridad = c41_04,  #  Rabia ante el accionar de las fuerzas de seguridad
+    miedo_desigualdad = c42_01,  #  Miedo ante los niveles de desigualdad en Chile
+    miedo_costo_vida = c42_02,  # Miedo ante el costo de la vida en Chile
+    miedo_manifestantes = c42_03,  # Miedo ante los manifestantes violentos
+    miedo_fuerzas_seguridad = c42_04)  # Miedo ante el accionar de las fuerzas de seguridad
+
+# Como se puede observar, volvemos a considerar los casos correspondientes a la Ola 4
+# cuyos casos corresponde al año 2019
+
+# Tambien si vemos la estructura del codigo se esta utilizando 
+# el simbolo (=) a la izquierda de las variable que estamos trabajando
+# esto es para poder renombrarlas, de la forma que esta más a la
+# derecha.
 
 ```
 
+# Paso 3: Tratamiento de variables
+
+## 3.1 Transformación de valores perdidos a NA
 
 ```{r, eval=FALSE}
 
@@ -55,56 +145,113 @@ proc_data <- proc_data %>%
     .,
     na = c(-999, -888, -777, -666))
 
+# Recordemos que -999, -888. -777 y -666, corresponden a datos perdidos
+# como variables de NS/NR (No sabe/No responde)
+
+```
+
+## 3.2 Convertimos las variables a tipo numerico
+
+# Volvemos las variables numericas
+
 proc_data <- proc_data %>%
   dplyr::mutate(
     dplyr::across(
       dplyr::everything(),
       ~ as.numeric(as.character(.))))
 
+# Esto es solo un paso preventivo, en el caso de que sin darnos
+# cuenta estemos trabajando con una variable por ejemplo
+# nominal u ordinal, se puede pasar a numerica.
+# Este paso igualmente podria saltarse, pero se recomienda
+# hacer, recordemos que el ACP trabaja variables numericas.
+
+
 ```
 
+## 3.3 Exploramos la sub-base de datos 
 
 ```{r, eval=FALSE}
 
-# Número de observaciones y variables originales
+# Podemos observar el número de observaciones por cada variable
 dim(proc_data)
 
-# Valores perdidos por variable
+# Podemos observar los valores perdidos por variable
 colSums(is.na(proc_data))
 
-# Distribución de las respuestas
+# Podemos observar la distribución de estadisticos de las respuestas
 summary(proc_data)
 
 ```
 
+## 3.4 Limipieza de NA de la sub-base de datos definitica
+
 
 ```{r, eval=FALSE}
 
-# Utilizamos los mismos casos completos en todo el análisis
+# Eliminamos los NA, de la sub-base creando otra sub-base de datos.
+
+# El eliminar los NA, se puede realizar de distintas formas;
+# en este pracitco usamos tidyr::drop_na() pero tambien se puede
+# usar el comando na.omit, es cuestión de estilos
+# en los practicos se realizan estas acciones de distintas maneras
+# a pesar de que puede suponer que los practicos no sean consistentes
+# entre si, para que conozcan la mayor cantidad de formas distintas
+# y posibles de proceder.
 
 proc_data_pca <- proc_data %>%
   tidyr::drop_na()
 
-# Comprobar las dimensiones de la base final
+# Otra cuestión, creamos una nueva sub-base de datos, pese a poder
+# reescribir la misma base con los NA eliminados.
+# Estos se hace con el fin de comparar ambas bases y poder
+# determinar cuantos casos se perdieron. Recordemos que lo ideal
+# en caso de eliminar casos es que sea menos del 15 % siendo
+# muy flexibles (lo ideal menos del 10%)
+
+# Comprobamos las dimensiones de la sub-base final
+
 dim(proc_data_pca)
 
-# Comprobar que todas las variables tengan variabilidad
+# Comprobamod que todas las variables tengan variabilidad
+# o sea calculamos la desviación estandar
+
 sapply(proc_data_pca, sd)
 
-# Verificar que las variables sean numéricas y no constantes
+# EXTRA: Verificamos que las variables sean numéricas y no constantes
+
 stopifnot(
   ncol(proc_data_pca) == 8,
   all(vapply(proc_data_pca, is.numeric, logical(1))),
   all(vapply(proc_data_pca, sd, numeric(1)) > 0))
 
+# Recordemos que esto es en el caso de que estemos trabajando con
+# variables que no sean numericas  o en caso que, como dice el 
+# extra, hayamos tomado o pasado por alto alguna variable constante.
+
+# Este paso podemos considerarlo como opcional.
+
 ```
 
+# Paso 4: Matriz de correlaciones
+
+## 4.1 Elaboración y visualización de la matriz de correlaciones 
 
 ```{r, eval=FALSE}
 
-matriz_cor <- cor(proc_data_pca)
+matriz_cor <- cor(proc_data_pca) # cor, es el apócope/acortamiento/abreviación
+                                 # de la palabra correlation; correlación en
+                                 # ingles
 
-round(matriz_cor, 2)
+matriz_cor # Se le indicamos R que corra el objeto creado, nos permitira
+           # observar en la consola, la correlación entre las variables
+
+round(matriz_cor, 2) # otra forma de visualizar la matriz de correlación 
+                     # en la consola; pero indicando que redonde los
+                     # resultados y solo tome los dos primeros
+                     # decimales
+
+# Comenzamos con la visualización de la matriz de correlaciones
 
 datos_cor <- as.data.frame(matriz_cor) %>%
   tibble::rownames_to_column("Variable1") %>%
@@ -112,6 +259,10 @@ datos_cor <- as.data.frame(matriz_cor) %>%
     cols = -Variable1,
     names_to = "Variable2",
     values_to = "Correlacion")
+
+# Creamos el objeto datos_cor, el cual volvemos un data.frame para su analisis
+# tambien renombramos filas, columnas y valores, para que la matriz una vez
+# graficada, mantenga dichas etiquetas.
 
 grafico_cor <- ggplot(
   datos_cor,
@@ -144,9 +295,23 @@ grafico_cor <- ggplot(
       hjust = 1
     ),panel.grid = element_blank())
 
-print(grafico_cor)
+# El codigo es un poco largo en extensión; pero como sintesis,
+# durante el desarrollo de este, asignamos colores a los valores que
+# podian adoptar las correlaciones; azul en caso de ser negativa,
+# roja en caso de ser positiva.
+# Tambien se asigno un color para el fondo, se asigno las etiquetas
+# y su distribución, se ajuto el angulo de las variables entre otros
+# elementos entre los que estaria la asignación de un titulo y
+# subtitulo.
+
+print(grafico_cor) # Visualizamos la matriz de correlaciones
 
 ```
+
+# Paso 5: Analisis Paralelo
+
+Como fue explicad en el practico anterior, el Analisis Paralelo es una tecnica que solemos utilizar ya sea antes o como parte de la interpretación; nos entrega información al respecto de los componentes principales como por ejemplo decidir cuantos convienen conservar. 
+
 
 ```{r, eval=FALSE}
 
@@ -158,8 +323,12 @@ paran(
 
 ```
 
+# Paso 6: Analisis de Componentes Principales (mediante factorminer PCA)
 
 ```{r, eval=FALSE}
+
+# En primera instacia podemos utilizar la función PCA (siglas en ingles de ACP)
+# del paquete factorminer, para elaborar el analisis de componentes principales
 
 fit <- FactoMineR::PCA(
   proc_data_pca,
@@ -167,20 +336,35 @@ fit <- FactoMineR::PCA(
   ncp = ncol(proc_data_pca),
   graph = FALSE)
 
-```
+# Para facilitar la obtención de los estadisticos, a partir de esta forma de
+# alternativa del ACP, creamos el objetio fit.
 
+```
+# Paso 7: Obtención de estaditicos descritivos y visualización
+
+## 7.1 Estadisticos
 
 ```{r, eval=FALSE}
 
-print(fit$eig)
+print(fit$eig) # Para saber el Eigenvalues
 
-print(round(fit$var$coord, 3))
+print(round(fit$var$coord, 3)) # Obtención de cordinadas (en caso
+                               # de querer realizar un indice) o
+                               # las cargas.
 
-print(round(fit$var$contrib, 2))
+print(round(fit$var$contrib, 2)) # saber la contribución de cada variable
 
-print(round(fit$var$cos2, 3))
+print(round(fit$var$cos2, 3)) # para evaluar la calidad de representación 
+                              # de las variables en el espacio factorial.
+
+# Como pueden observar, cada resultado esta redondeado y tomo un numero
+# determinado de decimales.
 
 ```
+
+## 7.2 Visualización
+
+### 7.2.1 Grafico de Sedimentación
 
 ```{r, eval=FALSE}
 
@@ -194,6 +378,8 @@ fviz_eig(
   theme_minimal()
 
 ```
+
+### 7.2.2 Grafico de variables
 
 ```{r, eval=FALSE}
 
@@ -209,6 +395,7 @@ fviz_pca_var(
   ) + theme_minimal()
 
 ```
+## 7.3 Grafico Biplot de los componentes principales.
 
 ```{r, eval=FALSE}
 
@@ -233,3 +420,33 @@ grafico_acp <- fviz_pca_biplot(
 print(grafico_acp)
 
 ```
+# Paso 8: Ejercico de interpretación de resultados
+
+A partir de los datos obtenidos de Analisis de Componentes principales, responda las siguientes cinco preguntas:
+** Recordar, la interpretación puede ir al final del script**:
+
+**1.**: ¿Cuántas dimensiones o componentes principales deberían conservarse? e indique qué porcentaje de la varianza explica cada una
+
+**2.**: ¿De que forma cambiarian la distribución de resultados en caso de aumentar o disminiuir el numero de componentes?
+
+**3.**: A partir de los resultados del ACP, ¿es posible identificar diferentes dimensiones de la cohesión barrial?
+
+**4.**: ¿Como podriamos interpretar en indice de cohesión barrial a partir de su visualización general?
+
+**5.**: ¿Y que nos podria indicar el indice en caso de variar o presentar datos distitntos ligado a un caso en especifico?
+
+## Paso 8.1 Formato de Entrega
+
+**Subir al buzón de tareas un script de R (.R), este y el mensaje que escriban deben contener:**
+
+- Nombres de los integrantes del grupo (o indicar si es individual).
+
+- Código completo (como el realizado en el practico). 
+
+- Interpretación (como comentarios al final del script o en un bloque de texto) tomando como guias las preguntas del Paso 13.1.
+
+##  8.2 Criterios de Evaluación (0,2 puntos)
+
+**Código correcto**  (0,1 puntos)
+
+**Interpretación adecuada de los resultados** (0,1 puntos)
