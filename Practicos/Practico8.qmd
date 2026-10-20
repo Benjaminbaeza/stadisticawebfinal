@@ -1,3 +1,15 @@
+# Objetivo del Análisis
+
+El Analisis Factoria o (AF) por sus siglas es una técnica estadística que permite identificar en un conjunto reducido de factores su comportamiento latentes con el cual se explica las relaciones entre varias variables observadas.
+Este tipo de analisis se realiza principalmente para medir fenomenos sociales o estadisticos los cuales son indirectos o no empirica o directamente observables, los cuales en los cursos metodologícos podiamos entender como aquellos fenomenos los cuales no pueden ser capactados por indicadores directos, sino que compuestos.
+
+El obbjetivo de este analisis, consisten en comprender y estimar un análisis factorial exploratorio con el fin de reducir la dimensionalidad de una batería de variables para en este caso medir el concepto en particular de la "Confianza en instituciones".
+
+
+
+**reducir el número de variables** de un conjunto de datos, conservado la mayor cantidad posible de información.
+
+En este presente practico, se tiene como objetivo que los y las estudiantes realicen otro ejercicio de Análisis de Componentes Principales con el fin de que sigan comprendiendo y familiarizandose con el metodo; para aquello se realizara otro ACP, manteniendo el formato de dos formas distintas de elaborarlo por medio de las posibilidades que permite el software de Rstudio. Este pracito incluye como complemento visualizaciones referente a los componentes principales.
 
 ```{r, eval=FALSE}
 
