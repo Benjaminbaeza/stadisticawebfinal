@@ -3,13 +3,22 @@
 El Analisis Factoria o (AF) por sus siglas es una técnica estadística que permite identificar en un conjunto reducido de factores su comportamiento latentes con el cual se explica las relaciones entre varias variables observadas.
 Este tipo de analisis se realiza principalmente para medir fenomenos sociales o estadisticos los cuales son indirectos o no empirica o directamente observables, los cuales en los cursos metodologícos podiamos entender como aquellos fenomenos los cuales no pueden ser capactados por indicadores directos, sino que compuestos.
 
-El obbjetivo de este analisis, consisten en comprender y estimar un análisis factorial exploratorio con el fin de reducir la dimensionalidad de una batería de variables para en este caso medir el concepto en particular de la "Confianza en instituciones".
+El objetivo de este analisis, consisten en comprender y estimar un análisis factorial exploratorio  en el cual se espera que por medio de su desarrollo, los estudiantes entiendan la logica tras este tipo de analisis, familiarizandose con su realización y su interpretación.
 
 
+# Ejercicio a desarrollar
 
-**reducir el número de variables** de un conjunto de datos, conservado la mayor cantidad posible de información.
+Siguiendo los siguientes pasos en la base de datos del ELSOC, el ejercico a desarrollar consiste en elaborar un Analisis Factoria (AF) exploratorio con el fin de reducir la dimensionalidad de una batería de variables para en este caso medir el concepto en particular de la "Confianza en instituciones".
 
-En este presente practico, se tiene como objetivo que los y las estudiantes realicen otro ejercicio de Análisis de Componentes Principales con el fin de que sigan comprendiendo y familiarizandose con el metodo; para aquello se realizara otro ACP, manteniendo el formato de dos formas distintas de elaborarlo por medio de las posibilidades que permite el software de Rstudio. Este pracito incluye como complemento visualizaciones referente a los componentes principales.
+Por lo que durante el transducros del parctico se les enseñara a obtener de una forma alterna los descritivos de las variables empleadas y la viasualización de correlaciones en formato tabla. 
+Se realizaran analisis paralelos para familiarizarse con la determinación del numero de factores que se obtendria con este tipo de analisis elemento difiderenciador de los otros metodos de analisis estastidisticos vistos en el curso -Analisis de Conglomerados y ACP-.
+Ademas de los distintos metodos o enfoques existentes al momento de realizar el (AF) que se pueden aplicar para la obtención de sus resultados y la obtención de sus cargas factoriales. 
+Por ultimo, con los resultados obtenidos, se enseñara como se puede compaginar el Analisis Factorial Exploratorio, con otro tipo de analisis estadistico, el cual corresponderia a las regresiones lineales (en su forma simple y multiple).   
+
+
+# Paso 1: Preparación del entorno
+
+## 1.1. Fijación de directorio
 
 ```{r, eval=FALSE}
 
@@ -38,6 +47,8 @@ En este presente practico, se tiene como objetivo que los y las estudiantes real
 
 ```
 
+## 1.2. Instalación y carga de paquetes
+
 ```{r, eval=FALSE}
 
 install.packages("pacman")
@@ -59,6 +70,8 @@ pacman::p_load(tidyverse, #Conjunto de paquetes, sobre todo dplyr y ggplot2
 
 ```
 
+## 1.3. Configurar entorno
+
 ```{r, eval=FALSE}
 
 options(scipen = 999) # Desactiva la notación cientifica de Rtudios
@@ -70,6 +83,10 @@ rm(list = ls())          # Limpiamos el entorno de trabajo
 set.seed(123)            # Fijamos semilla para reproducibilidad
 
 ```
+
+# Paso 2: Carga y selección de variables
+
+## 2.1. Cargamos la base de datos del ELSOC
 
 ```{r, eval=FALSE}
 
@@ -86,15 +103,24 @@ https://dataverse.harvard.edu/api/access/datafile/7245118
 
 load(ELSOC_Long_2016_2022_v1.00)
 
-dim(elsoc_long_2016_2022.2)
+dim(elsoc_long_2016_2022.2) # Podemos observar la distribución de las
+                            # variables de la base de datos general
+                            # donde podemos saber su numero de
+                            # variables y observaciones
 
 ```
 
+## 2.2. Selección de variables del ELSOC para el Analsis de Componentes Principales
+
 ```{r, eval=FALSE}
 
-data <- elsoc_long_2016_2022.2 %>% filter(ola==4) %>%  # seleccionamos solo los casos de la ola 1
-  select(satis_dem = c01,
-         conf_gob = c05_01,
+# creamos una sub-base de datos a  partir de la base de datos del ELSOC, donde
+# solo seleccionaremos las variables con las que vamos a trabajar; esta
+# sub-base de datos las llamaremos data.
+
+data <- elsoc_long_2016_2022.2 %>% filter(ola==4) %>%  # seleccionamos solo los casos
+  select(satis_dem = c01,                              # de la ola 4 correspondiente
+         conf_gob = c05_01,                            # al año 2019
          conf_part = c05_02,
          conf_carab = c05_03,
          conf_sind = c05_04,
@@ -103,33 +129,121 @@ data <- elsoc_long_2016_2022.2 %>% filter(ola==4) %>%  # seleccionamos solo los 
          conf_pres = c05_08,
   )
 
-table(data$satis_dem)
+# Para realizar el (AF) utilizaremos específicamente las variables correspondientes
+# módulo de Ciudadanía de la base de datos del ELSOC
+# las variables seleccionadas más arriba son las siguientes:
 
-table(data$conf_gob)
+# c01: Satisfaccion con la democracia en Chile
+# c05_01: Grado de confianza: El Gobierno
+# c05_02: Grado de confianza: Los Partidos Politicos
+# c05_03: Grado de confianza: Carabineros
+# c05_04: Grado de confianza: Los Sindicatos
+# c05_06: Grado de confianza: Las Empresas Privadas
+# c05_07: Grado de confianza: El Congreso Nacional
+# c05_08: Grado de confianza: El Presidente/a de la Republica
 
-table(data$conf_part)
+# Si nos fijamos en el desarrollo del paso anterior, veremos que al momento
+# de seleccionar las variables (c01 o cualquier de las c05 en cualquiera de sus
+# numeraciones) ocupamos el simbolo igual (=) y a la izquierda del mismo,
+# agregamos las palabras satis...(para la variable c01) y conf...(para las
+# correspondientes a las variables c05), esto es porque de aquella forma
+# no solo seleccionamos las varibles sino que a su vez las renombramos de
+# la forma en que esta indicada a la izquieda (esto nos puede facilitar
+# nuestro analisis, volviendo más facilmente identificable las variables
+# sin depender de libro de codigos del ELSOC o su listado de variables.
 
-table(data$conf_carab)
+# Con table() donde a la derecha va el nombre de la base de datos que
+# queremos emplear, en este caso nuestra sub-base de datos la cual llamamos
+# data; en medio el signo de $ con el cual indicamos que queremos seleccionar
+# una variable de dicha base y a la izquierda la propia variable que
+# querramos seleccionar; podemos ver en una tabla la distribución de las
+# categorias de respuesta de cada variable
 
-table(data$conf_sind)
+table(data$satis_dem) # distribución categorias de resulta de variable
+                      # Satisfaccion con la democracia en Chile
 
-table(data$conf_empre)
+table(data$conf_gob) # distribución categorias de resulta de variable
+                     # Grado de confianza: El Gobierno
 
-table(data$conf_cong)
+table(data$conf_part) # distribución categorias de resulta de variable
+                      # Grado de confianza: Los Partidos Politicos
 
-table(data$conf_pres)
+table(data$conf_carab) # distribución categorias de resulta de variable
+                       # Grado de confianza: Carabineros
+
+table(data$conf_sind) # distribución categorias de resulta de variable
+                      # Grado de confianza: Los Sindicatos
+
+table(data$conf_empre) # distribución categorias de resulta de variable
+                       # Grado de confianza: Las Empresas Privadas
+
+table(data$conf_cong) # distribución categorias de resulta de variable
+                      # Grado de confianza: El Congreso Nacional
+
+table(data$conf_pres) # distribución categorias de resulta de variable
+                      # Grado de confianza: El Presidente/a de la Republica
+
+# Podemos observar que las categorias de resultas señalan valores de 1 a 5;
+# ademas de algunos valores correspondientes a -999 y -888; valores que
+# corresponden a las categorias de respuestas NS/NR (No sabe / No responde)
 
 ```
 
+# Paso 3: Tratamiento de variables
+
+## 3.1 Transformación de valores perdidos a NA
+
 ```{r, eval=FALSE}
 
+# Ocupando la función car::recode, donde seleccionamis nuestra base de datos
+# y la variable, indicamos que los valores -999 y -888 corresponden a
+# valores perdidos o NA (=NA); la letra c del codigo (c) corresponde a
+# la acción de concatenar, le estamos indicado a R, que tome dichos
+# valores -999 y -888 que solo tome dichos valores.
+
+# el <- que realizamos entre el car::redoce y nuestra propia base de
+# datos y sus variables es para indicarle a R que sobre escriba y
+# aplique dicha misma modificación en la misma base de datos
+# y variable.
+
+# Asiganmos valores perdidos a la variable Satisfaccion con 
+# la democracia en Chile
+
 data$satis_dem <- car::recode(data$satis_dem, "c(-999,-888)=NA")
+
+# Asiganmos valores perdidos a la variable Grado de 
+# confianza: El Gobierno
+
 data$conf_gob <- car::recode(data$conf_gob, "c(-999,-888)=NA")
+
+# Asiganmos valores perdidos a la variable Grado de 
+# confianza: Los Partidos Politicos
+
 data$conf_part <- car::recode(data$conf_part, "c(-999,-888)=NA")
+
+# Asiganmos valores perdidos a la variable # Grado de 
+# confianza: Carabineros
+
 data$conf_carab <- car::recode(data$conf_carab, "c(-999,-888)=NA")
+
+# Asiganmos valores perdidos a la variable Grado de 
+# confianza: Los Sindicatos
+
 data$conf_sind <- car::recode(data$conf_sind, "c(-999,-888)=NA")
+
+# Asiganmos valores perdidos a la variable Grado de 
+# confianza: Las Empresas Privadas
+
 data$conf_empre <- car::recode(data$conf_empre, "c(-999,-888)=NA")
+
+# Asiganmos valores perdidos a la variable Grado de 
+# confianza: El Congreso Nacional
+
 data$conf_cong <- car::recode(data$conf_cong, "c(-999,-888)=NA")
+
+# Asiganmos valores perdidos a la variable Grado de 
+# confianza: El Presidente/a de la Republica
+
 data$conf_pres <- car::recode(data$conf_pres, "c(-999,-888)=NA")
 
 ```
