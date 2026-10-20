@@ -196,7 +196,7 @@ data %>% select(conf_gob:conf_carab, conf_empre:conf_pres) %>% psych::alpha()
 ```{r, eval=FALSE}
 
 data <- cbind(data, 
-              "conf_inst"=rowMeans(data2 %>%
+              "conf_inst"=rowMeans(data %>%
                                      dplyr::select(conf_gob:conf_carab, conf_empre:conf_pres), 
                                    na.rm=TRUE))
 
