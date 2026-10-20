@@ -1,673 +1,314 @@
-# 🎯 Objetivos del Análisis
-Este ejercicio tiene como objetivos:
-
-- **Realizar un Análisis de Componentes Principales (PCA)** con el paquete FactoMineR utilizando variables de cohesión territorial de la encuesta ELSOC.
-
-- **Interpretar** los resultados del PCA: autovalores, cargas factoriales, varianza explicada.
-
-- **Seleccionar** el número óptimo de componentes mediante diferentes criterios (autovalores > 1, gráfico de codo, prueba de Horn).
-
-- **Construir** un índice de cohesión barrial a partir de la primera componente principal.
-
-- **Visualizar** las relaciones entre variables y la distribución de casos.
-
-# 📚 Fundamentos Teóricos
-**¿Qué es el Análisis de Componentes Principales (PCA)?**
-El Análisis de Componentes Principales es una técnica de reducción de dimensionalidad que:
-
-- Transforma un conjunto de variables correlacionadas en un nuevo conjunto de variables no correlacionadas llamadas componentes principales.
-
-- La primera componente principal captura la máxima varianza posible de los datos.
-
-- Las componentes siguientes capturan la varianza restante en orden decreciente.
-
-# Aplicación en este ejercicio:
-
-Construiremos un índice de cohesión barrial a partir de la primera componente principal, que resume 8 variables de percepción del barrio.
-
-<div class="table-container" style="overflow-x: auto; margin: 30px 0;">
-
-<table style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif; font-size: 0.95em; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-<caption style="caption-side: top; text-align: center; padding: 12px; font-weight: bold; font-size: 1.1em; background-color: #f8f9fa; border: 1px solid #ddd; border-bottom: none;">
-📋 Tabla 1: Variables utilizadas - Módulo de cohesión territorial (ELSOC) - Escala Likert 1-5
-</caption>
-<thead>
-<tr style="background-color: #2c2c2c; color: white;">
-<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Variable original</th>
-<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Nombre en el script</th>
-<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Descripción</th>
-<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Escala</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color: #f9f9f9;">
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">t02_01</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">barrio_ideal</td>
-<td style="border: 1px solid #ddd; padding: 14px;">Este es el barrio ideal para mí</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
-</tr>
-<tr style="background-color: #ffffff;">
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">t02_02</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">integrado</td>
-<td style="border: 1px solid #ddd; padding: 14px;">Me siento integrado/a en este barrio</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
-</tr>
-<tr style="background-color: #f9f9f9;">
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">t02_03</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">identifico</td>
-<td style="border: 1px solid #ddd; padding: 14px;">Me identifico con la gente de este barrio</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
-</tr>
-<tr style="background-color: #ffffff;">
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">t02_04</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">parte_de_mi</td>
-<td style="border: 1px solid #ddd; padding: 14px;">Este barrio es parte de mí</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
-</tr>
-<tr style="background-color: #f9f9f9;">
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">t03_01</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">amigos</td>
-<td style="border: 1px solid #ddd; padding: 14px;">En este barrio es fácil hacer amigos</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
-</tr>
-<tr style="background-color: #ffffff;">
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">t03_02</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">sociable</td>
-<td style="border: 1px solid #ddd; padding: 14px;">La gente en este barrio es sociable</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
-</tr>
-<tr style="background-color: #f9f9f9;">
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">t03_03</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">cordialidad</td>
-<td style="border: 1px solid #ddd; padding: 14px;">La gente en este barrio es cordial</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
-</tr>
-<tr style="background-color: #ffffff;">
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace;">t03_04</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center; font-family: monospace; font-weight: bold;">colaboracion</td>
-<td style="border: 1px solid #ddd; padding: 14px;">La gente en este barrio es colaboradora</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;"><span style="background-color: #e0e0e0; padding: 4px 8px; border-radius: 12px;">1-5</span></td>
-</tr>
-</tbody>
-<tfoot>
-<tr style="background-color: #f0f0f0; font-size: 0.85em;">
-<td colspan="4" style="border: 1px solid #ddd; padding: 12px; text-align: center; color: #555;">
-<strong>Nota:</strong> Todas las variables son de escala ordinal tipo Likert (1=Totalmente en desacuerdo a 5=Totalmente de acuerdo). Estas variables provienen del módulo de cohesión territorial de la encuesta ELSOC.
-</td>
-</tr>
-</tfoot>
-</table>
-
-<div style="text-align: center; padding: 8px; color: #666; font-size: 0.8em; border: 1px solid #ddd; border-top: none; background-color: #fafafa;">
-<strong>Elaboración propia</strong> basada en datos del Estudio Longitudinal Social de Chile (ELSOC) - COES
-</div>
-
-</div>
-
-# 📦 1. Instalación y Carga de Paquetes
-**¿Qué hacemos?** Cargamos todas las librerías necesarias para el análisis.
-
-**¿Por qué?** Necesitamos FactoMineR para el PCA, factoextra para visualizaciones, y paran para la prueba de Horn.
 
 ```{r, eval=FALSE}
-# Cargar paquetes necesarios
-if (!require("pacman")) install.packages("pacman")
-pacman::p_load(
-  tidyverse,      
-  sjPlot,         
-  psych,          
-  DescTools,      
-  broom,          
-  rempsyc,        
-  FactoMineR,     
-  factoextra,     
-  corrplot,       
-  nFactors,       
-  ggrepel,        
-  knitr,
-  writexl, 
-)
 
-# Limpiar R: desactivar notación científica
-options(scipen = 999)
+# Debemos usar el comando "setwd" como esta puesto debajo
+# Para saber con que llenar los espacios del propio codigo, puedes ver la dirección de la 
+# carpeta en la que quieres trabajar, clickando sobre el icono de esta.
+
+#los primeros 2 nombres, puedes dejarlos como lo deje.
+# lo que debes cambiar esta indicado 
+# con los numeros 1, 2 y 3
+
+# setwd("C:/Users/ 1- El nombre de usuario / 2- Nombre de la carpeta / 
+# 3- Nombre de la subcarpeta en caso de ser necesario")
+
+# Puedes el comando "getwd", para comprobar si estas trabajando en la carpeta en la que 
+# indicaste
+
+# getwd()
+
+# Esta te deberia indicar en la consola algo similar a esto:
+
+"C:/Users/ El nombre de usuario / Nombre de la carpeta 
+# / Nombre de la subcarpeta en caso de ser necesario"
+
+" Si coincide es que lo hiciste bien
+
 ```
 
-# 📂 2. Carga de la Base de Datos
-**¿Qué hacemos?** Cargamos la encuesta ELSOC directamente desde Harvard Dataverse.
+```{r, eval=FALSE}
 
-**¿Por qué?** La base está disponible públicamente y contiene las variables que necesitamos.
+install.packages("pacman")
+library(pacman)
+
+pacman::p_load(tidyverse, #Conjunto de paquetes, sobre todo dplyr y ggplot2
+               car, #Para recodificar
+               haven,
+               summarytools, #Para descriptivos
+               sjmisc,
+               psych,     # para Alfa de Chronbach
+               sjPlot,
+               psy, # scree plot function
+               nFactors, # parallel
+               GPArotation, # Rotación
+               sjlabelled,
+               texreg)
+
+
+```
 
 ```{r, eval=FALSE}
-# Cargar la encuesta ELSOC completa, posteriormente cuando se seleccionen las variables se seleccionaran los casos correspondientes al año 2019 (ola 4)
+
+options(scipen = 999) # Desactiva la notación cientifica de Rtudios
+                      # (por ejemplo esta suele estar activa en
+                      # Posit Cloud)
+
+rm(list = ls())          # Limpiamos el entorno de trabajo
+
+set.seed(123)            # Fijamos semilla para reproducibilidad
+
+```
+
+```{r, eval=FALSE}
+
 load(url("https://dataverse.harvard.edu/api/access/datafile/7245118"))
+# Descargamos desde internet la base de datos del ELSOC
 
-# Ver dimensión de la base
+# Para quienes tengan problemas de internet en su PC del laboratorio
+# Pueden descargar la base de datos directamente con el siguiente Link
+
+https://dataverse.harvard.edu/api/access/datafile/7245118
+
+# Dejan la base de datos, en la carpeta de su proyecto y la cargan en 
+# Rstudios de la siguiente forma:
+
+load(ELSOC_Long_2016_2022_v1.00)
+
 dim(elsoc_long_2016_2022.2)
+
 ```
 
-**Interpretación:** La base contiene 18,035 casos (entrevistados) medidos en 750 variables a lo largo de diferentes olas.
-
-# 🔍 3. Selección de Variables
-**¿Qué hacemos?** Seleccionamos 8 variables ordinales de escala Likert (1 a 4) del módulo de cohesión territorial.
-
-**¿Por qué?** Estas variables miden diferentes dimensiones de la percepción del barrio y son adecuadas para PCA por estar en la misma escala.
-
 ```{r, eval=FALSE}
-# Filtrar ola 4 y seleccionar variables
-proc_data <- elsoc_long_2016_2022.2 %>%
-  dplyr::filter(ola == "4") %>%
-  dplyr::select(
-    barrio_ideal = t02_01, # Este es el barrio ideal para mí
-    integrado = t02_02,     # Me siento integrado/a en este barrio
-    identifico = t02_03,    # Me identifico con la gente de este barrio
-    parte_de_mi = t02_04,   # Este barrio es parte de mí
-    amigos = t03_01,        # En este barrio es fácil hacer amigos
-    sociable = t03_02,      # La gente en este barrio es sociable
-    cordialidad = t03_03,   # La gente en este barrio es cordial
-    colaboracion = t03_04   # La gente en este barrio es colaboradora
+
+data <- elsoc_long_2016_2022.2 %>% filter(ola==4) %>%  # seleccionamos solo los casos de la ola 1
+  select(satis_dem = c01,
+         conf_gob = c05_01,
+         conf_part = c05_02,
+         conf_carab = c05_03,
+         conf_sind = c05_04,
+         conf_empre = c05_06,
+         conf_cong = c05_07,
+         conf_pres = c05_08,
   )
 
-# Definir valores perdidos (códigos comunes en ELSOC)
-proc_data <- proc_data %>%
-  sjlabelled::set_na(., na = c(-999, -888, -777, -666))
+table(data$satis_dem)
 
-# Convertir las variables a numéricas (eran ordinales)
-proc_data <- proc_data %>%
-  mutate(across(everything(), ~ as.numeric(as.character(.))))
+table(data$conf_gob)
 
-# Ver estructura
-glimpse(proc_data)
-summary(proc_data)
+table(data$conf_part)
+
+table(data$conf_carab)
+
+table(data$conf_sind)
+
+table(data$conf_empre)
+
+table(data$conf_cong)
+
+table(data$conf_pres)
+
 ```
-
-# 📊 4. Matriz de Correlaciones
-**¿Qué hacemos?** Calculamos la matriz de correlaciones entre las 8 variables.
-
-**¿Por qué?** El PCA se basa en las correlaciones entre variables. Altas correlaciones indican que las variables comparten información y pueden resumirse en componentes.
-
-```{r, eval=FALSE}
-# Calcular matriz de correlación (excluyendo NA)
-matriz_cor <- cor(na.omit(proc_data))
-print(matriz_cor)
-```
-
-## Salida esperada:
-
-![](Imagenesygraficos/prac8-1.png)
-
-**Interpretación:**
-
-- Las correlaciones son positivas y moderadas a altas (entre 0.35 y 0.74)
-
-**Hay dos bloques de variables:**
-
-- Bloque 1 (barrio_ideal, integrado, identifico, parte_de_mi): correlaciones muy altas entre sí (0.62-0.74)
-
-- Bloque 2 (amigos, sociable, cordialidad, colaboracion): correlaciones altas entre sí (0.48-0.67)
-
-**Esto sugiere que podrían existir dos dimensiones subyacentes**
-
-# 📐 5. Realizar el Análisis de Componentes Principales (PCA)
-**¿Qué hacemos?** Aplicamos PCA con el paquete FactoMineR.
-
-**¿Por qué?** FactoMineR proporciona una salida completa y bien estructurada para interpretar.
-
-```{r, eval=FALSE}
-# Realizar PCA (con datos sin NA)
-fit <- PCA(na.omit(proc_data), scale.unit = TRUE, graph = FALSE)
-```
-
-# 📈 6. Interpretación de Resultados
-## 6.1 Cargas factoriales (coordenadas)
-**¿Qué hacemos?** Examinamos las cargas factoriales (correlaciones variables-componentes).
-
-**¿Por qué?** Nos indican qué variables definen cada componente.
-
-```{r, eval=FALSE}
-# Cargas factoriales (coordenadas)
-fit$var$coord
-```
-![](Imagenesygraficos/fitvarcoord.png)
-
-**Interpretación de la tabla:**
-
-La tabla fit$var$coord muestra las cargas factoriales, es decir, la correlación entre las variables originales y los componentes principales.
-
-**Dimensión 1 (58.5% de varianza):**
-
-- Todas las cargas son positivas y altas (entre 0.67 y 0.83)
-
-- Esto indica que la primera componente mide un factor general de cohesión barrial
-
-- Las variables con mayor carga son: integrado (0.83), identifico (0.83), parte_de_mi (0.81)
-
-**Dimensión 2 (14.6% de varianza):**
-
-- Cargas negativas para las variables de identificación directa con el barrio (barrio_ideal, integrado, identifico, parte_de_mi)
-
-- Cargas positivas para las variables de relación con personas (amigos, sociable, cordialidad, colaboracion)
-
-Esta dimensión distingue entre dos tipos de vinculación con el barrio:
-
-- Vinculación directa (con el lugar): puntajes negativos
-
-- Vinculación social (con las personas): puntajes positivos
-
-## 6.2 Varianza explicada
-
-```{r, eval=FALSE}
-# Varianza explicada por componente
-fit$eig
-```
-![](Imagenesygraficos/autovaloresprac8.png)
-
-**Interpretación:**
-
-- La primera componente explica 58.5% de la varianza total
-
-- La segunda componente explica 14.6%
-
-- Entre ambas explican 73% de la varianza
-
-- A partir de la tercera componente, la contribución es marginal (<7% cada una)
-
-# 🔍 7. Visualización de Variables en el Espacio de las Componentes
-¿Qué hacemos? Graficamos las variables en el plano de las dos primeras componentes.
-
-¿Por qué? Para visualizar las relaciones entre variables y las dimensiones subyacentes.
-
-```{r, eval=FALSE}
-# Preparar datos para gráfico
-datos.grafico2 <- data.frame(fit$var$coord[, 1:2])
-
-# Gráfico de variables
-ggplot(datos.grafico2) +
-  geom_point(aes(x = Dim.1, y = Dim.2), colour = "darkred", size = 3) +
-  geom_text_repel(aes(x = Dim.1, y = Dim.2, label = rownames(datos.grafico2)),
-                  size = 4, fontface = "bold") +
-  geom_vline(xintercept = 0, colour = "darkgray", linetype = "dashed") +
-  geom_hline(yintercept = 0, colour = "darkgray", linetype = "dashed") +
-  labs(x = "Dimensión 1 (58.5%)", 
-       y = "Dimensión 2 (14.6%)",
-       title = "Círculo de correlaciones - Variables de cohesión barrial") +
-  theme_minimal() +
-  theme(legend.position = "none")
-```
-
-![](Imagenesygraficos/graficodoscomps.png)
-
-Interpretación del gráfico:
-
-**Este gráfico confirma lo observado en las tablas:**
-
-- Eje horizontal (Dimensión 1): Todas las variables tienen coordenadas positivas, indicando que miden un factor común de cohesión barrial. Las variables más a la derecha (integrado, identifico, parte_de_mi) son las que más contribuyen a esta dimensión.
-
-- Eje vertical (Dimensión 2): Separa claramente dos grupos:
-
-- Grupo A (abajo): barrio_ideal, integrado, identifico, parte_de_mi - variables que miden identificación directa con el barrio (como lugar)
-
-- Grupo B (arriba): amigos, sociable, cordialidad, colaboracion - variables que miden relaciones sociales en el barrio
-
-**Conclusión:** Existen dos dimensiones en la percepción del barrio: una de apego al lugar y otra de vínculos comunitarios.
-
-# 👥 8. Visualización de Individuos
-¿Qué hacemos? Graficamos la posición de los individuos (encuestados) en el mismo espacio.
-
-¿Por qué? Para ver cómo se distribuyen las personas según sus puntuaciones en las componentes.
-
-```{r, eval=FALSE}
-# Preparar coordenadas de individuos
-datos_grafico_ind <- data.frame(fit$ind$coord[, 1:2])
-colnames(datos_grafico_ind) <- c("Dim.1", "Dim.2")
-
-# Gráfico de individuos
-ggplot(datos_grafico_ind) +
-  geom_point(aes(x = Dim.1, y = Dim.2), colour = "darkred", alpha = 0.3, size = 0.8) +
-  geom_vline(xintercept = 0, colour = "darkgray", linetype = "dashed") +
-  geom_hline(yintercept = 0, colour = "darkgray", linetype = "dashed") +
-  labs(x = "Dimensión 1 (58.5%)", 
-       y = "Dimensión 2 (14.6%)",
-       title = "Distribución de individuos en el espacio de las componentes") +
-  theme_minimal()
-```
-
-![](Imagenesygraficos/prac8-2.png)
-
-**Interpretación:**
-
-- Cada punto es una persona encuestada.
-
-- La nube de puntos se extiende principalmente a lo largo del eje horizontal (Dimensión 1)
-
-- Hay personas con alta cohesión (derecha) y baja cohesión (izquierda)
-
-- La Dimensión 2 separa a quienes se identifican más con el lugar (abajo) vs. con las personas (arriba)
-
-# 🔄 9. Biplot (Variables e Individuos Juntos)
-¿Qué hacemos? Creamos un biplot que muestra simultáneamente variables e individuos.
-
-¿Por qué? Para visualizar la relación entre las características (variables) y los casos (personas).
 
 ```{r, eval=FALSE}
 
-# Usamos prcomp para el biplot (compatible con ggbiplot)
-proc_data_pca <- na.omit(proc_data)
-fit_prcomp <- prcomp(proc_data_pca, scale. = TRUE)
+data$satis_dem <- car::recode(data$satis_dem, "c(-999,-888)=NA")
+data$conf_gob <- car::recode(data$conf_gob, "c(-999,-888)=NA")
+data$conf_part <- car::recode(data$conf_part, "c(-999,-888)=NA")
+data$conf_carab <- car::recode(data$conf_carab, "c(-999,-888)=NA")
+data$conf_sind <- car::recode(data$conf_sind, "c(-999,-888)=NA")
+data$conf_empre <- car::recode(data$conf_empre, "c(-999,-888)=NA")
+data$conf_cong <- car::recode(data$conf_cong, "c(-999,-888)=NA")
+data$conf_pres <- car::recode(data$conf_pres, "c(-999,-888)=NA")
 
-# Biplot
-library(ggbiplot)  # Si no está instalado: install.packages("ggbiplot")
-
-ggbiplot(fit_prcomp, 
-         obs.scale = 1, 
-         var.scale = 1,
-         alpha = 0.3) +
-  scale_color_discrete(name = '') +
-  expand_limits(x = c(-8, 4), y = c(-2.5, 2.5)) +
-  labs(x = "Dimensión 1 (58.65%)", 
-       y = "Dimensión 2 (14.6%)",
-       title = "Biplot - Individuos y variables de cohesión barrial") +
-  theme_minimal()
 ```
-
-![](Imagenesygraficos/prac8-3.png)
-
-**Interpretación del biplot:**
-
-- Las flechas representan las variables: su dirección indica cómo contribuyen a las componentes
-
-- Los puntos son individuos: su posición indica sus puntuaciones en las componentes
-
-- Individuos cercanos a una flecha tienen altos valores en esa variable
-
-- La longitud de las flechas indica la calidad de representación de la variable
-
-# 📊 10. Selección del Número de Componentes
-## 10.1 Método de autovalores > 1
-¿Qué hacemos? Seleccionamos componentes con autovalor (eigenvalue) mayor a 1.
-
-¿Por qué? Es un criterio clásico (regla de Kaiser): componentes con autovalor > 1 explican más varianza que una variable original.
-
-```{r, eval=FALSE}
-# Autovalores
-fit$eig
-```
-**Resultado:**
-
-- Componente 1: 4.68 > 1
-
-- Componente 2: 1.17 > 1
-
-- Componente 3: 0.55 < 1
-
-**Conclusión: Este criterio sugiere retener 2 componentes.**
-
-## 10.2 Método del codo (scree plot)
-¿Qué hacemos? Observamos el gráfico de sedimentación para identificar el punto de quiebre.
-
-```{r, eval=FALSE}
-fviz_eig(fit, geom = "line") + 
-  theme_grey() +
-  labs(title = "Scree plot - Método del codo")
-```
-
-![](Imagenesygraficos/prac8-4.png)
-
-**Interpretación:** El gráfico muestra una caída pronunciada hasta la componente 2, luego se estabiliza. Esto sugiere retener 2 componentes.
-
-## 10.3 Prueba de Horn (Parallel Analysis) - MÉTODO MÁS PRECISO
-¿Qué hacemos? Usamos la función paran para realizar el análisis paralelo de Horn.
-
-¿Por qué? Este método compara los autovalores observados con los que se obtendrían por azar en datos aleatorios con la misma estructura. Es más robusto que los métodos anteriores.
-
-```{r, eval=FALSE}
-library(paran)
-
-# Realizar análisis paralelo (excluimos primera columna si es necesario)
-psych::fa.parallel(na.omit(proc_data), fa = "pc", n.iter = 500)
-```
-
-**Interpretación de la prueba de Horn:**
-
-La prueba indica que ahi dos componentes que tienen un autovalor ajustado superior a 1. 
-
-Decisión final: Para construir un índice de cohesión barrial, utilizaremos dos componente, que ya explican porcentaje de la varianza y captura el factor común de todas las variables.
-
-# 🏗️ 11. Construcción del Índice de Cohesión Barrial
-¿Qué hacemos? Construimos un índice como combinación lineal de las variables originales ponderadas por sus cargas factoriales.
-
-¿Por qué? La primera componente principal es la mejor combinación lineal de las variables para resumir la información común.
-
-::: {.callout-note}
-Los signos de los componentes son indeterminantes; si el signo se invierte, el indice se interpreta al revés.
-:::
-
-## 11.1 Obtener los pesos (cargas factoriales)
-
-```{r, eval=FALSE}
-# Cargas factoriales de la primera componente
-cargas_dim1 <- fit$var$coord[, 1]
-print(round(cargas_dim1, 2))
-```
-
-**Resultado:**
-
-<div class="table-container" style="overflow-x: auto; margin: 30px 0;">
-
-<table style="width: 100%; border-collapse: collapse; font-family: 'Segoe UI', sans-serif; font-size: 0.95em; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
-<caption style="caption-side: top; text-align: center; padding: 12px; font-weight: bold; font-size: 1.1em; background-color: #f8f9fa; border: 1px solid #ddd; border-bottom: none;">
-📋 Tabla: Cargas factoriales de la primera componente (Factor de Cohesión Barrial)
-</caption>
-<thead>
-<tr style="background-color: #2c2c2c; color: white;">
-<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Variable</th>
-<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Carga factorial</th>
-<th style="border: 1px solid #444; padding: 14px; text-align: center; font-weight: bold;">Interpretación</th>
-</tr>
-</thead>
-<tbody>
-<tr style="background-color: #f9f9f9;">
-<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">barrio_ideal</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
-<span style="background-color: #e8f4f8; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.77</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 14px;">Alta contribución al factor</td>
-</tr>
-<tr style="background-color: #ffffff;">
-<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">integrado</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
-<span style="background-color: #d4edda; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.83</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 14px;">Muy alta contribución</td>
-</tr>
-<tr style="background-color: #f9f9f9;">
-<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">identifico</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
-<span style="background-color: #d4edda; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.83</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 14px;">Muy alta contribución</td>
-</tr>
-<tr style="background-color: #ffffff;">
-<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">parte_de_mi</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
-<span style="background-color: #d4edda; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.81</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 14px;">Muy alta contribución</td>
-</tr>
-<tr style="background-color: #f9f9f9;">
-<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">amigos</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
-<span style="background-color: #fff3cd; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.72</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 14px;">Alta contribución</td>
-</tr>
-<tr style="background-color: #ffffff;">
-<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">sociable</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
-<span style="background-color: #fff3cd; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.74</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 14px;">Alta contribución</td>
-</tr>
-<tr style="background-color: #f9f9f9;">
-<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">cordialidad</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
-<span style="background-color: #fff3cd; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.76</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 14px;">Alta contribución</td>
-</tr>
-<tr style="background-color: #ffffff;">
-<td style="border: 1px solid #ddd; padding: 14px; font-family: monospace; font-weight: bold;">colaboracion</td>
-<td style="border: 1px solid #ddd; padding: 14px; text-align: center;">
-<span style="background-color: #f8d7da; padding: 6px 12px; border-radius: 20px; font-weight: bold;">0.67</span>
-</td>
-<td style="border: 1px solid #ddd; padding: 14px;">Contribución moderada-alta</td>
-</tr>
-</tbody>
-<tfoot>
-<tr style="background-color: #f0f0f0; font-size: 0.85em;">
-<td colspan="3" style="border: 1px solid #ddd; padding: 12px; text-align: center; color: #555;">
-<strong>Nota:</strong> Las cargas factoriales representan la correlación entre cada variable y la primera componente principal (Factor de Cohesión Barrial). Valores más altos indican mayor contribución al factor. La primera componente explica el <strong>58.5%</strong> de la varianza total.
-</td>
-</tr>
-</tfoot>
-</table>
-
-<div style="text-align: center; padding: 8px; color: #666; font-size: 0.8em; border: 1px solid #ddd; border-top: none; background-color: #fafafa;">
-<strong>Elaboración propia</strong> en base a análisis de componentes principales (PCA) con datos ELSOC
-</div>
-
-</div>
-
-## 11.2 Calcular el índice
-¿Qué hacemos? Creamos una nueva variable que es la suma ponderada de las 8 variables originales.
-
-```{r, eval=FALSE}
-# Calcular índice de cohesión barrial
-Indice_Cohesion_Barrial <- with(proc_data, 
-                                 0.745 * barrio_ideal + 
-                                 0.825 * integrado + 
-                                 0.831 * identifico + 
-                                 0.807 * parte_de_mi + 
-                                 0.719 * amigos + 
-                                 0.744 * sociable + 
-                                 0.766 * cordialidad + 
-                                 0.676 * colaboracion)
-
-# Añadir a la base de datos
-proc_data$Indice_Cohesion <- Indice_Cohesion_Barrial
-
-# Ver resumen del índice
-summary(proc_data$Indice_Cohesion)
-```
-::: {.callout-note}
-El índice saca contruido, se construyo multiplicando las cargas por las variables en su escala original, 
-pero las cargas provienen de un PCA sobre variables estandarizadas.
-Para realizarlo de aquella forma o conciderandondo el PCA sobre las variables estandarizadas, se puede realizar el siguiente codigo.
-:::
 
 ```{r, eval=FALSE}
 
-fit <- FactoMineR::PCA(na.omit(proc_data), scale.unit = TRUE, graph = FALSE)
-indice <- fit$ind$coord[, 1]
+data$conf_gob <- set_labels(data$conf_gob,
+                            labels=c( "Nada"=1,
+                                      "Poca"=2,
+                                      "Algo"=3,
+                                      "Bastante"=4,
+                                      "Mucha"=5))
+
+data$conf_part <- set_labels(data$conf_part,
+                             labels=c( "Nada"=1,
+                                       "Poca"=2,
+                                       "Algo"=3,
+                                       "Bastante"=4,
+                                       "Mucha"=5))
+
+data$conf_carab <- set_labels(data$conf_carab,
+                              labels=c( "Nada"=1,
+                                        "Poca"=2,
+                                        "Algo"=3,
+                                        "Bastante"=4,
+                                        "Mucha"=5))
+
+data$conf_sind <- set_labels(data$conf_sind,
+                             labels=c( "Nada"=1,
+                                       "Poca"=2,
+                                       "Algo"=3,
+                                       "Bastante"=4,
+                                       "Mucha"=5))
+data$conf_empre <- set_labels(data$conf_empre,
+                              labels=c( "Nada"=1,
+                                        "Poca"=2,
+                                        "Algo"=3,
+                                        "Bastante"=4,
+                                        "Mucha"=5))
+data$conf_cong <- set_labels(data$conf_cong,
+                             labels=c( "Nada"=1,
+                                       "Poca"=2,
+                                       "Algo"=3,
+                                       "Bastante"=4,
+                                       "Mucha"=5))
+data$conf_pres <- set_labels(data$conf_pres,
+                             labels=c( "Nada"=1,
+                                       "Poca"=2,
+                                       "Algo"=3,
+                                       "Bastante"=4,
+                                       "Mucha"=5))
 
 ```
-
-## 11.3 Interpretación del índice
-
-**Rango del índice:**
-
-Valor mínimo teórico: Si una persona responde 1 (mínimo) en todas las variables:
-1 * (0.77 + 0.83 + 0.83 + 0.81 + 0.72 + 0.74 + 0.76 + 0.67) = 1 * 6.13 = 6.13
-
-Valor máximo teórico: Si una persona responde 4 (máximo) en todas las variables:
-4 * 6.13 = 24.52
-
-**Interpretación:**
-
-- Valores más altos: Mayor cohesión barrial percibida
-
-- Valores más bajos: Menor cohesión barrial percibida
-
-- El índice combina tanto el apego al lugar como las relaciones sociales
-
-# 📝 12. Interpretación Final y Aplicaciones
-## 12.1 Resumen de hallazgos
-Estructura factorial: Las 8 variables de cohesión barrial se resumen adecuadamente en una dimensión principal que explica el 58.5% de la varianza.
-
-Dimensiones subyacentes: Aunque existe una segunda dimensión que distingue entre apego al lugar y vínculos sociales, su contribución es limitada (14.6%) y el análisis paralelo sugiere retener solo la primera componente.
-
-Índice construido: El índice de cohesión barrial es una combinación ponderada que asigna mayor peso a:
-
-integrado y identifico (0.83 cada una)
-
-parte_de_mi (0.81)
-
-barrio_ideal (0.77)
-
-## 12.2 Aplicaciones del índice
-El índice creado puede utilizarse como variable dependiente o independiente en análisis posteriores:
-
-- Modelos de regresión: ¿Qué factores (género, edad, nivel educacional, tipo de barrio) predicen mayores niveles de cohesión barrial?
-
-- Análisis de correspondencia: ¿Cómo se relaciona la cohesión barrial con otras variables categóricas?
-
-- Comparaciones: ¿Existen diferencias significativas en cohesión barrial entre comunas, regiones o tipos de barrio?
-
-## 12.3 Ejemplo de código para análisis posteriores
 
 ```{r, eval=FALSE}
-# Ejemplo: ¿Diferencias por género? (requiere tener variable de género)
-# proc_data$genero <- elsoc_long_2016_2022.2$m01[elsoc_long_2016_2022.2$ola == "4"]
-# 
-# # Boxplot por género
-# ggplot(na.omit(proc_data), aes(x = genero, y = Indice_Cohesion, fill = genero)) +
-#   geom_boxplot() +
-#   labs(title = "Cohesión barrial por género",
-#        y = "Índice de Cohesión Barrial") +
-#   theme_minimal() +
-#   theme(legend.position = "none")
-```
 
-# 💾 13. Exportar Resultados
-¿Qué hacemos? Guardamos los resultados para su uso posterior.
+data %>% select(conf_gob:conf_pres) %>% 
+  plot_stackfrq() + theme(legend.position="bottom")
+
+```
 
 ```{r, eval=FALSE}
-# Exportar base con índice
-write_xlsx(
-  list(
-    DatosConIndice = proc_data,
-    CargasFactoriales = as.data.frame(fit$var$coord),
-    Autovalores = as.data.frame(fit$eig)
-  ),
-  "resultados_pca_cohesion_barrial.xlsx"
-)
 
-cat("✅ Resultados exportados a:", file.path(getwd(), "resultados_pca_cohesion_barrial.xlsx"))
+data %>% select(conf_gob:conf_pres) %>% tab_corr(triangle = "lower")
+
 ```
 
-# ⚠️ Notas Metodológicas Importantes
+```{r, eval=FALSE}
 
-1. Escalamiento de variables
-- Se utilizó scale.unit = TRUE en PCA() para estandarizar las variables (media 0, desviación 1)
+data %>% select(conf_gob:conf_pres) %>% psych::alpha()
 
-- Esto es necesario porque aunque todas son escala Likert 1-4, el método PCA se basa en correlaciones
+data %>% select(conf_gob:conf_carab, conf_empre:conf_pres) %>% psych::alpha()
 
-2. Tratamiento de valores perdidos
-- Se excluyeron casos con NA mediante na.omit() antes del PCA
+```
 
-- Esto es necesario porque el PCA no admite valores perdidos
+```{r, eval=FALSE}
 
-3. Selección del número de componentes
-- Se utilizaron tres criterios: autovalores > 1, scree plot, y análisis paralelo de Horn
+data <- cbind(data, 
+              "conf_inst"=rowMeans(data2 %>%
+                                     dplyr::select(conf_gob:conf_carab, conf_empre:conf_pres), 
+                                   na.rm=TRUE))
 
-- El análisis paralelo es el más robusto y recomendado en la literatura
+summary(data$conf_inst)
 
-4. Construcción del índice
-- Se usaron las cargas factoriales crudas (no rotadas) porque solo retenemos una componente
+```
 
-- El índice resultante es una variable continua apta para análisis paramétricos
+```{r, eval=FALSE}
 
-5. Limitaciones
-- El índice asume que las variables Likert pueden tratarse como numéricas (equidistancia entre categorías)
+corMat  <- data %>% select(conf_gob:conf_pres) %>%
+  cor(use = "complete.obs")  # estimar matriz pearson
 
-- La interpretación del índice depende de la calidad de las variables originales
+KMO(corMat)
 
+cortest.bartlett(corMat, n = 3417)
+
+```
+
+```{r, eval=FALSE}
+
+data %>% select(conf_gob:conf_pres) %>% scree.plot()
+
+fa.parallel(corMat, n.obs=3417)
+
+```
+
+```{r, eval=FALSE}
+
+fac_pa <- data %>% select(conf_gob:conf_pres) %>% fa(nfactors = 3, fm= "pa")
+#summary(fac_pa)
+fac_pa
+
+```
+
+```{r, eval=FALSE}
+
+fac_ml <- data %>% select(conf_gob:conf_pres) %>% fa(nfactors = 3, fm= "ml")
+fac_ml
+
+```
+
+```{r, eval=FALSE}
+
+fac_ml_var <- data %>% select(conf_gob:conf_pres) %>% fa(nfactors = 3, fm= "ml", rotate="varimax") # ortogonal
+fac_ml_var
+
+```
+
+```{r, eval=FALSE}
+
+fac_ml_pro <- data %>% select(conf_gob:conf_pres) %>% fa(nfactors = 3, fm= "ml", rotate="promax")
+fac_ml_pro
+
+```
+
+```{r, eval=FALSE}
+
+data %>% select(conf_gob:conf_pres) %>% sjPlot::tab_fa(method = "ml", rotation = "promax", show.comm = TRUE, title = "Análisis factorial de confianza en instituciones")
+
+```
+
+```{r, eval=FALSE}
+
+fac_ml <- data %>% select(conf_gob:conf_pres) %>% fa(nfactors = 3, fm= "ml", rotate = "promax", scores = "regression")
+fac_ml
+
+```
+
+```{r, eval=FALSE}
+
+data <- cbind(data, fac_ml$scores)
+
+```
+
+```{r, eval=FALSE}
+
+data %>% select(conf_inst, ML1, ML2, ML3) %>% head(10)
+
+```
+
+```{r, eval=FALSE}
+
+summary(data$ML1)
+
+summary(data$ML2)
+
+summary(data$ML3)
+
+```
+
+```{r, eval=FALSE}
+
+data<- data %>% rename(inst_ejecutivo=ML1,
+                       inst_partidos=ML2,
+                       inst_trabajo=ML3)
+
+```
+
+```{r, eval=FALSE}
+
+data<-na.omit(data)
+
+reg1 <- lm(satis_dem~conf_inst, data=data)
+reg2 <- lm(satis_dem~inst_ejecutivo, data=data)
+reg3 <- lm(satis_dem~inst_partidos, data=data)
+reg4 <- lm(satis_dem~inst_trabajo, data=data)
+reg5 <- lm(satis_dem~inst_ejecutivo+inst_partidos+inst_trabajo, data=data)
+
+```
+
+```{r, eval=FALSE}
+
+texreg::knitreg(list(reg1, reg2, reg3, reg4, reg5))
+
+```
