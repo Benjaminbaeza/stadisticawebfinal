@@ -221,7 +221,7 @@ data$conf_gob <- car::recode(data$conf_gob, "c(-999,-888)=NA")
 
 data$conf_part <- car::recode(data$conf_part, "c(-999,-888)=NA")
 
-# Asiganmos valores perdidos a la variable # Grado de 
+# Asiganmos valores perdidos a la variable Grado de 
 # confianza: Carabineros
 
 data$conf_carab <- car::recode(data$conf_carab, "c(-999,-888)=NA")
@@ -246,9 +246,49 @@ data$conf_cong <- car::recode(data$conf_cong, "c(-999,-888)=NA")
 
 data$conf_pres <- car::recode(data$conf_pres, "c(-999,-888)=NA")
 
+# La eleminación de los valores perdidos de la sub base con variables
+# como na.omit() sera realizada más adelante en pasos posteriores
+# de momento muchas de las siguientes funciones a realizar
+# al momento de aplicarse no consideran los valores NA o
+# indican el valor de los mismos en otros apartados
+# por lo que la presencia de estos, no impediria el realizar los
+# siguientes comando o sesgarian los resultados al estar indicados
+# como NA.
+
 ```
 
+## 3.2 Asignación de etiquetas
+
+Al igual que el Analisis de Componentes Principales (ACP o en ingles PCA) el Analisis Factorial (AF) emplea el uso de variables numericas (cuantitativas). En este paso asignaremos etiquetas a dichos valores, con esto no medificariamos el como R entiende la propia variable, sino que modificaria el resultado al momento de visualizarlas. 
+
 ```{r, eval=FALSE}
+
+# Con set_labels, asignamos etiquetas de valor, donde 1 seria = a "Nada"
+# y 5 = "Mucha" (con los numero intermedio adquiriendo sus etiquetas
+# correspondientes).
+# Al momento de visualizar descriptivamente dichas variables, como
+# se vera en el siguiente paso, lo unico que cambiara es que el
+# grafico en vez de indicar 1 por ejemplo indicaria "Nada"; pero esto
+# corresponde unicamente al apartado visual al momento de graficarse
+# la variable sigue siendo numerica, no se modifico su estructura.
+
+# Si analizamos el codigo, la estructura es la misma que caso anteriores
+# esto responde a la logica de codificación de R/Rstudios.
+
+# Seleccionamos la base de datos, la variable de la base de datos con $
+# y la variable, despues con set_labels indicamos la base en la que
+# queremos realizar la asignación de etiquetas indicamos la variable
+# con $; despues emepleamos labels para asignar la etiqueta usamos el
+# (=c) para concatenar y que todo la acción se realice para todos los 
+# valores por igual en la variable.
+# a la derecha "Nada" o los otros valores y el igual (=), más el valor
+# el cual querremos que tenga la etiqueta correspondiente.
+# Ahora en vez de 1, deberia decir "Nada" por ejemplo.
+
+# el <- es para rescribir y aplicar la acción en la misma base de datos.
+
+# Asignamo etiquetas para la variable  Grado de 
+# confianza: El Gobierno
 
 data$conf_gob <- set_labels(data$conf_gob,
                             labels=c( "Nada"=1,
@@ -257,12 +297,18 @@ data$conf_gob <- set_labels(data$conf_gob,
                                       "Bastante"=4,
                                       "Mucha"=5))
 
+# Asignamo etiquetas para la variable Grado de 
+# confianza: Los Partidos Politicos
+
 data$conf_part <- set_labels(data$conf_part,
                              labels=c( "Nada"=1,
                                        "Poca"=2,
                                        "Algo"=3,
                                        "Bastante"=4,
                                        "Mucha"=5))
+
+# Asignamo etiquetas para la variable Grado de 
+# confianza: Carabineros
 
 data$conf_carab <- set_labels(data$conf_carab,
                               labels=c( "Nada"=1,
@@ -271,24 +317,40 @@ data$conf_carab <- set_labels(data$conf_carab,
                                         "Bastante"=4,
                                         "Mucha"=5))
 
+# Asignamo etiquetas para la variable Grado de 
+# confianza: Los Sindicatos
+
 data$conf_sind <- set_labels(data$conf_sind,
                              labels=c( "Nada"=1,
                                        "Poca"=2,
                                        "Algo"=3,
                                        "Bastante"=4,
                                        "Mucha"=5))
+
+# Asignamo etiquetas para la variable  Grado de 
+# confianza: Las Empresas Privadas
+
 data$conf_empre <- set_labels(data$conf_empre,
                               labels=c( "Nada"=1,
                                         "Poca"=2,
                                         "Algo"=3,
                                         "Bastante"=4,
                                         "Mucha"=5))
+
+# Asignamo etiquetas para la variable Grado de 
+# confianza: El Congreso Nacional
+
 data$conf_cong <- set_labels(data$conf_cong,
                              labels=c( "Nada"=1,
                                        "Poca"=2,
                                        "Algo"=3,
                                        "Bastante"=4,
                                        "Mucha"=5))
+
+# Asignamo etiquetas para la variable  Grado de 
+# confianza: El Presidente/a de la Republica
+
+
 data$conf_pres <- set_labels(data$conf_pres,
                              labels=c( "Nada"=1,
                                        "Poca"=2,
@@ -298,37 +360,137 @@ data$conf_pres <- set_labels(data$conf_pres,
 
 ```
 
+## 3.3 Visualización de variables descriptivas
+
 ```{r, eval=FALSE}
+
+# Como pueden observar por la aplicación del comando
+# set_labels y labels; deberian de salir las etiquetas de
+# "Nada" a "Mucha" y sus etiquetas intermedias en cada
+# una de las variables
+
+# Como detalle de la estructura de este codigo:
+# podemos observar que cuando seleccionamos las
+# variables con la función select, podemos ver que
+# usamos el dos puntos (:), dos puntos indica a
+# R y Rstudios en esta función que seleccione todas las
+# variables que este entre conf_gob y conf_pres
 
 data %>% select(conf_gob:conf_pres) %>% 
   plot_stackfrq() + theme(legend.position="bottom")
 
 ```
 
+## 3.4 Visualización de estimación de tabla de correlaciones
+
 ```{r, eval=FALSE}
+
+# Con este codigo podemos observar que todas las correlaciones 
+# un elemento impoortante para el FA, es que se requiere que
+# las variables esten o tengan algun grado de correlación positiva
 
 data %>% select(conf_gob:conf_pres) %>% tab_corr(triangle = "lower")
 
 ```
 
+# Paso 4: Analisis Factorial Exploratorio
+
+## 4.1 Consistencia interna de las variables
+
 ```{r, eval=FALSE}
+
+# Antes de proceder con el Analisis Factoria Exploratorio (AFE) 
+# que estamos planteando realizar, debemos determinar si las variables
+# que ocupamos tiene una consistencia interna entre si.
+
+# Corriendo el siguiente codigo lo podemos determinar ya que con este
+# de los valores que nos enseña, resulta relevante, el raw_alpha, 
+# este nos indica la concistencia interna del Analisis a partir 
+# de las variables.
+# Calores entre inferiores a 0,59 son considerados muy bajos; valores por
+# sobre 0,70 son aceptables.
 
 data %>% select(conf_gob:conf_pres) %>% psych::alpha()
 
+# Nuestro raw_alpha es de 0.79 por lo que tenemos una alta consistencia
+# interna con la cual podemos trabajar.
+
+# Aunque si observamos los resultados variable por variable por debajo de
+# la siguiente oración: " Reliability if an item is dropped:"
+
+# podemos observar el raw_alpha variable por variable; el cual nos
+# indica el valor que adoptaria este en caso de eliminar la variable.
+
+# Si eliminamos cualquier variable, el raw_alpha baja, indicando que
+# perdemos concistencia interna con excepción de la variable: "Grado
+# de confianza: Los Sindicatos"; en caso de eliminarlo, nuestro 
+# raw_alpha sube a 0,80.
+
+# Por lo que lo eliminamos
+
 data %>% select(conf_gob:conf_carab, conf_empre:conf_pres) %>% psych::alpha()
+
+# Si observamos la estructura del codigo, vemos que ocupamos el dos puntos
+# (:) para seleccionar las variables intermedias, pero cuando llegamos a
+# conf_sind, pusimos una coma (,) y volvimos a realizar la misma operación
+# de seleccionar el resto de variables intermedias.
+# Asi omitimos conf_sind
+
+# Si corremos dicho codigo veremos que ahora nuestro raw_alpha subio a 0.80 
 
 ```
 
+### 4.1.1 Agregamos la variable "confianza en instituciones a la sub-base de dato". 
+
 ```{r, eval=FALSE}
+
+# Con cbind, podemos agregar un objeto de R o una base o sub-base alguna operación
+# o codigo que en este caso estemos realizando.
+# En este caso sabiendo que todas las variables tienen una alta consistencia
+# interna crearemos la variable "conf-inst#: Confianza en instituciones, la
+# cual sera empleada más adelante en el practico.
+
+# la estructura del codigo que estamos observado, no indica que quermos realizar
+# la nueva variable conf_inst a partir de variables de la sub-base y agregarla 
+# a la propia sub-base de datos como una variable diferenciada.
+
+# Para elaborar esta nueva variable, es que usamos dplyr::select y al interior
+# de los parentesis seleccionamos las variables con la que vamos a elaborar la
+# nueva variable; si nos fijamos bien, al igual que el codigo anterior, omitimos
+# la variable conf_sind.
+
+# rowMeans es el codigo con el que indicamos que esta nueva variable seria 
+# elaborada a partir de la media (o promedio) de todos los valores que
+# conforman cada fila, para cada caso.
+
+# na.rm=TRUE (o na.rm=T en algunos casos) indica que se omitan los valores
+# NA.
 
 data <- cbind(data, 
               "conf_inst"=rowMeans(data %>%
                                      dplyr::select(conf_gob:conf_carab, conf_empre:conf_pres), 
                                    na.rm=TRUE))
 
+# Podemos observar las medidas de tendencia central de la nueva
+# variable que hemos observado.
+
 summary(data$conf_inst)
 
 ```
+
+# Paso 5: Análisis factorial exploratorio
+
+Pero ¿Qué podemos deducir de la matriz de correlaciones en relación a la estructura subyacente en términos de variables latentes? 
+Sabemos que las variables tienen una consistencia interna alta y estan correlacionadas en algun punto.
+Más debemos determinar la claridad de grupos de indicadores asociados entre sí.
+
+## 5.1 Test de adecuación de matriz para AFE
+
+KMO (Kaiser, Meyer, Olkin Measure of Sampling Adequacy):
+
+- Varía entre 0 y 1. Contrasta si las correlaciones parciales entre las variables son pequeñas
+
+- Valores pequeños (menores a 0.5) indican que los datos no serían adecuados para AFE, ya que las correlaciones entre pares de variables no pueden ser explicadas por otras variables.
 
 ```{r, eval=FALSE}
 
@@ -337,25 +499,85 @@ corMat  <- data %>% select(conf_gob:conf_pres) %>%
 
 KMO(corMat)
 
-cortest.bartlett(corMat, n = 3417)
-
 ```
+
+## 5.2 Nivel de correlaciones de la matriz: test de esfericidad de Barlett
+
+Se utiliza para evluar la hipótesis que la matriz de correlaciones es una matriz identidad (diagonal=1 y bajo la diagonal=0)
+
+- Se busca significación (p < 0.05) ya que se espera que las variables estén correlacionadas
 
 ```{r, eval=FALSE}
 
+cortest.bartlett(corMat, n = 3417)
+
+# En n = debemos indicar el numero de observaciones de nuestra base 
+# de datos o sub-base de datos
+
+# Recordemos que cuando hacemos estos test que consideran valor p
+# buscamos que nuestro valor siempre sea menor a este
+
+```
+
+## 5.3 Numero de factores
+
+A diferencia del Analisis de Conglomerados jerarquico o el Analisis de Componentes principales; el numero de Conglomerados o Componentes Principales, puede quedar a criterio del investigador (el Analisis de Conglomerados Jerarquico nos indica cuando Conglomerados se forman o conforman a partir de nuestro datos observables, la selección del numero de Conglomerados a trabajar queda a criterio del investigador.
+Lo mismo con el Analisis de Componentes Principales, el investigador a partir de los datos observados puede determinar con cuantos componentes se queda (aunque claramente existen determinados numeros de componentes mejores que otros).
+
+El Analisis Factorial o en este caso el Analisis Factorial Exploratorio que estamos realizando, al visualizar la extructura interna de relación de las variables, trabaja con un numero determinados de factores. 
+A continuación veremos como obtener el numero concetro de factores que se conforman.
+
+```{r, eval=FALSE}
+
+# Una forma de visualizar el numero de factores que se conforman
+# a partir de las variables seleccionadas
+
 data %>% select(conf_gob:conf_pres) %>% scree.plot()
+
+# El analisis paralelo es otra forma de realizarlo, entega
+# información similar al comando anterior.
+# Lo interesante de este, es que es una simulación; el cual
+# compara el numero de factores que se forman con el numero
+# de componentes principales que se formarian.
 
 fa.parallel(corMat, n.obs=3417)
 
 ```
 
+## 5.4 Extración de valores de los factores 
+
+Los métodos de extracción son los procedimientos estadísticos que se utilizan para identificar y estimar los factores latentes que podrían explicar las correlaciones entre las variables observadas. O sea que apartir de estos determinamos como se estiman los factores.
+
+En este caso veremos 3 distintos y cada uno tienen sus determinadas caracteristica.
+
+### 5.4.1 Ejes principales (Principal Axis Factoring)
+
+Este estima qué parte de la variabilidad de cada variable comparte con las demás y utiliza esa información para extraer factores.
+Podemos utilizarlo cuando queremos identificar dimensiones latentes y no necesitamos asumir que los datos siguen una distribución normal o multivariante.
+
+**Su principal ventaja** es que: es un método clásico y útil para el análisis exploratorio.
+
+**Su principal limitación** es que: puede requerir iteraciones y no siempre produce una solución adecuada.
+
 ```{r, eval=FALSE}
 
+# Analisis Factoria Exploratorio 
+# Extracción: método de componentes principales
+
 fac_pa <- data %>% select(conf_gob:conf_pres) %>% fa(nfactors = 3, fm= "pa")
-#summary(fac_pa)
-fac_pa
+
+# nfactors = 3; corresponden al numero de factores que queremos estimar
+# fm= "pa"; corresponde al metodo de extracción; en este caso ejes principales
+
+# summary(fac_pa)
+
+fac_pa # Corriendo este codigo podemos observar sus datos
 
 ```
+
+### 5.4.2 Máxima verosimilitud (Maximum Likelihood)
+
+
 
 ```{r, eval=FALSE}
 
