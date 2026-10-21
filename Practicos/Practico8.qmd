@@ -142,6 +142,10 @@ data <- elsoc_long_2016_2022.2 %>% filter(ola==4) %>%  # seleccionamos solo los 
 # c05_07: Grado de confianza: El Congreso Nacional
 # c05_08: Grado de confianza: El Presidente/a de la Republica
 
+# c01 o Satisfaccion con la democracia en Chile la utilizaremos como
+# variable dependiente por lo que durante gran parte del analisis
+# no aparecera, sino salvo hasta el final.
+
 # Si nos fijamos en el desarrollo del paso anterior, veremos que al momento
 # de seleccionar las variables (c01 o cualquier de las c05 en cualquiera de sus
 # numeraciones) ocupamos el simbolo igual (=) y a la izquierda del mismo,
@@ -393,9 +397,9 @@ data %>% select(conf_gob:conf_pres) %>% tab_corr(triangle = "lower")
 
 ```
 
-# Paso 4: Analisis Factorial Exploratorio
+# Paso 4: Consistencia interna de las variables
 
-## 4.1 Consistencia interna de las variables
+## 4.1 calculo de raw_alpha
 
 ```{r, eval=FALSE}
 
@@ -548,7 +552,7 @@ fa.parallel(corMat, n.obs=3417)
 
 Los métodos de extracción son los procedimientos estadísticos que se utilizan para identificar y estimar los factores latentes que podrían explicar las correlaciones entre las variables observadas. O sea que apartir de estos determinamos como se estiman los factores.
 
-En este caso veremos 3 distintos y cada uno tienen sus determinadas caracteristica.
+En este caso veremos 2 distintos y cada uno tienen sus determinadas caracteristica.
 
 ### 5.4.1 Ejes principales (Principal Axis Factoring)
 
@@ -562,7 +566,7 @@ Podemos utilizarlo cuando queremos identificar dimensiones latentes y no necesit
 ```{r, eval=FALSE}
 
 # Analisis Factoria Exploratorio 
-# Extracción: método de componentes principales
+# Extracción: Método de Componentes Principales
 
 fac_pa <- data %>% select(conf_gob:conf_pres) %>% fa(nfactors = 3, fm= "pa")
 
@@ -577,86 +581,293 @@ fac_pa # Corriendo este codigo podemos observar sus datos
 
 ### 5.4.2 Máxima verosimilitud (Maximum Likelihood)
 
+Este método estima los parámetros factoriales buscando aquellos que hacen que los datos observados sean más compatibles con el modelo. 
+Podemos utilizarlo para estima las cargas factoriales y las varianzas específicas mediante un procedimiento de máxima verosimilitud.
 
+**Su principal ventaja** es que: permite realizar pruebas estadísticas de ajuste y calcular intervalos de confianza bajo los supuestos del modelo.
+
+**Su principal limitación** es que: puede tener problemas de convergencia o producir resultados poco adecuados si los supuestos no se cumplen.
 
 ```{r, eval=FALSE}
+
+# Analisis Factoria Exploratorio 
+# Extracción: Método de Máxima Verosimilitud
 
 fac_ml <- data %>% select(conf_gob:conf_pres) %>% fa(nfactors = 3, fm= "ml")
-fac_ml
+
+# nfactors = 3; al igual que en el codigo anterior; 
+# corresponde al numero de factores que queremos estimar
+# fm= "ml"; corresponde al metodo de Maxima verosimilitud
+
+fac_ml # Corriendo este codigo podemos observar sus datos
 
 ```
 
+## 5.5 Rotaciones
+
+Cuando extraemos dos o más factores, las cargas factoriales iniciales pueden quedar distribuidas de una manera difícil de interpretar. La rotación que veremos en estos casos reorganizan matemáticamente los ejes factoriales para intentar conseguir una estructura más clara.
+Existen principalmente 2 tipos de rotaciones con sus determinados tipos, para este caso veremos una de cada 1.
+
+### 5.5.1 Rotación Ortogonal - Tipo Varimax
+
+Es una de las rotaciones más conocidas. Busca simplificar las cargas factoriales haciendo que, dentro de cada factor, algunas cargas sean relativamente altas y otras bajas.
+
+**Su principal ventaja** es que: facilita la interpretación de los factores.
+
+** Su principal limitación** es que: supone que los factores no están correlacionados.
+
 ```{r, eval=FALSE}
+
+# Analisis Factoria Exploratorio 
+# Extracción: Método de Máxima Verosimilitud
+# Rotación: Varimax
 
 fac_ml_var <- data %>% select(conf_gob:conf_pres) %>% fa(nfactors = 3, fm= "ml", rotate="varimax") # ortogonal
-fac_ml_var
+
+# nfactors = 3; al igual que en en los codigo anteriores; 
+# corresponde al numero de factores que queremos estimar
+# fm= "ml"; corresponde al metodo de extracción; Maxima verosimilitud
+# rotate= es donde indicamos el tipo de rotación; en este caso "varimax"
+
+fac_ml_var # Corriendo este codigo podemos observar sus datos
 
 ```
 
+### 5.5.2 Rotación Oblicua - Tipo Promax
+
+Promax es una rotación oblicua la cual parte de una solución ortogonal y la transforma para permitir que los factores estén correlacionados.
+Nos puede resultar útil cuando quieremos una estructura sencilla y permite correlaciones entre factores.
+
+**Su principal ventaja** es que: suele ser computacionalmente eficiente.
+
 ```{r, eval=FALSE}
+
+# Analisis Factoria Exploratorio 
+# Extracción: Método de Máxima Verosimilitud
+# Rotación: Promax
 
 fac_ml_pro <- data %>% select(conf_gob:conf_pres) %>% fa(nfactors = 3, fm= "ml", rotate="promax")
-fac_ml_pro
+
+# nfactors = 3; al igual que en en los codigo anteriores; 
+# corresponde al numero de factores que queremos estimar
+# fm= "ml"; corresponde al metodo de extracción; Maxima verosimilitud
+# rotate= es donde indicamos el tipo de rotación; en este caso "promax"
+
+fac_ml_pro  # Corriendo este codigo podemos observar sus datos
 
 ```
+## 5.6 Analisis Factorial Exploratorio (Casi automatico)
 
 ```{r, eval=FALSE}
+
+# Podemos obtener o realizar un analisis Factorial de forma casi
+# automatica que el siguiente codigo
 
 data %>% select(conf_gob:conf_pres) %>% sjPlot::tab_fa(method = "ml", rotation = "promax", show.comm = TRUE, title = "Análisis factorial de confianza en instituciones")
 
 ```
+¿Porque seria casi automatico? porque igualmente debemos de seguir calculando la correlación entre variables, la concistencia interna de las variables y idealmente realizar los Test de adecuación de matriz para AFE y el test de esfericidad de Barlett.
+
+## 5.7 ¿Como interpretar los factores?
+
+Con el Analisis Factorial Exploratorio realizado; queda pendiente el como saber a que determinado factor pertenece cada variable. En el paso 5.6 se puede observar facilmente a partir de la tabla elaborada; cada variable se encuentra ubicada en su respectiva columna y su valor se destaca enegrecida en la fila del factor al que corresponde. Por lo que los valores que sobresalen de cada fila, corresponden a las variables.
+
+Paro los casos de los pasos 5.4 a 5.5 (y sus subcategorias o aparatados), se puede determinar a que factor pertenece o se agrupan las variables en la parte superior al momento de correr el objeto para observar sus datos (fac_ml_pro por ejemplo del paso 5.5.2).
+
+En la parte superor veriamos las respectivas variables; ML corresponde a los factores, los cuales al ser 3 serian: ML1, ML2 y ML3. La variable pertenece al factor en donde su valor sea mayor. 
+
+
+# Paso 6: Puntajes factoriales
+
+Luego de realizar el Análisis factorial exploratorio existen varias alternativas sobre los pasos a seguir. Por ejemplo, es posible estimar un promedio simple entre cada una de las variables de los factores. Otra opción es estimar puntajes factoriales que es lo que en este paso se procedera a realizar.
+
+Pero ¿que son los puntajes factoriales? Los puntajes factoriales (factor scores) son valores numéricos que representan la posición de cada individuo en los factores identificados mediante un análisis factorial exploratorio (AFE). O sea permiten estimar cuánto se manifiesta una determinada dimensión latente en cada persona, según sus respuestas a las variables observadas.
+
+## 6.1 Calculo de puntajes factoriales
 
 ```{r, eval=FALSE}
 
+# Analisis Factoria Exploratorio 
+# Extracción: Método de Máxima Verosimilitud
+# Rotación: Promax
+
 fac_ml <- data %>% select(conf_gob:conf_pres) %>% fa(nfactors = 3, fm= "ml", rotate = "promax", scores = "regression")
-fac_ml
+
+fac_ml # Corriendo este codigo podemos observar sus datos
+
+# Repasamos este tipo de objeto correspondiente al del
+# paso 5.5.2 ya que con este vamos a trabajar en los
+# siguientes pasos del practico.
+
+# A simple vista, el codigo es similar al del anteriormente mencionado
+# paso 5.5.2; la diferencia es que agregamos un nuevo comando "scores".
+# Con scores = "regression"; le indicamos a R o Rstudio que queremos 
+# los puntajes factoriales de cada observación mediante el método de regresión. 
 
 ```
 
+## 6.2 Agregamos los puntajes factoriales a la sub-base de datos como una nueva variable
+
+
 ```{r, eval=FALSE}
+
+# recordemos con cbind podemos agregar la variable que estemos
+# en este caso calculando a nuestra sub-base de datos
 
 data <- cbind(data, fac_ml$scores)
 
 ```
 
+# 6.3 Observación de los puntajes factoriales
+
 ```{r, eval=FALSE}
+
+# Con el siguiente codigo podemos observar los 10 primeros
+# casos de la sub-base.
+# En este caso seran de las variables conf_inst y los factores
+# (ML1, ML2 y ML3).
 
 data %>% select(conf_inst, ML1, ML2, ML3) %>% head(10)
 
+# En caso de querer cambiar el numero de casos a observar, o 
+# verlos en su totalidad, se pueden observar desde la base
+# de datos o corriendo el siguiente codigo:
+
+data %>%
+  select(conf_inst, ML1, ML2, ML3) %>%
+  print(n = Inf)
+
 ```
+
+## 6.4 Parametros de cada Factor
 
 ```{r, eval=FALSE}
 
+# Procederemos a observar las medidas de detendencia
+# central de cada variable.
+
+# Medidas de tendencia Central Factor 1
+
 summary(data$ML1)
 
+# Medidas de tendencia Central Factor 2
+
 summary(data$ML2)
+
+# Medidas de tendencia Central Factor 3
 
 summary(data$ML3)
 
 ```
 
+## 6.5 Renombramos los factores
+
 ```{r, eval=FALSE}
+
+# Simplemente para facilitar la interpretación
 
 data<- data %>% rename(inst_ejecutivo=ML1,
                        inst_partidos=ML2,
                        inst_trabajo=ML3)
 
+# Al igual que lo vimos en el apartado de 2.2. donde
+# tambien renombramos las variables, la logica es la misma 
+# porque estamos empleando casi la misma estructura.
+# La unica diferencia es que ahora estamos ocupando la
+# función rename.
+
+# Para quienes se pregunte porque no se ocupo la función
+# rename en el punto 2.2. la respuesta es que en este caso
+# estamos renombrando las variables de la misma sub-base de
+# datos; en el punto 2.2 renombramos las variables en el
+# momento en que creamos la sub-base a partir de la base de
+# datos de ELSOC origional.
+
 ```
+
+# Paso 7: Regresiones lineales multiples con los puntajes factoriales
+
+Por ultimo realizaremos regresiones lineales simples y una multiple con cada uno de los puntajes factoriales.
+
+## 7.1 Elaboración de regresiones
 
 ```{r, eval=FALSE}
 
+# Para eso, finalmente eliminaremos los valores perdidos
+# (NA) de la base de datos con na.omit
+
 data<-na.omit(data)
 
+# Y crearemos un objeto en el enviroment que corresponde
+# a cada regresión que elaboremos. 
+
+# La primera correspondera
+# la variable conf_inst que elaboramos y sera la variable 
+# independiente y la variable dependiente satis_dem
+
 reg1 <- lm(satis_dem~conf_inst, data=data)
+
+# Para el resto de regresiones la variable dependiente
+# seguira siendo la misma.
+
+# En las otras 3 regresiones lineales simples la variable
+# independiente correspondera a cada puntaje factorial
+
 reg2 <- lm(satis_dem~inst_ejecutivo, data=data)
+
 reg3 <- lm(satis_dem~inst_partidos, data=data)
+
 reg4 <- lm(satis_dem~inst_trabajo, data=data)
+
+# La siguiente regresión lineal es multiple, ya que contempla
+# cada puntaje factorial. Variable dependiente se mantiene.
+
 reg5 <- lm(satis_dem~inst_ejecutivo+inst_partidos+inst_trabajo, data=data)
 
+# una pequeña observación, al final de cada codigo esta el el
+# data=data; este indica de donde se debera obtener los datos para
+# elaborar cada regresión; por lo que un data es el de "datos" y el otros
+# data correspondie al nombre de la sub-base de datos; en caso que 
+# nuestra base de datos o la sub-base que elaboren tenga otro nombre 
+# dicho codigo de estructura final debe cambiar de la siguiente manera:
+
+# data= NOMBRE QUE TENGA LA BASE O SUB-BASE DE DATOS.
+
 ```
+## 7.2 Visualización de las regresiones
 
 ```{r, eval=FALSE}
 
 texreg::knitreg(list(reg1, reg2, reg3, reg4, reg5))
 
+# Con este codigo se visualizara cada regresión lineal simple y
+# multiple en la consola de R.
+
 ```
+
+# Paso 8: Ejercico de interpretación de resultados
+
+A partir de los datos obtenidos de Analisis de Componentes principales, responda las siguientes tres preguntas:
+
+RECUERDEN LA INTERPRETACIÓN AL FINAL DEL SCRIPT:
+
+
+
+
+
+
+## Paso 8.1 Formato de Entrega
+
+**Subir al buzón de tareas un script de R (.R), este y el mensaje que escriban deben contener:**
+
+- Nombres de los integrantes del grupo (o indicar si es individual).
+
+- Código completo (como el realizado en el practico). 
+
+- Interpretación (como comentarios al final del script o en un bloque de texto) tomando como guias las preguntas del Paso 13.1.
+
+##  8.2 Criterios de Evaluación (0,2 puntos)
+
+**Código correcto**  (0,1 puntos)
+
+**Interpretación adecuada de los resultados** (0,1 puntos)
