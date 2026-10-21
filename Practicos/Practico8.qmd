@@ -851,9 +851,13 @@ A partir de los datos obtenidos de Analisis de Componentes principales, responda
 
 RECUERDEN LA INTERPRETACIÓN AL FINAL DEL SCRIPT:
 
+**1.**: A partir de los comentarios del script, las correlaciones, el raw_alpha y los test de adecuación de matriz (KMO) o de esfericidad de Barlett ¿Por qué resultan estos relevantes como paso previo para el Analisis Factorial Exploratorio?
 
+**2.**: A partir de los comentarios del script y los factores reflexione; ¿de que forma estos se diferencian de los Conglomerados del Analisis de Conglomerados o de los Componentes Principales del Analisis de Componentes principales? 
 
+**3.**: A partir de la distribución de las variables en cada uno de los 3 factores; ¿que fenomeno de la "Confianza en las instituciones" se estaria reflejando?
 
+Por ejemplo las variables... se asocian con el factor 1 (ML1 o inst_ejecutivo) por lo que nos indica que estas variables...
 
 
 ## Paso 8.1 Formato de Entrega
@@ -864,7 +868,7 @@ RECUERDEN LA INTERPRETACIÓN AL FINAL DEL SCRIPT:
 
 - Código completo (como el realizado en el practico). 
 
-- Interpretación (como comentarios al final del script o en un bloque de texto) tomando como guias las preguntas del Paso 13.1.
+- Interpretación (como comentarios al final del script o en un bloque de texto) tomando como guias las preguntas del Paso 8
 
 ##  8.2 Criterios de Evaluación (0,2 puntos)
 
