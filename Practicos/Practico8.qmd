@@ -875,3 +875,7 @@ Por ejemplo las variables... se asocian con el factor 1 (ML1 o inst_ejecutivo) p
 **Código correcto**  (0,1 puntos)
 
 **Interpretación adecuada de los resultados** (0,1 puntos)
+
+# 9: Agradecimientos generales:
+
+Script elaborado y confeccionado a partir de trabajos previos correspondientes a Kevin Carrasco (2024) meritos y agradecimientos correspondientes al mismo.
