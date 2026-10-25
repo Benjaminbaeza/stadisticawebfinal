@@ -388,7 +388,7 @@ KMO(corMat) # todas la variables tienen valores susperiores a 0.5
 
 ```
 
-## 5.3 Nivel de correlaciones de la matriz: test de esfericidad de Barlett
+## 5.3 Nivel de correlaciones de la matriz: test de esfericidad de Bartlett
 
 ```{r, eval=FALSE}
 
@@ -590,17 +590,17 @@ summary(proc_data_2022$Satisfación_residen_pond)
 
 # Paso 8: Ejercico de interpretación de resultados
 
-A partir de los datos obtenidos de Analisis del Analisis Factorial Exploratorio y el Indice de "Satisfacción Residencial", responda las siguientes tres preguntas:
+A partir de los datos obtenidos de Analisis del Analisis Factorial Exploratorio y el Indice de "Satisfacción Residencial", responda las siguientes cuatro preguntas:
 
 RECUERDEN LA INTERPRETACIÓN AL FINAL DEL SCRIPT:
 
-**1.**: A partir de los comentarios del script, las correlaciones, el raw_alpha y los test de adecuación de matriz (KMO) o de esfericidad de Barlett ¿Por qué resultan estos relevantes como paso previo para el Analisis Factorial Exploratorio?
+**.**: A partir de los comentarios de este script y del anterior ¿Porque los resultados del Analisis Factorial Exploratorio (AFE) resultan utiles para ser aplicables en las regresiones y para la elaboración de indices?
 
-**2.**: A partir de los comentarios del script y los factores reflexione; ¿de que forma estos se diferencian de los Conglomerados del Analisis de Conglomerados o de los Componentes Principales del Analisis de Componentes principales? 
+**2.**: A partir de los comentarios de este script y del anterior reflexione; ¿Porque resulta necesario como paso previo al AFE, la obtención del raw_alpha y la realización de los Test de adecuación de matriz para AFE y el Test de esfericidad de Bartlett? 
 
-**3.**: A partir de la distribución de las variables en cada uno de los 3 factores; ¿que fenomeno de la "Confianza en las instituciones" se estaria reflejando?
+**3.**: A partir de los comentarios de este script y del anterior reflexione; ¿Porque se aplico el metodo de extracción de máxima verosimilitud y la rotación promax en este script?
 
-Por ejemplo las variables... se asocian con el factor 1 (ML1 o inst_ejecutivo) por lo que nos indica que estas variables...
+**4.**:  partir de este script reflexione ¿Que es lo que nos permiten saber las variables que componen cada factor? Y  ¿A que se deberia dicha distribución de las variables en cada factor segun usted?
 
 
 ## Paso 8.1 Formato de Entrega
