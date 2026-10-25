@@ -110,7 +110,7 @@ dim(elsoc_long_2016_2022.2) # Podemos observar la distribución de las
 
 ```
 
-## 2.2. Selección de variables del ELSOC para el Analsis de Componentes Principales
+## 2.2. Selección de variables del ELSOC para el Analsis Factorial (AF) o Analisis Factorial Exploratorio (AFE). 
 
 ```{r, eval=FALSE}
 
