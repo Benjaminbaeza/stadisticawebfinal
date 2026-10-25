@@ -1,9 +1,50 @@
+# Objetivo del Análisis
+
+El Analisis Factoria o (AF) por sus siglas es una técnica estadística que permite identificar en un conjunto reducido de factores su comportamiento latentes con el cual se explica las relaciones entre varias variables observadas.
+Como bien se planteo en el practico anterior (practico 8) este tipo de analisis nos permite principalmente medir fenomenos sociales o estadisticos los cuales son indirectos y no empirica o directamente observables; en este practico ocuparemos dicha capacidad o posibilidad para elaborar un indice propio.
+
+Por lo que el objetivo de este analisis, consisten en realizar un análisis factorial exploratorio  en el cual a partir de sus resultados (los factores compuestos a partir de las variables seleccionadas) podemos elaborar un indice propia; en este caso correspondiente al concepto de "Satisfacción Residencial". 
+
+# Ejercicio a desarrollar
+
+Siguiendo los siguientes pasos en la base de datos del ELSOC, el ejercico a desarrollar consiste en elaborar un Analisis Factorial Exploratorio (AFE) con el fin de reducir la dimensionalidad de una batería de variables para en este caso medir el concepto en particular de "Satisfacción Residencial". A partir de los factores obtenidos (y la distribución de las variables en estos), se esperan obtener una aproximación de las dimensiones que compondria dicho fenomeno que buscamos medir; posteriormente procederiamos a realizar un "Indice de Satistafacción Residencial" a partir de dichas dimensiones.   
+
+# Paso 1: Preparación del entorno
+
+## 1.1. Fijación de directorio
+
 
 ```{r, eval=FALSE}
+
+# Debemos usar el comando "setwd" como esta puesto debajo
+# Para saber con que llenar los espacios del propio codigo, puedes ver la dirección de la 
+# carpeta en la que quieres trabajar, clickando sobre el icono de esta.
+
+#los primeros 2 nombres, puedes dejarlos como lo deje.
+# lo que debes cambiar esta indicado 
+# con los numeros 1, 2 y 3
+
+# setwd("C:/Users/ 1- El nombre de usuario / 2- Nombre de la carpeta / 
+# 3- Nombre de la subcarpeta en caso de ser necesario")
+
+# Puedes el comando "getwd", para comprobar si estas trabajando en la carpeta en la que 
+# indicaste
+
+# getwd()
+
+# Esta te deberia indicar en la consola algo similar a esto:
+
+"C:/Users/ El nombre de usuario / Nombre de la carpeta 
+# / Nombre de la subcarpeta en caso de ser necesario"
+
+" Si coincide es que lo hiciste bien
 
 ```
 
+## 1.2. Instalación y carga de paquetes
+
 ```{r, eval=FALSE}
+
 install.packages("pacman")
 library(pacman)
 
@@ -17,12 +58,63 @@ pacman::p_load(tidyverse, #Conjunto de paquetes, sobre todo dplyr y ggplot2
                psy, # scree plot function
                nFactors, # parallel
                GPArotation, # Rotación
-               sjlabelled,
-               corrplot)
+               sjlabelled, # Etiquetas
+               corrplot) # Correlaciones
 
 ```
 
+## 1.3. Configurar entorno
+
 ```{r, eval=FALSE}
+
+options(scipen = 999) # Desactiva la notación cientifica de Rtudios
+                      # (por ejemplo esta suele estar activa en
+                      # Posit Cloud)
+
+rm(list = ls())          # Limpiamos el entorno de trabajo
+
+set.seed(123)            # Fijamos semilla para reproducibilidad
+
+```
+# Paso 2: Carga y selección de variables
+
+## 2.1. Cargamos la base de datos del ELSOC
+
+```{r, eval=FALSE}
+
+load(url("https://dataverse.harvard.edu/api/access/datafile/7245118"))
+# Descargamos desde internet la base de datos del ELSOC
+
+# Para quienes tengan problemas de internet en su PC del laboratorio
+# Pueden descargar la base de datos directamente con el siguiente Link
+
+https://dataverse.harvard.edu/api/access/datafile/7245118
+
+# Dejan la base de datos, en la carpeta de su proyecto y la cargan en 
+# Rstudios de la siguiente forma:
+
+load(ELSOC_Long_2016_2022_v1.00)
+
+dim(elsoc_long_2016_2022.2) # Podemos observar la distribución de las
+                            # variables de la base de datos general
+                            # donde podemos saber su numero de
+                            # variables y observaciones
+
+```
+
+## 2.2. Selección de variables del ELSOC para el Analsis Factorial (AF) o Analisis Factorial Exploratorio (AFE)
+
+```{r, eval=FALSE}
+
+# Para este caso trabajaremos con 15 variables; como pueden observar
+# a partir de la estructura del codigo, a la vez que las estamos
+# seleccionando aprovechamos de renombrarlas para facilitar
+# el trabajo y identificación de las mismas en caso de considerarlo
+# necesario
+
+# Creamos nuestra sub-base de datos a partir de la base de datos
+# del ELSOC
+
 proc_data_2022 <- elsoc_long_2016_2022.2 %>% filter(ola=="6") %>% 
   select(Barrio_ideal=t02_01,
          Integra_barrio=t02_02,
@@ -39,56 +131,195 @@ proc_data_2022 <- elsoc_long_2016_2022.2 %>% filter(ola=="6") %>%
          Satis_cerca_amig_fami=t06_08,
          Satis_tamano_viv=t07_01,
          Satis_calidad_viv=t07_02)
+
+# ***NOTA*** los casos seleccionados corresponden a la ola 6;
+# correspondiente al año 2021
+
 ```
 
+Por separada cada una de las variables que seleccionamos y lo que buscarian medir seria lo siguiente:
+
+t02_01: Grado de acuerdo: Este es el barrio ideal para mi
+t02_02: Grado de acuerdo: Me siento integrado/a en este barrio
+t02_03: Grado de acuerdo: Me identifico con la gente de este barrio
+t02_04: Grado de acuerdo: Este barrio es parte de mi
+t05: Tiene planeado cambiarse de casa/departamento en el proximo annio
+t06_01: Grado de satisfaccion: Seguridad del barrio
+t06_02: Grado de satisfaccion: Conectividad
+t06_03: Grado de satisfaccion:  Areas verdes y de recreacion disponibles
+t06_04: Grado de satisfaccion: Limpieza y belleza del barrio
+t06_05: Grado de satisfaccion: Proximidad al lugar de actividad principal
+t06_06: Grado de satisfaccion:  Proximidad a colegios de buena calidad
+t06_07: Grado de satisfaccion:  Proximidad a areas de comercio
+t06_08: Grado de satisfaccion:  Proximidad con familiares y/o amigos cercanos
+t07_01: Grado de satisfaccion: Tamannio de la vivienda
+t07_02: Grado de satisfaccion: Calidad de la vivienda
+
+
+# Paso 3: Tratamiento de variables
+
+## 3.1 Transformación de valores perdidos a NA
+
 ```{r, eval=FALSE}
+
+# Algunas categorias presentan valores correspondientes a las
+# categorias de respuestas NS/NR (-999 y -888); por la que
+# las identificamos como valores perdidos
+
+# A diferencia del practico 8 que marcamos como NA, los valores
+# perdidos variable por variable, esta vez lo aplicamos a la
+# sub-base de datos general.
+
 proc_data_2022 <- proc_data_2022 %>%
   sjlabelled::set_na(
     na = c(-999, -888))
 
+# Aplicamos na.omit para eliminar los casos con algun NA de la
+# sub-base de datos
+
 proc_data_2022 <- na.omit(proc_data_2022)
+
+# al aplicarlo perdimos aproximadamente 300 observaciones
+# lo que corresponderia a casi un 10% de los casos; estando
+# dentro del margen de lo aceptable en la eliminación de
+# casos
+
 ```
 
+## 3.2 Recodificación alternativas de respuesta de las variables
+
 ```{r, eval=FALSE}
-proc_data_2022$Barrio_ideal <- car::recode(proc_data_2022$Barrio_ideal, "1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
 
-proc_data_2022$Integra_barrio <- car::recode(proc_data_2022$Integra_barrio, "1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+# Como uno de los objetivos de este practico consiste en la elaboración
+# de un indice; se optamos por recodificar las alternativas de
+# respuesta de las variables que hemos seleccionado.
 
-proc_data_2022$Identi_gente <- car::recode(proc_data_2022$Identi_gente, "1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+# Para este caso; lo que haremos sera que las alternativas de respuesta
+# de 1 a 5; sean recodificadas para ser de 0 a 4.
+# Mantenemos los 5 valores de las alternativas de respuesta, pero lo
+# que hacemos cambiandolas de esta forma (ademas de ser una decisión
+# metodologica en lo referente a la confección del indice) es facilitar
+# la interpretación del mismo; teniendo como valor minimo el 0
+# y como maximo 4-
 
-proc_data_2022$Parte_barrio <- car::recode(proc_data_2022$Parte_barrio, "1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+proc_data_2022$Barrio_ideal <- car::recode(proc_data_2022$Barrio_ideal, 
+"1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
 
-proc_data_2022$Satis_seguridad <- car::recode(proc_data_2022$Satis_seguridad, "1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+proc_data_2022$Integra_barrio <- car::recode(proc_data_2022$Integra_barrio, 
+"1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
 
-proc_data_2022$Satis_conectividad <- car::recode(proc_data_2022$Satis_conectividad, "1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+proc_data_2022$Identi_gente <- car::recode(proc_data_2022$Identi_gente, 
+"1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
 
-proc_data_2022$Satis_area_ocio <- car::recode(proc_data_2022$Satis_area_ocio, "1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+proc_data_2022$Parte_barrio <- car::recode(proc_data_2022$Parte_barrio, 
+"1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
 
-proc_data_2022$Satis_barrio_limp <- car::recode(proc_data_2022$Satis_barrio_limp, "1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+proc_data_2022$Satis_seguridad <- car::recode(proc_data_2022$Satis_seguridad, 
+"1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
 
-proc_data_2022$Satis_cerca_trab <- car::recode(proc_data_2022$Satis_cerca_trab, "1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+proc_data_2022$Satis_conectividad <- car::recode(proc_data_2022$Satis_conectividad, 
+"1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
 
-proc_data_2022$Satis_cerca_coleg <- car::recode(proc_data_2022$Satis_cerca_coleg, "1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+proc_data_2022$Satis_area_ocio <- car::recode(proc_data_2022$Satis_area_ocio, 
+"1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
 
-proc_data_2022$Satis_cerca_comerc <- car::recode(proc_data_2022$Satis_cerca_comerc, "1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+proc_data_2022$Satis_barrio_limp <- car::recode(proc_data_2022$Satis_barrio_limp, 
+"1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
 
-proc_data_2022$Satis_cerca_amig_fami <- car::recode(proc_data_2022$Satis_cerca_amig_fami, "1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+proc_data_2022$Satis_cerca_trab <- car::recode(proc_data_2022$Satis_cerca_trab, 
+"1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
 
-proc_data_2022$Satis_tamano_viv <- car::recode(proc_data_2022$Satis_tamano_viv, "1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+proc_data_2022$Satis_cerca_coleg <- car::recode(proc_data_2022$Satis_cerca_coleg, 
+"1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
 
-proc_data_2022$Satis_calidad_viv <- car::recode(proc_data_2022$Satis_calidad_viv, "1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+proc_data_2022$Satis_cerca_comerc <- car::recode(proc_data_2022$Satis_cerca_comerc, 
+"1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+
+proc_data_2022$Satis_cerca_amig_fami <- car::recode(proc_data_2022$Satis_cerca_amig_fami, 
+"1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+
+proc_data_2022$Satis_tamano_viv <- car::recode(proc_data_2022$Satis_tamano_viv, 
+"1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+
+proc_data_2022$Satis_calidad_viv <- car::recode(proc_data_2022$Satis_calidad_viv, 
+"1=0; 2=1; 3=2; 4=3; 5=4; else=NA")
+
+# La estructura de este codigo se comprende de la siguiente forma:
+# con car::recode seleccionamos la sub-base de datos y junto con el
+# simbolo de ($) seleccionamos la variable.
+# Dentro del ("") indicamos como valor de la derecha el valor
+# original de la base de datos, aplicamos el (=) y a la izquierda
+# el nuevo valor que queremos que tome (por ejemplo con "1=0",
+# indicamos que queremos que 1 pase a ser 0 y asi sucesivamente con
+# le resto de casos.
+# como elemento interesante es que al final el ultimo valor seguido
+# de (;) correspondiente a "else=NA", indica que todo el resto de
+# valores que no correspondan a los previamente indicados sean
+# vueltos NA; puede ser otra forma de tratar los casos perdidos
+# pero se recomienda realizarlo de la forma en que fue hecho en el
+# paso 3.1, porque se tiene mayor control de aquellos valores
+# que queremos que efectivamente sean NA.
+
+# el (<-)  de la estructura es para reescribir lo realizado en la
+# misma sub-base de datos
+
+# ***NOTA**: la disposición de estos codigos estan de esta manera
+# para que se puedan visualizar en la pagina producto a su extensión
+# por lo que no es necesaria realizarlo de aquella forma y en caso
+# de error el comando se puede provar a realizar en una sola linea
+
+# Lo anterior es aplicable para los codigo de los siguientes pasos.
+
 ```
 
+# Paso 4: Correlaciones
+
+## 4.1 Elaboración de matriz de correlaciones
+
 ```{r, eval=FALSE}
+
+# Elaboramos la matris de correlaciones;
+# "complete.obs" quiere decir observaciones completas o sea todos
+# los casos
+
 Correlacion_2022 <- cor(proc_data_2022, use = "complete.obs")
 
-Correlacion_2022
+Correlacion_2022 # visualización de la matriz de correlaciones
+                 # en la consola de R
+
+```
+
+## 4.2 Visualización de tabla de correlaciones
+
+```{r, eval=FALSE}
+
+# Para que esta matriz de correlaciones no este solo en la
+# consola de R; podemos visualizarla graficamente.
+
+# Esta es la tabla por defecto de Rstudios
 
 sjPlot::tab_corr(proc_data_2022, triangle = "lower")
+
+# triangle = "lower"; indica que al matriz sea triangular
+# o sea solo una de las mitades facilitandose su interpretación
+
+# Ahora ahoremos que nuestra visualización sea un poco más
+# personalizada
+
+# Promero aplicaremos colores que no sean por defecto;
+# para este caso usaremos rojo cuando sea una correlación
+# postiva; azul cuando sea negativa y blanco cuando no haya
+# correlación; estos aumentaran de intensidad a medida que
+# el valor aumente.
+
+# Creamos los colores como un objeto que se mantendra en el
+# enviroment de Rstudio
 
 colores <- colorRampPalette(
   c("#2166AC", "white", "#B2182B")
 )(200)
+
+# Visualizamos ahora la matriz de correlaciones más personalizada
 
 corrplot(
   Correlacion_2022,
@@ -103,39 +334,188 @@ corrplot(
   diag = FALSE
 )
 
+# En col = colores, indicamos los colores que queremos usar
+# tambien indicamos que queriamos que fuese una matriz
+# triangular baja en type = "lower".
+# Ajustamos las etiquetas y los colores de las mismas
+# entre otras decisiones.
+
 ```
 
+# Paso 5: Consistencia interna de las variables
+
+## 5.1 calculo de raw_alpha
+
 ```{r, eval=FALSE}
+
+# Vemos la consistencia interna de todas nuestras variables
+# al momento de ser consideradas para la realización del Analisis
+# Factorial Exploratorio (AFE) y ver si tiene una alta consistencia
+# interna
+
 psych::alpha(Correlacion_2022)
+
+# El raw_alpha fue de 0.83 lo que indica una alta consistencia
+# con la que trabajar; lo suficiente para que las variables esten
+# relacionadas, pero no resulten redundante entre si.
+
+# Tambien podemos considerar esto como un paso de prerequisito no
+# solo para el AFE, si no que para la propia elaboración del
+# indice
+
 ```
+## 5.2 Test de adecuación de matriz para AFE
 
 ```{r, eval=FALSE}
-corMat  <- proc_data_2022 %>% select(Barrio_ideal:Parte_barrio, Satis_seguridad:Satis_calidad_viv) %>%
-  cor(use = "complete.obs")  # estimar matriz pearson
 
-KMO(corMat)
+# Este test lo realizamos con la intención de contrasta si las 
+# correlaciones entre las variables pueden ser explicadas por
+# otras variables o no.
+
+# Buscamos valores mayores a 0.5
+
+corMat  <- proc_data_2022 
+%>% select(Barrio_ideal:Parte_barrio, Satis_seguridad:Satis_calidad_viv) 
+%>% cor(use = "complete.obs")  # estimar matriz pearson
+
+# No consideramos la variable t05 ya que esta es consevida como la
+# variable dependiente
+
+KMO(corMat) # todas la variables tienen valores susperiores a 0.5
+            # por lo que puede seguirse trabajando con estas
+            # (incluso cambio hogar si la hubieramos incluido)
+            # y no es necesario eliminarla
+
+```
+
+## 5.3 Nivel de correlaciones de la matriz: test de esfericidad de Barlett
+
+```{r, eval=FALSE}
+
+# Otra forma de determinar si las variables tan correlacionadas o no
+# buscamos que el nivel de significación o el valor p sea igual o
+# menor a 0.05 (p < 0.05) ya que se espera que las variables 
+# estén correlacionadas
+
+# Recordar que en (n = ) va el numero de observaciones totales de la
+# base o su-base de datos, siendo en este caso 2483
 
 cortest.bartlett(corMat, n = 2483)
+
+# p tuvo un valor de 0 o muy bajo; por lo que se cumple con el 
+# requisito de que fuese menor a 0.05 por lo que las variables 
+# estarian correlacionadas
+
 ```
 
+## 5.4 Numero de factores
+
 ```{r, eval=FALSE}
-proc_data_2022 %>% select(Barrio_ideal:Parte_barrio, Satis_seguridad:Satis_calidad_viv) %>% scree.plot()
+
+# Realizandolo de esta forma podemos observar que se estarian
+# formado 4 factores
+
+proc_data_2022 %>% select(Barrio_ideal:Parte_barrio, 
+Satis_seguridad:Satis_calidad_viv) %>% scree.plot()
+
+# Tambien podemos ver cuantos factores se forman por medio del
+# siguiente analisis el cual es una analisis factorial de los
+# factores; paralelo el cual nos indica tambien de forma
+# complementaria cuanto componentes principales se estarian
+# formando.
 
 fa.parallel(corMat, n.obs=2483)
+
+# Recordar que en (n.obs= ) va el numero de observaciones totales 
+# de la  base o su-base de datos, siendo en este caso 2483.
+# Esto es similar el test de esfericidad de Barret; solo que
+# por como fuerpn programados ambos comandos podemos apreciar
+# que al momento de indicar los n de la sub-base estos se 
+# se escriben de forma distinta (n = ; n.obs=)
+
 ```
 
-```{r, eval=FALSE}
-fac_ml_pro <- proc_data_2022 %>% select(Barrio_ideal:Parte_barrio, Satis_seguridad:Satis_calidad_viv) %>% fa(nfactors = 4, fm= "ml", rotate="promax")
+# Paso 6: Análisis factorial Exploratorio (Manual)
 
+## 6.1 Extración de valores de los factores 
+
+```{r, eval=FALSE}
+
+# Para la elaboración y extracción de Analisis Factorial
+# Exploratorio (AFE); Este concebira el siguiente metodo de extracción
+# de valores de los factores y el siguiente tipo de rotación: e
+ 
+# Extracción: Método de Máxima Verosimilitud
+# Rotación: Promax
+# Numero de factores: cuatro
+
+# Recordemos que el numero de factores segun el scree.plot()
+# el fa.parallel corresponde a 4
+
+fac_ml_pro <- proc_data_2022 %>% select(Barrio_ideal:Parte_barrio, 
+Satis_seguridad:Satis_calidad_viv) %>% fa(nfactors = 4, fm= "ml", rotate="promax")
 
 fac_ml_pro  # Corriendo este codigo podemos observar sus datos
+
 ```
 
-```{r, eval=FALSE}
-proc_data_2022 %>% select(Barrio_ideal:Parte_barrio, Satis_seguridad:Satis_calidad_viv) %>% sjPlot::tab_fa(method = "ml", rotation = "promax", show.comm = TRUE, title = "Análisis factorial de confianza en instituciones")
-```
+## 6.2 Analisis Factorial Exploratorio (Casi automatico)
 
 ```{r, eval=FALSE}
+
+# Pero recordemos que tambien podemos realizar el AFE de forma casi
+# automatica de la siguiente manera
+
+proc_data_2022 %>% select(Barrio_ideal:Parte_barrio, Satis_seguridad:Satis_calidad_viv) %>% sjPlot::tab_fa(method = "ml", rotation = "promax", show.comm = TRUE, title = "Análisis factorial de Satisfacción residencial")
+
+# Con la tabla podemos visualizar los factores y ver cuales serian
+# las variables que los componen; siendo estas la variables que
+# destacan en negro y tienen el valor más alto en dicho factor
+# comparado con el valor que tiene la misma variable en los
+# otros factores
+
+# Recuerden que este AFE, tiene las siguientes caracteristicas:
+
+# Extracción: Método de Máxima Verosimilitud
+# Rotación: Promax
+# Numero de factores: cuatro
+
+```
+
+# Paso 7: Elaboración del indice
+
+## 7.1 Creación de las dimensiones del indice
+
+```{r, eval=FALSE}
+
+# Sabiendo que el numero de factores son 4; y a su vez sabiendo
+# cuales serian las variables que los compondrian.
+
+# Determinamos que la "Satisfacción Residencial" se haya
+# compuesta de 4 dimensiones cada una representada por
+# cada uno de los factores.
+
+# Dichas dimensiones serian: la Identitaria; la Material;
+# la Ambiental y por ultimo la Ocupacional
+
+# Ocupamos la funcuón "rowwise()" de el paquete dplyr para
+# agrupar los datos fila por fila.
+# con mutate creamos nuevas columnas de variables o modificamos 
+# columnas existentes en un conjunto de datos.
+
+# En este caso las nueva columnas de variables corresponderian
+# a cada uno de las dimensiones de la satisfacción residencial;
+# dimensiones concebidas a partir de los factores los cuales
+# estarian compuestos de las variables asociadas a cada factor. 
+# cada veriables estarian concatenada (c) t consideraria las 
+# medias (mean) de las variables que la componen.
+
+# ungroup() se utiliza para deshacer la estructura de agrupación 
+# creada previamente por la función que hemos realizado o
+# utilizado
+
+# Cada una de estas acciones corresponden al paquete dplyr
+
 proc_data_2022 = proc_data_2022 %>% 
   rowwise() %>% 
   mutate(Identitaria = mean(c(Barrio_ideal, Integra_barrio, Identi_gente, Parte_barrio)),
@@ -144,27 +524,102 @@ proc_data_2022 = proc_data_2022 %>%
          Ocupacional = mean(c(Satis_cerca_amig_fami, Satis_cerca_trab, Satis_cerca_coleg, Satis_area_ocio))) %>% 
   ungroup()
 
+```
+
+## 7.2 Creación del indice y peso de las dimensiones del indice
+
+```{r, eval=FALSE}
+
+# Con las dimensiones creadas confeccionamos el indice a 
+# partir de estas.
+
+# La estructura es similar al paso anterior ya que seguimos ocupando
+# funciones de dplyr como "rowwise"; "mutate" y ungroup.
+
+# La variable correspondiente al indice en su totalidad,
+# esta compuesta a partir de la suma los valores de las dimensiones; 
+# el cual recordemos que son variables construidas a partir de las 
+# medias de las variables que componen cada factor.
+
+# A la suma de estas variables para componer la variable 
+# correspondiente al indice general; se debe mencionar que cada una 
+# de estas fue multiplicada por (*0.25); aquello se interpreta
+# como la asignación del peso de cada una de las variables.
+# Nos aseguramos que cada una pesase lo mismo para evitar la
+# sobre representación de una dimensión por sobre la otra y
+# aquella es la razón de que la variable lleve el sufijo
+# ponderada.
+
 proc_data_2022 = proc_data_2022 %>% 
   rowwise() %>% 
   mutate(Satisfación_residen_pond = (Identitaria*0.25) + (Material*0.25) + (Ambiental*0.25) + (Ocupacional*0.25)) %>% 
   ungroup()
+
 ```
 
+## 7.3 Descriptivos del indice y sus dimensiones
+
 ```{r, eval=FALSE}
+
+# Por ultimos podemos ver los descritivos (medidas de
+# tendencia cetral) de cada una de las dimensiones
+# del indice de satisfacción residencial y del
+# indice en general:
+
+# Descriptivos de la dimensión identitaria
+
 summary(proc_data_2022$Identitaria)
+
+# Descriptivos de la dimensión material
 
 summary(proc_data_2022$Material)
 
+# Descriptivos de la dimensión ambiental
+
 summary(proc_data_2022$Ambiental)
+
+# Descriptivos de la dimensión ocupacional
 
 summary(proc_data_2022$Ocupacional)
 
+# Descriptivos del indice de satifacción residencial
+
 summary(proc_data_2022$Satisfación_residen_pond)
-```
-
-```{r, eval=FALSE}
 
 ```
+
+# Paso 8: Ejercico de interpretación de resultados
+
+A partir de los datos obtenidos de Analisis del Analisis Factorial Exploratorio y el Indice de "Satisfacción Residencial", responda las siguientes tres preguntas:
+
+RECUERDEN LA INTERPRETACIÓN AL FINAL DEL SCRIPT:
+
+**1.**: A partir de los comentarios del script, las correlaciones, el raw_alpha y los test de adecuación de matriz (KMO) o de esfericidad de Barlett ¿Por qué resultan estos relevantes como paso previo para el Analisis Factorial Exploratorio?
+
+**2.**: A partir de los comentarios del script y los factores reflexione; ¿de que forma estos se diferencian de los Conglomerados del Analisis de Conglomerados o de los Componentes Principales del Analisis de Componentes principales? 
+
+**3.**: A partir de la distribución de las variables en cada uno de los 3 factores; ¿que fenomeno de la "Confianza en las instituciones" se estaria reflejando?
+
+Por ejemplo las variables... se asocian con el factor 1 (ML1 o inst_ejecutivo) por lo que nos indica que estas variables...
+
+
+## Paso 8.1 Formato de Entrega
+
+**Subir al buzón de tareas un script de R (.R), este y el mensaje que escriban deben contener:**
+
+- Nombres de los integrantes del grupo (o indicar si es individual).
+
+- Código completo (como el realizado en el practico). 
+
+- Interpretación (como comentarios al final del script o en un bloque de texto) tomando como guias las preguntas del Paso 8
+
+##  8.2 Criterios de Evaluación (0,2 puntos)
+
+**Código correcto**  (0,1 puntos)
+
+**Interpretación adecuada de los resultados** (0,1 puntos)
+
+
 
 
 
