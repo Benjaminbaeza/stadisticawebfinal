@@ -594,7 +594,7 @@ A partir de los datos obtenidos de Analisis del Analisis Factorial Exploratorio 
 
 RECUERDEN LA INTERPRETACIÓN AL FINAL DEL SCRIPT:
 
-**.**: A partir de los comentarios de este script y del anterior ¿Porque los resultados del Analisis Factorial Exploratorio (AFE) resultan utiles para ser aplicables en las regresiones y para la elaboración de indices?
+**1.**: A partir de los comentarios de este script y del anterior ¿Porque los resultados del Analisis Factorial Exploratorio (AFE) resultan utiles para ser aplicables en las regresiones y para la elaboración de indices?
 
 **2.**: A partir de los comentarios de este script y del anterior reflexione; ¿Porque resulta necesario como paso previo al AFE, la obtención del raw_alpha y la realización de los Test de adecuación de matriz para AFE y el Test de esfericidad de Bartlett? 
 
