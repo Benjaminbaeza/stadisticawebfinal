@@ -1,6 +1,12 @@
 # Objetivo del Análisis
 
+En este practico se propone realizar un Analsis Factorial Exploratori (AFE), con el fin de que los estudiante sigan famirializandose con el mismo; se pone un especial enfasis en la obtención de valor denominado como Alfa de Cronbach indicador estadístico que permite evaluar la consistencia interna de un conjunto de preguntas o ítems; a partir de este y los datos obtenidos del propio indice, se planteara tambien la realización de un indicadores compuestos, compuestos a partir de las variables seleccionadas para medir fenemoenos más complejos.
+
 # Ejercicio a desarrollar
+
+A apartir de 8 variables correspondientes al modulo al modulo de "Territorio" de la encuesta ELSOC y correspondientes a los conceptos de Cohesión barrial y Sociabilidad barrial; se esperar realizar en este ppractico un Analsis Factorial Exploratorio (AFE), para obtener el Alfa de Cronbach de las mismas y posteriormente se realizaran indicadores compuestos a partir de las mismas, con el fin de evaluar el fenomeno.
+
+ 
 
 # Paso 1: Preparación del entorno
 
@@ -114,10 +120,28 @@ base_afe <- elsoc_long_2016_2022.2 %>%
   )
 
 ```
+Las variables seleccionadas corresponden a las siguientes:
+
+t02_01: Grado de acuerdo: Este es el barrio ideal para mi
+t02_02	Grado de acuerdo: Me siento integrado/a en este barrio
+t02_03	Grado de acuerdo: Me identifico con la gente de este barrio
+t02_04	Grado de acuerdo: Este barrio es parte de mi
+t03_01	Grado de acuerdo: En este barrio es facil hacer amigos
+t03_02	Grado de acuerdo: La gente en este barrio es sociable
+t03_03	Grado de acuerdo: La gente en este barrio es cordial
+t03_04	Grado de acuerdo: La gente en este barrio es colaboradora
+
+
 
 ## 2.3. Limpieza de variables
 
 ```{r, eval=FALSE}
+
+# A diferencia de los practicos anteriores donde se les ha
+# enseñado a tratar con los datos perdidos de multiples formas;
+# ya sea borrandolos de uno en uno, esta vez optaremos por
+# indicar los valores -999, -888, -777 y -666 como valores
+# perdidos (NA) EN UN SOLO CODIGO.
 
 base_afe <- base_afe %>%
   mutate(across(
@@ -129,11 +153,62 @@ base_afe <- base_afe %>%
     ~ replace(., . %in% c(-999, -888, -777, -666), NA)
   ))
 
+# La logica de este codigo responde a la estructura a la forma
+# tipica de estructura los codigos en RStudio, estructura con
+# la cual se espera que ya se esten familiarizando por el uso
+# sostenido de RStudio a lo largo de este semestre, con los
+# practicos o considerando sus cursos anteriores.
+
+# Como se menciono más arriba esta vez, lo estamos realizando 
+# todo a la vez, para entender la logica, más alla de los terminos
+# o comandos deben saber o interiorizar que una vez que iniciamos 
+# un codigo y realizamos un parentisis (), dentro de estos estamos
+# realizando "sub-operaciones" por denominarlas de una forma por 
+# cada una de estas que estemos realizando o por cada parentesis que
+# abramos, el parentesis debe cerrarse.
+
+# Un error tipico de usuario que suele generar que R o RStudio indique
+# error, es un parentesis mal cerrado.
+
+# En el codigo explicando varias de sus partes, lo que esta haciendo es
+# transformar las variables, con la función mutate.
+# across lo que hace es aplicar la misma operación o función a multiples
+# columnas a la vez, en este caso el across siguiendo la logica de
+# Rstudios, responde a mutate, everything, es a toda variable o dentro
+# de la base o sub-base de datos.
+
+# Pipe es como se denomina a simbolo de %>% y sirve para encadenar varias 
+# funciones de forma secuencial, pasando el resultado de una operación 
+# directamente como argumento a la siguiente.
+
+# Para este caso, estamos transformado todas las variables para volverlas
+# numericas, incluidad las con caracteres en caso que no lo esten y tambien
+# transformamos los datos -999, -888, -777 y -666 en valores NA.
+
+# Con %>% concatenamos lo que hicimos por lo que si leemos dicho comando
+# realizado, lo que primero hacemos es volver los valores perdidos NA y
+# posteriormente volvemos el resto de valores numericos.
+
+# Para quienes se pregunte porque no buscamos los valores perdidos con otros
+# comandos o en cada una de las variables como en practicos anteriores, es
+# porque partimos del supuesto de que las variables de por si tendran
+# valores perdidos.
+
 ```
 
 ### EXTRA: Comprobación de las variables
 
 ```{r, eval=FALSE}
+
+# Aun asi podemos observar como un extra como lo indica este apartado
+# como se distribuirian las variables, este paso se puede realizar antes
+# o despues de trasformar las varibles.
+
+# Con los comando podriamos observar como los subtitulos indican; la
+# descripción de las variables; los propios valores perdidos por
+# variable o la frecuencia de respuesta, todas estas pueden servir
+# tanto para detectar valores NA, como para verficiar que el coamndo
+# anterior se haya realizado correctamente.
 
 # Descripcion de variables
 
@@ -153,28 +228,61 @@ lapply(base_afe, function(x) {
   sort(unique(x[!is.na(x)]))
 })
 
+# Con el comando de arriba examinamos los valores que contiene cada 
+# variable de tu base de datos, excluyendo los valores perdidos (NA). 
+# Es una forma de comprobar qué categorías o respuestas aparecen 
+# efectivamente las variables por ejemplo.
+
 ```
 
 # Paso 3: Preparación AFE 
 
 ```{r, eval=FALSE}
 
-# Conservamos base_afe con los casos originales.
-# Creamos una segunda base exclusivamente para el AFE.
+# Como todabia no hemos eliminado los NA, lo que haremos a continuación
+# pero igualmente queremos asegurarnos de que no hayan muchas diferencia
+# entre estos valores o por ejemplo cerciorarnos de que no se esten
+# perdiendo muchos datos conservamos la sub-base "base_afe" 
+# con los casos originales; pero tambien creamos una segunda sub-base 
+# exclusivamente para el AFE.
+
+# Eliminamos los NA
 
 base_afe_cc <- na.omit(base_afe)
 
-# Tamaño muestral efectivo
+# Veremos el tamaño muestral efectivo que tendriamos como tal despues
+# de eliminar los NA
 
-n_afe <- nrow(base_afe_cc)
+n_afe <- nrow(base_afe_cc) # Datos de observables o validos sin NA
 
-nrow(base_afe)
+nrow(base_afe) # Datos de observables o validos conservado los NA
 
 n_afe
 
-# Casos excluidos por datos perdidos
+# Comparamos los datos eliminados con la sub-base de datos normal 
 
 nrow(base_afe) - n_afe
+
+# Asi oodemos saber el numero exacto de variables que perdimos
+# estos fueron menos de 300 aproximadamente y en proporición
+# corresponderia a menos de un 8% y siempre que eliminemos datos
+# estos en proporción idealmente deben de ser de entre un 10 y 15%
+
+# Para quienes se pregunte el porque de este paso, cuando en los
+# practicos anteriores nunca lo realice, es para que se entienda
+# la logica del procedimiento; perfectamente podria haberse aplicado
+# na.omit de forma directa sobreescrbir las base y trabajarse 
+# directamente con la base resultante.
+
+# Tambien les comento de una pequeña debilidad de na.omit y comandos
+# similares, este elmina de raiz los casos que tengan como minimo
+# un NA, en cualquiera de sus variables, por lo que por ejemplo
+# un caso que haya respondido 7 preguntas y no una 1, seria elimando
+# de hay la importancia por ejemplo del considerar cuantos valores
+# se estarian eliminado.
+
+# Tambien determinar el numero de casos de ambas sub-bases sera relevante
+# para el paso del analisis paralelo
 
 ```
 
@@ -183,6 +291,8 @@ nrow(base_afe) - n_afe
 ## 4.1. Matriz de correlaciones
 
 ```{r, eval=FALSE}
+
+# Elaboramos la matriz de correlaciones
 
 corMat <- base_afe_cc %>%
   select(t02_01:t03_04) %>%
@@ -196,6 +306,8 @@ corMat
 
 ```{r, eval=FALSE}
 
+# Recordemos que siempre se pueden volver esta una tabla
+
 base_afe_cc %>%
   tab_corr(triangle = "lower")
 
@@ -204,6 +316,11 @@ base_afe_cc %>%
 ## 4.3. Grafico de correlaciones
 
 ```{r, eval=FALSE}
+
+# O pueden ser graficadas
+
+# Para este caso, siguiendo el formato del practico anterior
+# utilizaremos colores personalizados
 
 colores <- colorRampPalette(
   c("#2166AC", "white", "#B2182B")
@@ -226,6 +343,14 @@ corrplot(
 
 ### EXTRA: Matriz de correlaciones policoricas
 
+En el practico y en el paso anterior, realizamos un tipo de correlación denominado como correlación de Pearson, pero esta presenta ciertas limitaciones como en este caso que estamos trabajamos con variables ordinales; por eso como extra en este paso realizaremos  correlaciones policoricas la es un tipo de correlación estadística que permite medir la relación entre dos variables ordinales, como las preguntas de una escala Likert.
+
+Para quienes quieran consultar el listo de variables del ELSOC (disponible en Ucampus) podran observar quelas variables seleccionadas tienen categorias de respuestas que van desde Muy en desacuerdo (1) a Muy de acuerdo (5)
+
+Aunque podemos representar estas respuestas con números del 1 al 5, esos números son categorías ordenadas. No necesariamente podemos asumir que la distancia psicológica entre 1 y 2 es idéntica a la distancia entre 4 y 5.
+
+De todas formas, sigue siendo valido trabajar con la correlación de Pearson como en los practicos anteriores, nuevamente esto es solo un extra.
+
 ```{r, eval=FALSE}
 
 # Debido a que las variables son ordinales (1 a 5),
@@ -235,7 +360,7 @@ matriz_cor <- psych::polychoric(
   base_afe_cc
 )$rho
 
-round(matriz_cor, 3)
+round(matriz_cor, 3) # Redondeamos con hasta 3 decimales
 
 ```
 
