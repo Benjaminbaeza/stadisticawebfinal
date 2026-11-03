@@ -196,7 +196,7 @@ base_afe <- base_afe %>%
 
 ```
 
-### EXTRA: Comprobación de las variables
+### EXTRA 1: Comprobación de las variables
 
 ```{r, eval=FALSE}
 
@@ -341,7 +341,7 @@ corrplot(
 
 ```
 
-### EXTRA: Matriz de correlaciones policoricas
+### EXTRA 2: Matriz de correlaciones policoricas
 
 En el practico y en el paso anterior, realizamos un tipo de correlación denominado como correlación de Pearson, pero esta presenta ciertas limitaciones como en este caso que estamos trabajamos con variables ordinales; por eso como extra en este paso realizaremos  correlaciones policoricas la es un tipo de correlación estadística que permite medir la relación entre dos variables ordinales, como las preguntas de una escala Likert.
 
@@ -354,11 +354,14 @@ De todas formas, sigue siendo valido trabajar con la correlación de Pearson com
 ```{r, eval=FALSE}
 
 # Debido a que las variables son ordinales (1 a 5),
-# utilizaremos correlaciones policoricas para el AFE.
+# utilizaremos correlaciones policoricas para el AFE
+# Por este ejercicio
 
 matriz_cor <- psych::polychoric(
   base_afe_cc
 )$rho
+
+# polychoric es el comando para indicar una correlación policorica
 
 round(matriz_cor, 3) # Redondeamos con hasta 3 decimales
 
@@ -369,6 +372,11 @@ round(matriz_cor, 3) # Redondeamos con hasta 3 decimales
 ```{r, eval=FALSE}
 
 KMO(matriz_cor)
+
+# Recordemos que buscamos valores por encima de 0.60, los cuales
+# podrian ser conciderados como aceptables; en este caso todas
+# las variables superan dicho valor por diferencia por lo que
+# no es necesario eliminar ninguna
 
 ```
 
@@ -381,6 +389,11 @@ cortest.bartlett(
   n = n_afe
 )
 
+# Recordemos que con este test, buscamos que el valor de p
+# sea menor al nivel de significancia, en este caso se
+# cumple siendo 0 o con un valor decimal tan pequeño
+# que la consola de R, no lo indica
+
 ```
 
 # Paso 7: Analisís Paralelo
@@ -389,11 +402,38 @@ cortest.bartlett(
 
 fa.parallel(corMat, n.obs=2525)
 
+# En este punto vuelve a ser relevantes los apartado extra 1 y 2
+# en este punto estamos realiando el analisis paralelo con la
+# correlación de pearsons ya que esta da menos problemas en
+# posit.cloud, de todas formas su resultado sigue siendo valido
+
+# Para ocupar este tipo de analisis paralelo, el cual compara
+# cuantos factores se formarian a apartir de nuestra variable
+# comparando dichos valores con una simulación de una analisis
+# de componentes principales (ACP), requerimos indicar nuestro
+# tamaño muestral, en este caso corresponde al de la sub-base
+# en el que aplicamos el na.omit, el cual sabemos que es de
+# 2525; indicamos dicho valor en n.obs
+
+# Nos indica que se forman 2 factores y 1 componente principal
+
 ```
 
 # Paso 8: Analisís Factorial Exploratorio
 
 ```{r, eval=FALSE}
+
+# Realizamos nuestro analisis factorial exploratorio,
+# despues de previamente haber realziado los pasos anteriores
+# de esta forma podemos determinar el numero de factores con el
+# que trabajaremos (2) y sabemos que todas las variables son 
+# validas para su uso y tienen consistencia interna entre si
+
+# realizamos el (AFE) con las siguientes caracteristicas:
+
+# Extracción: Método de Máxima Verosimilitud
+# Rotación: Promax
+# Numero de factores: dos
 
 afe <- fa(
   r = matriz_cor,
@@ -413,29 +453,62 @@ afe <- fa(
 
 print(afe, sort = TRUE, cut = 0.30)
 
+# Con el codigo de arriba podemos ver en la consola e R los resultados 
+# del análisis factorial exploratorio (AFE), de forma general
+# ordenando las cargas factoriales y por medio del uso de cut = 0.30
+# ocultamos aquellos valores inferiores a 0,30 que no resultarian
+# relevantes para el analisis
+
 # Cargas factoriales
 
 afe$loadings
+
+# Las cargas factoriales son valores estadísticos que nos indican qué 
+# tan fuertemente se relaciona cada variable observada (pregunta) 
+# con un factor determinado; a partir de 0.60 podemos establecer una
+# relación considerable
 
 # Correlacion entre factores
 
 afe$Phi
 
+# Como utilizamos una rotación promax, permitimos que los valores
+# estuvieran correlacionados
+
 # Comunalidades
 
 afe$communality
+
+# La comunalidad (o comunalidades) nos indican qué proporción de 
+# la varianza de cada pregunta quedaria explicada conjuntamente 
+# por los factores que fueron identificados.
 
 # Varianza explicada
 
 afe$Vaccounted
 
+# Con la varianza explicada obtenemos la información relacionada 
+# con la cantidad de varianza que explica cada factor.
+
+# De forma importante con los resultados de este paso, tambien
+# podemos determinar como se estarian distribuyendo cada una de
+# las variables en los factores indicados
+
 ```
 
 # Paso 9: Alfa de Cronbach
 
+Pese a que esta indicado en los objetivos del analsis vale la pena recordar que es el **Alfa de Cronbach** este es un coeficiente estadístico que permite medir la consistencia interna de un conjunto de preguntas o ítems. Por lo que con su uso podemos evaluar si las preguntas que utilizamos para medir una misma dimensión están relacionadas entre sí y funcionan de manera coherente.
+
+Valores inferiores a 0.60 nos indican una consistencia baja; valores entre 0.61 y 0.69, puede ser dudoso pero aceptable; idealmente buscamos valores por encima de 0.70
+
 ## 9.1. Alfa de Cronbach de la dimensión: Cohesión Barrial 
 
 ```{r, eval=FALSE}
+
+# Creamos un objeto correspondiente al factor 1; Cohesión
+# Barrial y en este objeto agrupamos las variables que
+# lo componen, siendo desde la t02_01 a las t02_04
 
 cohesion <- base_afe_cc %>%
   select(
@@ -445,20 +518,52 @@ cohesion <- base_afe_cc %>%
     t02_04
   )
 
+# Con este codigo efectuamos el calculo del Alfa de Cronbach
+
 alpha_cohesion <- psych::alpha(
   cohesion,
   check.keys = FALSE
 )
 
-alpha_cohesion$total
+# Con los siguientes podemos ver algunos de sus descriptivos;
+
+alpha_cohesion$total # Con este comando solicitamos que se nos
+                     # muestre todos los descriptivos del 
+                     # apartado total del objeto; entre esos
+                     # estarian los principales indicadores 
+                     # de consistencia interna de la escala
+
+# por ejemplo tendremos:
+
+# raw_alpha: alfa de Cronbach calculado utilizando las covarianzas 
+# originales de los ítems.
+
+# std.alpha: alfa de Cronbach estandarizado, que utiliza las 
+# correlaciones entre los ítems.
+
+# average_r: correlación promedio entre los ítems.
+
+# mean: promedio general de las respuestas.
+
+# sd: desviación estándar de la escala.
+
+
+# Con este siguiente comando:
 
 alpha_cohesion$alpha.drop
+
+# Podemos saber cómo cambiaría el alfa de Cronbach si eliminaramos 
+# individualmente cada una de las variables. 
 
 ```
 
 ## 9.2. Alfa de Cronbach de la dimensión: Sociabilidad Barrial 
 
 ```{r, eval=FALSE}
+
+# Creamos un objeto correspondiente al factor 1; Sociabilidad
+# Barrial y en este objeto agrupamos las variables que
+# lo componen, siendo desde la t03_01 a las t03_04
 
 sociabilidad <- base_afe_cc %>%
   select(
@@ -467,6 +572,12 @@ sociabilidad <- base_afe_cc %>%
     t03_03,
     t03_04
   )
+
+# Los siguientes paso, realizan lo mismo, que lo anteriormente
+# explicado en el paso 9.1; por lo que su explicación resulta
+# igual de valida
+
+# Con este codigo efectuamos el calculo del Alfa de Cronbach
 
 alpha_sociabilidad <- psych::alpha(
   sociabilidad,
@@ -479,12 +590,15 @@ alpha_sociabilidad$alpha.drop
 
 ```
 
-# Paso 10: Alfa Ordinal 
+# EXTRA 3: Alfa Ordinal 
 
-## 10.1. Alfa Ordinal de la dimensión: Cohesión Barrial 
+## EXTRA 3.1 Alfa Ordinal de la dimensión: Cohesión Barrial 
+
+Como anteriormente en el EXTRA 2, empleamos una matriz de correlaciones policorica; el Alfa Ordinal, se relaciona con su propio uso; este es una medida de consistencia interna que permite evaluar qué tan coherentes son entre sí un conjunto de ítems ordinales, como las preguntas que en este caso estamos utilizando (o los de una escala Likert)
 
 ```{r, eval=FALSE}
 
+# Realizamos el codigo del alfa ordinal
 
 alpha_ordinal_cohesion <- psych::alpha(
   matriz_cor[1:4, 1:4],
@@ -492,13 +606,34 @@ alpha_ordinal_cohesion <- psych::alpha(
   check.keys = FALSE
 )
 
+# De este codigo resulta relevante explicar que realizamos con
+# [1:4, 1:4]; con este seleccionamos las primeras cuatro filas y 
+# las primeras cuatro columnas de la matriz de correlaciones policóricas.
+# al seleccionarlas de este modo estámos aislando las correlaciones 
+# entre los cuatro ítems de cohesión barrial.
+
 alpha_ordinal_cohesion$total
+
+# Al igual que en los pasos anteriores con este codigo lo que obtenemos
+#  que se nos muestre todos los descriptivos del apartado total del 
+# objeto; entre esos estarian los principales indicadores de 
+# consistencia interna de la escala como por ejemplo lo serian:
+
+# (1) raw_alpha: alfa de Cronbach calculado utilizando las covarianzas 
+# originales de los ítems.
+# (2) std.alpha: alfa de Cronbach estandarizado, que utiliza las 
+# correlaciones entre los ítems.
+# (3) average_r: correlación promedio entre los ítems.
+# (4) mean: promedio general de las respuestas.
+# (5) sd: desviación estándar de la escala.
 
 ```
 
-## 10.2. Alfa Ordinal de la dimensión: Sociabilidad Barrial 
+## EXTRA 3.2 Alfa Ordinal de la dimensión: Sociabilidad Barrial 
 
 ```{r, eval=FALSE}
+
+# Este paso remite a la logica del paso anterior
 
 alpha_ordinal_sociabilidad <- psych::alpha(
   matriz_cor[5:8, 5:8],
@@ -510,11 +645,59 @@ alpha_ordinal_sociabilidad$total
 
 ```
 
-# Paso 11: Construcción de Indices
+# Paso 10: Construcción de Indices
 
-# 11.1. Indices
+# 10.1. Indices
 
 ```{r, eval=FALSE}
+
+# El siguiente paso corresponde a un solo codigo por lo que debe
+# ser corrido como uno solo; se opto por visualizarlo de esta 
+# forma a proposito para que se entienda su logica
+
+# Primeramente crearemos una nueva sub-base la cual contenga
+# los resultados de elaboración de los indices
+
+# recordemos que mutate transforma o crea variables nuevas
+
+# en el aparado de indice de cohesión barrial se esta creando
+# la primera parte del indicador; con if_else podemos trabajar
+# o manipular los datos, para que reciban el mismo trato,
+# permitiendonos mantener la clases o los atributos originales
+# de los datos; para este caso, todos los datos del if_else
+# que agrupen las variables dentro de sus parentesis corresponderan
+# al apartado de indice_cohesión; lo mismo sucede en la "segunda"
+# parte del codigo donde se repite los mismo para el 
+# indice_sociabilidad
+
+# Con rowSums sumamos las respuestas válidas por fila, 
+# es decir, por participante 
+
+# !is.na es para identificar las variables que si esten disponibles
+
+# Con pick, seleccionamos las variables; el dos puntos (:)
+# indica que se seleccionen todas las variables entre medio de las
+# dos variables escritas
+
+# >= 3, establece que el participante debe tener al menos tres 
+# de las cuatro respuestas disponibles; este paso se mantiene para
+# enseñarles la estructura y la logica, mas en caso de estar
+# trabajando con una base de datos donde eliminaron los casos con
+# los valores peridos no resulta necesario
+
+# Con rowMeans, calculamos el promedio horizontalmente, 
+# es decir, entre las columnas de cada fila.
+
+# na.rm = TRUE o na.rm = T; excluye los valores faltantes del cálculo.
+
+# NA_real_ indica específicamente que el valor faltante corresponde 
+# a una variable numérica.
+
+# Por lo que deforma general el if_else esta diciendo; 
+# Si tiene tres o cuatro respuestas válidas, calcula el promedio.
+# Si tiene menos de tres respuestas válidas, asigna NA. 
+# las variables de t02_01 a t02_04 agrupalas en el indice_cohesion;
+# las variables de t03_01 a t03_04 agrupalas en el indice:sociabilidad
 
 base_indices <- base_afe %>%
   mutate(
@@ -535,19 +718,29 @@ base_indices <- base_afe %>%
   )
 
 ```
-## 11.2. Descriptivos de los indices 
+## 10.2. Descriptivos de los indices 
 
 ```{r, eval=FALSE}
 
+# Con los siguiente codigos podemos obtener los
+# descriptivos o las medidas de tendencia central
+# de la variable indice_cohesion
+
 summary(base_indices$indice_cohesion)
+
+# Con los siguiente codigos podemos obtener los
+# descriptivos o las medidas de tendencia central
+# de la variable indice_sociabilidad
 
 summary(base_indices$indice_sociabilidad)
 
 ```
 
-## 11.3. Correlación entre los dos indices
+## 10.3. Correlación entre los dos indices
 
 ```{r, eval=FALSE}
+
+# Podemos calcular la correlación entre ambos indices
 
 cor(
   base_indices %>%
@@ -558,11 +751,36 @@ cor(
   use = "pairwise.complete.obs"
 )
 
+# pairwise.complete.obs indica a R debe utilizar todos los casos 
+# que tengan respuestas válidas para cada par de variables que 
+# se está correlacionando.
+
 ```
 
-## 11.4. Normalización de los indices
+## 10.4. Normalización de los indices
 
 ```{r, eval=FALSE}
+
+# Una vez que realizamos el paso anterior de creación de los
+# indicadores en la nueva sub-base se nos debieron de crear
+# dos variables nueva (por lo que la sub-base debe tener dos
+# más que las otras).
+
+# En este paso vamos a normalizar los indices y asi puedan tener
+# una misma escala de interpretación y posteriormente podamos 
+# combinarlos para construir el indicador que denominaremos como:
+# Indicador de Cohesión y Sociabilidad Barrial (ICSB).
+
+# El siguiente codigo nuevamente es uno solo y debe ser ejecutado
+# como uno solo, este fue separado para enteder su logica y partes
+
+# Recordemos que mutate puede transformar y crear nuevas variables
+# por lo que con la creación de una nueva variable que denominariamos 
+# como cohesion_100 y sociabilidad_100.
+
+# En "((indice_cohesion - 1) / 4) * 100" transformamos las 
+# puntuaciones de las cohesión, originalmente expresadas con 
+# valores de entre 1 y 5, a una escala de 0 a 100.
 
 base_indices <- base_indices %>%
   mutate(
@@ -574,13 +792,41 @@ base_indices <- base_indices %>%
       ((indice_sociabilidad - 1) / 4) * 100
   )
 
+# Si el resultado sale bien, ahora la sub-base base_indices
+# debe tener dos variables más nuevas, las cuales serian 
+# cohesion_100 y sociabilidad_100
+
 ```
 
-# Paso 12: Construcción del Indicador General ICBS  
+# Paso 11: Construcción del Indicador General ICBS  
 
-## 12.1. Construcción 
+## 11.1. Construcción 
 
 ```{r, eval=FALSE}
+
+# Por ultimo construimos el Indicador General ICBS
+# para eso crearemos una nueva variable la cual
+# agregaremos a la sub-base de datos, teniendo una
+# ultima variable extra, la cual seria ICBS
+
+# recordemos que con mutate como se a dicho multiples
+# veces, permite manipular o transformar variables
+
+# Empleando if_else el cual recordemos que nos permite
+# trabajar o manipular los datos, para que reciban el 
+# mismo trato, permitiendonos mantener las clases o 
+# los atributos originales de los datos.
+# Indicamos con el !is.na que se compruebe que el 
+# valor esté disponible.
+# E (&) indica que ambas condiciones deben cumplirse
+# en caso que no sea asi,  NA_real_ indicaria 
+# específicamente que el valor faltante corresponde 
+# a una variable numérica.
+
+# Por ultimo con (cohesion_100 + sociabilidad_100) / 2,
+# estamos calculando el promedio de forma directa
+# sumamos ambos valores y los dividimos por el
+# numero de los mismos
 
 base_indices <- base_indices %>%
   mutate(
@@ -596,17 +842,20 @@ base_indices <- base_indices %>%
 
 ```
 
-## 12.2. Descriptivos del indicador General ICBS 
+## 11.2. Descriptivos del indicador General ICBS 
 
 ```{r, eval=FALSE}
 
+# Una vez compuesto el indicados compuesto podemos obtener
+# sus descriptivos o  medidas de tendencia central.
+
 summary(base_indices$ICSB)
 
-# Desviacion estandar
+# Tamnien podemos saber su desviacion estandar
 
 sd(base_indices$ICSB, na.rm = TRUE)
 
-# Histograma
+# O por ultimo las podemos graficar como un histograma
 
 hist(
   base_indices$ICSB,
@@ -617,7 +866,7 @@ hist(
 
 ```
 
-# Paso 13: Ejercico de interpretación de resultados
+# Paso 12: Ejercico de interpretación de resultados
 
 A partir de los datos obtenidos de Analisis del Analisis Factorial Exploratorio y el Indice de "Satisfacción Residencial", responda las siguientes cuatro preguntas:
 
@@ -625,7 +874,7 @@ RECUERDEN LA INTERPRETACIÓN AL FINAL DEL SCRIPT:
 
 
 
-## Paso 8.1 Formato de Entrega
+## Paso 12.1 Formato de Entrega
 
 **Subir al buzón de tareas un script de R (.R), este y el mensaje que escriban deben contener:**
 
@@ -635,7 +884,7 @@ RECUERDEN LA INTERPRETACIÓN AL FINAL DEL SCRIPT:
 
 - Interpretación (como comentarios al final del script o en un bloque de texto) tomando como guias las preguntas del Paso 8
 
-##  8.2 Criterios de Evaluación (0,2 puntos)
+##  12.2 Criterios de Evaluación (0,2 puntos)
 
 **Código correcto**  (0,1 puntos)
 
