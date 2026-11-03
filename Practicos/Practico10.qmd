@@ -1,10 +1,10 @@
 # Objetivo del Análisis
 
-En este practico se propone realizar un Analsis Factorial Exploratori (AFE), con el fin de que los estudiante sigan famirializandose con el mismo; se pone un especial enfasis en la obtención de valor denominado como Alfa de Cronbach indicador estadístico que permite evaluar la consistencia interna de un conjunto de preguntas o ítems; a partir de este y los datos obtenidos del propio indice, se planteara tambien la realización de un indicadores compuestos, compuestos a partir de las variables seleccionadas para medir fenemoenos más complejos.
+En este practico se propone realizar un Analsis Factorial Exploratorio (AFE), con el fin de que los estudiante sigan famirializandose con el mismo; se pone un especial enfasis en la obtención del valor denominado como Alfa de Cronbach indicador estadístico que permite evaluar la consistencia interna de un conjunto de preguntas o ítems; a partir de este y los datos obtenidos del propio indice, se planteara tambien la realización de un indicadores compuestos a partir de las variables seleccionadas para medir fenomenos más complejos; se agregan como elementos extras la realización de una Matriz de correlaciones policoricas y la obtención del Alfa Ordinal.
 
 # Ejercicio a desarrollar
 
-A apartir de 8 variables correspondientes al modulo al modulo de "Territorio" de la encuesta ELSOC y correspondientes a los conceptos de Cohesión barrial y Sociabilidad barrial; se esperar realizar en este ppractico un Analsis Factorial Exploratorio (AFE), para obtener el Alfa de Cronbach de las mismas y posteriormente se realizaran indicadores compuestos a partir de las mismas, con el fin de evaluar el fenomeno.
+A partir de 8 variables correspondientes al modulo al modulo de "Territorio" de la encuesta ELSOC y correspondientes a los conceptos de Cohesión barrial y Sociabilidad barrial; se esperar realizar en este practico los pasos previos para el Analisis Factorial Exploratorio (AFE) en donde se contempla la realización de una matriz de correlaciones de Pearson y una matriz de correlaciones policorica, ademas de la obtención de los Alfa de Cronbach y Alfa Ordinal de las mismas; posteriormente se realizaran indicadores compuestos a partir de las mismas, para finaminalmente elaborar a partir de estas un indicador general con el fin de evaluar el fenomeno.
 
  
 
@@ -18,7 +18,7 @@ A apartir de 8 variables correspondientes al modulo al modulo de "Territorio" de
 # Para saber con que llenar los espacios del propio codigo, puedes ver la dirección de la 
 # carpeta en la que quieres trabajar, clickando sobre el icono de esta.
 
-#los primeros 2 nombres, puedes dejarlos como lo deje.
+#los primeros 2 nombres, puedes dejarlos como los deje.
 # lo que debes cambiar esta indicado 
 # con los numeros 1, 2 y 3
 
@@ -66,13 +66,13 @@ pacman::p_load(
 
 ```{r, eval=FALSE}
 
-options(scipen = 999) # Desactiva la notación cientifica de Rtudios
+options(scipen = 999) # Desactiva la notación cientifica de Rstudios
                       # (por ejemplo esta suele estar activa en
                       # Posit Cloud)
 
-rm(list = ls())          # Limpiamos el entorno de trabajo
+rm(list = ls())   # Limpiamos el entorno de trabajo
 
-set.seed(123)            # Fijamos semilla para reproducibilidad
+set.seed(123)     # Fijamos semilla para reproducibilidad
 
 ```
 
@@ -120,17 +120,17 @@ base_afe <- elsoc_long_2016_2022.2 %>%
   )
 
 ```
+
 Las variables seleccionadas corresponden a las siguientes:
 
 t02_01: Grado de acuerdo: Este es el barrio ideal para mi
-t02_02	Grado de acuerdo: Me siento integrado/a en este barrio
-t02_03	Grado de acuerdo: Me identifico con la gente de este barrio
-t02_04	Grado de acuerdo: Este barrio es parte de mi
-t03_01	Grado de acuerdo: En este barrio es facil hacer amigos
-t03_02	Grado de acuerdo: La gente en este barrio es sociable
-t03_03	Grado de acuerdo: La gente en este barrio es cordial
-t03_04	Grado de acuerdo: La gente en este barrio es colaboradora
-
+t02_02:	Grado de acuerdo: Me siento integrado/a en este barrio
+t02_03:	Grado de acuerdo: Me identifico con la gente de este barrio
+t02_04:	Grado de acuerdo: Este barrio es parte de mi
+t03_01:	Grado de acuerdo: En este barrio es facil hacer amigos
+t03_02:	Grado de acuerdo: La gente en este barrio es sociable
+t03_03:	Grado de acuerdo: La gente en este barrio es cordial
+t03_04:	Grado de acuerdo: La gente en este barrio es colaboradora
 
 
 ## 2.3. Limpieza de variables
@@ -153,9 +153,9 @@ base_afe <- base_afe %>%
     ~ replace(., . %in% c(-999, -888, -777, -666), NA)
   ))
 
-# La logica de este codigo responde a la estructura a la forma
-# tipica de estructura los codigos en RStudio, estructura con
-# la cual se espera que ya se esten familiarizando por el uso
+# La logica de este codigo responde a la estructura
+# tipica de que emplean los codigos en RStudio, estructura con
+# la cual se espera que ya esten familiarizando por el uso
 # sostenido de RStudio a lo largo de este semestre, con los
 # practicos o considerando sus cursos anteriores.
 
@@ -165,10 +165,10 @@ base_afe <- base_afe %>%
 # un codigo y realizamos un parentisis (), dentro de estos estamos
 # realizando "sub-operaciones" por denominarlas de una forma por 
 # cada una de estas que estemos realizando o por cada parentesis que
-# abramos, el parentesis debe cerrarse.
+# realicemos, este parentesis debe ser cerrardo.
 
 # Un error tipico de usuario que suele generar que R o RStudio indique
-# error, es un parentesis mal cerrado.
+# error, es un parentesis mal cerrado o que fue abierto y no se cerro.
 
 # En el codigo explicando varias de sus partes, lo que esta haciendo es
 # transformar las variables, con la función mutate.
@@ -207,7 +207,7 @@ base_afe <- base_afe %>%
 # Con los comando podriamos observar como los subtitulos indican; la
 # descripción de las variables; los propios valores perdidos por
 # variable o la frecuencia de respuesta, todas estas pueden servir
-# tanto para detectar valores NA, como para verficiar que el coamndo
+# tanto para detectar valores NA, como para verficiar que el comando
 # anterior se haya realizado correctamente.
 
 # Descripcion de variables
@@ -239,12 +239,12 @@ lapply(base_afe, function(x) {
 
 ```{r, eval=FALSE}
 
-# Como todabia no hemos eliminado los NA, lo que haremos a continuación
-# pero igualmente queremos asegurarnos de que no hayan muchas diferencia
+# Como todavia no hemos eliminado los NA, (lo que haremos a continuación)
+# pero igualmente queramos asegurarnos de que no hayan muchas diferencia
 # entre estos valores o por ejemplo cerciorarnos de que no se esten
 # perdiendo muchos datos conservamos la sub-base "base_afe" 
 # con los casos originales; pero tambien creamos una segunda sub-base 
-# exclusivamente para el AFE.
+# exclusivamente para el AFE "base_afe_cc".
 
 # Eliminamos los NA
 
@@ -255,30 +255,34 @@ base_afe_cc <- na.omit(base_afe)
 
 n_afe <- nrow(base_afe_cc) # Datos de observables o validos sin NA
 
-nrow(base_afe) # Datos de observables o validos conservado los NA
+nrow(base_afe) # Datos observables o validos conservado los NA en
+               # la sub base original
 
 n_afe
 
-# Comparamos los datos eliminados con la sub-base de datos normal 
+# Comparamos los datos de la sub-base con los NA eliminados 
+# con la sub-base de datos normal 
 
 nrow(base_afe) - n_afe
 
-# Asi oodemos saber el numero exacto de variables que perdimos
+# Asi podemos saber el numero exacto de variables que perdimos;
 # estos fueron menos de 300 aproximadamente y en proporición
-# corresponderia a menos de un 8% y siempre que eliminemos datos
-# estos en proporción idealmente deben de ser de entre un 10 y 15%
+# corresponderia a menos de un 8% de los casos y  recordando que
+# siempre que eliminemos datos, la proporción de datos que podriamos
+# perder idealmente debiesen ser de entre un 10% y 15%
 
 # Para quienes se pregunte el porque de este paso, cuando en los
-# practicos anteriores nunca lo realice, es para que se entienda
+# practicos anteriores nunca se realizo, es para que se entienda
 # la logica del procedimiento; perfectamente podria haberse aplicado
-# na.omit de forma directa sobreescrbir las base y trabajarse 
+# na.omit de forma directa sobreescribir las base y trabajarse 
 # directamente con la base resultante.
 
 # Tambien les comento de una pequeña debilidad de na.omit y comandos
-# similares, este elmina de raiz los casos que tengan como minimo
+# similares que eliminen NA directamente de las bases o sub-bases de
+# datos y es que estos eliminan de raiz los casos que tengan como minimo
 # un NA, en cualquiera de sus variables, por lo que por ejemplo
-# un caso que haya respondido 7 preguntas y no una 1, seria elimando
-# de hay la importancia por ejemplo del considerar cuantos valores
+# un encuestado que haya respondido 7 preguntas y no una 1, seria elimando
+# igualmente de hay la importancia por ejemplo del considerar cuantos valores
 # se estarian eliminado.
 
 # Tambien determinar el numero de casos de ambas sub-bases sera relevante
@@ -306,7 +310,9 @@ corMat
 
 ```{r, eval=FALSE}
 
-# Recordemos que siempre se pueden volver esta una tabla
+# Recordemos que siempre la matriz de correlaciones
+# se puede volver esta una tabla en caso de querer
+# facilitar su interpretación 
 
 base_afe_cc %>%
   tab_corr(triangle = "lower")
@@ -317,7 +323,9 @@ base_afe_cc %>%
 
 ```{r, eval=FALSE}
 
-# O pueden ser graficadas
+# O tambien en casos de no querer trabajar directamente con la
+# matriz o la tabla y querramos algo todavia más descriptivo
+# tambien la podemos graficar.
 
 # Para este caso, siguiendo el formato del practico anterior
 # utilizaremos colores personalizados
@@ -343,19 +351,19 @@ corrplot(
 
 ### EXTRA 2: Matriz de correlaciones policoricas
 
-En el practico y en el paso anterior, realizamos un tipo de correlación denominado como correlación de Pearson, pero esta presenta ciertas limitaciones como en este caso que estamos trabajamos con variables ordinales; por eso como extra en este paso realizaremos  correlaciones policoricas la es un tipo de correlación estadística que permite medir la relación entre dos variables ordinales, como las preguntas de una escala Likert.
+Durante este practico y en el paso, realizamos un tipo de correlación denominado como correlación de Pearson, pero este presenta ciertas limitaciones como en este caso en donde estamos trabajando con variables ordinales; por eso como extra en este paso realizaremos  correlaciones policoricas. Estas son un tipo de correlación estadística que permite medir la relación entre dos variables ordinales, como las preguntas de una escala Likert por ejemplo.
 
-Para quienes quieran consultar el listo de variables del ELSOC (disponible en Ucampus) podran observar quelas variables seleccionadas tienen categorias de respuestas que van desde Muy en desacuerdo (1) a Muy de acuerdo (5)
+Para quienes quieran consultar el listo de variables del ELSOC (disponible en Ucampus) podran observar que las variables seleccionadas tienen categorias de respuestas que van desde: "Muy en desacuerdo" (1) a "Muy de acuerdo" (5).
 
 Aunque podemos representar estas respuestas con números del 1 al 5, esos números son categorías ordenadas. No necesariamente podemos asumir que la distancia psicológica entre 1 y 2 es idéntica a la distancia entre 4 y 5.
 
-De todas formas, sigue siendo valido trabajar con la correlación de Pearson como en los practicos anteriores, nuevamente esto es solo un extra.
+De todas formas, sigue siendo valido trabajar con la correlación de Pearson como en los practicos anteriores para trabajos futuros siempre que lo expliciten en los apartados metodologicos, ya que nuevamente esto es solo un contenido extra en este practico.
 
 ```{r, eval=FALSE}
 
 # Debido a que las variables son ordinales (1 a 5),
 # utilizaremos correlaciones policoricas para el AFE
-# Por este ejercicio
+# por este ejercicio
 
 matriz_cor <- psych::polychoric(
   base_afe_cc
@@ -391,8 +399,8 @@ cortest.bartlett(
 
 # Recordemos que con este test, buscamos que el valor de p
 # sea menor al nivel de significancia, en este caso se
-# cumple siendo 0 o con un valor decimal tan pequeño
-# que la consola de R, no lo indica
+# cumple siendo 0 (o con un valor decimal tan pequeño
+# que la consola de R, no lo indica)
 
 ```
 
@@ -403,15 +411,16 @@ cortest.bartlett(
 fa.parallel(corMat, n.obs=2525)
 
 # En este punto vuelve a ser relevantes los apartado extra 1 y 2
-# en este punto estamos realiando el analisis paralelo con la
+# en este punto estamos realizando el analisis paralelo con la
 # correlación de pearsons ya que esta da menos problemas en
 # posit.cloud, de todas formas su resultado sigue siendo valido
 
 # Para ocupar este tipo de analisis paralelo, el cual compara
-# cuantos factores se formarian a apartir de nuestra variable
-# comparando dichos valores con una simulación de una analisis
-# de componentes principales (ACP), requerimos indicar nuestro
-# tamaño muestral, en este caso corresponde al de la sub-base
+# cuantos factores se formarian a a partir de nuestra variable
+# comparando dichos valores con una simulación de cuantos componentes
+# principales de un analisis de componentes principales (ACP) se
+# formarian con las mismas variables, es que requerimos indicar 
+# nuestro tamaño muestral, en este caso corresponde al de la sub-base
 # en el que aplicamos el na.omit, el cual sabemos que es de
 # 2525; indicamos dicho valor en n.obs
 
@@ -453,7 +462,7 @@ afe <- fa(
 
 print(afe, sort = TRUE, cut = 0.30)
 
-# Con el codigo de arriba podemos ver en la consola e R los resultados 
+# Con el codigo de arriba podemos ver en la consola de R los resultados 
 # del análisis factorial exploratorio (AFE), de forma general
 # ordenando las cargas factoriales y por medio del uso de cut = 0.30
 # ocultamos aquellos valores inferiores a 0,30 que no resultarian
@@ -482,6 +491,9 @@ afe$communality
 # La comunalidad (o comunalidades) nos indican qué proporción de 
 # la varianza de cada pregunta quedaria explicada conjuntamente 
 # por los factores que fueron identificados.
+# Por ejemplo si el factor 1 tuviese una comunalidad de 0.50; este
+# factor explicaria la variabilidad en la respuesta de la pregunta
+# un 50% de las veces.
 
 # Varianza explicada
 
@@ -500,14 +512,14 @@ afe$Vaccounted
 
 Pese a que esta indicado en los objetivos del analsis vale la pena recordar que es el **Alfa de Cronbach** este es un coeficiente estadístico que permite medir la consistencia interna de un conjunto de preguntas o ítems. Por lo que con su uso podemos evaluar si las preguntas que utilizamos para medir una misma dimensión están relacionadas entre sí y funcionan de manera coherente.
 
-Valores inferiores a 0.60 nos indican una consistencia baja; valores entre 0.61 y 0.69, puede ser dudoso pero aceptable; idealmente buscamos valores por encima de 0.70
+Valores inferiores a 0.60 nos indican una consistencia baja; valores entre 0.61 y 0.69, puede ser aceptables pero los resultados pueden estar sujetos a dudas; idealmente buscamos valores por encima de 0.70 o más.
 
 ## 9.1. Alfa de Cronbach de la dimensión: Cohesión Barrial 
 
 ```{r, eval=FALSE}
 
-# Creamos un objeto correspondiente al factor 1; Cohesión
-# Barrial y en este objeto agrupamos las variables que
+# Creamos un objeto correspondiente al factor 1: "Cohesión
+# Barrial" y en este objeto agrupamos las variables que
 # lo componen, siendo desde la t02_01 a las t02_04
 
 cohesion <- base_afe_cc %>%
@@ -532,8 +544,7 @@ alpha_cohesion$total # Con este comando solicitamos que se nos
                      # apartado total del objeto; entre esos
                      # estarian los principales indicadores 
                      # de consistencia interna de la escala
-
-# por ejemplo tendremos:
+                     # por ejemplo tendremos:
 
 # raw_alpha: alfa de Cronbach calculado utilizando las covarianzas 
 # originales de los ítems.
@@ -552,7 +563,7 @@ alpha_cohesion$total # Con este comando solicitamos que se nos
 
 alpha_cohesion$alpha.drop
 
-# Podemos saber cómo cambiaría el alfa de Cronbach si eliminaramos 
+# Podemos saber cómo cambiaría el Alfa de Cronbach si eliminaramos 
 # individualmente cada una de las variables. 
 
 ```
@@ -561,8 +572,8 @@ alpha_cohesion$alpha.drop
 
 ```{r, eval=FALSE}
 
-# Creamos un objeto correspondiente al factor 1; Sociabilidad
-# Barrial y en este objeto agrupamos las variables que
+# Creamos un objeto correspondiente al factor 2: "Sociabilidad
+# Barrial" y en este objeto agrupamos las variables que
 # lo componen, siendo desde la t03_01 a las t03_04
 
 sociabilidad <- base_afe_cc %>%
@@ -610,7 +621,8 @@ alpha_ordinal_cohesion <- psych::alpha(
 # [1:4, 1:4]; con este seleccionamos las primeras cuatro filas y 
 # las primeras cuatro columnas de la matriz de correlaciones policóricas.
 # al seleccionarlas de este modo estámos aislando las correlaciones 
-# entre los cuatro ítems de cohesión barrial.
+# entre los cuatro ítems de cohesión barrial ya que las otras cuatro
+# corresponden al ítem de sociabilidad barrial.
 
 alpha_ordinal_cohesion$total
 
@@ -641,6 +653,10 @@ alpha_ordinal_sociabilidad <- psych::alpha(
   check.keys = FALSE
 )
 
+# Pero como podemos observar en [5:8, 5:8], esta vez
+# estamos seleccioandolas ultimas cuatro columnas y las ultimas
+# cuatro filas.
+
 alpha_ordinal_sociabilidad$total
 
 ```
@@ -652,15 +668,16 @@ alpha_ordinal_sociabilidad$total
 ```{r, eval=FALSE}
 
 # El siguiente paso corresponde a un solo codigo por lo que debe
-# ser corrido como uno solo; se opto por visualizarlo de esta 
-# forma a proposito para que se entienda su logica
+# ser ejecutado como uno solo; se opto por visualizarlo de esta 
+# forma a proposito para que se entienda su logica al momento
+# de explicarlo por partes.
 
 # Primeramente crearemos una nueva sub-base la cual contenga
 # los resultados de elaboración de los indices
 
 # recordemos que mutate transforma o crea variables nuevas
 
-# en el aparado de indice de cohesión barrial se esta creando
+# En el aparado de indice de cohesión barrial se esta creando
 # la primera parte del indicador; con if_else podemos trabajar
 # o manipular los datos, para que reciban el mismo trato,
 # permitiendonos mantener la clases o los atributos originales
@@ -689,6 +706,8 @@ alpha_ordinal_sociabilidad$total
 # es decir, entre las columnas de cada fila.
 
 # na.rm = TRUE o na.rm = T; excluye los valores faltantes del cálculo.
+# nuevamente aquello no resulta necesario en una base de datos que
+# tenga los NA, eliminados.
 
 # NA_real_ indica específicamente que el valor faltante corresponde 
 # a una variable numérica.
@@ -698,6 +717,10 @@ alpha_ordinal_sociabilidad$total
 # Si tiene menos de tres respuestas válidas, asigna NA. 
 # las variables de t02_01 a t02_04 agrupalas en el indice_cohesion;
 # las variables de t03_01 a t03_04 agrupalas en el indice:sociabilidad
+
+# Como estamos ocupando la sub-base original con los NA sin eliminar
+# los puntos refentes a los NA, para este caso resultan utiles y 
+# tienen sentidos.
 
 base_indices <- base_afe %>%
   mutate(
@@ -754,6 +777,10 @@ cor(
 # pairwise.complete.obs indica a R debe utilizar todos los casos 
 # que tengan respuestas válidas para cada par de variables que 
 # se está correlacionando.
+# Por lo que por ejemplo en caso de no tener respuesta valida
+# independiente de que  trabajemos con dos o más variables
+# si falta un dato en una de las categorias de respuesta de esta
+# no se la consideraria en el resultado final.
 
 ```
 
@@ -766,21 +793,26 @@ cor(
 # dos variables nueva (por lo que la sub-base debe tener dos
 # más que las otras).
 
-# En este paso vamos a normalizar los indices y asi puedan tener
-# una misma escala de interpretación y posteriormente podamos 
-# combinarlos para construir el indicador que denominaremos como:
+# En este paso vamos a normalizar los indices para que asi 
+# puedan tener una misma escala de interpretación y 
+# posteriormente podamos combinarlos para construir el 
+# indicador que denominaremos como:
 # Indicador de Cohesión y Sociabilidad Barrial (ICSB).
 
 # El siguiente codigo nuevamente es uno solo y debe ser ejecutado
 # como uno solo, este fue separado para enteder su logica y partes
+# y explicar el paso a paso.
 
 # Recordemos que mutate puede transformar y crear nuevas variables
-# por lo que con la creación de una nueva variable que denominariamos 
+# por lo que crearemos unas nuevas variables que denominariamos 
 # como cohesion_100 y sociabilidad_100.
 
 # En "((indice_cohesion - 1) / 4) * 100" transformamos las 
 # puntuaciones de las cohesión, originalmente expresadas con 
 # valores de entre 1 y 5, a una escala de 0 a 100.
+
+# cohesion_100 y sociabilidad_100, mediaran la puntuación de los
+# indices de cohesion y sociabillidad en dicha escala
 
 base_indices <- base_indices %>%
   mutate(
@@ -794,7 +826,7 @@ base_indices <- base_indices %>%
 
 # Si el resultado sale bien, ahora la sub-base base_indices
 # debe tener dos variables más nuevas, las cuales serian 
-# cohesion_100 y sociabilidad_100
+# como se diho anteriormente cohesion_100 y sociabilidad_100
 
 ```
 
@@ -816,8 +848,10 @@ base_indices <- base_indices %>%
 # trabajar o manipular los datos, para que reciban el 
 # mismo trato, permitiendonos mantener las clases o 
 # los atributos originales de los datos.
+
 # Indicamos con el !is.na que se compruebe que el 
 # valor esté disponible.
+
 # E (&) indica que ambas condiciones deben cumplirse
 # en caso que no sea asi,  NA_real_ indicaria 
 # específicamente que el valor faltante corresponde 
@@ -827,6 +861,10 @@ base_indices <- base_indices %>%
 # estamos calculando el promedio de forma directa
 # sumamos ambos valores y los dividimos por el
 # numero de los mismos
+
+# Este comando al igual que los anteriores debe ser
+# ejecutado como uno solo, fue divido en partes,
+# para facilitar su explicación
 
 base_indices <- base_indices %>%
   mutate(
@@ -846,7 +884,7 @@ base_indices <- base_indices %>%
 
 ```{r, eval=FALSE}
 
-# Una vez compuesto el indicados compuesto podemos obtener
+# Una vez elaborado el indicador compuesto podemos obtener
 # sus descriptivos o  medidas de tendencia central.
 
 summary(base_indices$ICSB)
@@ -876,7 +914,7 @@ RECUERDEN LA INTERPRETACIÓN AL FINAL DEL SCRIPT:
 
 **2-**: A partir de los datos obtenidos por el Analisis Factorial Exploratorio (AFE), reflexione que se puede interpretar a partir de los resultados de estos.
 
-**3-**: A partir de los resultados del indicador compuesto ICBSm interprete sus resultados.
+**3-**: A partir de los resultados del indicador compuesto ICBS interprete sus resultados.
 
 
 ## Paso 12.1 Formato de Entrega
